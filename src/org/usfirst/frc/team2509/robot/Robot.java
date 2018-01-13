@@ -7,10 +7,16 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import org.usfirst.frc.team2509.robot.commands.DJs_3B_Auto;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,10 +27,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
  */
 public class Robot extends TimedRobot {
 	public static OI oi;
-	
+	DifferentialDrive drive = RobotMap.differentialdrive;
 	Command autonomousCommand;
+	Command DJauto = new DJs_3B_Auto();
 	SendableChooser<Command> chooser = new SendableChooser<>();
-
+	private  Joystick RightStick = OI.RightStick;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -40,6 +47,9 @@ public class Robot extends TimedRobot {
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putNumber("Encoder", RobotMap.enc1.get()/3);
+		SmartDashboard.putNumber("Encoder 2", RobotMap.enc2.get()/3);
+		SmartDashboard.putNumber("Gyro", RobotMap.gyro.getAngle());
 	}
 
 	/**
@@ -70,8 +80,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
+//		autonomousCommand = chooser.getSelected();
+		autonomousCommand = DJauto;
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected){ 
@@ -107,6 +117,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		
 	}
 
 	/**
@@ -114,7 +125,15 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+//		Scheduler.getInstance().run();
+		while(isOperatorControl() && isEnabled()) {
+				drive.arcadeDrive(RightStick.getY(),RightStick.getZ());
+				Timer.delay(0.01);
+
+	    		SmartDashboard.putNumber("Encoder", RobotMap.enc1.get()/3);
+	    		SmartDashboard.putNumber("Encoder 2", RobotMap.enc2.get()/3);
+	    		SmartDashboard.putNumber("Gyro", RobotMap.gyro.getAngle());
+		}
 	}
 
 	/**
