@@ -7,22 +7,25 @@
 
 package org.usfirst.frc.team2509.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
-public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+
+public class RobotMap {
+	
+	public static WPI_TalonSRX DT_left1 = new WPI_TalonSRX(1);
+	public static WPI_TalonSRX DT_right1 = new WPI_TalonSRX(2);
+	public static WPI_TalonSRX DT_left2 = new WPI_TalonSRX(3);
+	public static WPI_TalonSRX DT_right2 = new WPI_TalonSRX(4);
+	
+	public static SpeedControllerGroup DT_left = new SpeedControllerGroup(DT_left1, DT_left2);
+	public static SpeedControllerGroup DT_right = new SpeedControllerGroup(DT_right1, DT_right2);
+	
+	public static DifferentialDrive RobotDrive = new DifferentialDrive(DT_left, DT_right);
+	
+	
 	public static void init(){
 		
 	}
