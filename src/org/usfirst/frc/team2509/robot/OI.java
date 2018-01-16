@@ -41,6 +41,7 @@ public class OI {
 	 * <p>button.whenReleased(new ExampleCommand());
 	 * 
 	 */
+
 	public OI() {
 		OperatorStick = new Joystick(0);
 		CoOperatorStick = new Joystick(1);
