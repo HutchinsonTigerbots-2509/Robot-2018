@@ -7,7 +7,8 @@
 
 package org.usfirst.frc.team2509.robot;
 
-
+import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.commands.DJs_3B_Auto;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,8 +35,8 @@ public class Robot extends TimedRobot {
 //	Command autonomousCommand;
 	public Command operatorDrive;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
-
 	public Command DJauto;
+
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -50,10 +52,12 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
+
 		DJauto = new DJs_3B_Auto()
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
+
 
 		oi.UpdateDashboard.start();
 	}
@@ -87,11 +91,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 //		autonomousCommand = chooser.getSelected();
-<<<<<<< HEAD
 
-=======
-		autonomousCommand = DJauto;
->>>>>>> origin/DJ-drivetrain
+//		autonomousCommand = DJauto;
+
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected){ 
@@ -124,12 +126,11 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		
+
 //		if (autonomousCommand != null) {
 //			autonomousCommand.cancel();
 //		}
 		operatorDrive.start();
-
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}

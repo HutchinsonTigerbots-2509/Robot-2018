@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RobotMap {
 
-
 	//Drivetran Variable
 	public static DoubleSolenoid DriveTrain_Shifter;
 	public static Encoder DriveTrain_LeftEncoder;
@@ -56,11 +55,7 @@ public class RobotMap {
 		DriveTrain_Gyro.reset();
 		DriveTrain_Gyro.calibrate();
 		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
-		
-		DriveTrain_left1 = new Talon(0);
-		
-		DriveTrain_left2 = new Talon(2);
-		
+				
 		DriveTrain_left3 = new Talon(1);
 		
 		DriveTrain_right1 = new Talon(3);
