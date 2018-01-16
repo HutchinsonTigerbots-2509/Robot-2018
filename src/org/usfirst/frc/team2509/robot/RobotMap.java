@@ -22,32 +22,60 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * floating around.
  */
 public class RobotMap {
+
+
+	//Drivetran Variable
+	public static DoubleSolenoid DriveTrain_Shifter;
+	public static Encoder DriveTrain_LeftEncoder;
+	public static Encoder DriveTrain_RightEncoder;
+	public static ADXRS450_Gyro DriveTrain_Gyro;
+	public static Talon DriveTrain_left1;
+	public static Talon DriveTrain_left2;
+	public static Talon DriveTrain_left3;
+	public static Talon DriveTrain_right1;
+	public static Talon DriveTrain_right2;
+	public static Talon DriveTrain_right3;
+	public static SpeedControllerGroup DriveTrain_Left;
+	public static SpeedControllerGroup DriveTrain_Right;
+	public static DifferentialDrive RobotDrive;
 	
-	public static Talon Driveright1 = new Talon(0);
-	public static Talon Driveright2 = new Talon(2);
-	public static Talon Driveright3 = new Talon(1);
-	public static Talon Driveleft1 = new Talon(3);
-	public static Talon Driveleft2 = new Talon(4);
-	public static Talon Driveleft3 = new Talon(5);
-	public static SpeedControllerGroup Driveright = new SpeedControllerGroup(Driveright1, Driveright2, Driveright3);
-	public static SpeedControllerGroup Driveleft = new SpeedControllerGroup(Driveleft1, Driveleft2, Driveleft3);
-	public static DifferentialDrive differentialdrive = new DifferentialDrive(Driveleft, Driveright);
-	public static DoubleSolenoid Solenoid = new DoubleSolenoid(0,1);
-	public static Encoder enc1 = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-	public static Encoder enc2 = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	/**
+	 * 
+	 */
 	public static void init(){
-    	gyro.calibrate();
-		SmartDashboard.putNumber("Encoder", enc1.get()/3);
+		//Drivetrain Variable Initialize
+		DriveTrain_Shifter = new DoubleSolenoid(0,1);
+		
+		DriveTrain_LeftEncoder = new Encoder(0,1);
+		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
+		
+		DriveTrain_RightEncoder = new Encoder(2,3);
+		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
+		
+		DriveTrain_Gyro = new ADXRS450_Gyro();
+		DriveTrain_Gyro.reset();
+		DriveTrain_Gyro.calibrate();
+		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
+		
+		DriveTrain_left1 = new Talon(0);
+		
+		DriveTrain_left2 = new Talon(2);
+		
+		DriveTrain_left3 = new Talon(1);
+		
+		DriveTrain_right1 = new Talon(3);
+		
+		DriveTrain_right2 = new Talon(4);
+		
+		DriveTrain_right3 = new Talon(5);
+		
+		DriveTrain_Left = new SpeedControllerGroup(
+				DriveTrain_left1,DriveTrain_left2,DriveTrain_left3);
+		
+		DriveTrain_Right = new SpeedControllerGroup(
+				DriveTrain_right1,DriveTrain_right2,DriveTrain_right3);
+		
+		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
+
 	}
 }

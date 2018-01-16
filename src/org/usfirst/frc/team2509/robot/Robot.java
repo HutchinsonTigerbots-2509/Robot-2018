@@ -7,8 +7,10 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import org.usfirst.frc.team2509.robot.commands.DJs_3B_Auto;
 
+import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2509.robot.commands.DJs_3B_Auto;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -27,11 +29,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	public static OI oi;
-	DifferentialDrive drive = RobotMap.differentialdrive;
-	Command autonomousCommand;
-	Command DJauto = new DJs_3B_Auto();
-	SendableChooser<Command> chooser = new SendableChooser<>();
-	private  Joystick RightStick = OI.RightStick;
+	public static DriveTrain drivetrain;
+//	Command autonomousCommand;
+	public Command operatorDrive;
+//	SendableChooser<Command> chooser = new SendableChooser<>();
+
+	public Command DJauto;
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -39,17 +43,19 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
+		drivetrain = new DriveTrain();
 		// OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
 		oi = new OI();
+		operatorDrive = new OperatorDrive();
+		DJauto = new DJs_3B_Auto()
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
-		SmartDashboard.putNumber("Encoder", RobotMap.enc1.get()/3);
-		SmartDashboard.putNumber("Encoder 2", RobotMap.enc2.get()/3);
-		SmartDashboard.putNumber("Gyro", RobotMap.gyro.getAngle());
+
+		oi.UpdateDashboard.start();
 	}
 
 	/**
@@ -81,7 +87,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 //		autonomousCommand = chooser.getSelected();
+<<<<<<< HEAD
+
+=======
 		autonomousCommand = DJauto;
+>>>>>>> origin/DJ-drivetrain
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected){ 
@@ -95,9 +105,9 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null) {
-			autonomousCommand.start();
-		}
+//		if (autonomousCommand != null) {
+//			autonomousCommand.start();
+//		}
 	}
 
 	/**
@@ -114,10 +124,15 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		
+//		if (autonomousCommand != null) {
+//			autonomousCommand.cancel();
+//		}
+		operatorDrive.start();
+
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		
 	}
 
 	/**
