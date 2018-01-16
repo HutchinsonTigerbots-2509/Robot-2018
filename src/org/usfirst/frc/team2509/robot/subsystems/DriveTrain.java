@@ -38,6 +38,21 @@ public class DriveTrain extends Subsystem {
     public void drive(Joystick stick) {
     	Drive.arcadeDrive(stick.getY(), stick.getZ());
     }
+    /**
+     * Switches the gear between high and low, with a double solenoid.
+     * @param isExtended
+     */
+    public void shift(boolean isExtended) {
+    	if(isExtended) {
+    		Shifter.set(DoubleSolenoid.Value.kForward);
+    	}
+    	else {
+    		Shifter.set(DoubleSolenoid.Value.kReverse);
+    	}
+//    Shifter.set(DoubleSolenoid.Value.kOff);
+    }
+    
+    
     
     /**
      * 
