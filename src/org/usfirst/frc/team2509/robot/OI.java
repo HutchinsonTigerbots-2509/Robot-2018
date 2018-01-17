@@ -7,10 +7,7 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
-
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -20,7 +17,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
-	private JoystickButton ShiftButton;
 	
 	/**
 	 * CREATING BUTTONS - 
@@ -48,9 +44,6 @@ public class OI {
 	public OI() {
 		OperatorStick = new Joystick(0);
 		CoOperatorStick = new Joystick(1);
-		ShiftButton = new JoystickButton(OperatorStick, 2);
-		ShiftButton.whenPressed(new ShiftDrive());
-		
 	}
 	/**
 	 * When called constantly updates the SmartDashboard

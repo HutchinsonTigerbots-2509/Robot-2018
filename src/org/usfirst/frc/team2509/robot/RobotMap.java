@@ -51,7 +51,6 @@ public class RobotMap {
 		DriveTrain_RightEncoder = new Encoder(2,3);
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
-		
 		DriveTrain_Gyro = new ADXRS450_Gyro();
 		DriveTrain_Gyro.reset();
 		DriveTrain_Gyro.calibrate();
@@ -76,11 +75,6 @@ public class RobotMap {
 				DriveTrain_right1,DriveTrain_right2,DriveTrain_right3);
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
-		
-	}
-
-	private static void whenPressed() {
-		// TODO Auto-generated method stub
 		
 	}
 }
