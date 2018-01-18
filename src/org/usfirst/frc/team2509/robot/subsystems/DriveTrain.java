@@ -38,6 +38,28 @@ public class DriveTrain extends Subsystem {
     public void drive(Joystick stick) {
     	Drive.arcadeDrive(stick.getY(), stick.getZ());
     }
+    /**
+     * Gets angle from the Gyro to tell the motors to make a specific turn
+     * @param Angle
+     */
+    public void Rotate(Double TargetAngle) {
+    	if(TargetAngle < 180) {
+    		while(Gyro.getAngle() < TargetAngle) {
+    			Right.set(0.5);
+    			Left.set(-0.5);
+    			}
+    	}else {
+    		while(Gyro.getAngle() < TargetAngle) {
+    			Right.set(-0.5);
+    			Left.set(0.5);
+    		}
+    	}
+    	
+    	
+    		
+    }
+    
+    
     
     /**
      * 
