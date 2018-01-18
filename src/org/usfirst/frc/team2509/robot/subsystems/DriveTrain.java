@@ -2,133 +2,48 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 
 /**
  *
  */
 public class DriveTrain extends Subsystem {
-	//Subsystem Variables
-	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
-	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
-	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
-	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
-	private static Talon Left_1 = RobotMap.DriveTrain_left1;
-	private static Talon Left_2 = RobotMap.DriveTrain_left2;
-	private static Talon Left_3 = RobotMap.DriveTrain_left3;
-	private static Talon Right_1 = RobotMap.DriveTrain_right1;
-	private static Talon Right_2 = RobotMap.DriveTrain_right2;
-	private static Talon Right_3 = RobotMap.DriveTrain_right3;
-	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
-	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
-	private static DifferentialDrive Drive = RobotMap.RobotDrive;
+	WPI_TalonSRX LEFT1 = RobotMap.DT_LEFT1;
+	WPI_TalonSRX LEFT2 = RobotMap.DT_LEFT2;
+	WPI_TalonSRX RIGHT1 = RobotMap.DT_RIGHT1;
+	WPI_TalonSRX RIGHT2 = RobotMap.DT_RIGHT2;
+	Encoder enc = RobotMap.enc1; 
+	SpeedControllerGroup DTG_LEFT = RobotMap.DTG_LEFT;
+	SpeedControllerGroup DTG_RIGHT = RobotMap.DTG_RIGHT;
+	
+	DifferentialDrive Drive = RobotMap.Drive;
+	
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public void initDefaultCommand() {
+
+	public void drive(Joystick STICK) {
+		Drive.arcadeDrive(STICK.getY(), STICK.getZ());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void drive(Joystick stick) {
-    	Drive.arcadeDrive(stick.getY(), stick.getZ());
-    }
-    
-    /**
-     * 
-     * @return DriveTrain_Shifter
-     */
-    public DoubleSolenoid getShifter() {
-    	return Shifter;
-    }
-    /**
-     * 
-     * @return DriveTrain_LeftEncoder
-     */
-    public Encoder getLeftEncoder() {
-    	return LeftEncoder;
-    }
-    /**
-     * 
-     * @return DriveTrain_RightEncoder
-     */
-    public Encoder getRightEncoder() {
-    	return RightEncoder;
-    }
-    /**
-     * 
-     * @return DriveTrain_Gyro
-     */
-    public ADXRS450_Gyro getGyro() {
-    	return Gyro;
-    }
-    /**
-     * 
-     * @return DriveTrain_Left
-     */
-    public SpeedControllerGroup getLeft() {
-    	return Left;
-    }
-    /**
-     * 
-     * @return DriveTrain_Right
-     */
-    public SpeedControllerGroup getRight() {
-    	return Right;
-    }
-    /**
-     * 
-     * @return DriveTrain_Drive
-     */
-    public DifferentialDrive getDrive() {
-    	return Drive;
-    }
-    /**
-     * 
-     * @return DriveTrain_Left_1
-     */
-    public Talon getLeft1() {
-    	return Left_1;
-    }
-    /**
-     * 
-     * @return DriveTrain_Left_2
-     */
-    public Talon getLeft2() {
-    	return Left_2;
-    }
-    /**
-     * 
-     * @return DriveTrain_Left_3
-     */
-    public Talon getLeft3() {
-    	return Left_3;
-    }
-    /**
-     * 
-     * @return DriveTrain_Right_1
-     */
-    public Talon getRight1() {
-    	return Right_1;
-    }
-    /**
-     * 
-     * @return DriveTrain_Right_2
-     */
-    public Talon getRight2() {
-    	return Right_2;
-    }
-    /**
-     * 
-     * @return DriveTrain_Right_3
-     */
-    public Talon getRight3() {
-    	return Right_3;
-    }
 
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void arcadeDrive(double d, double e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
+
