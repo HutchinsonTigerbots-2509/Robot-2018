@@ -43,20 +43,14 @@ public class DriveTrain extends Subsystem {
      * @param Angle
      */
     public void Rotate(Double TargetAngle) {
-    	if(TargetAngle < 180) {
-    		while(Gyro.getAngle() < TargetAngle) {
-    			Right.set(0.5);
-    			Left.set(-0.5);
-    			}
-    	}else {
-    		while(Gyro.getAngle() < TargetAngle) {
-    			Right.set(-0.5);
-    			Left.set(0.5);
-    		}
+    	double RealAngle = Math.abs((360 % TargetAngle));
+    	if(RealAngle < Gyro.getAngle()) {
+    		Drive.tankDrive(0.5, -0.5);
     	}
-    	
-    	
-    		
+    	else {
+    		Drive.tankDrive(-0.5, 0.5);
+    	}
+    		Drive.tankDrive(0, 0);
     }
     
     

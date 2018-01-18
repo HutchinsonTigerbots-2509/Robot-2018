@@ -71,6 +71,7 @@ public class RobotMap {
 				DriveTrain_right1,DriveTrain_right2,DriveTrain_right3);
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
+		RobotDrive.setSafetyEnabled(true);
 
 	}
 }

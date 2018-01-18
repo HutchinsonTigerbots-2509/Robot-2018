@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DJs_3B_Auto extends Command {
-	SpeedControllerGroup DriveLeft = RobotMap.Driveleft;
-	SpeedControllerGroup DriveRight = RobotMap.Driveright;
-	DifferentialDrive drive = RobotMap.differentialdrive;
-	ADXRS450_Gyro gyro = RobotMap.gyro;
-	Encoder enc1 = RobotMap.enc1;
-	Encoder enc2 = RobotMap.enc2;
+	SpeedControllerGroup DriveLeft = RobotMap.DriveTrain_Left;
+	SpeedControllerGroup DriveRight = RobotMap.DriveTrain_Right;
+	DifferentialDrive drive = RobotMap.RobotDrive;
+	ADXRS450_Gyro gyro = RobotMap.DriveTrain_Gyro;
+	Encoder enc1 = RobotMap.DriveTrain_LeftEncoder;
+	Encoder enc2 = RobotMap.DriveTrain_RightEncoder;
     public DJs_3B_Auto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

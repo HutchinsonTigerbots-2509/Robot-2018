@@ -24,13 +24,13 @@ public class OperatorDrive extends Command {
      * Called just before OperatorDrive runs the first time
      */
     protected void initialize() {
+    	while(true)    	drivetrain.drive(OpStick);
     }
 
     /**
      *  Called repeatedly when OperatorDrive is scheduled to run
      */
     protected void execute() {
-    	drivetrain.drive(OpStick);
     }
 
     /**
