@@ -7,18 +7,12 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team2509.robot.commands.AutonomousCommand;
+import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,12 +23,10 @@ import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
  */
 public class Robot extends TimedRobot {
 	public static OI oi;
-	public static DifferentialDrive Drive;
-	public static Joystick STICK;
-	public static  DriveTrain drivetrain;
-	
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	public static DriveTrain drivetrain;
+//	Command autonomousCommand;
+	public Command operatorDrive;
+//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,14 +35,17 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		Drive = RobotMap.Drive;
-		STICK = new Joystick(0);
 		drivetrain = new DriveTrain();
-		
+		// OI must be constructed after subsystems. If the OI creates Commands
+        //(which it very likely will), subsystems are not guaranteed to be
+        // constructed yet. Thus, their requires() statements may grab null
+        // pointers. Bad news. Don't move it.
 		oi = new OI();
-		
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		operatorDrive = new OperatorDrive();
+//		chooser.addDefault("Default Auto", null);
+// 		chooser.addObject("My Auto", new MyAutoCommand());
+//		SmartDashboard.putData("Auto mode", chooser);
+		oi.UpdateDashboard.start();
 	}
 
 	/**
@@ -81,20 +76,24 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+//		autonomousCommand = chooser.getSelected();
 
 		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
+		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
+		 * switch(autoSelected){ 
+		 * 	case "My Auto": 
+		 * 		autonomousCommand = new MyAutoCommand(); 
+		 * 		break; 
+		 * 	case "Default Auto": default:
+		 * 		autonomousCommand = new ExampleCommand(); 
+		 * 		break; 
+		 * }
 		 */
 
-		
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
-		}
+//		if (autonomousCommand != null) {
+//			autonomousCommand.start();
+//		}
 	}
 
 	/**
@@ -104,13 +103,6 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
-	
-	public void operatorControl() {
-		while (isOperatorControl() && isEnabled()) {
-			drivetrain.drive(STICK);
-				Timer.delay(0.01);
-		}
-	}
 
 	@Override
 	public void teleopInit() {
@@ -118,9 +110,10 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
-		}
+//		if (autonomousCommand != null) {
+//			autonomousCommand.cancel();
+//		}
+		operatorDrive.start();
 	}
 
 	/**

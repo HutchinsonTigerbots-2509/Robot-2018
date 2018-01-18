@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2509.robot.commands;
 
-import org.usfirst.frc.team2509.robot.RobotMap;
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -13,12 +13,13 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  *
  */
 public class AutonomousCommand extends Command {
-	DifferentialDrive DT=RobotMap.Drive;
-	SpeedControllerGroup Left=RobotMap.DTG_LEFT;
-	SpeedControllerGroup Right=RobotMap.DTG_RIGHT;
-	ADXRS450_Gyro gyro = RobotMap.gyro;
-	Encoder enc1 = RobotMap.enc1;
-	Encoder enc2 = RobotMap.enc2;
+	DriveTrain driveTrain = Robot.drivetrain;
+	DifferentialDrive DT=driveTrain.getDrive();
+	SpeedControllerGroup Left=driveTrain.getLeft();
+	SpeedControllerGroup Right=driveTrain.getRight();
+	ADXRS450_Gyro gyro = driveTrain.getGyro();
+	Encoder L_enc = driveTrain.getLeftEncoder();
+	Encoder r_enc = driveTrain.getRightEncoder();
 	
 	public AutonomousCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -29,12 +30,12 @@ public class AutonomousCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	gyro.reset();
-    	enc1.reset();
-    	enc2.reset();
+    	L_enc.reset();
+    	r_enc.reset();
     	Timer.delay(0.1);
     	int targetDistance = 2872*3;
-    	while(((enc1.get()-enc2.get())/2)<=targetDistance) {
-    		DriveTrain.arcadeDrive(0.75, gyro.getAngle()*(0.03));//0.03
+    	while(((L_enc.get()-r_enc.get())/2)<=targetDistance) {
+    		DT.arcadeDrive(0.75, gyro.getAngle()*(0.03));//0.03
     	}
     
     
