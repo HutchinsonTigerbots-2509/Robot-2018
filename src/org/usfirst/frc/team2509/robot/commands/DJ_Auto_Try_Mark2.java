@@ -27,7 +27,7 @@ public class DJ_Auto_Try_Mark2 extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void Rotate() {
     	gyro.reset();
     	enc1.reset();
     	enc2.reset();
