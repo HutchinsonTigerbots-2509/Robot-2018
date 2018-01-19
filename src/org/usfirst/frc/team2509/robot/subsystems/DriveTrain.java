@@ -49,25 +49,22 @@ public class DriveTrain extends Subsystem {
     	else {
     		Shifter.set(DoubleSolenoid.Value.kReverse);
     	}
-
-//    Shifter.set(DoubleSolenoid.Value.kOff);
     }
+    
     /**
-     * Drive forward for input inches
+     * When called will drive forward.
      * You need to input inches as a target value.
      * @param target
      */
-    public void driveForward(double target) {
-    	double targetDistance = target/18.849555921539*3*360;
+    public void driveForward(double targetDistance) {
+    	double target = targetDistance/18.849555921539*3*360;
     	RightEncoder.reset();
     	LeftEncoder.reset();
-    	while((RightEncoder.get()-LeftEncoder.get())/2<=targetDistance) {
+    	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
     		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.03));
     	}
-    	Drive.stopMotor();
+    	Drive.tankDrive(0, 0);
     }
-    
-    
     
     /**
      * 
