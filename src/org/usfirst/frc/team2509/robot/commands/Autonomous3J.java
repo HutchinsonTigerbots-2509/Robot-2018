@@ -25,11 +25,6 @@ public class Autonomous3J extends Command {
     protected void initialize() {
     dt.driveForward(280);
     dt.rotate(-90);
-    
-     
-    
-    	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run

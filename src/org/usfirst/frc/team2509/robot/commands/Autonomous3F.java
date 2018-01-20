@@ -27,11 +27,6 @@ public class Autonomous3F extends Command {
     dt.rotate(-90);
     dt.driveForward(43);
     dt.rotate(-73);
-    
-     
-    
-    	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
