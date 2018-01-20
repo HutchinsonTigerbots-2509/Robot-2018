@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		Auto3F = new Autonomous3F();
-		Auto3J = new Autonomous3J();
+		//Auto3J = new Autonomous3J();
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
@@ -84,7 +84,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = Auto3F;
-		autonomousCommand = Auto3J;
+		//autonomousCommand = Auto3J;
 //		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
