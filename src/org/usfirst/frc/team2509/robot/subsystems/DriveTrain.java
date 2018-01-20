@@ -54,10 +54,11 @@ public class DriveTrain extends Subsystem {
     /**
      * When called will drive forward.
      * You need to input inches as a target value.
-     * @param target
+     * @param targetDistance
      */
     public void driveForward(double targetDistance) {
-    	double target = targetDistance/18.849555921539*3*360;
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	RightEncoder.reset();
     	LeftEncoder.reset();
     	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
