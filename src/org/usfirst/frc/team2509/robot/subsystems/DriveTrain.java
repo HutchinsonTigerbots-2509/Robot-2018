@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -39,6 +40,32 @@ public class DriveTrain extends Subsystem {
     	Drive.arcadeDrive(stick.getY(), stick.getZ());
     }
     /**
+     * Resets all sensors
+     */
+    public void sensorReset() {
+    	Gyro.reset();
+    	RightEncoder.reset();
+    	LeftEncoder.reset();
+    }
+    /**
+     * Gets angle from the Gyro to tell the motors to make a specific turn
+     * @param Angle
+     */
+    public void rotate(double targetAngle) {
+    	Gyro.reset();
+    	Timer.delay(0.05);
+    	if(Gyro.getAngle()<targetAngle) {
+    		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(-0.5, 0.5);
+    		Drive.tankDrive(0, 0);
+    	}else if(Gyro.getAngle()>targetAngle) {
+    		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.5, -0.5);
+    		Drive.tankDrive(0, 0);
+    	}else {
+    		Drive.tankDrive(0, 0);
+    	}
+    }
+
+    /**
      * Switches the gear between high and low, with a double solenoid.
      * @param isExtended
      */
@@ -57,12 +84,12 @@ public class DriveTrain extends Subsystem {
      * @param targetDistance
      */
     public void driveForward(double targetDistance) {
+    	sensorReset();
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
-    	RightEncoder.reset();
-    	LeftEncoder.reset();
+    	Timer.delay(0.1);
     	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
-    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.03));
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
     	}
     	Drive.tankDrive(0, 0);
     }
@@ -160,4 +187,3 @@ public class DriveTrain extends Subsystem {
     }
 
 }
-
