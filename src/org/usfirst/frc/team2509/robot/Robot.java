@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team2509.robot;
 
+
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -24,7 +25,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class Robot extends TimedRobot {
 	public static OI oi;
 	public static DriveTrain drivetrain;
-//	Command autonomousCommand;
+	Command autonomousCommand;
 	public Command operatorDrive;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -46,6 +47,7 @@ public class Robot extends TimedRobot {
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
 		oi.UpdateDashboard.start();
+//		autonomousCommand = new AutonomousCommand();
 	}
 
 	/**
@@ -91,9 +93,9 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-//		if (autonomousCommand != null) {
-//			autonomousCommand.start();
-//		}
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
+		}
 	}
 
 	/**
@@ -110,9 +112,9 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-//		if (autonomousCommand != null) {
-//			autonomousCommand.cancel();
-//		}
+		if (autonomousCommand != null) {
+			autonomousCommand.cancel();
+		}
 		operatorDrive.start();
 	}
 

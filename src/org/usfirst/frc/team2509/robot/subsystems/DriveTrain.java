@@ -38,6 +38,34 @@ public class DriveTrain extends Subsystem {
     public void drive(Joystick stick) {
     	Drive.arcadeDrive(stick.getY(), stick.getZ());
     }
+    /**
+     * Switches the gear between high and low, with a double solenoid.
+     * @param isExtended
+     */
+    public void shift(boolean isExtended) {
+    	if(isExtended) {
+    		Shifter.set(DoubleSolenoid.Value.kForward);
+    	}
+    	else {
+    		Shifter.set(DoubleSolenoid.Value.kReverse);
+    	}
+    }
+    
+    /**
+     * When called will drive forward.
+     * You need to input inches as a target value.
+     * @param targetDistance
+     */
+    public void driveForward(double targetDistance) {
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	RightEncoder.reset();
+    	LeftEncoder.reset();
+    	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.03));
+    	}
+    	Drive.tankDrive(0, 0);
+    }
     
     /**
      * 
