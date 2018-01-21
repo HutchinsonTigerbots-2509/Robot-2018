@@ -55,10 +55,10 @@ public class DriveTrain extends Subsystem {
     	Gyro.reset();
     	Timer.delay(0.05);
     	if(Gyro.getAngle()<targetAngle) {
-    		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(-0.5, 0.5);
+    		while(Gyro.getAngle()<=targetAngle)	Drive.tankDrive(-0.55, 0.55);
     		Drive.tankDrive(0, 0);
     	}else if(Gyro.getAngle()>targetAngle) {
-    		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.5, -0.5);
+    		while(Gyro.getAngle()>=targetAngle)Drive.tankDrive(0.55, -0.55);
     		Drive.tankDrive(0, 0);
     	}else {
     		Drive.tankDrive(0, 0);

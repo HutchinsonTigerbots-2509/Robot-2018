@@ -8,7 +8,10 @@
 package org.usfirst.frc.team2509.robot;
 
 
+import org.usfirst.frc.team2509.robot.commands.Auto3D;
+import org.usfirst.frc.team2509.robot.commands.Auto3E;
 import org.usfirst.frc.team2509.robot.commands.Auto3I;
+import org.usfirst.frc.team2509.robot.commands.Auto3F;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -29,6 +32,9 @@ public class Robot extends TimedRobot {
 	Command autonomousCommand;
 	public Command operatorDrive;
 	public Command Auto3J;
+	public Command Auto3D;
+	public Command Auto3E;
+	public Command Auto3F;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -45,7 +51,10 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-		Auto3J = new Auto3I();
+		//Auto3J = new Auto3I();
+		//Auto3E = new Auto3E();
+		//Auto3D = new Auto3D();
+		Auto3F = new Auto3F();
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
@@ -81,7 +90,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = Auto3J;
+		//autonomousCommand = Auto3J;
+		//autonomousCommand = Auto3D;
+		//autonomousCommand = Auto3E;
+		autonomousCommand = Auto3F;
 //		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
