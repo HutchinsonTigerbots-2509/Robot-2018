@@ -9,6 +9,7 @@ package org.usfirst.frc.team2509.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -30,7 +31,9 @@ public class RobotMap {
 	public static SpeedControllerGroup DTG_RIGHT = new SpeedControllerGroup(DT_RIGHT1, DT_LEFT2);
 	
 	public static DifferentialDrive Drive = new DifferentialDrive(DTG_LEFT, DTG_RIGHT);
-	public static Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	public static Encoder enc1 = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	public static Encoder enc2 = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;

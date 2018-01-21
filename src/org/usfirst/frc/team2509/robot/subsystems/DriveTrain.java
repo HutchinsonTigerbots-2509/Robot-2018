@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import org.usfirst.frc.team2509.robot.*;
 
 
 /**
@@ -20,7 +19,7 @@ public class DriveTrain extends Subsystem {
 	WPI_TalonSRX LEFT2 = RobotMap.DT_LEFT2;
 	WPI_TalonSRX RIGHT1 = RobotMap.DT_RIGHT1;
 	WPI_TalonSRX RIGHT2 = RobotMap.DT_RIGHT2;
-	Encoder enc = RobotMap.enc; 
+	Encoder enc = RobotMap.enc1; 
 	SpeedControllerGroup DTG_LEFT = RobotMap.DTG_LEFT;
 	SpeedControllerGroup DTG_RIGHT = RobotMap.DTG_RIGHT;
 	
@@ -38,6 +37,11 @@ public class DriveTrain extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void arcadeDrive(double d, double e) {
 		// TODO Auto-generated method stub
 		
 	}
