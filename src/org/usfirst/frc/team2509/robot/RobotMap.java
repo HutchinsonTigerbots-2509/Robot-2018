@@ -24,18 +24,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 
 	//Drivetran Variable
-	public static DoubleSolenoid DT_Shifter;
-	public static Encoder DT_LeftEncoder;
-	public static Encoder DT_RightEncoder;
-	public static ADXRS450_Gyro DT_Gyro;
-	public static Talon DT_LEFT1;
-	public static Talon DT_LEFT2;
-	public static Talon DT_LEFT3;
-	public static Talon DT_RIGHT1;
-	public static Talon DT_RIGHT2;
-	public static Talon DT_RIGHT3;
-	public static SpeedControllerGroup DTG_LEFT;
-	public static SpeedControllerGroup DTG_RIGHT;
+	public static DoubleSolenoid DriveTrain_Shifter;
+	public static Encoder DriveTrain_LeftEncoder;
+	public static Encoder DriveTrain_RightEncoder;
+	public static ADXRS450_Gyro DriveTrain_Gyro;
+	public static Talon DriveTrain_left1;
+	public static Talon DriveTrain_left2;
+	public static Talon DriveTrain_left3;
+	public static Talon DriveTrain_right1;
+	public static Talon DriveTrain_right2;
+	public static Talon DriveTrain_right3;
+	public static SpeedControllerGroup DriveTrain_Left;
+	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
 	
 	/**
@@ -43,40 +43,40 @@ public class RobotMap {
 	 */
 	public static void init(){
 		//Drivetrain Variable Initialize
-		DT_Shifter = new DoubleSolenoid(0,1);
+		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
-		DT_LeftEncoder = new Encoder(0,1);
-		SmartDashboard.putNumber("Left Encoder", DT_LeftEncoder.get());
+		DriveTrain_LeftEncoder = new Encoder(0,1);
+		DriveTrain_LeftEncoder.setReverseDirection(true);
+		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
-		DT_RightEncoder = new Encoder(2,3);
-		SmartDashboard.putNumber("Right Encoder", DT_RightEncoder.get());
+		DriveTrain_RightEncoder = new Encoder(2,3);
+		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
 		
-		DT_Gyro = new ADXRS450_Gyro();
-		DT_Gyro.reset();
-		DT_Gyro.calibrate();
-		SmartDashboard.putNumber("Gyro", DT_Gyro.getAngle());
+		DriveTrain_Gyro = new ADXRS450_Gyro();
+		DriveTrain_Gyro.reset();
+		DriveTrain_Gyro.calibrate();
+		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
 		
-		DT_LEFT1 = new Talon(0);
+		DriveTrain_left1 = new Talon(0);
 		
-		DT_LEFT2 = new Talon(2);
+		DriveTrain_left2 = new Talon(2);
 		
-		DT_LEFT3 = new Talon(1);
+		DriveTrain_left3 = new Talon(1);
 		
-		DT_RIGHT1 = new Talon(3);
+		DriveTrain_right1 = new Talon(3);
 		
-		DT_RIGHT2 = new Talon(4);
+		DriveTrain_right2 = new Talon(4);
 		
-		DT_RIGHT3 = new Talon(5);
+		DriveTrain_right3 = new Talon(5);
 		
-		//DTG because its a drivetrain(DT) group
-		DTG_LEFT = new SpeedControllerGroup(
-				DT_LEFT1,DT_LEFT2,DT_LEFT3);
+		DriveTrain_Left = new SpeedControllerGroup(
+				DriveTrain_left1,DriveTrain_left2,DriveTrain_left3);
 		
-		DTG_RIGHT = new SpeedControllerGroup(
-				DT_RIGHT1,DT_RIGHT2,DT_RIGHT3);
+		DriveTrain_Right = new SpeedControllerGroup(
+				DriveTrain_right1,DriveTrain_right2,DriveTrain_right3);
 		
-		RobotDrive = new DifferentialDrive(DTG_LEFT,DTG_RIGHT);
+		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
 	}
 

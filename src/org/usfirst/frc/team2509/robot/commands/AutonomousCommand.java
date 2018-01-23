@@ -20,11 +20,11 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class AutonomousCommand extends Command {
 	DifferentialDrive DT=RobotMap.RobotDrive;
-	SpeedControllerGroup Left=RobotMap.DTG_LEFT;
-	SpeedControllerGroup Right=RobotMap.DTG_RIGHT;
-	ADXRS450_Gyro gyro = RobotMap.DT_Gyro;
-	Encoder encL = RobotMap.DT_LeftEncoder;
-	Encoder encR = RobotMap.DT_RightEncoder;
+	SpeedControllerGroup Left=RobotMap.DriveTrain_Left;
+	SpeedControllerGroup Right=RobotMap.DriveTrain_Right;
+	ADXRS450_Gyro gyro = RobotMap.DriveTrain_Gyro;
+	Encoder encL = RobotMap.DriveTrain_LeftEncoder;
+	Encoder encR = RobotMap.DriveTrain_RightEncoder;
 	public AutonomousCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

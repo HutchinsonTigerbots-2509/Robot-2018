@@ -17,18 +17,18 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveTrain extends Subsystem {
 	//Subsystem Variables
-	private static DoubleSolenoid Shifter = RobotMap.DT_Shifter;
-	private static Encoder LeftEncoder = RobotMap.DT_LeftEncoder;
-	private static Encoder RightEncoder = RobotMap.DT_RightEncoder;
-	private static ADXRS450_Gyro Gyro = RobotMap.DT_Gyro;
-	private static Talon Left_1 = RobotMap.DT_LEFT1;
-	private static Talon Left_2 = RobotMap.DT_LEFT2;
-	private static Talon Left_3 = RobotMap.DT_LEFT3;
-	private static Talon Right_1 = RobotMap.DT_RIGHT1;
-	private static Talon Right_2 = RobotMap.DT_RIGHT2;
-	private static Talon Right_3 = RobotMap.DT_RIGHT3;
-	private static SpeedControllerGroup Left = RobotMap.DTG_LEFT;
-	private static SpeedControllerGroup Right = RobotMap.DTG_RIGHT;
+	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
+	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
+	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
+	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
+	private static Talon Left_1 = RobotMap.DriveTrain_left1;
+	private static Talon Left_2 = RobotMap.DriveTrain_left2;
+	private static Talon Left_3 = RobotMap.DriveTrain_left3;
+	private static Talon Right_1 = RobotMap.DriveTrain_right1;
+	private static Talon Right_2 = RobotMap.DriveTrain_right2;
+	private static Talon Right_3 = RobotMap.DriveTrain_right3;
+	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
+	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -55,10 +55,12 @@ public class DriveTrain extends Subsystem {
     	Gyro.reset();
     	Timer.delay(0.05);
     	if(Gyro.getAngle()<targetAngle) {
-    		while(Gyro.getAngle()<=targetAngle)	Drive.tankDrive(-0.55, 0.55);
+
+    		while(Gyro.getAngle()<=targetAngle)	Drive.tankDrive(-0.5, 0.5);
     		Drive.tankDrive(0, 0);
     	}else if(Gyro.getAngle()>targetAngle) {
-    		while(Gyro.getAngle()>=targetAngle)Drive.tankDrive(0.55, -0.55);
+    		while(Gyro.getAngle()>=targetAngle)Drive.tankDrive(0.5, -0.5);
+
     		Drive.tankDrive(0, 0);
     	}else {
     		Drive.tankDrive(0, 0);
@@ -67,9 +69,12 @@ public class DriveTrain extends Subsystem {
 
     /**
      * Switches the gear between high and low, with a double solenoid.
+     * isExtended = High Gear
+     * 
      * @param isExtended
      */
     public void shift(boolean isExtended) {
+
     	if(isExtended) {
     		Shifter.set(DoubleSolenoid.Value.kForward);
     	}
@@ -88,7 +93,8 @@ public class DriveTrain extends Subsystem {
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
-    	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
+
     		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
     	}
     	Drive.tankDrive(0, 0);
