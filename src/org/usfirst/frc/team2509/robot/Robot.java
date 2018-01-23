@@ -8,7 +8,6 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.Auto3F;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -51,10 +50,11 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-		//Auto3H = new Auto3H();
-		//Auto3D = new Auto3D();
-		//Auto3B = new Auto3B();
-		Auto3F = new Auto3F();
+
+//		Auto3J = new Auto3I();
+//		Auto3E = new Auto3E();
+//		Auto3D = new Auto3D();
+//		Auto3F = new Auto3F();
 		//Auto1A = new Auto1A();
 		//Auto1C = new Auto1C();
 		//Auto1G = new Auto1G();
