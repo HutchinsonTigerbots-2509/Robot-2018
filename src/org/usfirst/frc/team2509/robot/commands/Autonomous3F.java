@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Autonomous3F extends Command {
-	DriveTrain dt = Robot.drivetrain;
+	DriveTrain driveTrain = Robot.drivetrain;
 
     public Autonomous3F() {
         // Use requires() here to declare subsystem dependencies
@@ -23,10 +23,10 @@ public class Autonomous3F extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(202);
-    dt.rotate(-90);
-    dt.driveForward(43);
-    dt.rotate(-73);
+    driveTrain.driveForward(202);
+    driveTrain.rotate(-90);
+    driveTrain.driveForward(43);
+    driveTrain.rotate(-73);
     }
 
     // Called repeatedly when this Command is scheduled to run
