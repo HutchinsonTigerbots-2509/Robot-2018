@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Robot-2018-Cole-Auto</name>
+=======
+	<name>Robot-2018</name>
+>>>>>>> branch 'cole-auto' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 	<comment></comment>
 	<projects>
 	</projects>

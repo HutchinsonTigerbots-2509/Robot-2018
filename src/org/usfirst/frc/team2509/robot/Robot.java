@@ -8,7 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.Autonomous3F;
+import org.usfirst.frc.team2509.robot.commands.Autonomous3H;
 import org.usfirst.frc.team2509.robot.commands.Autonomous3J;
 
 import org.usfirst.frc.team2509.robot.commands.Auto3I;
@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-		Auto3F = new Autonomous3F();
+		Auto3F = new Autonomous3H();
 		//Auto3J = new Autonomous3J();
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());

@@ -13,10 +13,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Autonomous3F extends Command {
+public class Autonomous3H extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
 
-    public Autonomous3F() {
+    public Autonomous3H() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
