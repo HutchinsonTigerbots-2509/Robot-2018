@@ -55,10 +55,10 @@ public class DriveTrain extends Subsystem {
     	Gyro.reset();
     	Timer.delay(0.05);
     	if(Gyro.getAngle()<targetAngle) {
-    		while(Gyro.getAngle()<=targetAngle)	Drive.tankDrive(-0.55, 0.55);
+    		while(Gyro.getAngle()<=targetAngle)	Drive.tankDrive(-0.5, 0.5);
     		Drive.tankDrive(0, 0);
     	}else if(Gyro.getAngle()>targetAngle) {
-    		while(Gyro.getAngle()>=targetAngle)Drive.tankDrive(0.55, -0.55);
+    		while(Gyro.getAngle()>=targetAngle)Drive.tankDrive(0.5, -0.5);
     		Drive.tankDrive(0, 0);
     	}else {
     		Drive.tankDrive(0, 0);
@@ -67,9 +67,12 @@ public class DriveTrain extends Subsystem {
 
     /**
      * Switches the gear between high and low, with a double solenoid.
+     * isExtended = High Gear
+     * 
      * @param isExtended
      */
     public void shift(boolean isExtended) {
+    	
     	if(isExtended) {
     		Shifter.set(DoubleSolenoid.Value.kForward);
     	}
@@ -88,7 +91,7 @@ public class DriveTrain extends Subsystem {
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
-    	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
     		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
     	}
     	Drive.tankDrive(0, 0);

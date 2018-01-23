@@ -1,11 +1,11 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.RobotMap;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,7 +24,8 @@ public class ShiftDrive extends Command {
     protected void initialize() {
     	if(shifter.get() == DoubleSolenoid.Value.kForward)isExtended = true;
     	else if(shifter.get() == DoubleSolenoid.Value.kReverse)isExtended = false;
-    	
+
+    	SmartDashboard.putBoolean("isExtended", isExtended);
     	drivetrain.shift(!isExtended);
     }
 

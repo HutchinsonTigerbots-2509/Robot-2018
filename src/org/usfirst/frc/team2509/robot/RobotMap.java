@@ -46,6 +46,7 @@ public class RobotMap {
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
 		DriveTrain_LeftEncoder = new Encoder(0,1);
+		DriveTrain_LeftEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
 		DriveTrain_RightEncoder = new Encoder(2,3);
