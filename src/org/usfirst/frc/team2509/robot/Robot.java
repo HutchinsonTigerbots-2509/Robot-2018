@@ -7,8 +7,11 @@
 
 package org.usfirst.frc.team2509.robot;
 
+
 import org.usfirst.frc.team2509.robot.commands.Autonomous3F;
 import org.usfirst.frc.team2509.robot.commands.Autonomous3J;
+
+import org.usfirst.frc.team2509.robot.commands.Auto3I;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -83,6 +86,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+
 		autonomousCommand = Auto3F;
 		//autonomousCommand = Auto3J;
 //		autonomousCommand = chooser.getSelected();
