@@ -23,8 +23,8 @@ public class Autonomous3J extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    driveTrain.driveForward(280);
-    driveTrain.rotate(-90);
+    driveTrain.driveForward(280);//Drive forward for 280 inches
+    driveTrain.rotate(-90);//Rotate Left
     }
 
     // Called repeatedly when this Command is scheduled to run
