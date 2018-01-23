@@ -18,10 +18,9 @@ public class Auto3D extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(66);
-    dt.rotate(-90.0);
-    dt.driveForward(70.0);
-    dt.rotate(78.0);
+    dt.driveForward(140.0); //Drive forward 140 inches
+    dt.rotate(-92); //Turn left 92 degrees
+    dt.driveForward(20.0); //Drive forward 20 inches
     }
 
     // Called repeatedly when this Command is scheduled to run
