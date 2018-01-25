@@ -11,6 +11,7 @@ package org.usfirst.frc.team2509.robot;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -79,7 +80,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 //		autonomousCommand = chooser.getSelected();
-
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), DriverStation.getInstance().getGameSpecificMessage());
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected){ 

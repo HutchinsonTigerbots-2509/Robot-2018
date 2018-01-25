@@ -11,6 +11,8 @@ import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -21,6 +23,15 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
+	public SendableChooser<String> chooser = new SendableChooser<>();
+	public String defaultAuto = "Default";
+	public String Blue1 = "Blue 1";
+	public String Blue2 = "Blue 2";
+	public String Blue3 = "Blue 3";
+	public String Red1 = "Red 1";
+	public String Red2 = "Red 2";
+	public String Red3 = "Red 3";
+	private Command autoCommand;
 	
 	/**
 	 * CREATING BUTTONS - 
@@ -51,6 +62,17 @@ public class OI {
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
 		
+		chooser.addDefault("Default Auto", defaultAuto);
+			chooser.addObject("Blue 1", Blue1);
+			chooser.addObject("Blue 2", Blue2);
+			chooser.addObject("Blue 3", Blue3);
+			chooser.addObject("Red 1", Red1);
+			chooser.addObject("Red 2", Red2);
+			chooser.addObject("Red 3", Red3);
+			SmartDashboard.putData("Auto choices", chooser);
+			
+			
+		
 	}
 	/**
 	 * When called constantly updates the SmartDashboard
@@ -62,4 +84,60 @@ public class OI {
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
 		}
 	});
+	public Command getAutonomous(String autoChoice, String gameData){
+		switch(autoChoice) {
+		case "Blue 1":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "Blue 2":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "Blue 3":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "Red 1":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "Red 2":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "Red 3":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "Default":
+			default:
+				if(gameData.charAt(0)=='L') {
+					autoCommand = null;
+				}else if(gameData.charAt(0)=='R') {
+					autoCommand = null;
+				}
+				break;
+		}
+			return autoCommand;
+			
+	}
 }
