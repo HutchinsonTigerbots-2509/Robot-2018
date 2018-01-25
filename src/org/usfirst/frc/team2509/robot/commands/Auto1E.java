@@ -1,34 +1,32 @@
-//Completed
-
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Auto3H extends Command {
+public class Auto1E extends Command {
 	DriveTrain dt = Robot.drivetrain;
 
-    public Auto3H() {
+    public Auto1E() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(230); //Drive forward 230 inches
-    dt.rotate(-90); //Turn left 90 degrees	
-    dt.driveForward(43); //Drive forward 43 inches
-    dt.rotate(73); //Turn right 73 degrees
+    dt.driveForward(197); //Drive forward 197 inches
+    Timer.delay(2); //Wait 2 seconds
+    dt.rotate(-90.0); //Turn right 90 degrees
+    Timer.delay(2.0); //Wait 2 seconds
+    dt.driveForward(80); //Drive forward 80 inches
+    Timer.delay(2.0); //Wait 2 seconds
+    dt.rotate(-90.0); //Turn left 90 degrees
     
-     
-    
-    	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -42,7 +40,6 @@ public class Auto3H extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    
     }
 
     // Called when another command which requires one or more of the same
