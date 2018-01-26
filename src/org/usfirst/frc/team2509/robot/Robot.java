@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 
+import org.usfirst.frc.team2509.robot.commands.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -52,14 +53,14 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 
-		//Auto3J = new Auto3I();
-		//Auto3E = new Auto3E();
-		//Auto3D = new Auto3D();
-		//Auto3F = new Auto3F();
-		//Auto1A = new Auto1A();
-		//Auto1C = new Auto1C();
-		//Auto1G = new Auto1G();
-		//Auto1E = new Auto1E();
+//		Auto3J = new Auto3I();
+//		Auto3E = new Auto3E();
+//		Auto3D = new Auto3D();
+//		Auto3F = new Auto3F();
+		Auto1A = new Auto1A();
+//		Auto1C = new Auto1C();
+//		Auto1G = new Auto1G();
+//		Auto1E = new Auto1E();
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
@@ -95,14 +96,14 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = Auto3H;
-		autonomousCommand = Auto3B;
-		autonomousCommand = Auto3D;
-		autonomousCommand = Auto3F;
+//		autonomousCommand = Auto3H;
+//		autonomousCommand = Auto3B;
+//		autonomousCommand = Auto3D;
+//		autonomousCommand = Auto3F;
 		autonomousCommand = Auto1A;
-		autonomousCommand = Auto1C;
-		autonomousCommand = Auto1G;
-		autonomousCommand = Auto1E;
+//		autonomousCommand = Auto1C;
+//		autonomousCommand = Auto1G;
+//		autonomousCommand = Auto1E;
 //		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 

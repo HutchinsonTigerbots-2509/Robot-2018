@@ -89,17 +89,51 @@ public class DriveTrain extends Subsystem {
      * @param targetDistance
      */
     public void driveForward(double targetDistance) {
+//    	Drive.tankDrive(0.2, 0.2); //Cuts out backlash
     	sensorReset();
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
     	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
-
-    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.1));
     	}
     	Drive.tankDrive(0, 0);
     }
-    
+    public void autoStartForward(double targetDistance) {
+//    	Drive.tankDrive(0.2, 0.2); //Cuts out backlash
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=180) {
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.1));
+    	}
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=(target)*(0.95)) {
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.1));
+    	}
+    	Drive.tankDrive(0, 0);
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.1));
+    	}
+    	Drive.tankDrive(0, 0);
+    }
+    public void DJACDrive(double targetDistance) {
+    	Drive.tankDrive(0.2, 0.2); //Cuts out backlash
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
+    		int counts = ((RightEncoder.get()+LeftEncoder.get())/2);
+    		int maxspeedcounts = (int) (0.8 * target);
+    		int SpeedGain = counts/maxspeedcounts;
+    		if(counts > maxspeedcounts) { SpeedGain = 1;}
+    		int Speed = (int) (0.5 * SpeedGain);
+    		Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.1));
+    	}
+    	Drive.tankDrive(0, 0);
+    }
+
     /**
      * 
      * @return DriveTrain_Shifter
