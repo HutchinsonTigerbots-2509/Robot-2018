@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import org.usfirst.frc.team2509.robot.commands.ArmUp;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,6 +24,7 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
+	private JoystickButton ArmButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String Blue1 = "Blue 1";
@@ -61,6 +63,8 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
+		ArmButton = new JoystickButton(OperatorStick,1);
+		ArmButton.toggleWhenPressed(new ArmUp());
 		
 		chooser.addDefault("Default Auto", defaultAuto);
 			chooser.addObject("Blue 1", Blue1);
