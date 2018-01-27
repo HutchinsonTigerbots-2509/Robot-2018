@@ -38,6 +38,13 @@ public class RobotMap {
 	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
 	
+	public static DoubleSolenoid Arm_lowerSolenoid;
+	public static DoubleSolenoid Arm_higherSolenoid;
+	public static Talon Arm_motor;
+	
+	public RobotMap() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 
 	 */
@@ -77,6 +84,13 @@ public class RobotMap {
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
+		Arm_lowerSolenoid = new DoubleSolenoid(2, 3);
+		
+		Arm_higherSolenoid = new DoubleSolenoid(4, 5);
+		
+		Arm_motor = new Talon(6);
+		
+	
 	}
 
 	private static void whenPressed() {
