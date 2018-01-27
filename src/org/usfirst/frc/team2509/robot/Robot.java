@@ -53,9 +53,9 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-		Auto3H = new Autonomous3H();
-		Auto3J = new Autonomous3J();
-		Auto1I = new Autonomous1I();
+//		Auto3H = new Autonomous3H();
+//		Auto3J = new Autonomous3J();
+//		Auto1I = new Autonomous1I();
 		Auto1G = new Autonomous1G();
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
@@ -90,12 +90,13 @@ public class Robot extends TimedRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
+	
 	@Override
 	public void autonomousInit() {
 
-		autonomousCommand = Auto3H;
-		autonomousCommand = Auto3J;
-		autonomousCommand = Auto1I;
+//		autonomousCommand = Auto3H;
+//		autonomousCommand = Auto3J;
+//		autonomousCommand = Auto1I;
 		autonomousCommand = Auto1G;
 //		autonomousCommand = chooser.getSelected();
 		/*
