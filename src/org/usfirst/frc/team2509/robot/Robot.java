@@ -8,22 +8,15 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.Autonomous3H;
-import org.usfirst.frc.team2509.robot.commands.Autonomous3J;
-
-import org.usfirst.frc.team2509.robot.commands.Auto3I;
 import org.usfirst.frc.team2509.robot.commands.Autonomous1E;
-import org.usfirst.frc.team2509.robot.commands.Autonomous1I;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
 
-import com.kauailabs.navx.frc.AHRS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,10 +26,6 @@ import com.kauailabs.navx.frc.AHRS;
  * project.
  */
 public class Robot extends TimedRobot implements PIDOutput{
-	
-	AHRS ahrs;
-	PIDController turnController;
-	double rotateToAngleRate;
 	
 	public static OI oi;
 	public static DriveTrain drivetrain;

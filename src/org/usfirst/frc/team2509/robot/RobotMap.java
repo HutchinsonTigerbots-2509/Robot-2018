@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team2509.robot;
-import com.kauailabs.navx.frc.AHRS;
 
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -16,9 +15,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
 
 
 /**
@@ -33,8 +29,8 @@ public class RobotMap {
 	public static DoubleSolenoid DriveTrain_Shifter;
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
-	// static ADXRS450_Gyro DriveTrain_Gyro;
-	public static AHRS NavX;
+	public static ADXRS450_Gyro DriveTrain_Gyro;
+
 
 	public static Talon DriveTrain_left1;
 	public static Talon DriveTrain_left2;
@@ -60,11 +56,8 @@ public class RobotMap {
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
 		
-		//DriveTrain_Gyro = new ADXRS450_Gyro();
-		NavX = new AHRS(SPI.Port.kMXP);
-		NavX.reset();
-		
-		SmartDashboard.putNumber("Gyro", NavX.getAngle());
+		DriveTrain_Gyro = new ADXRS450_Gyro();
+		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
 		
 		DriveTrain_left1 = new Talon(0);
 		

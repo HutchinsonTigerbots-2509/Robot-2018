@@ -1,14 +1,12 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
-import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
@@ -23,8 +21,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
-	//private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
-	private static AHRS Gyro = RobotMap.NavX;
+	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
 	private static Talon Left_1 = RobotMap.DriveTrain_left1;
 	private static Talon Left_2 = RobotMap.DriveTrain_left2;
 	private static Talon Left_3 = RobotMap.DriveTrain_left3;
@@ -126,9 +123,8 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * 
      * @return DriveTrain_Gyro
      */
-    //public ADXRS450_Gyro getGyro() {
+    public ADXRS450_Gyro getGyro() {
     	//return Gyro;
-    public AHRS getGyro() {
     	return Gyro;
     }
     /**
