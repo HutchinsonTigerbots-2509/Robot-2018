@@ -18,7 +18,7 @@ public class ArmHigh extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	arm.extendLower();
-    	arm.Up();
+    	arm.High();
     	arm.extendUpper();
     }
 

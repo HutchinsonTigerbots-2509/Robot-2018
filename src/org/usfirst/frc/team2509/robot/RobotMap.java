@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -43,6 +44,9 @@ public class RobotMap {
 	public static DoubleSolenoid Arm_LowerSolenoid;
 	public static DoubleSolenoid Arm_UpperSolenoid;
 	public static Talon Arm_Motor;
+	public static DigitalInput Arm_LowerLimit;
+	public static DigitalInput Arm_MiddleLimit;
+	public static DigitalInput Arm_UpperLimit;
 	
 	/**
 	 * 
@@ -88,5 +92,11 @@ public class RobotMap {
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
 		
 		Arm_Motor = new Talon(0);
+		
+		Arm_LowerLimit = new DigitalInput(4);
+		
+		Arm_MiddleLimit = new DigitalInput(5);
+		
+		Arm_UpperLimit = new DigitalInput(6);
 	}
 }

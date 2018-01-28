@@ -17,7 +17,7 @@ public class ArmMid extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	arm.Up();
+    	arm.Middle();
     	arm.extendUpper();
     }
 
