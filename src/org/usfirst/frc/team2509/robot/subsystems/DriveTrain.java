@@ -7,10 +7,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  *
@@ -21,12 +22,12 @@ public class DriveTrain extends Subsystem {
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
-	private static Talon Left_1 = RobotMap.DriveTrain_left1;
-	private static Talon Left_2 = RobotMap.DriveTrain_left2;
-	private static Talon Left_3 = RobotMap.DriveTrain_left3;
-	private static Talon Right_1 = RobotMap.DriveTrain_right1;
-	private static Talon Right_2 = RobotMap.DriveTrain_right2;
-	private static Talon Right_3 = RobotMap.DriveTrain_right3;
+	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
+	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
+	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
+	private static WPI_TalonSRX Right_1 = RobotMap.DriveTrain_right1;
+	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_right2;
+	private static WPI_TalonSRX Right_3 = RobotMap.DriveTrain_right3;
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
@@ -137,42 +138,42 @@ public class DriveTrain extends Subsystem {
      * 
      * @return DriveTrain_Left_1
      */
-    public Talon getLeft1() {
+    public WPI_TalonSRX getLeft1() {
     	return Left_1;
     }
     /**
      * 
      * @return DriveTrain_Left_2
      */
-    public Talon getLeft2() {
+    public WPI_TalonSRX getLeft2() {
     	return Left_2;
     }
     /**
      * 
      * @return DriveTrain_Left_3
      */
-    public Talon getLeft3() {
+    public WPI_TalonSRX getLeft3() {
     	return Left_3;
     }
     /**
      * 
      * @return DriveTrain_Right_1
      */
-    public Talon getRight1() {
+    public WPI_TalonSRX getRight1() {
     	return Right_1;
     }
     /**
      * 
      * @return DriveTrain_Right_2
      */
-    public Talon getRight2() {
+    public WPI_TalonSRX getRight2() {
     	return Right_2;
     }
     /**
      * 
      * @return DriveTrain_Right_3
      */
-    public Talon getRight3() {
+    public WPI_TalonSRX getRight3() {
     	return Right_3;
     }
 
