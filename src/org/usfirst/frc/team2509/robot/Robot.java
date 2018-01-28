@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,9 +48,7 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-//		chooser.addDefault("Default Auto", null);
-// 		chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 //		autonomousCommand = new AutonomousCommand();
 	}
@@ -82,19 +81,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = chooser.getSelected();
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), DriverStation.getInstance().getGameSpecificMessage());
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected){ 
-		 * 	case "My Auto": 
-		 * 		autonomousCommand = new MyAutoCommand(); 
-		 * 		break; 
-		 * 	case "Default Auto": default:
-		 * 		autonomousCommand = new ExampleCommand(); 
-		 * 		break; 
-		 * }
-		 */
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+				DriverStation.getInstance().getGameSpecificMessage());
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {

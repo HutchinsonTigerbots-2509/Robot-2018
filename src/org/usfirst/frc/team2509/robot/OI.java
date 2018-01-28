@@ -7,8 +7,13 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import org.usfirst.frc.team2509.robot.commands.ArmUp;
+import org.usfirst.frc.team2509.robot.commands.ArmHigh;
+import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3J;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -24,15 +29,20 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
-	private JoystickButton ArmButton;
+	private JoystickButton MidArmButton;
+	private JoystickButton HighArmButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
-	public String Blue1 = "Blue 1";
-	public String Blue2 = "Blue 2";
-	public String Blue3 = "Blue 3";
-	public String Red1 = "Red 1";
-	public String Red2 = "Red 2";
-	public String Red3 = "Red 3";
+	public String X1 = "1X";
+	public String AB1 = "1AB";
+	public String CF1 = "1CF";
+	public String IH1 = "1IH";
+	public String X2 = "2X";
+	public String AB2 = "2AB";
+	public String CD2 = "2CD";
+	public String AB3 = "3AB";
+	public String DE3 = "3DE";
+	public String GJ3 = "3GJ";
 	private Command autoCommand;
 	
 	/**
@@ -63,16 +73,21 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
-		ArmButton = new JoystickButton(OperatorStick,1);
-		ArmButton.toggleWhenPressed(new ArmUp());
-		
+		MidArmButton = new JoystickButton(OperatorStick, 3);
+		MidArmButton.whileHeld(new ArmMid());
+		HighArmButton = new JoystickButton(OperatorStick, 4);
+		HighArmButton.whileHeld(new ArmHigh());
 		chooser.addDefault("Default Auto", defaultAuto);
-			chooser.addObject("Blue 1", Blue1);
-			chooser.addObject("Blue 2", Blue2);
-			chooser.addObject("Blue 3", Blue3);
-			chooser.addObject("Red 1", Red1);
-			chooser.addObject("Red 2", Red2);
-			chooser.addObject("Red 3", Red3);
+			chooser.addObject("1X", X1);
+			chooser.addObject("1AB", AB1);
+			chooser.addObject("1CF", CF1);
+			chooser.addObject("1IH", IH1);
+			chooser.addObject("2X", X2);
+			chooser.addObject("2AB", AB2);
+			chooser.addObject("2CD", CD2);
+			chooser.addObject("3AB", AB3);
+			chooser.addObject("3DE", DE3);
+			chooser.addObject("3GJ", GJ3);
 			SmartDashboard.putData("Auto choices", chooser);
 			
 			
@@ -89,47 +104,72 @@ public class OI {
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){
+		SmartDashboard.putString("Game Data", gameData);
 		switch(autoChoice) {
-		case "Blue 1":
+		case "1X":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}
 			break;
-		case "Blue 2":
+		case "1AB":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}
 			break;
-		case "Blue 3":
+		case "1CF":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}
 			break;
-		case "Red 1":
+		case "1IH":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = new Auto1I();
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = null;
+			}
+			break;
+		case "2X":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}
 			break;
-		case "Red 2":
+		case "2AB":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}
-			break;
-		case "Red 3":
+		case "2CD":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
+			}
+		case "3AB":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = new Auto3B();
+			}
+		case "3DE":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = new Auto3D();
+			}
+		case "3GJ":
+			if(gameData.charAt(0)=='L') {
+				autoCommand = null;
+			}else if(gameData.charAt(0)=='R') {
+				autoCommand = new Auto3J();
 			}
 			break;
 		case "Default":
