@@ -12,7 +12,7 @@ import org.usfirst.frc.team2509.robot.commands.Autonomous3H;
 import org.usfirst.frc.team2509.robot.commands.Autonomous3J;
 
 import org.usfirst.frc.team2509.robot.commands.Auto3I;
-import org.usfirst.frc.team2509.robot.commands.Autonomous1G;
+import org.usfirst.frc.team2509.robot.commands.Autonomous1E;
 import org.usfirst.frc.team2509.robot.commands.Autonomous1I;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
@@ -20,6 +20,10 @@ import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+
+import com.kauailabs.navx.frc.AHRS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,10 +32,15 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends TimedRobot implements PIDOutput{
+	
+	AHRS ahrs;
+	PIDController turnController;
+	double rotateToAngleRate;
+	
 	public static OI oi;
 	public static DriveTrain drivetrain;
-	Command autonomousCommand;
+	public Command autonomousCommand;
 	public Command operatorDrive;
 	public Command Auto3H;
 	public Command Auto3J;
@@ -56,7 +65,7 @@ public class Robot extends TimedRobot {
 //		Auto3H = new Autonomous3H();
 //		Auto3J = new Autonomous3J();
 //		Auto1I = new Autonomous1I();
-		Auto1G = new Autonomous1G();
+		Auto1G = new Autonomous1E();
 //		chooser.addDefault("Default Auto", null);
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
@@ -150,5 +159,11 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+
+	@Override
+	public void pidWrite(double output) {
+		// TODO Auto-generated method stub
+		
 	}
 }
