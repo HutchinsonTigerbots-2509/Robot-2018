@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -28,12 +30,12 @@ public class RobotMap {
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
 	public static ADXRS450_Gyro DriveTrain_Gyro;
-	public static Talon DriveTrain_left1;
-	public static Talon DriveTrain_left2;
-	public static Talon DriveTrain_left3;
-	public static Talon DriveTrain_right1;
-	public static Talon DriveTrain_right2;
-	public static Talon DriveTrain_right3;
+	public static WPI_TalonSRX DriveTrain_left1;
+	public static WPI_TalonSRX DriveTrain_left2;
+	public static WPI_TalonSRX DriveTrain_left3;
+	public static WPI_TalonSRX DriveTrain_right1;
+	public static WPI_TalonSRX DriveTrain_right2;
+	public static WPI_TalonSRX DriveTrain_right3;
 	public static SpeedControllerGroup DriveTrain_Left;
 	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
@@ -61,17 +63,17 @@ public class RobotMap {
 		DriveTrain_Gyro.calibrate();
 		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
 		
-		DriveTrain_left1 = new Talon(0);
+		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
-		DriveTrain_left2 = new Talon(2);
+		DriveTrain_left2 = new WPI_TalonSRX(2);
 		
-		DriveTrain_left3 = new Talon(1);
+		DriveTrain_left3 = new WPI_TalonSRX(1);
 		
-		DriveTrain_right1 = new Talon(3);
+		DriveTrain_right1 = new WPI_TalonSRX(3);
 		
-		DriveTrain_right2 = new Talon(4);
+		DriveTrain_right2 = new WPI_TalonSRX(4);
 		
-		DriveTrain_right3 = new Talon(5);
+		DriveTrain_right3 = new WPI_TalonSRX(5);
 		
 		DriveTrain_Left = new SpeedControllerGroup(
 				DriveTrain_left1,DriveTrain_left2,DriveTrain_left3);
@@ -85,6 +87,6 @@ public class RobotMap {
 		
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
 		
-		Arm_Motor = new Talon(6);
+		Arm_Motor = new Talon(0);
 	}
 }
