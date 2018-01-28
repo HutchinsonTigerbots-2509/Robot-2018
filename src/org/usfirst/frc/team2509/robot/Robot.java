@@ -9,12 +9,14 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +28,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class Robot extends TimedRobot {
 	public static OI oi;
 	public static DriveTrain drivetrain;
+	public static Arm arm;
 	Command autonomousCommand;
 	public Command operatorDrive;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -38,15 +41,14 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		RobotMap.init();
 		drivetrain = new DriveTrain();
+		arm = new Arm();
 		// OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-//		chooser.addDefault("Default Auto", null);
-// 		chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 //		autonomousCommand = new AutonomousCommand();
 	}
@@ -79,19 +81,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = chooser.getSelected();
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), DriverStation.getInstance().getGameSpecificMessage());
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected){ 
-		 * 	case "My Auto": 
-		 * 		autonomousCommand = new MyAutoCommand(); 
-		 * 		break; 
-		 * 	case "Default Auto": default:
-		 * 		autonomousCommand = new ExampleCommand(); 
-		 * 		break; 
-		 * }
-		 */
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+				DriverStation.getInstance().getGameSpecificMessage());
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {

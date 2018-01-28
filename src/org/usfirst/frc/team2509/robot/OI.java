@@ -7,11 +7,13 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import org.usfirst.frc.team2509.robot.commands.Auto3B;
-import org.usfirst.frc.team2509.robot.commands.Auto3D;
-import org.usfirst.frc.team2509.robot.commands.Autonomous1I;
-import org.usfirst.frc.team2509.robot.commands.Autonomous3J;
+import org.usfirst.frc.team2509.robot.commands.ArmHigh;
+import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3J;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -27,6 +29,8 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
+	private JoystickButton MidArmButton;
+	private JoystickButton HighArmButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -69,7 +73,10 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
-		
+		MidArmButton = new JoystickButton(OperatorStick, 3);
+		MidArmButton.whileHeld(new ArmMid());
+		HighArmButton = new JoystickButton(OperatorStick, 4);
+		HighArmButton.whileHeld(new ArmHigh());
 		chooser.addDefault("Default Auto", defaultAuto);
 			chooser.addObject("1X", X1);
 			chooser.addObject("1AB", AB1);
@@ -97,6 +104,7 @@ public class OI {
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){
+		SmartDashboard.putString("Game Data", gameData);
 		switch(autoChoice) {
 		case "1X":
 			if(gameData.charAt(0)=='L') {
@@ -121,7 +129,7 @@ public class OI {
 			break;
 		case "1IH":
 			if(gameData.charAt(0)=='L') {
-				autoCommand = new Autonomous1I();
+				autoCommand = new Auto1I();
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}
@@ -161,7 +169,7 @@ public class OI {
 			if(gameData.charAt(0)=='L') {
 				autoCommand = null;
 			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Autonomous3J();
+				autoCommand = new Auto3J();
 			}
 			break;
 		case "Default":
