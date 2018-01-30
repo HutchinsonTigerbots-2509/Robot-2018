@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -43,7 +43,7 @@ public class RobotMap {
 	//Arm Variable
 	public static DoubleSolenoid Arm_LowerSolenoid;
 	public static DoubleSolenoid Arm_UpperSolenoid;
-	public static Talon Arm_Motor;
+	public static VictorSP Arm_Motor;
 	public static DigitalInput Arm_LowerLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
@@ -91,7 +91,7 @@ public class RobotMap {
 		
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
 		
-		Arm_Motor = new Talon(0);
+		Arm_Motor = new VictorSP(0);
 		
 		Arm_LowerLimit = new DigitalInput(4);
 		
