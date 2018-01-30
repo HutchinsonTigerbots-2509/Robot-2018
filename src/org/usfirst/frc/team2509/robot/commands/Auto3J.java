@@ -1,15 +1,21 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+
 
 /**
  *
  */
 public class Auto3J extends Command {
-
+	DriveTrain driveTrain = Robot.drivetrain;
     public Auto3J() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	// Use requires() here to declare subsystem dependencies
+    	// eg. requires(chassis);
+    	driveTrain.driveForward(480);
+    	driveTrain.rotate(-90);
+  
     }
 
     // Called just before this Command runs the first time

@@ -35,6 +35,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 	public Command Auto3J;
 	public Command Auto1I;
 	public Command Auto1G;
+
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
