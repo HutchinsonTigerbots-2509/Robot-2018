@@ -8,22 +8,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Auto2E extends Command {
+public class Auto2B extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
-    public Auto2E() {
+    public Auto2B() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(120);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(120);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(30);
     }
 
     // Called repeatedly when this Command is scheduled to run

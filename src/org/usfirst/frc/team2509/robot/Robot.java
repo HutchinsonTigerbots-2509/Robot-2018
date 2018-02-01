@@ -8,7 +8,27 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.*;
+import org.usfirst.frc.team2509.robot.commands.Auto1A;
+import org.usfirst.frc.team2509.robot.commands.Auto1B;
+import org.usfirst.frc.team2509.robot.commands.Auto1C;
+import org.usfirst.frc.team2509.robot.commands.Auto1D;
+import org.usfirst.frc.team2509.robot.commands.Auto1F;
+import org.usfirst.frc.team2509.robot.commands.Auto1G;
+import org.usfirst.frc.team2509.robot.commands.Auto1H;
+import org.usfirst.frc.team2509.robot.commands.Auto2B;
+import org.usfirst.frc.team2509.robot.commands.Auto2D;
+import org.usfirst.frc.team2509.robot.commands.Auto2F;
+import org.usfirst.frc.team2509.robot.commands.Auto2H;
+import org.usfirst.frc.team2509.robot.commands.Auto2J;
+import org.usfirst.frc.team2509.robot.commands.Auto3A;
+import org.usfirst.frc.team2509.robot.commands.Auto3B;
+import org.usfirst.frc.team2509.robot.commands.Auto3C;
+import org.usfirst.frc.team2509.robot.commands.Auto3D;
+import org.usfirst.frc.team2509.robot.commands.Auto3E;
+import org.usfirst.frc.team2509.robot.commands.Auto3F;
+import org.usfirst.frc.team2509.robot.commands.Auto3G;
+import org.usfirst.frc.team2509.robot.commands.Auto3H;
+import org.usfirst.frc.team2509.robot.commands.Auto3I;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -50,11 +70,11 @@ public class Robot extends TimedRobot implements PIDOutput{
 	public Command Auto3I;
 	public Command Auto1E;
 	public Command Auto3H;
-	public Command Auto2A;
-	public Command Auto2C;
-	public Command Auto2G;
-	public Command Auto2I;
-	public Command Auto2E;
+	public Command Auto2B;
+	public Command Auto2F;
+	public Command Auto2J;
+	public Command Auto2H;
+//	public Command Auto;
 //	public Command Auto;
 //	public Command Auto;
 //	public Command Auto;
@@ -98,10 +118,10 @@ public class Robot extends TimedRobot implements PIDOutput{
 		Auto3G = new Auto3G();
 		Auto3I = new Auto3I();
 		Auto3H = new Auto3H();
-		Auto2A = new Auto2A();
-		Auto2C = new Auto2C();
-//		Auto = new Auto();
-//		Auto = new Auto();
+		Auto2B = new Auto2B();
+		Auto2F = new Auto2F();
+		Auto2J = new Auto2J();
+		Auto2H = new Auto2H();
 //		Auto = new Auto();
 //		Auto = new Auto();
 //		Auto = new Auto();
@@ -167,10 +187,10 @@ public class Robot extends TimedRobot implements PIDOutput{
 //		autonomousCommand = Auto1G;
 //		autonomousCommand = Auto1I;
 //		autonomousCommand = Auto3H;
-//		autonomousCommand = Auto2A;
-//		autonomousCommand = Auto2C;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
+//		autonomousCommand = Auto2B;
+//		autonomousCommand = Auto2F;
+//		autonomousCommand = Auto2J;
+//		autonomousCommand = Auto2H;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
