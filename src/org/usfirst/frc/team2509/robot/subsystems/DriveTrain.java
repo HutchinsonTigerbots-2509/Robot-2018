@@ -98,6 +98,40 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	Drive.tankDrive(0, 0);
     }
     
+    public void AccDrive(double targetDistance) {
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	double CurrentDistance = (RightEncoder.get()+LeftEncoder.get()/2);
+    	double AccelGain = 1.05;
+    	double DecelGain = 0.95;
+    	double Speed = 0.25;
+    	double TimeDelay = 0.015;
+    	while(CurrentDistance <= target/2) {
+    		if(Speed >= 0.9) {
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    		else {
+    			Speed = Speed * AccelGain;
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    	}
+    	while(CurrentDistance < target){
+    		if(Speed > 0.35) {
+    			Speed = Speed * DecelGain;
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    		else {
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    	}
+    	Drive.tankDrive(0, 0);
+    }
     /**
      * 
      * @return DriveTrain_Shifter
