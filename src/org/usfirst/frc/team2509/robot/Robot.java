@@ -98,8 +98,8 @@ public class Robot extends TimedRobot implements PIDOutput{
 		Auto3G = new Auto3G();
 		Auto3I = new Auto3I();
 		Auto3H = new Auto3H();
-//		Auto = new Auto();
-//		Auto = new Auto();
+//		Auto2A = new Auto2A();
+//		Auto2C = new Auto2C();
 //		Auto = new Auto();
 //		Auto = new Auto();
 //		Auto = new Auto();
@@ -167,8 +167,8 @@ public class Robot extends TimedRobot implements PIDOutput{
 //		autonomousCommand = Auto1G;
 //		autonomousCommand = Auto1I;
 //		autonomousCommand = Auto3H;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
+//		autonomousCommand = Auto2A;
+//		autonomousCommand = Auto3C;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
