@@ -9,15 +9,23 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Auto2A extends Command {
-	DriveTrain dt = Robot.drivetrain;
-    public Auto2A() {
+	DriveTrain driveTrain = Robot.drivetrain;
+	public Auto2A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	driveTrain.driveForward(180);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(100);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(120);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(32);
+    	driveTrain.rotate(-90);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	dt.driveForward(60);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
