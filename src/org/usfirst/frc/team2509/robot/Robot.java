@@ -52,9 +52,9 @@ public class Robot extends TimedRobot implements PIDOutput{
 	public Command Auto3H;
 	public Command Auto2A;
 	public Command Auto2C;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
+	public Command Auto2G;
+	public Command Auto2I;
+	public Command Auto2E;
 //	public Command Auto;
 //	public Command Auto;
 //	public Command Auto;
