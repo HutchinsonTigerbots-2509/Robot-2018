@@ -8,7 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.Autonomous1E;
+import org.usfirst.frc.team2509.robot.commands.*;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -31,11 +31,40 @@ public class Robot extends TimedRobot implements PIDOutput{
 	public static DriveTrain drivetrain;
 	public Command autonomousCommand;
 	public Command operatorDrive;
-	public Command Auto3H;
-	public Command Auto3J;
 	public Command Auto1I;
 	public Command Auto1G;
+	public Command Auto1A;
+	public Command Auto1B;
+	public Command Auto1C;
+	public Command Auto1D;
+	public Command Auto1F;
+	public Command Auto1H;
+	public Command Auto2D;
+	public Command Auto3B;
+	public Command Auto3A;
+	public Command Auto3C;
+	public Command Auto3D;
+	public Command Auto3E;
+	public Command Auto3F;
+	public Command Auto3G;
+	public Command Auto3I;
+	public Command Auto1E;
+	public Command Auto3H;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
+//	public Command Auto;
 
+
+//github.com/HutchinsonTigerbots-2509/Robot-2018.git
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -52,12 +81,39 @@ public class Robot extends TimedRobot implements PIDOutput{
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-//		Auto3H = new Autonomous3H();
-//		Auto3J = new Autonomous3J();
-//		Auto1I = new Autonomous1I();
-		Auto1G = new Autonomous1E();
+		Auto1A = new Auto1A();
+		Auto1B = new Auto1B();
+		Auto1C = new Auto1C();
+		Auto1D = new Auto1D();
+		Auto1F = new Auto1F();
+		Auto1G = new Auto1G();
+		Auto1H = new Auto1H();
+		Auto2D = new Auto2D();
+		Auto3A = new Auto3A();
+		Auto3B = new Auto3B();
+		Auto3C = new Auto3C();
+		Auto3D = new Auto3D();
+		Auto3E = new Auto3E();
+		Auto3F = new Auto3F();
+		Auto3G = new Auto3G();
+		Auto3I = new Auto3I();
+		Auto3H = new Auto3H();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
+//		Auto = new Auto();
 //		chooser.addDefault("Default Auto", null);
-// 		chooser.addObject("My Auto", new MyAutoCommand());
+/// 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
 		oi.UpdateDashboard.start();
 //		autonomousCommand = new AutonomousCommand();
@@ -93,10 +149,37 @@ public class Robot extends TimedRobot implements PIDOutput{
 	@Override
 	public void autonomousInit() {
 
-//		autonomousCommand = Auto3H;
-//		autonomousCommand = Auto3J;
+		autonomousCommand = Auto1A;
+//		autonomousCommand = Auto1B;
+//		autonomousCommand = Auto1C;
+//		autonomousCommand = Auto1D;
+//		autonomousCommand = Auto1E;
+//		autonomousCommand = Auto1F;
+//		autonomousCommand = Auto1G;
+//		autonomousCommand = Auto1H;
+//		autonomousCommand = Auto2D;
+//		autonomousCommand = Auto3A;
+//		autonomousCommand = Auto3B;
+//		autonomousCommand = Auto3C;
+//		autonomousCommand = Auto3D;
+//		autonomousCommand = Auto3E;
+//		autonomousCommand = Auto3F;
+//		autonomousCommand = Auto1G;
 //		autonomousCommand = Auto1I;
-		autonomousCommand = Auto1G;
+//		autonomousCommand = Auto3H;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
+//		autonomousCommand = Auto;
 //		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
