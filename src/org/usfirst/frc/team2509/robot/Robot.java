@@ -39,6 +39,7 @@ import org.usfirst.frc.team2509.robot.commands.Auto3I;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -58,6 +59,7 @@ public class Robot extends TimedRobot{
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
+	public static Wrist wrist;
 	public Command autonomousCommand;
 	public Command operatorDrive;
 	public Command Auto1I;
@@ -111,6 +113,7 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
+		wrist = new Wrist();
 		// OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null

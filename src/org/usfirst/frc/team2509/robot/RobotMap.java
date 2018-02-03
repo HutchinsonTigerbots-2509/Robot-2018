@@ -56,6 +56,9 @@ public class RobotMap {
 	public static WPI_TalonSRX Wrist;
 	public static DigitalInput Wrist_UpperLimit;
 	public static DigitalInput Wrist_LowerLimit;
+	
+	public static VictorSP leftMotor;
+	public static VictorSP rightMotor;
 	/**
 	 * 
 	 */

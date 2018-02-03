@@ -22,20 +22,23 @@ public class Wrist extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    /**
-     * Turns the Wrist to face up.
-     */
-    public void upper() {
-    	while(upper.get()) wrist.set(-0.5);
-    	wrist.set(0);
-    }
-    /**
-     * Turns the Wrist to face forward
-     */
-    public void lower() {
-    	while(lower.get()) wrist.set(0.5);
+    public void Up() {
+    	while(upper.get()) wrist.set(.5);
     	wrist.set(0);
     	
+    }
+    public void Down() {
+    	while(lower.get()) wrist.set(-.5);
+    	wrist.set(0);
+    }
+    public DigitalInput getlower() {
+    	return lower;
+    }
+    public DigitalInput getupper() {
+    	return upper;
+    }
+    public WPI_TalonSRX getwrist() {
+    	return wrist;
     }
 }
 
