@@ -48,6 +48,14 @@ public class RobotMap {
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
 	
+	
+	public static DoubleSolenoid Intake;
+	public static WPI_TalonSRX LeftMotor;
+	public static WPI_TalonSRX RightMotor;
+	public static DoubleSolenoid Gripper;
+	public static WPI_TalonSRX Wrist;
+	public static DigitalInput Wrist_UpperLimit;
+	public static DigitalInput Wrist_LowerLimit;
 	/**
 	 * 
 	 */

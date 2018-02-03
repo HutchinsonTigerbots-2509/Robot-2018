@@ -45,6 +45,8 @@ public class OI {
 	public String GJ3 = "3GJ";
 	private Command autoCommand;
 	
+	private JoystickButton Extend;
+	
 	/**
 	 * CREATING BUTTONS - 
 	 * <p>One type of button is a joystick button which is any button on a joystick.
@@ -89,6 +91,8 @@ public class OI {
 			chooser.addObject("3DE", DE3);
 			chooser.addObject("3GJ", GJ3);
 			SmartDashboard.putData("Auto choices", chooser);
+			
+		Extend = new JoystickButton(OperatorStick, 1);
 			
 			
 		
