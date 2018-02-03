@@ -8,10 +8,15 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+<<<<<<< HEAD
+=======
 import edu.wpi.first.wpilibj.Talon;
+>>>>>>> origin/cole-auto
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  *
@@ -22,12 +27,12 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
-	private static Talon Left_1 = RobotMap.DriveTrain_left1;
-	private static Talon Left_2 = RobotMap.DriveTrain_left2;
-	private static Talon Left_3 = RobotMap.DriveTrain_left3;
-	private static Talon Right_1 = RobotMap.DriveTrain_right1;
-	private static Talon Right_2 = RobotMap.DriveTrain_right2;
-	private static Talon Right_3 = RobotMap.DriveTrain_right3;
+	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
+	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
+	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
+	private static WPI_TalonSRX Right_1 = RobotMap.DriveTrain_right1;
+	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_right2;
+	private static WPI_TalonSRX Right_3 = RobotMap.DriveTrain_right3;
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
@@ -64,9 +69,6 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}else {
     		Drive.tankDrive(0, 0);
     	}
-    	}
-    public void navxRotate(double targetAngle) {
-    	
     }
 
     /**
@@ -88,9 +90,9 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * @param targetDistance
      */
     public void driveForward(double targetDistance) {
-    	sensorReset();
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	sensorReset();
     	Timer.delay(0.1);
     	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
     		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
@@ -152,48 +154,43 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * 
      * @return DriveTrain_Left_1
      */
-    public Talon getLeft1() {
+    public WPI_TalonSRX getLeft1() {
     	return Left_1;
     }
     /**
      * 
      * @return DriveTrain_Left_2
      */
-    public Talon getLeft2() {
+    public WPI_TalonSRX getLeft2() {
     	return Left_2;
     }
     /**
      * 
      * @return DriveTrain_Left_3
      */
-    public Talon getLeft3() {
+    public WPI_TalonSRX getLeft3() {
     	return Left_3;
     }
     /**
      * 
      * @return DriveTrain_Right_1
      */
-    public Talon getRight1() {
+    public WPI_TalonSRX getRight1() {
     	return Right_1;
     }
     /**
      * 
      * @return DriveTrain_Right_2
      */
-    public Talon getRight2() {
+    public WPI_TalonSRX getRight2() {
     	return Right_2;
     }
     /**
      * 
      * @return DriveTrain_Right_3
      */
-    public Talon getRight3() {
+    public WPI_TalonSRX getRight3() {
     	return Right_3;
     }
-	@Override
-	public void pidWrite(double output) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

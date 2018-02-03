@@ -37,12 +37,18 @@ import org.usfirst.frc.team2509.robot.commands.Auto3G;
 import org.usfirst.frc.team2509.robot.commands.Auto3H;
 import org.usfirst.frc.team2509.robot.commands.Auto3I;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+<<<<<<< HEAD
+import edu.wpi.first.wpilibj.DriverStation;
+=======
 import edu.wpi.first.wpilibj.PIDOutput;
+>>>>>>> origin/cole-auto
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -56,6 +62,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 	
 	public static OI oi;
 	public static DriveTrain drivetrain;
+	public static Arm arm;
 	public Command autonomousCommand;
 	public Command operatorDrive;
 	public Command Auto1I;
@@ -108,12 +115,14 @@ public class Robot extends TimedRobot implements PIDOutput{
 	public void robotInit() {
 		RobotMap.init();
 		drivetrain = new DriveTrain();
+		arm = new Arm();
 		// OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
+		SmartDashboard.putData("Auto mode", oi.chooser);
 		Auto1A = new Auto1A();
 		Auto1B = new Auto1B();
 		Auto1C = new Auto1C();
@@ -154,11 +163,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 //		Auto = new Auto();
 //		Auto = new Auto();
 //		Auto = new Auto();
-//		chooser.addDefault("Default Auto", null);
-/// 		chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", chooser);
 		oi.UpdateDashboard.start();
-//		autonomousCommand = new AutonomousCommand();
 	}
 
 	/**
@@ -190,6 +195,10 @@ public class Robot extends TimedRobot implements PIDOutput{
 	
 	@Override
 	public void autonomousInit() {
+<<<<<<< HEAD
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+				DriverStation.getInstance().getGameSpecificMessage());
+=======
 
 		autonomousCommand = Auto1A;
 //		autonomousCommand = Auto1B;
@@ -234,6 +243,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 		 * 		break; 
 		 * }
 		 */
+>>>>>>> origin/cole-auto
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
