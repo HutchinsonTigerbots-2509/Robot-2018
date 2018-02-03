@@ -8,15 +8,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Auto1G extends Command {
+public class Auto1B extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
-    public Auto1G() {
+    public Auto1B() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(319);
+    	driveTrain.driveForward(30);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(45);
+    	driveTrain.driveForward(180);
     	driveTrain.rotate(-90);
+    	driveTrain.driveForward(105);
     }
 
     // Called just before this Command runs the first time

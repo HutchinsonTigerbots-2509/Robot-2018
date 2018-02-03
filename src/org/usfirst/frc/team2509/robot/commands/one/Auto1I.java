@@ -1,30 +1,26 @@
-//Completed
-
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class Auto1I extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
-
     public Auto1I() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	// Use requires() here to declare subsystem dependencies
+    	// eg. requires(chassis);
+    	driveTrain.driveForward(480);
+    	driveTrain.rotate(90);
+  
     }
-
+    
     // Called just before this Command runs the first time
     protected void initialize() {
-    driveTrain.driveForward(280);//Drive forward for 280 inches
-    driveTrain.rotate(90);//Rotate Right
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -38,7 +34,6 @@ public class Auto1I extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    
     }
 
     // Called when another command which requires one or more of the same
