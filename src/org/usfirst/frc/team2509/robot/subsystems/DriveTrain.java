@@ -2,6 +2,8 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -22,12 +24,12 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
-	private static Talon Left_1 = RobotMap.DriveTrain_left1;
-	private static Talon Left_2 = RobotMap.DriveTrain_left2;
-	private static Talon Left_3 = RobotMap.DriveTrain_left3;
-	private static Talon Right_1 = RobotMap.DriveTrain_right1;
-	private static Talon Right_2 = RobotMap.DriveTrain_right2;
-	private static Talon Right_3 = RobotMap.DriveTrain_right3;
+	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
+	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
+	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
+	private static WPI_TalonSRX Right_1 = RobotMap.DriveTrain_right1;
+	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_right2;
+	private static WPI_TalonSRX Right_3 = RobotMap.DriveTrain_right3;
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
@@ -65,8 +67,39 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     		Drive.tankDrive(0, 0);
     	}
     	}
-    public void navxRotate(double targetAngle) {
-    	
+    public void AccDrive(double targetDistance) {
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	double CurrentDistance = (RightEncoder.get()+LeftEncoder.get()/2);
+    	double AccelGain = 1.05;
+    	double DecelGain = 0.95;
+    	double Speed = 0.25;
+    	double TimeDelay = 0.015;
+    	while(CurrentDistance <= target/2) {
+    		if(Speed >= 0.9) {
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    		else {
+    			Speed = Speed * AccelGain;
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    	}
+    	while(CurrentDistance < target){
+    		if(Speed > 0.35) {
+    			Speed = Speed * DecelGain;
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    		else {
+    			Drive.arcadeDrive(Speed, Gyro.getAngle()*(0.15));
+    			Timer.delay(TimeDelay);
+    		}
+    	}
+    	Drive.tankDrive(0, 0);
     }
 
     /**

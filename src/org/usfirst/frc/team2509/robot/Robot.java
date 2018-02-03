@@ -8,13 +8,39 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.*;
+import org.usfirst.frc.team2509.robot.commands.AccelTest;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.one.*;
-import org.usfirst.frc.team2509.robot.commands.three.*;
-import org.usfirst.frc.team2509.robot.commands.two.*;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1D;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1E;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1F;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1G;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1H;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1J;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3C;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3E;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3F;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3G;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3H;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3I;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2A;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2E;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2F;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2G;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2H;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2I;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2J;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -36,6 +62,7 @@ public class Robot extends TimedRobot{
 	public static Arm arm;
 	public Command autonomousCommand;
 	public Command operatorDrive;
+	public Command AccelTest;
 	public Command Auto1I;
 	public Command Auto1G;
 	public Command Auto1A;
@@ -94,6 +121,7 @@ public class Robot extends TimedRobot{
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
+		AccelTest = new AccelTest();
 		Auto1A = new Auto1A();
 		Auto1B = new Auto1B();
 		Auto1C = new Auto1C();
@@ -190,7 +218,7 @@ public class Robot extends TimedRobot{
 //		autonomousCommand = Auto2F;
 //		autonomousCommand = Auto2J;
 //		autonomousCommand = Auto2H;
-//		autonomousCommand = Auto;
+//		autonomousCommand = AccelTest;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
