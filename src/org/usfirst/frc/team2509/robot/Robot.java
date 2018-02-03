@@ -10,14 +10,12 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.*;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.commands.one.*;
+import org.usfirst.frc.team2509.robot.commands.three.*;
+import org.usfirst.frc.team2509.robot.commands.two.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
-
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.DriverStation;
-=======
-import edu.wpi.first.wpilibj.PIDOutput;
->>>>>>> origin/cole-auto
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,7 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-public class Robot extends TimedRobot implements PIDOutput{
+public class Robot extends TimedRobot{
 	
 	public static OI oi;
 	public static DriveTrain drivetrain;
@@ -124,8 +122,6 @@ public class Robot extends TimedRobot implements PIDOutput{
 		Auto3G = new Auto3G();
 		Auto3I = new Auto3I();
 		Auto3H = new Auto3H();
-		Auto2A = new Auto2A();
-		Auto2C = new Auto2C();
 //		Auto = new Auto();
 //		Auto = new Auto();
 //		Auto = new Auto();
@@ -168,32 +164,31 @@ public class Robot extends TimedRobot implements PIDOutput{
 	
 	@Override
 	public void autonomousInit() {
-<<<<<<< HEAD
 		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
 				DriverStation.getInstance().getGameSpecificMessage());
-=======
 
-		autonomousCommand = Auto1A;
-		autonomousCommand = Auto1B;
-////		autonomousCommand = Auto1C;
-////		autonomousCommand = Auto1D;
-////		autonomousCommand = Auto1E;
-////		autonomousCommand = Auto1F;
-////		autonomousCommand = Auto1G;
-////		autonomousCommand = Auto1H;
-////		autonomousCommand = Auto2D;
-////		autonomousCommand = Auto3A;
-////		autonomousCommand = Auto3B;
-////		autonomousCommand = Auto3C;
-////		autonomousCommand = Auto3D;
-////		autonomousCommand = Auto3E;
-////		autonomousCommand = Auto3F;
-////		autonomousCommand = Auto1G;
-////		autonomousCommand = Auto1I;
-////		autonomousCommand = Auto3H;
-////		autonomousCommand = Auto2B;
-////		autonomousCommand = Auto2F;
-////		autonomousCommand = Auto2J;
+
+//		autonomousCommand = Auto1A;
+//		autonomousCommand = Auto1B;
+//		autonomousCommand = Auto1C;
+//		autonomousCommand = Auto1D;
+//		autonomousCommand = Auto1E;
+//		autonomousCommand = Auto1F;
+//		autonomousCommand = Auto1G;
+//		autonomousCommand = Auto1H;
+//		autonomousCommand = Auto2D;
+//		autonomousCommand = Auto3A;
+//		autonomousCommand = Auto3B;
+//		autonomousCommand = Auto3C;
+//		autonomousCommand = Auto3D;
+//		autonomousCommand = Auto3E;
+//		autonomousCommand = Auto3F;
+//		autonomousCommand = Auto1G;
+//		autonomousCommand = Auto1I;
+//		autonomousCommand = Auto3H;
+//		autonomousCommand = Auto2B;
+//		autonomousCommand = Auto2F;
+//		autonomousCommand = Auto2J;
 //		autonomousCommand = Auto2H;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
@@ -205,18 +200,8 @@ public class Robot extends TimedRobot implements PIDOutput{
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
 //		autonomousCommand = chooser.getSelected();
-//		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected){ 
-		 * 	case "My Auto": 
-		 * 		autonomousCommand = new MyAutoCommand(); 
-		 * 		break; 
-		 * 	case "Default Auto": default:
-		 * 		autonomousCommand = new ExampleCommand(); 
-		 * 		break; 
-		 * }
-		 */
->>>>>>> origin/cole-auto
+
+		
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
