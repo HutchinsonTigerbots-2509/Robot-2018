@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team2509.robot;
 
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -15,7 +16,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
@@ -63,8 +63,6 @@ public class RobotMap {
 		
 		
 		DriveTrain_Gyro = new ADXRS450_Gyro();
-		DriveTrain_Gyro.reset();
-		DriveTrain_Gyro.calibrate();
 		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
 		
 		DriveTrain_left1 = new WPI_TalonSRX(0);
@@ -87,6 +85,7 @@ public class RobotMap {
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
+
 		Arm_LowerSolenoid = new DoubleSolenoid(2,3);
 		
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
