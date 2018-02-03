@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.Turn90C;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -23,6 +24,7 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
+	private JoystickButton Turn90;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String Blue1 = "Blue 1";
@@ -61,6 +63,8 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
+		Turn90 = new JoystickButton(OperatorStick, 3);
+		Turn90.whenPressed(new Turn90C());
 		
 		chooser.addDefault("Default Auto", defaultAuto);
 			chooser.addObject("Blue 1", Blue1);
