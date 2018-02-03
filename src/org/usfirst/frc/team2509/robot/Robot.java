@@ -8,34 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.Auto1A;
-import org.usfirst.frc.team2509.robot.commands.Auto1B;
-import org.usfirst.frc.team2509.robot.commands.Auto1C;
-import org.usfirst.frc.team2509.robot.commands.Auto1D;
-import org.usfirst.frc.team2509.robot.commands.Auto1E;
-import org.usfirst.frc.team2509.robot.commands.Auto1F;
-import org.usfirst.frc.team2509.robot.commands.Auto1G;
-import org.usfirst.frc.team2509.robot.commands.Auto1H;
-import org.usfirst.frc.team2509.robot.commands.Auto1J;
-import org.usfirst.frc.team2509.robot.commands.Auto2A;
-import org.usfirst.frc.team2509.robot.commands.Auto2B;
-import org.usfirst.frc.team2509.robot.commands.Auto2C;
-import org.usfirst.frc.team2509.robot.commands.Auto2D;
-import org.usfirst.frc.team2509.robot.commands.Auto2E;
-import org.usfirst.frc.team2509.robot.commands.Auto2F;
-import org.usfirst.frc.team2509.robot.commands.Auto2G;
-import org.usfirst.frc.team2509.robot.commands.Auto2H;
-import org.usfirst.frc.team2509.robot.commands.Auto2I;
-import org.usfirst.frc.team2509.robot.commands.Auto2J;
-import org.usfirst.frc.team2509.robot.commands.Auto3A;
-import org.usfirst.frc.team2509.robot.commands.Auto3B;
-import org.usfirst.frc.team2509.robot.commands.Auto3C;
-import org.usfirst.frc.team2509.robot.commands.Auto3D;
-import org.usfirst.frc.team2509.robot.commands.Auto3E;
-import org.usfirst.frc.team2509.robot.commands.Auto3F;
-import org.usfirst.frc.team2509.robot.commands.Auto3G;
-import org.usfirst.frc.team2509.robot.commands.Auto3H;
-import org.usfirst.frc.team2509.robot.commands.Auto3I;
+import org.usfirst.frc.team2509.robot.commands.*;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
