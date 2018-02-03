@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2509.robot.commands;
+package org.usfirst.frc.team2509.robot.commands.three;
 
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;

@@ -244,9 +244,5 @@ public class Robot extends TimedRobot{
 	public void testPeriodic() {
 	}
 
-	@Override
-	public void pidWrite(double output) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
