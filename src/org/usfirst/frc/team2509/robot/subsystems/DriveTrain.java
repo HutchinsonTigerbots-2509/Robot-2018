@@ -40,9 +40,11 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	static final double kI = 0.00;
 	static final double kD = 0.00;
 	static final double kF = 0.00;
+	
 	static final double kToleranceDegrees = 2.0f;
 	PIDController turnController = new PIDController(kP, kI, kD, RobotMap.NavX, this);
 	double rotateToAngleRate;
+	
 	public void initNavX() {
 		turnController.setInputRange(-180.0f,  180.0f);
 	    turnController.setOutputRange(-1.0, 1.0);
