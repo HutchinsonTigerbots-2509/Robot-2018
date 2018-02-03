@@ -13,11 +13,8 @@ import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.DriverStation;
-=======
 import edu.wpi.first.wpilibj.PIDOutput;
->>>>>>> origin/cole-auto
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
