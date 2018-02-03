@@ -40,11 +40,6 @@ import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
-<<<<<<< HEAD
-import edu.wpi.first.wpilibj.DriverStation;
-=======
-import edu.wpi.first.wpilibj.PIDOutput;
->>>>>>> origin/cole-auto
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -58,7 +53,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-public class Robot extends TimedRobot implements PIDOutput{
+public class Robot extends TimedRobot{
 	
 	public static OI oi;
 	public static DriveTrain drivetrain;
@@ -195,11 +190,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 	
 	@Override
 	public void autonomousInit() {
-<<<<<<< HEAD
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
-				DriverStation.getInstance().getGameSpecificMessage());
-=======
-
+//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(),DriverStation.getInstance().getGameSpecificMessage());
 		autonomousCommand = Auto1A;
 //		autonomousCommand = Auto1B;
 //		autonomousCommand = Auto1C;
@@ -232,18 +223,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
 //		autonomousCommand = chooser.getSelected();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected){ 
-		 * 	case "My Auto": 
-		 * 		autonomousCommand = new MyAutoCommand(); 
-		 * 		break; 
-		 * 	case "Default Auto": default:
-		 * 		autonomousCommand = new ExampleCommand(); 
-		 * 		break; 
-		 * }
-		 */
->>>>>>> origin/cole-auto
+
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
@@ -284,11 +264,5 @@ public class Robot extends TimedRobot implements PIDOutput{
 	 */
 	@Override
 	public void testPeriodic() {
-	}
-
-	@Override
-	public void pidWrite(double output) {
-		// TODO Auto-generated method stub
-		
 	}
 }
