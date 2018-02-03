@@ -24,18 +24,30 @@ public class Intake extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    /**
+     * Extends the two arms for the box pickup.
+     */
     public void extend() {
     	piston.set(DoubleSolenoid.Value.kForward);
     	piston.set(DoubleSolenoid.Value.kOff);
     }
+    /**
+     * Retracts the two arms for the box pickup.
+     */
     public void retract() {
     	piston.set(DoubleSolenoid.Value.kReverse);
     	piston.set(DoubleSolenoid.Value.kOff);
     }
+    /**
+     * Turns on the wheels for the box pickup method.
+     */
     public void on() {
     	leftMotor.set(0.5);
     	rightMotor.set(0.5);
     }
+    /**
+     * Turns off the wheels for the box pickup method.
+     */
     public void off() {
     	leftMotor.set(0);
     	rightMotor.set(0);

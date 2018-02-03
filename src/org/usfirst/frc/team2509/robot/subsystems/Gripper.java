@@ -20,10 +20,16 @@ public class Gripper extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    /**
+     * Extends the gripper for the box pickup method.
+     */
     public void extend() {
     	Gripper.set(DoubleSolenoid.Value.kForward);
     	Gripper.set(DoubleSolenoid.Value.kOff);
     }
+    /**
+     * Retracts the gripper for the box pickup method.
+     */
     public void retract() {
     	Gripper.set(DoubleSolenoid.Value.kReverse);
     	Gripper.set(DoubleSolenoid.Value.kOff);

@@ -22,10 +22,16 @@ public class Wrist extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    /**
+     * Turns the Wrist to face up.
+     */
     public void upper() {
     	while(upper.get()) wrist.set(-0.5);
     	wrist.set(0);
     }
+    /**
+     * Turns the Wrist to face forward
+     */
     public void lower() {
     	while(lower.get()) wrist.set(0.5);
     	wrist.set(0);
