@@ -174,26 +174,26 @@ public class Robot extends TimedRobot implements PIDOutput{
 =======
 
 		autonomousCommand = Auto1A;
-//		autonomousCommand = Auto1B;
-//		autonomousCommand = Auto1C;
-//		autonomousCommand = Auto1D;
-//		autonomousCommand = Auto1E;
-//		autonomousCommand = Auto1F;
-//		autonomousCommand = Auto1G;
-//		autonomousCommand = Auto1H;
-//		autonomousCommand = Auto2D;
-//		autonomousCommand = Auto3A;
-//		autonomousCommand = Auto3B;
-//		autonomousCommand = Auto3C;
-//		autonomousCommand = Auto3D;
-//		autonomousCommand = Auto3E;
-//		autonomousCommand = Auto3F;
-//		autonomousCommand = Auto1G;
-//		autonomousCommand = Auto1I;
-//		autonomousCommand = Auto3H;
-//		autonomousCommand = Auto2B;
-//		autonomousCommand = Auto2F;
-//		autonomousCommand = Auto2J;
+		autonomousCommand = Auto1B;
+////		autonomousCommand = Auto1C;
+////		autonomousCommand = Auto1D;
+////		autonomousCommand = Auto1E;
+////		autonomousCommand = Auto1F;
+////		autonomousCommand = Auto1G;
+////		autonomousCommand = Auto1H;
+////		autonomousCommand = Auto2D;
+////		autonomousCommand = Auto3A;
+////		autonomousCommand = Auto3B;
+////		autonomousCommand = Auto3C;
+////		autonomousCommand = Auto3D;
+////		autonomousCommand = Auto3E;
+////		autonomousCommand = Auto3F;
+////		autonomousCommand = Auto1G;
+////		autonomousCommand = Auto1I;
+////		autonomousCommand = Auto3H;
+////		autonomousCommand = Auto2B;
+////		autonomousCommand = Auto2F;
+////		autonomousCommand = Auto2J;
 //		autonomousCommand = Auto2H;
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
@@ -205,7 +205,7 @@ public class Robot extends TimedRobot implements PIDOutput{
 //		autonomousCommand = Auto;
 //		autonomousCommand = Auto;
 //		autonomousCommand = chooser.getSelected();
-		/*
+//		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected){ 
 		 * 	case "My Auto": 
