@@ -37,6 +37,15 @@ public class Arm extends Subsystem {
     public void rectractLower() {
     	Lower.set(DoubleSolenoid.Value.kReverse);
     }
+    public void ManualUp() {
+    	Motor.set(1.0);
+    }
+    public void ManualDown() {
+    	Motor.set(-1.0);
+    }
+    public void Stop() {
+    	Motor.set(0.0);
+    }
     public void High() {
     	while(UpperLimit.get()) Motor.set(.5);
     	Motor.set(0);

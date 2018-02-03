@@ -9,6 +9,8 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.ManualDown;
+import org.usfirst.frc.team2509.robot.commands.ManualUp;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
@@ -22,15 +24,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * This class is the glue that binds the controls on the physical operator
+ * This class is the glue that binds the controls on the physical operators
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
+	public Joystick LiftController;
 	private JoystickButton ShiftButton;
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
+	private JoystickButton UpArm;
+	private JoystickButton DownArm;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -71,12 +76,17 @@ public class OI {
 	public OI() {
 		OperatorStick = new Joystick(0);
 		CoOperatorStick = new Joystick(1);
+		LiftController = new Joystick(2);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
 		MidArmButton = new JoystickButton(OperatorStick, 3);
 		MidArmButton.whileHeld(new ArmMid());
 		HighArmButton = new JoystickButton(OperatorStick, 4);
 		HighArmButton.whileHeld(new ArmHigh());
+		UpArm = new JoystickButton(LiftController, 6);
+		UpArm.whileHeld(new ManualUp());
+		DownArm = new JoystickButton(LiftController, 8); 
+		DownArm.whileHeld(new ManualDown());
 		chooser.addDefault("Default Auto", defaultAuto);
 			chooser.addObject("1X", X1);
 			chooser.addObject("1AB", AB1);
@@ -95,8 +105,7 @@ public class OI {
 	}
 	/**
 	 * When called constantly updates the SmartDashboard
-	 */
-	public Thread UpdateDashboard = new Thread(()->{
+	 */	public Thread UpdateDashboard = new Thread(()->{
 		while(true) {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());

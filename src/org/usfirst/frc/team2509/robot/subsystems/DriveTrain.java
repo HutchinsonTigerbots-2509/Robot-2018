@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
+import org.usfirst.frc.team2509.robot.ManualLiftControl;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -65,7 +66,7 @@ public class DriveTrain extends Subsystem{
     		Drive.tankDrive(0, 0);
     	}
     }
-
+   
     /**
      * Switches the gear between high and low, with a double solenoid.
      * @param isExtended
