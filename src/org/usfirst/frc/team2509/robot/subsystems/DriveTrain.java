@@ -2,25 +2,30 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
  */
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends Subsystem implements PIDOutput{
 	//Subsystem Variables
 	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
-	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
+	public static AHRS Gyro = RobotMap.NavX;
 	private static Talon Left_1 = RobotMap.DriveTrain_left1;
 	private static Talon Left_2 = RobotMap.DriveTrain_left2;
 	private static Talon Left_3 = RobotMap.DriveTrain_left3;
@@ -30,6 +35,20 @@ public class DriveTrain extends Subsystem {
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
+	
+	static final double kP = 0.03;
+	static final double kI = 0.00;
+	static final double kD = 0.00;
+	static final double kF = 0.00;
+	static final double kToleranceDegrees = 2.0f;
+	PIDController turnController = new PIDController(kP, kI, kD, RobotMap.NavX, this);
+	double rotateToAngleRate;
+	public void initNavX() {
+		turnController.setInputRange(-180.0f,  180.0f);
+	    turnController.setOutputRange(-1.0, 1.0);
+	    turnController.setAbsoluteTolerance(kToleranceDegrees);
+	    turnController.setContinuous(true);
+	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void initDefaultCommand() {
@@ -43,6 +62,10 @@ public class DriveTrain extends Subsystem {
      * Gets angle from the Gyro to tell the motors to make a specific turn
      * @param Angle
      */
+    public void rotateNavX(double targetAngle) {
+    	turnController.setSetpoint(0.0f);
+    	boolean rotateToAngle = true;
+    } 
     public void rotate(double targetAngle) {
     	if(Gyro.getAngle()<targetAngle) {
     		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(0.5, -0.5);
@@ -109,7 +132,7 @@ public class DriveTrain extends Subsystem {
      * 
      * @return DriveTrain_Gyro
      */
-    public ADXRS450_Gyro getGyro() {
+    public AHRS getGyro() {
     	return Gyro;
     }
     /**
@@ -175,6 +198,11 @@ public class DriveTrain extends Subsystem {
     public Talon getRight3() {
     	return Right_3;
     }
+	@Override
+	public void pidWrite(double output) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
 

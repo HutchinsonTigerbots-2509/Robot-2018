@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -14,7 +16,10 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+import org.usfirst.frc.team2509.robot.subsystems.*;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -27,7 +32,7 @@ public class RobotMap {
 	public static DoubleSolenoid DriveTrain_Shifter;
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
-	public static ADXRS450_Gyro DriveTrain_Gyro;
+	public static AHRS NavX;
 	public static Talon DriveTrain_left1;
 	public static Talon DriveTrain_left2;
 	public static Talon DriveTrain_left3;
@@ -37,10 +42,13 @@ public class RobotMap {
 	public static SpeedControllerGroup DriveTrain_Left;
 	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
+
+	/**OK before you ask why I'm creating this up here instead of the method, it hates conforming to normal rules, as far as Nate 
+	*  can tell this doesn't break anything so just roll with it, OK?
+	*/
 	
-	/**
-	 * 
-	 */
+	
+	static final double kToleranceDegrees = 2.0f;
 	public static void init(){
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
@@ -52,10 +60,10 @@ public class RobotMap {
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
 		
-		DriveTrain_Gyro = new ADXRS450_Gyro();
-		DriveTrain_Gyro.reset();
-		DriveTrain_Gyro.calibrate();
-		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
+		NavX = new AHRS(SPI.Port.kMXP);
+		NavX.reset();
+		SmartDashboard.putNumber("Gyro", NavX.getAngle());
+		
 		
 		DriveTrain_left1 = new Talon(0);
 		
@@ -79,8 +87,5 @@ public class RobotMap {
 		
 	}
 
-	private static void whenPressed() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

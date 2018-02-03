@@ -48,6 +48,7 @@ public class Robot extends TimedRobot {
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
 		oi.UpdateDashboard.start();
+		drivetrain.initNavX();
 //		autonomousCommand = new AutonomousCommand();
 	}
 
