@@ -100,18 +100,14 @@ public class OI {
 		while(true) {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
-			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
+			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getNavX().getAngle());
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){
 		SmartDashboard.putString("Game Data", gameData);
 		switch(autoChoice) {
 		case "1X":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = null;
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = null;
-			}
+			autoCommand = null;
 			break;
 		case "1AB":
 			if(gameData.charAt(0)=='L') {
@@ -128,18 +124,14 @@ public class OI {
 			}
 			break;
 		case "1IH":
-			if(gameData.charAt(0)=='L') {
+			if(gameData.charAt(1)=='L') {
 				autoCommand = new Auto1I();
-			}else if(gameData.charAt(0)=='R') {
+			}else if(gameData.charAt(1)=='R') {
 				autoCommand = null;
 			}
 			break;
 		case "2X":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = null;
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = null;
-			}
+			autoCommand = null;
 			break;
 		case "2AB":
 			if(gameData.charAt(0)=='L') {
@@ -166,9 +158,9 @@ public class OI {
 				autoCommand = new Auto3D();
 			}
 		case "3GJ":
-			if(gameData.charAt(0)=='L') {
+			if(gameData.charAt(1)=='L') {
 				autoCommand = null;
-			}else if(gameData.charAt(0)=='R') {
+			}else if(gameData.charAt(1)=='R') {
 				autoCommand = new Auto3J();
 			}
 			break;

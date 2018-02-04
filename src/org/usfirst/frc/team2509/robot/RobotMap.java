@@ -8,15 +8,17 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -30,7 +32,7 @@ public class RobotMap {
 	public static DoubleSolenoid DriveTrain_Shifter;
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
-	public static ADXRS450_Gyro DriveTrain_Gyro;
+	public static AHRS DriveTrain_NavX;
 	public static WPI_TalonSRX DriveTrain_left1;
 	public static WPI_TalonSRX DriveTrain_left2;
 	public static WPI_TalonSRX DriveTrain_left3;
@@ -61,9 +63,9 @@ public class RobotMap {
 		DriveTrain_RightEncoder = new Encoder(2,3);
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
-		
-		DriveTrain_Gyro = new ADXRS450_Gyro();
-		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
+		DriveTrain_NavX = new AHRS(SPI.Port.kMXP);
+		DriveTrain_NavX.reset();
+		SmartDashboard.putNumber("Gyro", DriveTrain_NavX.getAngle());
 		
 		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
@@ -85,7 +87,7 @@ public class RobotMap {
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
-
+		//Arm Variable Initialize
 		Arm_LowerSolenoid = new DoubleSolenoid(2,3);
 		
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);

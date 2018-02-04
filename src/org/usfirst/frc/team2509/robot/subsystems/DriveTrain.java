@@ -2,7 +2,9 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -10,8 +12,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  *
@@ -21,7 +21,7 @@ public class DriveTrain extends Subsystem{
 	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
-	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
+	private static AHRS NavX = RobotMap.DriveTrain_NavX;
 	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
 	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
 	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
@@ -44,7 +44,7 @@ public class DriveTrain extends Subsystem{
      * Resets all sensors
      */
     public void sensorReset() {
-    	Gyro.reset();
+    	NavX.reset();
     	RightEncoder.reset();
     	LeftEncoder.reset();
     }
@@ -53,13 +53,13 @@ public class DriveTrain extends Subsystem{
      * @param Angle
      */
     public void rotate(double targetAngle) {
-    	Gyro.reset();
+    	NavX.reset();
     	Timer.delay(0.05);
-    	if(Gyro.getAngle()<targetAngle) {
-    		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(-0.5, 0.5);
+    	if(NavX.getAngle()<targetAngle) {
+    		while(NavX.getAngle()<targetAngle)	Drive.tankDrive(-0.5, 0.5);
     		Drive.tankDrive(0, 0);
-    	}else if(Gyro.getAngle()>targetAngle) {
-    		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.5, -0.5);
+    	}else if(NavX.getAngle()>targetAngle) {
+    		while(NavX.getAngle()>targetAngle)Drive.tankDrive(0.5, -0.5);
     		Drive.tankDrive(0, 0);
     	}else {
     		Drive.tankDrive(0, 0);
@@ -90,7 +90,7 @@ public class DriveTrain extends Subsystem{
     	sensorReset();
     	Timer.delay(0.1);
     	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
-    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
+    		Drive.arcadeDrive(0.5, NavX.getAngle()*(0.15));
     	}
     	Drive.tankDrive(0, 0);
     }
@@ -120,9 +120,9 @@ public class DriveTrain extends Subsystem{
      * 
      * @return DriveTrain_Gyro
      */
-    public ADXRS450_Gyro getGyro() {
+    public AHRS getNavX() {
     	//return Gyro;
-    	return Gyro;
+    	return NavX;
     }
     /**
      * 
