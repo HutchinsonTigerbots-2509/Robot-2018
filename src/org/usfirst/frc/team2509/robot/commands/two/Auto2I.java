@@ -13,13 +13,13 @@ public class Auto2I extends Command {
     public Auto2I() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(180);
+    	driveTrain.driveForward(90);
     	driveTrain.rotate(-90);
+    	driveTrain.driveForward(120);
+    	driveTrain.rotate(90);
     	driveTrain.driveForward(240);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(480);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(60);
+    	driveTrain.driveForward(30);
     	driveTrain.rotate(-90);
     }
 
