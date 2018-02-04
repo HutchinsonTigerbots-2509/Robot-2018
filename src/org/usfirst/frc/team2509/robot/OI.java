@@ -10,6 +10,9 @@ package org.usfirst.frc.team2509.robot;
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
@@ -101,6 +104,8 @@ public class OI {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
+			SmartDashboard.putNumber("GyroRate", Robot.drivetrain.getGyro().getRawGyroX());
+			SmartDashboard.putNumber("Accel", Robot.drivetrain.getGyro().getRawAccelY());
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){
@@ -115,14 +120,14 @@ public class OI {
 			break;
 		case "1AB":
 			if(gameData.charAt(0)=='L') {
-				autoCommand = null;
+				autoCommand = new Auto1A();
 			}else if(gameData.charAt(0)=='R') {
-				autoCommand = null;
+				autoCommand = new Auto1B();
 			}
 			break;
 		case "1CF":
 			if(gameData.charAt(0)=='L') {
-				autoCommand = null;
+				autoCommand = new Auto1C();
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = null;
 			}

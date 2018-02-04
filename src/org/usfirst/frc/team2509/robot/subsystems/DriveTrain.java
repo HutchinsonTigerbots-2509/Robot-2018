@@ -3,6 +3,7 @@ package org.usfirst.frc.team2509.robot.subsystems;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,7 +25,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
-	private static ADXRS450_Gyro Gyro = RobotMap.DriveTrain_Gyro;
+	private static AHRS Gyro = RobotMap.DriveTrain_Gyro;
 	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
 	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
 	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
@@ -40,7 +42,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
         //setDefaultCommand(new MySpecialCommand());
     }
     public void drive(Joystick stick) {
-    	Drive.arcadeDrive(stick.getY(), stick.getZ());
+    	Drive.arcadeDrive(-stick.getY()*0.6, -stick.getZ()*0.6);
     }
     /**
      * Resets all sensors
@@ -62,6 +64,15 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     		Drive.tankDrive(0, 0);
     	}else if(Gyro.getAngle()>targetAngle) {
     		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.5, -0.5);
+    		Drive.tankDrive(0, 0);
+    	}else {
+    		Drive.tankDrive(0, 0);
+    	}
+    	if(Gyro.getAngle()<targetAngle) {
+    		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(-0.4, 0.4);
+    		Drive.tankDrive(0, 0);
+    	}else if(Gyro.getAngle()>targetAngle) {
+    		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.4, -0.4);
     		Drive.tankDrive(0, 0);
     	}else {
     		Drive.tankDrive(0, 0);
@@ -104,21 +115,34 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     public void AccDriveMark2(double targetDistance) {
     	sensorReset();
     	double wheelDiameter = 6;
-    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+//    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	double target = targetDistance;
     	Timer.delay(0.1);
-    	double CurrentDistance = ((RightEncoder.get()+LeftEncoder.get())/2);
+    	double CurrentDistance = ((RightEncoder.getDistance()+LeftEncoder.getDistance())/2);
     	double TimeDelay = 0.015;
     	double MaxVolts = 0.9;
     	double MinVolts = 0.35;
     	double VoltsRange = MaxVolts-MinVolts;
     	while(CurrentDistance <= target/2) {
-    	double AccelVolts = (VoltsRange*CurrentDistance)/(target/2);
-    		Drive.arcadeDrive(Math.max(AccelVolts, MinVolts), Gyro.getAngle()*(0.15));
+    		SmartDashboard.putNumber("Left", Left.get());
+    		SmartDashboard.putNumber("Right", Right.get());
+    		SmartDashboard.putNumber("Rate Left", LeftEncoder.getRate());
+    		SmartDashboard.putNumber("Right Rate", RightEncoder.getRate());
+    		double AccelVolts = ((VoltsRange*CurrentDistance)/(target/2));
+//    		AccelVolts = AccelVolts * AccelVolts;
+    		CurrentDistance = ((RightEncoder.getDistance()+LeftEncoder.getDistance())/2);
+    		Drive.arcadeDrive(Math.max(AccelVolts+MinVolts, MinVolts), Gyro.getAngle()*(0.15));
 			Timer.delay(TimeDelay);
     	}
+    	CurrentDistance = ((RightEncoder.getDistance()+LeftEncoder.getDistance())/2);
     	while(CurrentDistance < target){
-    	double DecelVolts = (VoltsRange*(target-CurrentDistance))/(target/2);
-    		Drive.arcadeDrive(Math.max(DecelVolts, MinVolts), Gyro.getAngle()*(0.15));
+    		SmartDashboard.putNumber("Left", Left.get());
+    		SmartDashboard.putNumber("Right", Right.get());
+    		SmartDashboard.putNumber("Rate Left", LeftEncoder.getRate());
+    		SmartDashboard.putNumber("Right Rate", RightEncoder.getRate());
+    		double DecelVolts = (VoltsRange*(target-CurrentDistance))/(target/2);
+    		CurrentDistance = ((RightEncoder.getDistance()+LeftEncoder.getDistance())/2);
+    		Drive.arcadeDrive(Math.max(DecelVolts+MinVolts, MinVolts), Gyro.getAngle()*(0.15));
 			Timer.delay(TimeDelay);
     	}
     	Drive.tankDrive(0, 0);
@@ -146,8 +170,8 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
-    	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
-    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.15));
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
+    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.1));
     	}
     	Drive.tankDrive(0, 0);
     }
@@ -177,7 +201,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * 
      * @return DriveTrain_Gyro
      */
-    public ADXRS450_Gyro getGyro() {
+    public AHRS getGyro() {
     	//return Gyro;
     	return Gyro;
     }
@@ -206,42 +230,42 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * 
      * @return DriveTrain_Left_1
      */
-    public Talon getLeft1() {
+    public WPI_TalonSRX getLeft1() {
     	return Left_1;
     }
     /**
      * 
      * @return DriveTrain_Left_2
      */
-    public Talon getLeft2() {
+    public WPI_TalonSRX getLeft2() {
     	return Left_2;
     }
     /**
      * 
      * @return DriveTrain_Left_3
      */
-    public Talon getLeft3() {
+    public WPI_TalonSRX getLeft3() {
     	return Left_3;
     }
     /**
      * 
      * @return DriveTrain_Right_1
      */
-    public Talon getRight1() {
+    public WPI_TalonSRX getRight1() {
     	return Right_1;
     }
     /**
      * 
      * @return DriveTrain_Right_2
      */
-    public Talon getRight2() {
+    public WPI_TalonSRX getRight2() {
     	return Right_2;
     }
     /**
      * 
      * @return DriveTrain_Ri6ght_3
      */
-    public Talon getRight3() {
+    public WPI_TalonSRX getRight3() {
     	return Right_3;
     }
 	@Override

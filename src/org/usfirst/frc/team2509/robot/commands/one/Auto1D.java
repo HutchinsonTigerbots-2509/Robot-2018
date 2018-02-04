@@ -3,6 +3,7 @@ package org.usfirst.frc.team2509.robot.commands.one;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -13,13 +14,17 @@ public class Auto1D extends Command {
     public Auto1D() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(30);
+    	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(240);
+//    	Timer.delay(2.5);
+    	driveTrain.driveForward(220);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(150);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(50);
+//    	Timer.delay(2.5);
+    	driveTrain.driveForward(78);
+    	driveTrain.rotate(-90);
+//    	Timer.delay(2.5);
+    	driveTrain.driveForward(4);
+//    	driveTrain.driveForward(50);
     }
 
     // Called just before this Command runs the first time

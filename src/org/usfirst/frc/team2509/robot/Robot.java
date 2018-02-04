@@ -121,35 +121,35 @@ public class Robot extends TimedRobot{
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
-		AccelTest = new AccelTest();
-		Auto1A = new Auto1A();
-		Auto1B = new Auto1B();
-		Auto1C = new Auto1C();
-		Auto1D = new Auto1D();
-		Auto1F = new Auto1F();
-		Auto1G = new Auto1G();
-		Auto1H = new Auto1H();
-		Auto1E = new Auto1E();
-		Auto1J = new Auto1J();
-		Auto2A = new Auto2A();
-		Auto2B = new Auto2B();
-		Auto2C = new Auto2C();
-		Auto2D = new Auto2D();
-		Auto2E = new Auto2E();
-		Auto2F = new Auto2F();
-		Auto2G = new Auto2G();
-		Auto2H = new Auto2H();
-		Auto2I = new Auto2I();
-		Auto2J = new Auto2J();
-		Auto3A = new Auto3A();
-		Auto3B = new Auto3B();
-		Auto3C = new Auto3C();
-		Auto3D = new Auto3D();
-		Auto3E = new Auto3E();
-		Auto3F = new Auto3F();
-		Auto3G = new Auto3G();
-		Auto3I = new Auto3I();
-		Auto3H = new Auto3H();
+//		AccelTest = new AccelTest();
+//		Auto1A = new Auto1A();
+//		Auto1B = new Auto1B();
+//		Auto1C = new Auto1C();
+//		Auto1D = new Auto1D();
+//		Auto1F = new Auto1F();
+//		Auto1G = new Auto1G();
+//		Auto1H = new Auto1H();
+//		Auto1E = new Auto1E();
+//		Auto1J = new Auto1J();
+//		Auto2A = new Auto2A();
+//		Auto2B = new Auto2B();
+//		Auto2C = new Auto2C();
+//		Auto2D = new Auto2D();
+//		Auto2E = new Auto2E();
+//		Auto2F = new Auto2F();
+//		Auto2G = new Auto2G();
+//		Auto2H = new Auto2H();
+//		Auto2I = new Auto2I();
+//		Auto2J = new Auto2J();
+//		Auto3A = new Auto3A();
+//		Auto3B = new Auto3B();
+//		Auto3C = new Auto3C();
+//		Auto3D = new Auto3D();
+//		Auto3E = new Auto3E();
+//		Auto3F = new Auto3F();
+//		Auto3G = new Auto3G();
+//		Auto3I = new Auto3I();
+//		Auto3H = new Auto3H();
 //		Auto = new Auto();
 //		Auto = new Auto();
 //		Auto = new Auto();
@@ -192,14 +192,14 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
-				DriverStation.getInstance().getGameSpecificMessage());
-
-
-//		autonomousCommand = Auto1A;
-//		autonomousCommand = Auto1B;
-//		autonomousCommand = Auto1C;
-//		autonomousCommand = Auto1D;
+//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+//				DriverStation.getInstance().getGameSpecificMessage());
+		
+//		autonomousCommand = AccelTest;
+//		autonomousCommand = new Auto1A();
+//		autonomousCommand = new Auto1B();
+//		autonomousCommand = new Auto1C();
+		autonomousCommand = new Auto1D();
 //		autonomousCommand = Auto1E;
 //		autonomousCommand = Auto1F;
 //		autonomousCommand = Auto1G;
