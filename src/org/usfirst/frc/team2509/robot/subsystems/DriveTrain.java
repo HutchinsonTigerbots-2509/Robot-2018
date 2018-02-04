@@ -72,7 +72,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
-    	double CurrentDistance = (RightEncoder.get()+LeftEncoder.get()/2);
+    	double CurrentDistance = ((RightEncoder.get()+LeftEncoder.get())/2);
     	double AccelGain = 1.05;
     	double DecelGain = 0.95;
     	double Speed = 0.25;
@@ -101,7 +101,28 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
-
+    public void AccDriveMark2(double targetDistance) {
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	double CurrentDistance = ((RightEncoder.get()+LeftEncoder.get())/2);
+    	double TimeDelay = 0.015;
+    	double MaxVolts = 0.9;
+    	double MinVolts = 0.35;
+    	double VoltsRange = MaxVolts-MinVolts;
+    	while(CurrentDistance <= target/2) {
+    	double AccelVolts = (VoltsRange*CurrentDistance)/(target/2);
+    		Drive.arcadeDrive(Math.max(AccelVolts, MinVolts), Gyro.getAngle()*(0.15));
+			Timer.delay(TimeDelay);
+    	}
+    	while(CurrentDistance < target){
+    	double DecelVolts = (VoltsRange*(target-CurrentDistance))/(target/2);
+    		Drive.arcadeDrive(Math.max(DecelVolts, MinVolts), Gyro.getAngle()*(0.15));
+			Timer.delay(TimeDelay);
+    	}
+    	Drive.tankDrive(0, 0);
+    }
     /**
      * Switches the gear between high and low, with a double solenoid.
      * @param isExtended

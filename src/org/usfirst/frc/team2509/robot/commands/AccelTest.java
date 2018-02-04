@@ -17,7 +17,7 @@ public class AccelTest extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	dt.AccDrive(60);
+    	dt.AccDriveMark2(60);
     }
 
     // Called repeatedly when this Command is scheduled to run
