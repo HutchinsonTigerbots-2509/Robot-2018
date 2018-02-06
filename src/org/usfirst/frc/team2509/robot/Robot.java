@@ -13,6 +13,8 @@ import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +33,7 @@ public class Robot extends TimedRobot{
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
+	public static AHRS ahrs;
 	public Command autonomousCommand;
 	public Command operatorDrive;
 
@@ -48,14 +51,12 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
-		// OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
-        // constructed yet. Thus, their requires() statements may grab null
-        // pointers. Bad news. Don't move it.
+		
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
+		DriveTrain.initNavX();
 	}
 
 	/**
