@@ -19,9 +19,10 @@ public class Auto2D extends Command {
     protected void initialize() {
     	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(60);
+    	driveTrain.driveForward(120);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(60);
+    	driveTrain.driveForward(120);
+    	driveTrain.rotate(-90);
     	
     }
 

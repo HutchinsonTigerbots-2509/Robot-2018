@@ -15,11 +15,11 @@ public class Auto2G extends Command {
         // eg. requires(chassis);
     	driveTrain.driveForward(60);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(120);
+    	driveTrain.driveForward(150);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(230);
+    	driveTrain.driveForward(240);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(10);
+    	driveTrain.driveForward(90);
     	driveTrain.rotate(-90);
     }
 

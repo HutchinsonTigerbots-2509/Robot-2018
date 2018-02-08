@@ -19,7 +19,7 @@ public class Auto2H extends Command {
     protected void initialize() {
     	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(120);
+    	driveTrain.driveForward(150);
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(240);
     	driveTrain.rotate(-90);

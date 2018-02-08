@@ -21,13 +21,9 @@ public class Auto2J extends Command {
     	driveTrain.rotate(90);
     	driveTrain.driveForward(150);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(315);
+    	driveTrain.driveForward(300);
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(30);
-    	
-    	
-    	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run

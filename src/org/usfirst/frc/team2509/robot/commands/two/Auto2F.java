@@ -19,13 +19,11 @@ public class Auto2F extends Command {
     protected void initialize() {
     	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(120);
+    	driveTrain.driveForward(150);
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(180);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(15);
+    	driveTrain.driveForward(75);
     }
 
     // Called repeatedly when this Command is scheduled to run
