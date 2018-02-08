@@ -7,16 +7,17 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import org.opencv.core.Mat;
+
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -31,22 +32,16 @@ public class RobotMap {
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
 	public static ADXRS450_Gyro DriveTrain_Gyro;
-	public static WPI_TalonSRX DriveTrain_left1;
-	public static WPI_TalonSRX DriveTrain_left2;
-	public static WPI_TalonSRX DriveTrain_left3;
-	public static WPI_TalonSRX DriveTrain_right1;
-	public static WPI_TalonSRX DriveTrain_right2;
-	public static WPI_TalonSRX DriveTrain_right3;
+	public static Talon DriveTrain_left1;
+	public static Talon DriveTrain_left2;
+	public static Talon DriveTrain_left3;
+	public static Talon DriveTrain_right1;
+	public static Talon DriveTrain_right2;
+	public static Talon DriveTrain_right3;
 	public static SpeedControllerGroup DriveTrain_Left;
 	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
-	//Arm Variable
-	public static DoubleSolenoid Arm_LowerSolenoid;
-	public static DoubleSolenoid Arm_UpperSolenoid;
-	public static Talon Arm_Motor;
-	public static DigitalInput Arm_LowerLimit;
-	public static DigitalInput Arm_MiddleLimit;
-	public static DigitalInput Arm_UpperLimit;
+	public static Mat Box_camera;
 	
 	/**
 	 * 
@@ -54,8 +49,11 @@ public class RobotMap {
 	public static void init(){
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
-		
+		Box_camera = CameraServer.getInstance().startAutomaticCapture("BOX", 0);
+		Box_camera.setResolution(640, 480);
+		Box_camera.setFPS(30);
 		DriveTrain_LeftEncoder = new Encoder(0,1);
+		DriveTrain_LeftEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
 		DriveTrain_RightEncoder = new Encoder(2,3);
@@ -67,17 +65,17 @@ public class RobotMap {
 		DriveTrain_Gyro.calibrate();
 		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
 		
-		DriveTrain_left1 = new WPI_TalonSRX(0);
+		DriveTrain_left1 = new Talon(0);
 		
-		DriveTrain_left2 = new WPI_TalonSRX(2);
+		DriveTrain_left2 = new Talon(2);
 		
-		DriveTrain_left3 = new WPI_TalonSRX(1);
+		DriveTrain_left3 = new Talon(1);
 		
-		DriveTrain_right1 = new WPI_TalonSRX(3);
+		DriveTrain_right1 = new Talon(3);
 		
-		DriveTrain_right2 = new WPI_TalonSRX(4);
+		DriveTrain_right2 = new Talon(4);
 		
-		DriveTrain_right3 = new WPI_TalonSRX(5);
+		DriveTrain_right3 = new Talon(5);
 		
 		DriveTrain_Left = new SpeedControllerGroup(
 				DriveTrain_left1,DriveTrain_left2,DriveTrain_left3);
@@ -87,16 +85,10 @@ public class RobotMap {
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
-		Arm_LowerSolenoid = new DoubleSolenoid(2,3);
+	}
+
+	private static void whenPressed() {
+		// TODO Auto-generated method stub
 		
-		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
-		
-		Arm_Motor = new Talon(0);
-		
-		Arm_LowerLimit = new DigitalInput(4);
-		
-		Arm_MiddleLimit = new DigitalInput(5);
-		
-		Arm_UpperLimit = new DigitalInput(6);
 	}
 }
