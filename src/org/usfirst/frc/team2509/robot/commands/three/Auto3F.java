@@ -19,11 +19,11 @@ public class Auto3F extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	dt.driveForward(197); //Drive forward 197 inches
+    	dt.driveForward(240); //Drive forward 197 inches
     	Timer.delay(2); //Wait 2 seconds
     	dt.rotate(-90.0); //Turn right 90 degrees
     	Timer.delay(2.0); //Wait 2 seconds
-    	dt.driveForward(80); //Drive forward 80 inches
+    	dt.driveForward(60); //Drive forward 80 inches
     	Timer.delay(2.0); //Wait 2 seconds
     	dt.rotate(-90.0); //Turn left 90 degrees
     	

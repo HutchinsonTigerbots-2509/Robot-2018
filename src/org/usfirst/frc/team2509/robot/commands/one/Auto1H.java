@@ -15,9 +15,10 @@ public class Auto1H extends Command {
         // eg. requires(chassis);
     	driveTrain.driveForward(240);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(240);
+    	driveTrain.driveForward(270);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(60);
+    	driveTrain.driveForward(120);
+    	driveTrain.rotate(-90);
     }
     
 

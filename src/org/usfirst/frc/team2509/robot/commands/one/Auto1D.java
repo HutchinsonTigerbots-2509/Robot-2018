@@ -3,7 +3,6 @@ package org.usfirst.frc.team2509.robot.commands.one;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -17,13 +16,13 @@ public class Auto1D extends Command {
     	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
 //    	Timer.delay(2.5);
-    	driveTrain.driveForward(220);
+    	driveTrain.driveForward(270);
     	driveTrain.rotate(-90);
 //    	Timer.delay(2.5);
-    	driveTrain.driveForward(78);
+    	driveTrain.driveForward(135);
     	driveTrain.rotate(-90);
 //    	Timer.delay(2.5);
-    	driveTrain.driveForward(4);
+    	driveTrain.driveForward(5);
 //    	driveTrain.driveForward(50);
     }
 

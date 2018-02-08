@@ -15,9 +15,9 @@ public class Auto1B extends Command {
         // eg. requires(chassis);
     	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(168);
+    	driveTrain.driveForward(210);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(39);
+    	driveTrain.driveForward(70);
     }
 
     // Called just before this Command runs the first time

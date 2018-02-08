@@ -18,7 +18,7 @@ public class Auto1C extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(140.0); //Drive forward 140 inches
+    dt.driveForward(180.0); //Drive forward 140 inches
     dt.rotate(90); //Turn right 92 degrees
 //    dt.driveForward(10.0); //Drive forward 20 inches
     }

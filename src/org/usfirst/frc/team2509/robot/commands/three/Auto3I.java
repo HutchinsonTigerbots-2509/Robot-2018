@@ -20,9 +20,9 @@ public class Auto3I extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(230);
+    dt.driveForward(270);
     dt.rotate(-90);
-    dt.driveForward(43);
+    dt.driveForward(270);
     dt.rotate(73);
     
      
