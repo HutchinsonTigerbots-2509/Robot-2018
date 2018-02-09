@@ -56,7 +56,7 @@ public class Robot extends TimedRobot{
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
-		DriveTrain.initNavX();
+
 	}
 
 	/**

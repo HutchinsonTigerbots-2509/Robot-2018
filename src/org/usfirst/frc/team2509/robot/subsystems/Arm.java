@@ -27,15 +27,19 @@ public class Arm extends Subsystem {
     }
     public void extendUpper() {
     	Upper.set(DoubleSolenoid.Value.kForward);
+//    	Upper.set(DoubleSolenoid.Value.kOff);
     }
     public void retractUpper() {
     	Upper.set(DoubleSolenoid.Value.kReverse);
+//    	Upper.set(DoubleSolenoid.Value.kOff);
     }
     public void extendLower() {
     	Lower.set(DoubleSolenoid.Value.kForward);
+//    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void rectractLower() {
     	Lower.set(DoubleSolenoid.Value.kReverse);
+//    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void High() {
     	while(UpperLimit.get()) Motor.set(.5);
