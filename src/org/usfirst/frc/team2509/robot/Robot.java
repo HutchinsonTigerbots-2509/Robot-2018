@@ -9,8 +9,7 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
+import org.usfirst.frc.team2509.robot.commands.one.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -90,7 +89,7 @@ public class Robot extends TimedRobot{
 	@Override
 	public void autonomousInit() {
 //		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(),DriverStation.getInstance().getGameSpecificMessage());
-		autonomousCommand = new Auto1I();
+		autonomousCommand = new Auto1A();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
