@@ -42,15 +42,15 @@ public class Arm extends Subsystem {
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void High() {
-    	while(UpperLimit.get()) Motor.set(.5);
+    	while(UpperLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
     public void Middle() {
-    	while(MiddleLimit.get()) Motor.set(.5);
+    	while(MiddleLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
     public void Down(){   
-    	while(LowerLimit.get()) Motor.set(-.5);
+    	while(LowerLimit.get()) Motor.set(-1);
     	Motor.set(0);
     }
     public DoubleSolenoid getUpper() {
@@ -62,6 +62,14 @@ public class Arm extends Subsystem {
     public VictorSP getMotor() {
     	return Motor;
     }
-
+    public DigitalInput getLowerLimit() {
+    	return LowerLimit;
+    }
+    public DigitalInput getMiddleLimit() {
+    	return MiddleLimit;
+    }
+    public DigitalInput getUpperLimit() {
+    	return UpperLimit;
+    }
 }
 

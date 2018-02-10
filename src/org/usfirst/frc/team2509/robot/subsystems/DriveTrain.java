@@ -89,7 +89,7 @@ public class DriveTrain extends Subsystem{
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	sensorReset();
     	Timer.delay(0.1);
-    	while((RightEncoder.get()-LeftEncoder.get())/2<=target) {
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
     		Drive.arcadeDrive(0.5, NavX.getAngle()*(0.15));
     	}
     	Drive.tankDrive(0, 0);

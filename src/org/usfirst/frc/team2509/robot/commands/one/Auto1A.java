@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Auto1A extends Command {
 	DriveTrain dt = Robot.drivetrain;
+	Arm arm = Robot.arm;
     public Auto1A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,6 +22,9 @@ public class Auto1A extends Command {
     	dt.driveForward(90); //Drive forward 66 inches
         dt.rotate(90.0); //Turn right 90 degrees
         dt.driveForward(58.0); //Drive forward 70 inches
+        arm.extendLower();
+    	arm.High();
+    	arm.extendUpper();
         dt.rotate(-90.0); //Turn left 78 degrees
         dt.driveForward(12);
     }

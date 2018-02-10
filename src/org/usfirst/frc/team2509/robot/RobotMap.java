@@ -61,6 +61,7 @@ public class RobotMap {
 		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
 		DriveTrain_RightEncoder = new Encoder(2,3);
+		DriveTrain_RightEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
 		DriveTrain_NavX = new AHRS(SPI.Port.kMXP);

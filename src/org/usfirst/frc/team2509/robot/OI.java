@@ -102,6 +102,9 @@ public class OI {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getNavX().getAngle());
+			SmartDashboard.putBoolean("Lower Limit", Robot.arm.getLowerLimit().get());
+			SmartDashboard.putBoolean("Middle Limit", Robot.arm.getMiddleLimit().get());
+			SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit().get());
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){
