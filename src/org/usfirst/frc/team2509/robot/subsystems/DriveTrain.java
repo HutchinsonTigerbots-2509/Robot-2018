@@ -174,6 +174,51 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
+    public void driveBackward(double targetDistance) {
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	while((RightEncoder.get()+LeftEncoder.get())/2<=(target*(-1))) {
+    		Drive.arcadeDrive(-0.5, Gyro.getAngle()*(0.1));
+    	}
+    	Drive.tankDrive(0, 0);
+    }
+    public void AccelMark3(double targetDistance) {
+    	sensorReset();
+    	double wheelDiameter = 6;
+    	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
+    	Timer.delay(0.1);
+    	double CurrentDistance = ((RightEncoder.getDistance()+LeftEncoder.getDistance())/2);
+    	double MinVolts = 0.3;
+    	double MaxVolts = 0.9;
+    	double BacklashRate = 0.005;
+    	double AccelRate = 0.05;
+    	double DeccelRate = 0.03;
+    	double Volts = 0.00;
+    	double GyroGain = 0.1;
+    	while (Volts < (MinVolts/2)){
+    		Drive.arcadeDrive(Volts, Gyro.getAngle()*(GyroGain));
+    		Timer.delay(BacklashRate);
+    		Volts = Volts + (MinVolts/20);
+    	}
+    	Volts = MinVolts;
+    	while(CurrentDistance < target/2) {
+    		Drive.arcadeDrive(Math.min(MaxVolts, Volts), Gyro.getAngle()*(GyroGain));
+    		Volts = Volts + (AccelRate*CurrentDistance);
+    	}
+    	while(CurrentDistance < target) {
+    		if(Volts >= MaxVolts) {
+    			Drive.arcadeDrive(MaxVolts, Gyro.getAngle()*(GyroGain));
+    			Volts = Volts-(DeccelRate*(target-CurrentDistance));
+    		}
+    		else {
+    			Drive.arcadeDrive(Math.max(Volts, MinVolts), Gyro.getAngle()*(GyroGain));
+    			Volts = Volts-(DeccelRate*(target-CurrentDistance));
+    		}
+    	}
+    	Drive.tankDrive(0, 0);
+    }
     
     /**
      * 

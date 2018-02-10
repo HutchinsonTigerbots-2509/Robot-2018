@@ -8,7 +8,9 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -17,8 +19,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -49,6 +49,7 @@ public class RobotMap {
 	public static DigitalInput Arm_LowerLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
+	public static DigitalInput Grippers;
 	
 	/**
 	 * 
