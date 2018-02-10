@@ -1,23 +1,40 @@
-package org.usfirst.frc.team2509.robot.commands;
+package org.usfirst.frc.team2509.robot.commands.two;
 
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Auto1B extends Command {
+public class Auto2X extends Command {
+
 	DriveTrain driveTrain = Robot.drivetrain;
-    public Auto1B() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	
+	//so this is the very primitive version of 2x, basically without the gyro turn 
+    public Auto2X() {
+       
     	driveTrain.driveForward(30);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(180);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(105);
+    	driveTrain.driveForward(10);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(25);
+    	Timer.delay(3);
+    	
+    	driveTrain.driveForward(-30);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(90);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(135);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(10);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(10);
+
+    	// Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

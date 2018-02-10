@@ -9,11 +9,13 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3J;
+import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,8 +46,8 @@ public class OI {
 	public String DE3 = "3DE";
 	public String GJ3 = "3GJ";
 	private Command autoCommand;
+	private JoystickButton GripButton;
 	
-	private JoystickButton Extend;
 	
 	/**
 	 * CREATING BUTTONS - 
@@ -79,6 +81,8 @@ public class OI {
 		MidArmButton.whileHeld(new ArmMid());
 		HighArmButton = new JoystickButton(OperatorStick, 4);
 		HighArmButton.whileHeld(new ArmHigh());
+		GripButton = new JoystickButton(OperatorStick, 1);
+		GripButton.toggleWhenPressed(new Grip());
 		chooser.addDefault("Default Auto", defaultAuto);
 			chooser.addObject("1X", X1);
 			chooser.addObject("1AB", AB1);
@@ -90,9 +94,8 @@ public class OI {
 			chooser.addObject("3AB", AB3);
 			chooser.addObject("3DE", DE3);
 			chooser.addObject("3GJ", GJ3);
-			SmartDashboard.putData("Auto choices", chooser);
+		SmartDashboard.putData("Auto choices", chooser);
 			
-		Extend = new JoystickButton(OperatorStick, 1);
 			
 			
 		

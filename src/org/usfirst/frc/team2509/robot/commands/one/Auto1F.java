@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2509.robot.commands;
+package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
@@ -8,24 +8,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Auto2A extends Command {
+public class Auto1F extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
-	public Auto2A() {
+    public Auto1F() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(180);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(100);
+    	driveTrain.driveForward(240);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(120);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(32);
+    	driveTrain.driveForward(195);
     	driveTrain.rotate(-90);
+    	driveTrain.driveForward(10);
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run

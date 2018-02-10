@@ -18,10 +18,11 @@ public class Auto3B extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(66); //Drive forward 66 inches
+    dt.driveForward(60); //Drive forward 66 inches
     dt.rotate(-90.0); //Turn left 90 degrees
-    dt.driveForward(70.0); //Drive forward 70 inches
-    dt.rotate(78.0); //Turn right 78 degrees
+    dt.driveForward(240); //Drive forward 70 inches
+    dt.rotate(90); //Turn right 78 degrees
+    dt.driveForward(120);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -108,5 +108,7 @@ public class RobotMap {
 		Arm_MiddleLimit = new DigitalInput(5);
 		
 		Arm_UpperLimit = new DigitalInput(6);
+		
+		Gripper = new DoubleSolenoid(6, 7);
 	}
 }
