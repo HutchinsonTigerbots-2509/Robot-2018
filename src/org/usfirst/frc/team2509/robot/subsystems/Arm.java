@@ -58,6 +58,14 @@ public class Arm extends Subsystem {
     public VictorSP getMotor() {
     	return Motor;
     }
+    public DigitalInput getLowerLimit() {
+    	return LowerLimit;
+    }public DigitalInput getMiddleLimit() {
+    	return MiddleLimit;
+    }
+    public DigitalInput getUpperLimit() {
+    	return UpperLimit;
+    }
 
 }
 

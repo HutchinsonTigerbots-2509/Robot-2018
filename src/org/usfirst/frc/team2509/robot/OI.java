@@ -81,17 +81,17 @@ public class OI {
 		HighArmButton = new JoystickButton(OperatorStick, 4);
 		HighArmButton.whileHeld(new ArmHigh());
 		chooser.addDefault("Default Auto", defaultAuto);
-			chooser.addObject("1X", X1);
-			chooser.addObject("1AB", AB1);
-			chooser.addObject("1CF", CF1);
-			chooser.addObject("1IH", IH1);
-			chooser.addObject("2X", X2);
-			chooser.addObject("2AB", AB2);
-			chooser.addObject("2CD", CD2);
-			chooser.addObject("3AB", AB3);
-			chooser.addObject("3DE", DE3);
-			chooser.addObject("3GJ", GJ3);
-			SmartDashboard.putData("Auto choices", chooser);
+		chooser.addObject("1X", X1);
+		chooser.addObject("1AB", AB1);
+		chooser.addObject("1CF", CF1);
+		chooser.addObject("1IH", IH1);
+		chooser.addObject("2X", X2);
+		chooser.addObject("2AB", AB2);
+		chooser.addObject("2CD", CD2);
+		chooser.addObject("3AB", AB3);
+		chooser.addObject("3DE", DE3);
+		chooser.addObject("3GJ", GJ3);
+		SmartDashboard.putData("Auto choices", chooser);
 			
 			
 		
@@ -106,6 +106,9 @@ public class OI {
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
 			SmartDashboard.putNumber("GyroRate", Robot.drivetrain.getGyro().getRawGyroX());
 			SmartDashboard.putNumber("Accel", Robot.drivetrain.getGyro().getRawAccelY());
+			SmartDashboard.putBoolean("Lower Limit", Robot.arm.getLowerLimit().get());
+			SmartDashboard.putBoolean("Middle Limit", Robot.arm.getMiddleLimit().get());
+			SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit().get());
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){
