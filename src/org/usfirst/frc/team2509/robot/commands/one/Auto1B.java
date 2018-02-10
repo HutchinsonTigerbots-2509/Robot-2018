@@ -18,9 +18,9 @@ public class Auto1B extends Command {
     	driveTrain.driveForward(60);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(168);
-    	arm.extendLower();
-    	arm.High();
-    	arm.extendUpper();
+//    	arm.extendLower();
+//    	arm.High();
+//    	arm.extendUpper();
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(39);
     }

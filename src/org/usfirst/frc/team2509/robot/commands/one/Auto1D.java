@@ -23,9 +23,9 @@ public class Auto1D extends Command {
     	driveTrain.rotate(-90);
 //    	Timer.delay(2.5);
     	driveTrain.driveForward(78);
-    	arm.extendLower();
-    	arm.High();
-    	arm.extendUpper();
+//    	arm.extendLower();
+//    	arm.High();
+//    	arm.extendUpper();
     	driveTrain.rotate(-90);
 //    	Timer.delay(2.5);
     	driveTrain.driveForward(4);

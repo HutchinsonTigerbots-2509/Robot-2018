@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -31,6 +32,15 @@ public class DriveTrain extends Subsystem{
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
+	
+
+	static final double kP = 0.03;
+	static final double kI = 0.00;
+	static final double kD = 0.00;
+	static final double kF = 0.00;
+	
+	static final double kToleranceDegrees = 2.0f;
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void initDefaultCommand() {

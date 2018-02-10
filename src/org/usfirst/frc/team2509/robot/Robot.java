@@ -89,7 +89,7 @@ public class Robot extends TimedRobot{
 	@Override
 	public void autonomousInit() {
 //		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(),DriverStation.getInstance().getGameSpecificMessage());
-		autonomousCommand = new Auto1A();
+		autonomousCommand = new Auto1D();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
