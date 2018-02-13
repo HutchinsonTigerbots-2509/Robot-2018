@@ -17,11 +17,11 @@ public class Auto2D extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(60);
+    	driveTrain.driveForward(45);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(120);
+    	driveTrain.driveForward(71);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(120);
+    	driveTrain.driveForward(80);
     	driveTrain.rotate(-90);
     	
     }

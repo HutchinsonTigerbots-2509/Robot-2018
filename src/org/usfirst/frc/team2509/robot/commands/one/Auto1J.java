@@ -13,9 +13,9 @@ public class Auto1J extends Command {
     public Auto1J() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(270);
+    	driveTrain.driveForward(210);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(270);
+    	driveTrain.driveForward(210);
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(90);
     	driveTrain.rotate(90);

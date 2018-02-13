@@ -103,12 +103,16 @@ public class OI {
 		while(true) {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
+			SmartDashboard.putNumber("Left DisEncoder", Robot.drivetrain.getLeftEncoder().getDistance());
+			SmartDashboard.putNumber("Right DisEncoder", Robot.drivetrain.getRightEncoder().getDistance());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
 			SmartDashboard.putNumber("GyroRate", Robot.drivetrain.getGyro().getRawGyroX());
 			SmartDashboard.putNumber("Accel", Robot.drivetrain.getGyro().getRawAccelY());
 			SmartDashboard.putBoolean("Lower Limit", Robot.arm.getLowerLimit().get());
 			SmartDashboard.putBoolean("Middle Limit", Robot.arm.getMiddleLimit().get());
 			SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit().get());
+    		SmartDashboard.putNumber("Left Motors", Robot.drivetrain.getLeft().get());
+    		SmartDashboard.putNumber("Right Motors", Robot.drivetrain.getRight().get());
 		}
 	});
 	public Command getAutonomous(String autoChoice, String gameData){

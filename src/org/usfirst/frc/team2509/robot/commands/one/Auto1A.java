@@ -17,11 +17,10 @@ public class Auto1A extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	dt.driveForward(140); //Drive forward 66 inches
+    	dt.driveForward(75); //Drive forward 66 inches
         dt.rotate(90.0); //Turn right 90 degrees
-        dt.driveForward(60.0); //Drive forward 70 inches
+        dt.driveForward(45.0); //Drive forward 70 inches
         dt.rotate(-90.0); //Turn left 78 degrees
-        dt.driveForward(12);
     }
 
     // Called repeatedly when this Command is scheduled to run

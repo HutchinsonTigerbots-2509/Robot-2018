@@ -13,11 +13,11 @@ public class Auto1H extends Command {
     public Auto1H() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(240);
+    	driveTrain.driveForward(220);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(270);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(120);
+    	driveTrain.driveForward(50);
     	driveTrain.rotate(-90);
     }
     

@@ -14,16 +14,14 @@ public class Auto1I extends Command {
     public Auto1I() {
     	// Use requires() here to declare subsystem dependencies
     	// eg. requires(chassis);
-    	driveTrain.driveForward(270);
+    	driveTrain.driveForward(285);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(218);
   
     }
     
     // Called just before this Command runs the first time
     protected void initialize() {
     }
-
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }

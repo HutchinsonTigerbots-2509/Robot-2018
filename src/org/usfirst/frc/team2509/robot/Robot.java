@@ -18,6 +18,7 @@ import org.usfirst.frc.team2509.robot.commands.one.Auto1E;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1F;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1G;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1H;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1J;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
@@ -28,6 +29,7 @@ import org.usfirst.frc.team2509.robot.commands.three.Auto3F;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3G;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3H;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3I;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3J;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2A;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
@@ -62,44 +64,7 @@ public class Robot extends TimedRobot{
 	public static Arm arm;
 	public Command autonomousCommand;
 	public Command operatorDrive;
-	public Command AccelTest;
-	public Command Auto1I;
-	public Command Auto1G;
-	public Command Auto1A;
-	public Command Auto1B;
-	public Command Auto1C;
-	public Command Auto1D;
-	public Command Auto1F;
-	public Command Auto1H;
-	public Command Auto1J;
-	public Command Auto2A;
-	public Command Auto2B;
-	public Command Auto2C;
-	public Command Auto2D;
-	public Command Auto2E;
-	public Command Auto2F;
-	public Command Auto2H;
-	public Command Auto2I;
-	public Command Auto2G;
-	public Command Auto2J;
-	public Command Auto3B;
-	public Command Auto3A;
-	public Command Auto3C;
-	public Command Auto3D;
-	public Command Auto3E;
-	public Command Auto3F;
-	public Command Auto3G;
-	public Command Auto3I;
-	public Command Auto1E;
-	public Command Auto3H;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
-//	public Command Auto;
+
 
 
 //github.com/HutchinsonTigerbots-2509/Robot-2018.git
@@ -121,45 +86,6 @@ public class Robot extends TimedRobot{
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
-//		AccelTest = new AccelTest();
-//		Auto1A = new Auto1A();
-//		Auto1B = new Auto1B();
-//		Auto1C = new Auto1C();
-//		Auto1D = new Auto1D();
-//		Auto1F = new Auto1F();
-//		Auto1G = new Auto1G();
-//		Auto1H = new Auto1H();
-//		Auto1E = new Auto1E();
-//		Auto1J = new Auto1J();
-//		Auto2A = new Auto2A();
-//		Auto2B = new Auto2B();
-//		Auto2C = new Auto2C();
-//		Auto2D = new Auto2D();
-//		Auto2E = new Auto2E();
-//		Auto2F = new Auto2F();
-//		Auto2G = new Auto2G();
-//		Auto2H = new Auto2H();
-//		Auto2I = new Auto2I();
-//		Auto2J = new Auto2J();
-//		Auto3A = new Auto3A();
-//		Auto3B = new Auto3B();
-//		Auto3C = new Auto3C();
-//		Auto3D = new Auto3D();
-//		Auto3E = new Auto3E();
-//		Auto3F = new Auto3F();
-//		Auto3G = new Auto3G();
-//		Auto3I = new Auto3I();
-//		Auto3H = new Auto3H();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
-//		Auto = new Auto();
 		oi.UpdateDashboard.start();
 	}
 
@@ -192,14 +118,15 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
+//		RobotMap.comp.stop();
 //		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
 //				DriverStation.getInstance().getGameSpecificMessage());
 		
-//		autonomousCommand = AccelTest;
-//		autonomousCommand = new Auto1A();
+//		autonomousCommand = new AccelTest();
+		autonomousCommand = new Auto3J();
 //		autonomousCommand = new Auto1B();
 //		autonomousCommand = new Auto1C();
-		autonomousCommand = new Auto1D();
+//		autonomousCommand = new Auto1D();
 //		autonomousCommand = Auto1E;
 //		autonomousCommand = Auto1F;
 //		autonomousCommand = Auto1G;

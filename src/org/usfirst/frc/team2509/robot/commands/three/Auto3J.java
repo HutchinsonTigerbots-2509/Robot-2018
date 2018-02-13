@@ -14,7 +14,7 @@ public class Auto3J extends Command {
     public Auto3J() {
     	// Use requires() here to declare subsystem dependencies
     	// eg. requires(chassis);
-    	driveTrain.driveForward(360);
+    	driveTrain.driveForward(270);
     	driveTrain.rotate(-90);
   
     }

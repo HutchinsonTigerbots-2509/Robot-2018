@@ -14,10 +14,11 @@ public class Auto1E extends Command {
     	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(240);
+    	driveTrain.driveForward(210);
     	driveTrain.rotate(90);
-    	driveTrain.driveForward(90);
+    	driveTrain.driveForward(50);
     	driveTrain.rotate(90);
+    	driveTrain.driveForward(2);
     }
 
     // Called just before this Command runs the first time

@@ -11,6 +11,7 @@ package org.usfirst.frc.team2509.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -51,10 +52,13 @@ public class RobotMap {
 	public static DigitalInput Arm_UpperLimit;
 	public static DigitalInput Grippers;
 	
+	public static Compressor comp;
+	
 	/**
 	 * 
 	 */
 	public static void init(){
+		comp = new Compressor();
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
@@ -64,6 +68,7 @@ public class RobotMap {
 		
 		DriveTrain_RightEncoder = new Encoder(2,3);
 		DriveTrain_RightEncoder.setDistancePerPulse(0.0179136);
+		DriveTrain_RightEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
 		

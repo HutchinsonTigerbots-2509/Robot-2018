@@ -19,7 +19,7 @@ public class AccelTest extends Command {
     protected void initialize() {
 //    	dt.AccDriveMark2(250);
 //    	dt.driveForward(250);
-    	dt.AccelMark3(250);
+    	dt.AccelMark3(125);
     }
 
     // Called repeatedly when this Command is scheduled to run
