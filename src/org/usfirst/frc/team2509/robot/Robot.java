@@ -9,6 +9,7 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.commands.Turn90C;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -52,7 +53,7 @@ public class Robot extends TimedRobot {
 // 		chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", chooser);
 		oi.UpdateDashboard.start();
-		drivetrain.initNavX();
+		
 //		autonomousCommand = new AutonomousCommand();
 	}
 
@@ -84,8 +85,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = chooser.getSelected();
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), DriverStation.getInstance().getGameSpecificMessage());
+//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), DriverStation.getInstance().getGameSpecificMessage());
+		autonomousCommand = new Turn90C();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected){ 
@@ -118,10 +119,11 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null) {
-			autonomousCommand.cancel();
-		}
-		operatorDrive.start();
+//		if (autonomousCommand != null) {
+//			autonomousCommand.cancel();
+//		}
+//		operatorDrive.start();
+		drivetrain.rotateNavX(isEnabled());
 	}
 
 	/**
@@ -129,7 +131,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+//		Scheduler.getInstance().run();
 	}
 
 	/**

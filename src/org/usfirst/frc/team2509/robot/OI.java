@@ -64,7 +64,7 @@ public class OI {
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 		ShiftButton.whenPressed(new ShiftDrive());
 		Turn90 = new JoystickButton(OperatorStick, 3);
-		Turn90.whenPressed(new Turn90C());
+		Turn90.whileHeld(new Turn90C());
 		
 		chooser.addDefault("Default Auto", defaultAuto);
 			chooser.addObject("Blue 1", Blue1);

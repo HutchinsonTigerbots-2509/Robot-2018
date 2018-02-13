@@ -1,7 +1,9 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -26,12 +28,12 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	public static AHRS Gyro = RobotMap.NavX;
-	private static Talon Left_1 = RobotMap.DriveTrain_left1;
-	private static Talon Left_2 = RobotMap.DriveTrain_left2;
-	private static Talon Left_3 = RobotMap.DriveTrain_left3;
-	private static Talon Right_1 = RobotMap.DriveTrain_right1;
-	private static Talon Right_2 = RobotMap.DriveTrain_right2;
-	private static Talon Right_3 = RobotMap.DriveTrain_right3;
+	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
+	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
+	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
+	private static WPI_TalonSRX Right_1 = RobotMap.DriveTrain_right1;
+	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_right2;
+	private static WPI_TalonSRX Right_3 = RobotMap.DriveTrain_right3;
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
@@ -64,10 +66,14 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * Gets angle from the Gyro to tell the motors to make a specific turn
      * @param Angle
      */
-    public void rotateNavX(double targetAngle) {
-    	turnController.setSetpoint(0.0f);
-    	boolean rotateToAngle = true;
-    } 
+    public void rotateNavX(boolean isEnabled) {
+    	while(isEnabled) {
+    		turnController.setSetpoint(90.0f);
+    		turnController.enable();
+            double currentRotationRate = rotateToAngleRate;
+    	}
+    }
+    
     public void rotate(double targetAngle) {
     	if(Gyro.getAngle()<targetAngle) {
     		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(0.5, -0.5);
@@ -162,48 +168,48 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * 
      * @return DriveTrain_Left_1
      */
-    public Talon getLeft1() {
+    public WPI_TalonSRX getLeft1() {
     	return Left_1;
     }
     /**
      * 
      * @return DriveTrain_Left_2
      */
-    public Talon getLeft2() {
+    public WPI_TalonSRX getLeft2() {
     	return Left_2;
     }
     /**
      * 
      * @return DriveTrain_Left_3
      */
-    public Talon getLeft3() {
+    public WPI_TalonSRX getLeft3() {
     	return Left_3;
     }
     /**
      * 
      * @return DriveTrain_Right_1
      */
-    public Talon getRight1() {
+    public WPI_TalonSRX getRight1() {
     	return Right_1;
     }
     /**
      * 
      * @return DriveTrain_Right_2
      */
-    public Talon getRight2() {
+    public WPI_TalonSRX getRight2() {
     	return Right_2;
     }
     /**
      * 
      * @return DriveTrain_Right_3
      */
-    public Talon getRight3() {
+    public WPI_TalonSRX getRight3() {
     	return Right_3;
     }
 	@Override
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
-		
+		rotateToAngleRate = output;
 	}
 
 }
