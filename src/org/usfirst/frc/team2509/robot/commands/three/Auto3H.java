@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Auto3H extends Command {
-	DriveTrain dt = Robot.drivetrain;
+	DriveTrain driveTrain = Robot.drivetrain;
 
     public Auto3H() {
         // Use requires() here to declare subsystem dependencies
@@ -20,15 +20,10 @@ public class Auto3H extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(230); //Drive forward 230 inches
-    dt.rotate(-90); //Turn left 90 degrees	
-    dt.driveForward(43); //Drive forward 43 inches
-    dt.rotate(73); //Turn right 73 degrees
-    
-     
-    
-    	
-    	
+	    driveTrain.driveForward(202);//Drive Forward for 202 inches
+	    driveTrain.rotate(-90);//Rotate to the left
+	    driveTrain.driveForward(43);//Drive Forward for 43 inches
+	    driveTrain.rotate(-90);//Rotate to the right
     }
 
     // Called repeatedly when this Command is scheduled to run

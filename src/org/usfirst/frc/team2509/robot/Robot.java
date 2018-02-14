@@ -18,6 +18,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.kauailabs.navx.frc.AHRS;
+
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -25,13 +28,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends TimedRobot{
+	
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
-	Command autonomousCommand;
+	public static AHRS ahrs;
+	public Command autonomousCommand;
 	public Command operatorDrive;
-//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -42,15 +46,12 @@ public class Robot extends TimedRobot {
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
-		// OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
-        // constructed yet. Thus, their requires() statements may grab null
-        // pointers. Bad news. Don't move it.
+		
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
-//		autonomousCommand = new AutonomousCommand();
+
 	}
 
 	/**
@@ -79,11 +80,13 @@ public class Robot extends TimedRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
+	
 	@Override
 	public void autonomousInit() {
+//		RobotMap.comp.stop();
 		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
 				DriverStation.getInstance().getGameSpecificMessage());
-
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
