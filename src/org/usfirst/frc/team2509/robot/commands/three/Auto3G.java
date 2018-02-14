@@ -11,17 +11,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Auto3G extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
     public Auto3G() {
-    	driveTrain.driveForward(240);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(222);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(90);
-        // Use requires() here to declare subsystem dependencies
+    	// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(240);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(222);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(90);
     }
 
     // Called repeatedly when this Command is scheduled to run

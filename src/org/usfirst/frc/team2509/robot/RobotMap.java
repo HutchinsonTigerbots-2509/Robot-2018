@@ -8,9 +8,6 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -21,6 +18,9 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -28,7 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * floating around.
  */
 public class RobotMap {
-
+	
+	public static Compressor comp;
 	//Drivetran Variable
 	public static DoubleSolenoid DriveTrain_Shifter;
 	public static Encoder DriveTrain_LeftEncoder;
@@ -50,9 +51,19 @@ public class RobotMap {
 	public static DigitalInput Arm_LowerLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
-	public static DigitalInput Grippers;
+	//Gripper Variable
+	public static DigitalInput Gripper_Limit;
+	public static DoubleSolenoid Gripper_Piston;
+	//Intake Variable
+	public static DoubleSolenoid Intake_Piston;
+	public static VictorSP Intake_LeftMotor;
+	public static VictorSP Intake_RightMotor;
+	//Wrist Variable
+	public static VictorSP Wrist;
+	public static DigitalInput Wrist_UpperLimit;
+	public static DigitalInput Wrist_LowerLimit;
 	
-	public static Compressor comp;
+	
 	
 	/**
 	 * 
@@ -71,9 +82,9 @@ public class RobotMap {
 		DriveTrain_RightEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
-		
 		DriveTrain_Gyro = new AHRS(SPI.Port.kMXP);
 		SmartDashboard.putNumber("Gyro", DriveTrain_Gyro.getAngle());
+		SmartDashboard.putNumber("Accel", DriveTrain_Gyro.getRawAccelY());
 		
 		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
@@ -95,7 +106,7 @@ public class RobotMap {
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
-
+		//Arm Variable Initialize
 		Arm_LowerSolenoid = new DoubleSolenoid(2,3);
 		
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
@@ -103,9 +114,34 @@ public class RobotMap {
 		Arm_Motor = new VictorSP(0);
 		
 		Arm_LowerLimit = new DigitalInput(4);
+		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
 		
 		Arm_MiddleLimit = new DigitalInput(5);
+		SmartDashboard.putBoolean("Arm Middle", Arm_MiddleLimit.get());
 		
 		Arm_UpperLimit = new DigitalInput(6);
+		SmartDashboard.putBoolean("Arm Upper", Arm_UpperLimit.get());
+		
+		//Gripper Variable Initialize
+		Gripper_Limit = new DigitalInput(9);
+		SmartDashboard.putBoolean("Gripper", Gripper_Limit.get());
+		
+		Gripper_Piston = new DoubleSolenoid(6,7);
+		
+		//Intake Variable Initialize
+		Intake_Piston = new DoubleSolenoid(1, 0, 1);
+		
+		Intake_LeftMotor = new VictorSP(1);
+		
+		Intake_RightMotor = new VictorSP(2);
+		
+		//Wrist Variable Initialize
+		Wrist = new VictorSP(3);
+		
+		Wrist_LowerLimit = new DigitalInput(10);
+		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
+		
+		Wrist_UpperLimit = new DigitalInput(11);
+		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 	}
 }

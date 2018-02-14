@@ -13,16 +13,17 @@ public class Auto3A extends Command {
     public Auto3A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(180);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(40);
+    	
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(60);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(180);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(40);
     }
 
     // Called repeatedly when this Command is scheduled to run

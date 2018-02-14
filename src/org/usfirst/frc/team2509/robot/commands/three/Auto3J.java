@@ -13,14 +13,13 @@ public class Auto3J extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
     public Auto3J() {
     	// Use requires() here to declare subsystem dependencies
-    	// eg. requires(chassis);
-    	driveTrain.driveForward(270);
-    	driveTrain.rotate(-90);
-  
+    	// eg. requires(chassis); 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(270);
+    	driveTrain.rotate(-90);
     }
 
     // Called repeatedly when this Command is scheduled to run

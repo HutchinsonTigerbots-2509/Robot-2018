@@ -24,6 +24,11 @@ public class Auto1H extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(210);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(18);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(20);
     }
 
     // Called repeatedly when this Command is scheduled to run

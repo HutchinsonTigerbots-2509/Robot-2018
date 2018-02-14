@@ -20,10 +20,10 @@ public class Auto3H extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    driveTrain.driveForward(300);//Drive Forward for 202 inches
-    driveTrain.rotate(-90);//Rotate to the left
-    driveTrain.driveForward(60);//Drive Forward for 43 inches
-    driveTrain.rotate(-73);//Rotate to the right
+	    driveTrain.driveForward(300);//Drive Forward for 202 inches
+	    driveTrain.rotate(-90);//Rotate to the left
+	    driveTrain.driveForward(60);//Drive Forward for 43 inches
+	    driveTrain.rotate(-73);//Rotate to the right
     }
 
     // Called repeatedly when this Command is scheduled to run
