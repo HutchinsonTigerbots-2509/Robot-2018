@@ -15,17 +15,15 @@ public class Auto1G extends Command {
     public Auto1G() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(319);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(45);
-    	arm.extendLower();
-    	arm.High();
-    	arm.extendUpper();
-    	driveTrain.rotate(-90);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(210);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(18);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(20);
     }
 
     // Called repeatedly when this Command is scheduled to run

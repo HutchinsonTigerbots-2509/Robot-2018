@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Auto1C extends Command {
-	DriveTrain dt = Robot.drivetrain;
 	Arm arm = Robot.arm;
+	DriveTrain driveTrain = Robot.drivetrain;
     public Auto1C() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -19,12 +19,9 @@ public class Auto1C extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(140.0); //Drive forward 140 inches
-//  arm.extendLower();
-//	arm.High();
-//	arm.extendUpper();
-    dt.rotate(90); //Turn right 92 degrees
-    dt.driveForward(10.0); //Drive forward 20 inches
+    	driveTrain.driveForward(140.0); //Drive forward 140 inches
+    	driveTrain.rotate(90); //Turn right 92 degrees
+    	driveTrain.driveForward(10.0); //Drive forward 20 
     }
 
     // Called repeatedly when this Command is scheduled to run

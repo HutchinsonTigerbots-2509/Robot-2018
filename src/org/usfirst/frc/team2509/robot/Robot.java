@@ -9,16 +9,16 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.one.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
-import com.kauailabs.navx.frc.AHRS;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.kauailabs.navx.frc.AHRS;
 
 
 /**
@@ -36,11 +36,6 @@ public class Robot extends TimedRobot{
 	public static AHRS ahrs;
 	public Command autonomousCommand;
 	public Command operatorDrive;
-
-
-
-//github.com/HutchinsonTigerbots-2509/Robot-2018.git
-//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -88,9 +83,10 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(),DriverStation.getInstance().getGameSpecificMessage());
-		autonomousCommand = new Auto1D();
-
+//		RobotMap.comp.stop();
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+				DriverStation.getInstance().getGameSpecificMessage());
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();

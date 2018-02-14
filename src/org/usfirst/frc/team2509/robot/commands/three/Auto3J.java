@@ -1,8 +1,9 @@
 package org.usfirst.frc.team2509.robot.commands.three;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 
 /**
@@ -13,13 +14,12 @@ public class Auto3J extends Command {
     public Auto3J() {
     	// Use requires() here to declare subsystem dependencies
     	// eg. requires(chassis);
-    	driveTrain.driveForward(480);
-    	driveTrain.rotate(-90);
-  
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(270);
+    	driveTrain.rotate(-90);
     }
 
     // Called repeatedly when this Command is scheduled to run
