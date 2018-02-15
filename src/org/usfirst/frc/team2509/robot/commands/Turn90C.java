@@ -1,20 +1,18 @@
 package org.usfirst.frc.team2509.robot.commands;
 
-import com.kauailabs.navx.frc.AHRS;
-
+import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.RobotMap;
-import org.usfirst.frc.team2509.robot.OI;
-import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+
+import com.kauailabs.navx.frc.AHRS;
 
 
 /**
  *
  */
 public class Turn90C extends Command {
- AHRS turnController =  Robot.ahrs;
+ AHRS turnController =  Robot.drivetrain.getGyro();
  DriveTrain dt = Robot.drivetrain;
 		 
     public Turn90C() {

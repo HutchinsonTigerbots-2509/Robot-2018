@@ -9,15 +9,18 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.Turn90C;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
-
-import com.kauailabs.navx.frc.AHRS;
+import org.usfirst.frc.team2509.robot.subsystems.Gripper;
+import org.usfirst.frc.team2509.robot.subsystems.Intake;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,14 +29,16 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends TimedRobot{
+	
 	public static OI oi;
 	public static DriveTrain drivetrain;
-	public static AHRS ahrs;
-	Command autonomousCommand;
+	public static Arm arm;
+	public static Gripper gripper;
+	public static Intake intake;
+	public static Wrist wrist;
+	public Command autonomousCommand;
 	public Command operatorDrive;
-	//hello
-//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,18 +48,12 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		RobotMap.init();
 		drivetrain = new DriveTrain();
-		// OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
-        // constructed yet. Thus, their requires() statements may grab null
-        // pointers. Bad news. Don't move it.
+		arm = new Arm();
+		
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-//		chooser.addDefault("Default Auto", null);
-// 		chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
-		
-//		autonomousCommand = new AutonomousCommand();
 	}
 
 	/**
@@ -83,22 +82,12 @@ public class Robot extends TimedRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
+	
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), DriverStation.getInstance().getGameSpecificMessage());
-		autonomousCommand = new Turn90C();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected){ 
-		 * 	case "My Auto": 
-		 * 		autonomousCommand = new MyAutoCommand(); 
-		 * 		break; 
-		 * 	case "Default Auto": default:
-		 * 		autonomousCommand = new ExampleCommand(); 
-		 * 		break; 
-		 * }
-		 */
-
+//		RobotMap.comp.stop();
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+				DriverStation.getInstance().getGameSpecificMessage());
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
@@ -122,8 +111,7 @@ public class Robot extends TimedRobot {
 //		if (autonomousCommand != null) {
 //			autonomousCommand.cancel();
 //		}
-//		operatorDrive.start();
-		drivetrain.rotateNavX(isEnabled());
+		operatorDrive.start();
 	}
 
 	/**

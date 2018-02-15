@@ -7,20 +7,19 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
-import org.usfirst.frc.team2509.robot.subsystems.*;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -28,12 +27,13 @@ import org.usfirst.frc.team2509.robot.subsystems.*;
  * floating around.
  */
 public class RobotMap {
-
+	
+	public static Compressor comp;
 	//Drivetran Variable
 	public static DoubleSolenoid DriveTrain_Shifter;
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
-	public static AHRS NavX;
+	public static AHRS DriveTrain_NavX;
 	public static WPI_TalonSRX DriveTrain_left1;
 	public static WPI_TalonSRX DriveTrain_left2;
 	public static WPI_TalonSRX DriveTrain_left3;
@@ -43,28 +43,48 @@ public class RobotMap {
 	public static SpeedControllerGroup DriveTrain_Left;
 	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
-
-	/**OK before you ask why I'm creating this up here instead of the method, it hates conforming to normal rules, as far as Nate 
-	*  can tell this doesn't break anything so just roll with it, OK? 
-	*/
+	//Arm Variable
+	public static DoubleSolenoid Arm_LowerSolenoid;
+	public static DoubleSolenoid Arm_UpperSolenoid;
+	public static VictorSP Arm_Motor;
+	public static DigitalInput Arm_LowerLimit;
+	public static DigitalInput Arm_MiddleLimit;
+	public static DigitalInput Arm_UpperLimit;
+	//Gripper Variable
+	public static DigitalInput Gripper_Limit;
+	public static DoubleSolenoid Gripper_Piston;
+	//Intake Variable
+	public static DoubleSolenoid Intake_Piston;
+	public static VictorSP Intake_LeftMotor;
+	public static VictorSP Intake_RightMotor;
+	//Wrist Variable
+	public static VictorSP Wrist;
+	public static DigitalInput Wrist_UpperLimit;
+	public static DigitalInput Wrist_LowerLimit;
 	
 	
-	static final double kToleranceDegrees = 2.0f;
+	
+	/**
+	 * 
+	 */
 	public static void init(){
+		comp = new Compressor();
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
 		DriveTrain_LeftEncoder = new Encoder(0,1);
+		DriveTrain_LeftEncoder.setDistancePerPulse(0.0179136);
 		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
 		DriveTrain_RightEncoder = new Encoder(2,3);
+		DriveTrain_RightEncoder.setDistancePerPulse(0.0179136);
+		DriveTrain_RightEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
-		
-		NavX = new AHRS(SPI.Port.kMXP);
-		NavX.reset();
-		SmartDashboard.putNumber("Gyro", NavX.getAngle());
-		
+		DriveTrain_NavX = new AHRS(SPI.Port.kMXP);
+		SmartDashboard.putNumber("Gyro", DriveTrain_NavX.getAngle());
+		SmartDashboard.putNumber("Accel", DriveTrain_NavX.getRawAccelY());
+
 		
 		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
@@ -86,7 +106,42 @@ public class RobotMap {
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
+		//Arm Variable Initialize
+		Arm_LowerSolenoid = new DoubleSolenoid(2,3);
+		
+		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
+		
+		Arm_Motor = new VictorSP(0);
+		
+		Arm_LowerLimit = new DigitalInput(4);
+		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
+		
+		Arm_MiddleLimit = new DigitalInput(5);
+		SmartDashboard.putBoolean("Arm Middle", Arm_MiddleLimit.get());
+		
+		Arm_UpperLimit = new DigitalInput(6);
+		SmartDashboard.putBoolean("Arm Upper", Arm_UpperLimit.get());
+		
+		//Gripper Variable Initialize
+		Gripper_Limit = new DigitalInput(9);
+		SmartDashboard.putBoolean("Gripper", Gripper_Limit.get());
+		
+		Gripper_Piston = new DoubleSolenoid(6,7);
+		
+		//Intake Variable Initialize
+		Intake_Piston = new DoubleSolenoid(1, 0, 1);
+		
+		Intake_LeftMotor = new VictorSP(1);
+		
+		Intake_RightMotor = new VictorSP(2);
+		
+		//Wrist Variable Initialize
+		Wrist = new VictorSP(3);
+		
+		Wrist_LowerLimit = new DigitalInput(10);
+		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
+		
+		Wrist_UpperLimit = new DigitalInput(11);
+		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 	}
-
-
 }
