@@ -27,6 +27,7 @@ import org.usfirst.frc.team2509.robot.commands.two.Auto2A;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
+import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -46,6 +47,7 @@ public class OI {
 	private JoystickButton HighArmButton;
 	private JoystickButton GripButton;
 	private JoystickButton IntakeButton;
+	private JoystickButton ClimbButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -87,15 +89,18 @@ public class OI {
 		OperatorStick = new Joystick(0);
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
-		ShiftButton.whenPressed(new ShiftDrive());
+			ShiftButton.whenPressed(new ShiftDrive());
 		MidArmButton = new JoystickButton(OperatorStick, 3);
-		MidArmButton.whileHeld(new ArmMid());
+			MidArmButton.whileHeld(new ArmMid());
 		HighArmButton = new JoystickButton(OperatorStick, 4);
-		HighArmButton.whileHeld(new ArmHigh());
+			HighArmButton.whileHeld(new ArmHigh());
 		GripButton = new JoystickButton(CoOperatorStick, 0);
-//		GripButton.toggleWhenPressed(command);
+//			GripButton.toggleWhenPressed(command);
 		IntakeButton = new JoystickButton(CoOperatorStick, 1);
-//		IntakeButton.whileHeld(command);
+//			IntakeButton.whileHeld(command);
+		ClimbButton = new JoystickButton(CoOperatorStick, 5);
+			ClimbButton.whileHeld(new ClimbUp());
+			
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);
@@ -108,6 +113,7 @@ public class OI {
 		chooser.addObject("3DE", DE3);
 		chooser.addObject("3GJ", GJ3);
 		SmartDashboard.putData("Auto choices", chooser);
+		
 			
 			
 		

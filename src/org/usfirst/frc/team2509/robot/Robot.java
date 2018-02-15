@@ -10,6 +10,7 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
+import org.usfirst.frc.team2509.robot.subsystems.Climber;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot{
 	public static DriveTrain drivetrain;
 	public static Arm arm;
 	public static AHRS ahrs;
+	public static Climber climber;
 	public Command autonomousCommand;
 	public Command operatorDrive;
 
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
+		climber = new Climber();
 		
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
