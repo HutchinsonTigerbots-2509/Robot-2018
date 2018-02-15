@@ -27,26 +27,30 @@ public class Arm extends Subsystem {
     }
     public void extendUpper() {
     	Upper.set(DoubleSolenoid.Value.kForward);
+//    	Upper.set(DoubleSolenoid.Value.kOff);
     }
     public void retractUpper() {
     	Upper.set(DoubleSolenoid.Value.kReverse);
+//    	Upper.set(DoubleSolenoid.Value.kOff);
     }
     public void extendLower() {
     	Lower.set(DoubleSolenoid.Value.kForward);
+//    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void rectractLower() {
     	Lower.set(DoubleSolenoid.Value.kReverse);
+//    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void High() {
-    	while(UpperLimit.get()) Motor.set(.5);
+    	while(UpperLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
     public void Middle() {
-    	while(MiddleLimit.get()) Motor.set(.5);
+    	while(MiddleLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
     public void Down(){   
-    	while(LowerLimit.get()) Motor.set(-.5);
+    	while(LowerLimit.get()) Motor.set(-1);
     	Motor.set(0);
     }
     public DoubleSolenoid getUpper() {
@@ -60,12 +64,12 @@ public class Arm extends Subsystem {
     }
     public DigitalInput getLowerLimit() {
     	return LowerLimit;
-    }public DigitalInput getMiddleLimit() {
+    }
+    public DigitalInput getMiddleLimit() {
     	return MiddleLimit;
     }
     public DigitalInput getUpperLimit() {
     	return UpperLimit;
     }
-
 }
 

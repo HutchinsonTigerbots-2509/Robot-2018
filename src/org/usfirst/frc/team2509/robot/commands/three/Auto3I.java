@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Auto3I extends Command {
-	DriveTrain dt = Robot.drivetrain;
+	DriveTrain driveTrain = Robot.drivetrain;
 
     public Auto3I() {
         // Use requires() here to declare subsystem dependencies
@@ -20,15 +20,10 @@ public class Auto3I extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    dt.driveForward(270);
-    dt.rotate(-90);
-    dt.driveForward(270);
-    dt.rotate(73);
-    
-     
-    
-    	
-    	
+    	driveTrain.driveForward(270);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(270);
+    	driveTrain.rotate(73);
     }
 
     // Called repeatedly when this Command is scheduled to run

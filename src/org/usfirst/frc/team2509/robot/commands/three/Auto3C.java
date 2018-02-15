@@ -13,6 +13,11 @@ public class Auto3C extends Command {
     public Auto3C() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	
+    }
+
+    // Called just before this Command runs the first time
+    protected void initialize() {
     	driveTrain.driveForward(60);
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(240);
@@ -20,10 +25,6 @@ public class Auto3C extends Command {
     	driveTrain.driveForward(90);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(30);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run

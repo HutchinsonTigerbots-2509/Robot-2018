@@ -9,19 +9,20 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Auto1D extends Command {
-	DriveTrain dt = Robot.drivetrain;
+	DriveTrain driveTrain = Robot.drivetrain;
     public Auto1D() {
        
-    	dt.driveForward(38);
-    	dt.rotate(90);
-    	dt.driveForward(200);
-    	dt.rotate(-90);
-    	dt.driveForward(72);
-    	dt.rotate(-90);
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain.driveForward(38);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(200);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(72);
+    	driveTrain.rotate(-90);
     }
 
     // Called repeatedly when this Command is scheduled to run

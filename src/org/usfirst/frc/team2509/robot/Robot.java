@@ -8,38 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.AccelTest;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1D;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1E;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1F;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1G;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1H;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1J;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3C;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3E;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3F;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3G;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3H;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3I;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3J;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2A;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2E;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2F;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2G;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2H;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2I;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2J;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
@@ -48,6 +17,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.kauailabs.navx.frc.AHRS;
 
 
 /**
@@ -62,13 +33,9 @@ public class Robot extends TimedRobot{
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
+	public static AHRS ahrs;
 	public Command autonomousCommand;
 	public Command operatorDrive;
-
-
-
-//github.com/HutchinsonTigerbots-2509/Robot-2018.git
-//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -79,14 +46,12 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
-		// OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
-        // constructed yet. Thus, their requires() statements may grab null
-        // pointers. Bad news. Don't move it.
+		
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
+
 	}
 
 	/**
@@ -119,45 +84,9 @@ public class Robot extends TimedRobot{
 	@Override
 	public void autonomousInit() {
 //		RobotMap.comp.stop();
-//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
-//				DriverStation.getInstance().getGameSpecificMessage());
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+				DriverStation.getInstance().getGameSpecificMessage());
 		
-//		autonomousCommand = new AccelTest();
-		autonomousCommand = new Auto3J();
-//		autonomousCommand = new Auto1B();
-//		autonomousCommand = new Auto1C();
-//		autonomousCommand = new Auto1D();
-//		autonomousCommand = Auto1E;
-//		autonomousCommand = Auto1F;
-//		autonomousCommand = Auto1G;
-//		autonomousCommand = Auto1H;
-//		autonomousCommand = Auto2D;
-//		autonomousCommand = Auto3A;
-//		autonomousCommand = Auto3B;
-//		autonomousCommand = Auto3C;
-//		autonomousCommand = Auto3D;
-//		autonomousCommand = Auto3E;
-//		autonomousCommand = Auto3F;
-//		autonomousCommand = Auto1G;
-//		autonomousCommand = Auto1I;
-//		autonomousCommand = Auto3H;
-//		autonomousCommand = Auto2B;
-//		autonomousCommand = Auto2F;
-//		autonomousCommand = Auto2J;
-//		autonomousCommand = Auto2H;
-//		autonomousCommand = AccelTest;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = Auto;
-//		autonomousCommand = chooser.getSelected();
-
-		
-
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
@@ -198,6 +127,4 @@ public class Robot extends TimedRobot{
 	@Override
 	public void testPeriodic() {
 	}
-
-	
 }

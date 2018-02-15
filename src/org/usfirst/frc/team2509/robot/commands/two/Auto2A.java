@@ -13,16 +13,15 @@ public class Auto2A extends Command {
 	public Auto2A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    }
+
+    // Called just before this Command runs the first time
+    protected void initialize() {
     	driveTrain.driveForward(45);
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(50);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(25);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
