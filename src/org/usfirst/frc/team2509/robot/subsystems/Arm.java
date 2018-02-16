@@ -1,11 +1,14 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -42,15 +45,31 @@ public class Arm extends Subsystem {
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void High() {
-    	while(UpperLimit.get()) Motor.set(1);
+    	while(UpperLimit.get()) {
+    		Motor.set(0.5);
+			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
+			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
+			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
+    	}
     	Motor.set(0);
     }
     public void Middle() {
-    	while(MiddleLimit.get()) Motor.set(1);
+    	while(MiddleLimit.get()) {
+    		Motor.set(0.5);
+			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
+			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
+			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
+    	}
     	Motor.set(0);
     }
     public void Down(){   
-    	while(LowerLimit.get()) Motor.set(-1);
+    	while(LowerLimit.get()) {
+    		Motor.set(-0.5);
+
+			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
+			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
+			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
+    	}
     	Motor.set(0);
     }
     public DoubleSolenoid getUpper() {

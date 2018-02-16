@@ -10,6 +10,7 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
@@ -93,8 +94,8 @@ public class OI {
 			MidArmButton.whileHeld(new ArmMid());
 		HighArmButton = new JoystickButton(OperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh());
-		//GripButton = new JoystickButton(OperatorStick, 0);
-			//GripButton.toggleWhenPressed(command);
+		GripButton = new JoystickButton(OperatorStick, 5);
+			GripButton.whileHeld(new Grip());
 		IntakeButton = new JoystickButton(OperatorStick, 1);
 			IntakeButton.whileHeld(new IntakeIn());
 		chooser.addDefault("Default Auto", defaultAuto);
@@ -108,7 +109,7 @@ public class OI {
 		chooser.addObject("3AB", AB3);
 		chooser.addObject("3DE", DE3);
 		chooser.addObject("3GJ", GJ3);
-		SmartDashboard.putData("Auto choices", chooser);
+//		SmartDashboard.putData("Auto choices", chooser);
 			
 			
 		
@@ -120,9 +121,6 @@ public class OI {
 		while(true) {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
-			SmartDashboard.putBoolean("Lower Limit", Robot.arm.getLowerLimit().get());
-			SmartDashboard.putBoolean("Middle Limit", Robot.arm.getMiddleLimit().get());
-			SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit().get());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
 			SmartDashboard.putNumber("Accel", Robot.drivetrain.getGyro().getRawAccelY());
 			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());

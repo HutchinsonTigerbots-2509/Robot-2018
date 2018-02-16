@@ -116,17 +116,17 @@ public class RobotMap {
 		Arm_LowerLimit = new DigitalInput(4);
 		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
 		
-		Arm_MiddleLimit = new DigitalInput(5);
+		Arm_MiddleLimit = new DigitalInput(6);
 		SmartDashboard.putBoolean("Arm Middle", Arm_MiddleLimit.get());
 		
-		Arm_UpperLimit = new DigitalInput(6);
+		Arm_UpperLimit = new DigitalInput(5);
 		SmartDashboard.putBoolean("Arm Upper", Arm_UpperLimit.get());
 		
 		//Gripper Variable Initialize
 		Gripper_Limit = new DigitalInput(9);
 		SmartDashboard.putBoolean("Gripper", Gripper_Limit.get());
 		
-		Gripper_Piston = new DoubleSolenoid(6,7);
+		Gripper_Piston = new DoubleSolenoid(7,6);
 		
 		//Intake Variable Initialize
 		Intake_Piston = new DoubleSolenoid(1, 0, 1);
@@ -139,10 +139,10 @@ public class RobotMap {
 		//Wrist Variable Initialize
 		Wrist = new VictorSP(1);
 		
-		Wrist_LowerLimit = new DigitalInput(10);
+		Wrist_LowerLimit = new DigitalInput(7);
 		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
 		
-		Wrist_UpperLimit = new DigitalInput(11);
+		Wrist_UpperLimit = new DigitalInput(8);
 		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 	}
 }

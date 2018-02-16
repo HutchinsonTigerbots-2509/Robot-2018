@@ -25,5 +25,13 @@ public class Gripper extends Subsystem {
     public DoubleSolenoid getPiston() {
     	return piston;
     }
+    public void extend() {
+    	piston.set(DoubleSolenoid.Value.kForward);
+    	piston.set(DoubleSolenoid.Value.kOff);
+    }
+    public void retract() {
+    	piston.set(DoubleSolenoid.Value.kReverse);
+    	piston.set(DoubleSolenoid.Value.kOff);
+    }
 }
 

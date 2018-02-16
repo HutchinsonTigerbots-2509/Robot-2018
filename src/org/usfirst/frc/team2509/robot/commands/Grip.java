@@ -1,26 +1,24 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.subsystems.Arm;
+import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ArmHigh extends Command {
-	private Arm arm = Robot.arm;
-    public ArmHigh() {
+public class Grip extends Command {
+	Gripper grip = Robot.gripper;
+    public Grip() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.arm);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	arm.retractUpper();
-    	arm.extendLower();
-    	arm.High();
-    	arm.extendUpper();
+    	
+    	grip.extend();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,10 +32,7 @@ public class ArmHigh extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.retractUpper();
-    	arm.Down();
-    	arm.rectractLower();
-    	arm.extendUpper();
+    	grip.retract();
     }
 
     // Called when another command which requires one or more of the same
