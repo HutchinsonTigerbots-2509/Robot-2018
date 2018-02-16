@@ -16,6 +16,7 @@ import  edu.wpi.first.wpilibj.VictorSP;
 public class Intake extends Subsystem {
 	private static VictorSP leftMotor = RobotMap.Intake_LeftMotor;
 	private static VictorSP rightMotor = RobotMap.Intake_RightMotor;
+	
 	private static DoubleSolenoid piston = RobotMap.Intake_Piston;
 
     // Put methods for controlling this subsystem
@@ -29,22 +30,23 @@ public class Intake extends Subsystem {
      * Extends the two arms for the box pickup.
      */
     public void extend() {
+    	
     	piston.set(DoubleSolenoid.Value.kForward);
-    	piston.set(DoubleSolenoid.Value.kOff);
+//    	piston.set(DoubleSolenoid.Value.kOff);
     }
     /**
      * Retracts the two arms for the box pickup.
      */
     public void retract() {
     	piston.set(DoubleSolenoid.Value.kReverse);
-    	piston.set(DoubleSolenoid.Value.kOff);
+//    	piston.set(DoubleSolenoid.Value.kOff);
     }
     /**
      * Turns on the wheels for the box pickup method.
      */
     public void on() {
-    	leftMotor.set(0.5);
-    	rightMotor.set(0.5);
+    	leftMotor.set(-0.9);
+    	rightMotor.set(-0.9);
     }
     /**
      * Turns off the wheels for the box pickup method.

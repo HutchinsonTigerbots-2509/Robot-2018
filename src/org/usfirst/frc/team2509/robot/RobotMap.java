@@ -131,12 +131,13 @@ public class RobotMap {
 		//Intake Variable Initialize
 		Intake_Piston = new DoubleSolenoid(1, 0, 1);
 		
-		Intake_LeftMotor = new VictorSP(1);
+		Intake_LeftMotor = new VictorSP(2);
 		
-		Intake_RightMotor = new VictorSP(2);
+		Intake_RightMotor = new VictorSP(3);
+		
 		
 		//Wrist Variable Initialize
-		Wrist = new VictorSP(3);
+		Wrist = new VictorSP(1);
 		
 		Wrist_LowerLimit = new DigitalInput(10);
 		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
