@@ -29,6 +29,9 @@ public class Wrist extends Subsystem {
     	while(lowerLimit.get()) motor.set(-.5);
     	motor.set(0);
     }
+    public void Idle() { //Probably not needed, but I'm paranoid.
+    	motor.set(0);
+    }
     
     public VictorSP getMotor() {
     	return motor;

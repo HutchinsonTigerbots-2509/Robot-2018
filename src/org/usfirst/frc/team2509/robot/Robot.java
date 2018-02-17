@@ -13,6 +13,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -24,7 +25,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 
 /**
- * The VM is configured to automatically run this class, and to call the
+ * The VM is configured to automatically ruSn this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.properties file in the
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot{
 	public static Arm arm;
 	public static Gripper gripper;
 	public static Intake intake;
+	public static Wrist wrist;
 	public Command autonomousCommand;
 	public Command operatorDrive;
 
@@ -52,6 +54,7 @@ public class Robot extends TimedRobot{
 		intake =new Intake();
 		gripper = new Gripper();
 		oi = new OI();
+		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
