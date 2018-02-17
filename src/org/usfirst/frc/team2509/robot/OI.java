@@ -15,6 +15,7 @@ import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
+import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
@@ -53,6 +54,7 @@ public class OI {
 	private JoystickButton IntakeOutButton;
 	private JoystickButton WristUpButton;
 	private JoystickButton WristDownButton;
+	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -95,13 +97,13 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 			ShiftButton.whenPressed(new ShiftDrive());
-		MidArmButton = new JoystickButton(OperatorStick, 3);
+		MidArmButton = new JoystickButton(CoOperatorStick, 2);
 			MidArmButton.whileHeld(new ArmMid());
-		HighArmButton = new JoystickButton(OperatorStick, 4);
+		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh());
-		GripButton = new JoystickButton(OperatorStick, 5);
+		GripButton = new JoystickButton(CoOperatorStick, 1);
 			GripButton.whileHeld(new Grip());
-		IntakeInButton = new JoystickButton(OperatorStick, 9);//will be coop button1 later, is operator for testing
+		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
 		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
 			IntakeInButton.whileHeld(new IntakeIn());
 		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
@@ -111,6 +113,8 @@ public class OI {
 			WristUpButton.whileHeld(new WristUp());
 		WristDownButton =new JoystickButton(OperatorStick, 8);
 			WristDownButton.whileHeld(new WristDown());
+		//ParaTestButton = new JoystickButton(OperatorStick, 6);
+			//ParaTestButton.whenPressed(new ParallelAutoTest());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);

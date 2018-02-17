@@ -44,8 +44,8 @@ public class Arm extends Subsystem {
     	Lower.set(DoubleSolenoid.Value.kReverse);
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
-    public void High() {
-    	while(UpperLimit.get()) {
+    public void High(Boolean on) {
+    	while(UpperLimit.get()&& on) {
     		Motor.set(0.5);
 			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
 			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
