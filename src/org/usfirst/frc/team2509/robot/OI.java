@@ -49,7 +49,8 @@ public class OI {
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
 	private JoystickButton GripButton;
-	private JoystickButton IntakeButton;
+	private JoystickButton IntakeInButton;
+	private JoystickButton IntakeOutButton;
 	private JoystickButton WristUpButton;
 	private JoystickButton WristDownButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
@@ -100,11 +101,15 @@ public class OI {
 			HighArmButton.whileHeld(new ArmHigh());
 		GripButton = new JoystickButton(OperatorStick, 5);
 			GripButton.whileHeld(new Grip());
-		IntakeButton = new JoystickButton(OperatorStick, 1);
-			IntakeButton.whileHeld(new IntakeIn());
-		WristUpButton =new JoystickButton(OperatorStick, 7);
+		IntakeInButton = new JoystickButton(OperatorStick, 9);//will be coop button1 later, is operator for testing
+		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
+			IntakeInButton.whileHeld(new IntakeIn());
+		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
+		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
+			IntakeOutButton.whileHeld(new IntakeIn());
+		WristUpButton = new JoystickButton(OperatorStick, 7);
 			WristUpButton.whileHeld(new WristUp());
-		WristDownButton =new JoystickButton(OperatorStick, 7);
+		WristDownButton =new JoystickButton(OperatorStick, 8);
 			WristDownButton.whileHeld(new WristDown());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
