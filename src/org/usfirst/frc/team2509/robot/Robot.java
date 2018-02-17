@@ -7,19 +7,13 @@
 
 package org.usfirst.frc.team2509.robot;
 
-
-import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.subsystems.Arm;
-import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
-
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import com.kauailabs.navx.frc.AHRS;
-
+import org.usfirst.frc.team2509.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2509.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,14 +22,13 @@ import com.kauailabs.navx.frc.AHRS;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-public class Robot extends TimedRobot{
-	
-	public static OI oi;
-	public static DriveTrain drivetrain;
-	public static Arm arm;
-	public static AHRS ahrs;
-	public Command autonomousCommand;
-	public Command operatorDrive;
+public class Robot extends TimedRobot {
+	public static final ExampleSubsystem kExampleSubsystem
+			= new ExampleSubsystem();
+	public static OI m_oi;
+
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,15 +36,10 @@ public class Robot extends TimedRobot{
 	 */
 	@Override
 	public void robotInit() {
-		RobotMap.init();
-		drivetrain = new DriveTrain();
-		arm = new Arm();
-		
-		oi = new OI();
-		operatorDrive = new OperatorDrive();
-		SmartDashboard.putData("Auto mode", oi.chooser);
-		oi.UpdateDashboard.start();
-
+		m_oi = new OI();
+		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		// chooser.addObject("My Auto", new MyAutoCommand());
+		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
 	/**
@@ -80,16 +68,20 @@ public class Robot extends TimedRobot{
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
-	
 	@Override
 	public void autonomousInit() {
-//		RobotMap.comp.stop();
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
-				DriverStation.getInstance().getGameSpecificMessage());
-		
+		m_autonomousCommand = m_chooser.getSelected();
+
+		/*
+		 * String autoSelected = SmartDashboard.getString("Auto Selector",
+		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+		 * = new MyAutoCommand(); break; case "Default Auto": default:
+		 * autonomousCommand = new ExampleCommand(); break; }
+		 */
+
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null) {
-			autonomousCommand.start();
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.start();
 		}
 	}
 
@@ -107,10 +99,9 @@ public class Robot extends TimedRobot{
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null) {
-			autonomousCommand.cancel();
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
 		}
-		operatorDrive.start();
 	}
 
 	/**
