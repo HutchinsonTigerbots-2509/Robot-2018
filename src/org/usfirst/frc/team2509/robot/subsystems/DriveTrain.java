@@ -41,7 +41,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	//For a reason unknown to you
     }
     public void drive(Joystick stick) {
-    	Drive.arcadeDrive(-stick.getY()*0.8, -stick.getZ()*0.8);
+    	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.8);
     }
     /**
      * Resets all sensors
@@ -59,10 +59,10 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	Gyro.reset();
     	Timer.delay(0.1);
     	if(Gyro.getAngle()<targetAngle) {
-    		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(-0.7, 0.7);
+    		while(Gyro.getAngle()<targetAngle)	Drive.tankDrive(-0.6, 0.6);
     		Drive.tankDrive(0, 0);
     	}else if(Gyro.getAngle()>targetAngle) {
-    		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.7, -0.7);
+    		while(Gyro.getAngle()>targetAngle)Drive.tankDrive(0.6, -0.6);
     		Drive.tankDrive(0, 0);
     	}else {
     		Drive.tankDrive(0, 0);

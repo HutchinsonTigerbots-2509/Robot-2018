@@ -45,30 +45,16 @@ public class Arm extends Subsystem {
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public void High() {
-    	while(UpperLimit.get()) {
-    		Motor.set(0.5);
-			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
-			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
-			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
-    	}
+    	while(UpperLimit.get())	Motor.set(0.5);
     	Motor.set(0);
     }
     public void Middle() {
-    	while(MiddleLimit.get()) {
-    		Motor.set(0.5);
-			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
-			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
-			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
-    	}
+    	while(MiddleLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
     public void Down(){   
     	while(LowerLimit.get()) {
     		Motor.set(-0.5);
-
-			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
-			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
-			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
     	}
     	Motor.set(0);
     }

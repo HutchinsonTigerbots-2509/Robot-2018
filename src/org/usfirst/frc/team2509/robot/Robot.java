@@ -9,10 +9,12 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -37,6 +39,7 @@ public class Robot extends TimedRobot{
 	public static Arm arm;
 	public static Gripper gripper;
 	public static Intake intake;
+	public static Wrist wrist;
 	public Command autonomousCommand;
 	public Command operatorDrive;
 
@@ -51,9 +54,10 @@ public class Robot extends TimedRobot{
 		arm = new Arm();
 		intake =new Intake();
 		gripper = new Gripper();
+		wrist = new Wrist();
 		oi = new OI();
 		operatorDrive = new OperatorDrive();
-		SmartDashboard.putData("Auto mode", oi.chooser);
+//		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
 	}
@@ -87,10 +91,11 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-//		RobotMap.comp.stop();
-		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
-				DriverStation.getInstance().getGameSpecificMessage());
-		
+		RobotMap.comp.stop();
+//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+//				DriverStation.getInstance().getGameSpecificMessage());
+//		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
+		autonomousCommand = new Auto3A();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();

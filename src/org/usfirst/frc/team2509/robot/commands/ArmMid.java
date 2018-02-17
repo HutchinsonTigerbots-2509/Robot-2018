@@ -17,9 +17,8 @@ public class ArmMid extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	arm.retractUpper();
+//    	arm.retractUpper();
     	arm.Middle();
-//    	arm.extendUpper();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,9 +32,8 @@ public class ArmMid extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-//    	arm.retractUpper();
     	arm.Down();
-    	arm.extendUpper();
+//    	arm.extendUpper();
     }
 
     // Called when another command which requires one or more of the same

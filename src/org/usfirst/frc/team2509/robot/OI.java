@@ -30,6 +30,7 @@ import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -90,11 +91,11 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 			ShiftButton.whenPressed(new ShiftDrive());
-		MidArmButton = new JoystickButton(OperatorStick, 3);
+		MidArmButton = new JoystickButton(CoOperatorStick, 2);
 			MidArmButton.whileHeld(new ArmMid());
-		HighArmButton = new JoystickButton(OperatorStick, 4);
+		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh());
-		GripButton = new JoystickButton(OperatorStick, 5);
+		GripButton = new JoystickButton(OperatorStick, 1);
 			GripButton.whileHeld(new Grip());
 		IntakeButton = new JoystickButton(OperatorStick, 1);
 			IntakeButton.whileHeld(new IntakeIn());
@@ -109,10 +110,7 @@ public class OI {
 		chooser.addObject("3AB", AB3);
 		chooser.addObject("3DE", DE3);
 		chooser.addObject("3GJ", GJ3);
-//		SmartDashboard.putData("Auto choices", chooser);
-			
-			
-		
+		SmartDashboard.putData("Auto", chooser);		
 	}
 	/**
 	 * When called constantly updates the SmartDashboard
@@ -176,8 +174,10 @@ public class OI {
 		case "3AB":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = new Auto3A();
+				DriverStation.reportError("3A", false);
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = new Auto3B();
+				DriverStation.reportError("3B", false);
 			}
 		case "3DE":
 			if(gameData.charAt(0)=='L') {
