@@ -12,6 +12,8 @@ import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.WristDown;
+import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
@@ -48,7 +50,10 @@ public class OI {
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
 	private JoystickButton GripButton;
-	private JoystickButton IntakeButton;
+	private JoystickButton IntakeInButton;
+	private JoystickButton IntakeOutButton;
+	private JoystickButton WristUpButton;
+	private JoystickButton WristDownButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -97,8 +102,16 @@ public class OI {
 			HighArmButton.whileHeld(new ArmHigh());
 		GripButton = new JoystickButton(OperatorStick, 1);
 			GripButton.whileHeld(new Grip());
-		IntakeButton = new JoystickButton(OperatorStick, 1);
-			IntakeButton.whileHeld(new IntakeIn());
+		IntakeInButton = new JoystickButton(OperatorStick, 9);//will be coop button1 later, is operator for testing
+		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
+			IntakeInButton.whileHeld(new IntakeIn());
+		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
+		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
+			IntakeOutButton.whileHeld(new IntakeIn());
+		WristUpButton = new JoystickButton(OperatorStick, 7);
+			WristUpButton.whileHeld(new WristUp());
+		WristDownButton =new JoystickButton(OperatorStick, 8);
+			WristDownButton.whileHeld(new WristDown());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);

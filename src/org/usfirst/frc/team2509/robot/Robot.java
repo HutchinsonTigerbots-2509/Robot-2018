@@ -26,7 +26,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 
 /**
- * The VM is configured to automatically run this class, and to call the
+ * The VM is configured to automatically ruSn this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.properties file in the
@@ -56,6 +56,7 @@ public class Robot extends TimedRobot{
 		gripper = new Gripper();
 		wrist = new Wrist();
 		oi = new OI();
+		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
 //		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
