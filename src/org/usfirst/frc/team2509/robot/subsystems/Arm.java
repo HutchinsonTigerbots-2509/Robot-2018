@@ -44,17 +44,17 @@ public class Arm extends Subsystem {
     	Lower.set(DoubleSolenoid.Value.kReverse);
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
-    public void High() {
-    	while(UpperLimit.get())	Motor.set(0.5);
+    public void High(Boolean on) {
+    	while(UpperLimit.get())	Motor.set(1);
     	Motor.set(0);
     }
-    public void Middle() {
+    public void Middle(Boolean on) {
     	while(MiddleLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
     public void Down(){   
     	while(LowerLimit.get()) {
-    		Motor.set(-0.5);
+    		Motor.set(-0.8);
     	}
     	Motor.set(0);
     }

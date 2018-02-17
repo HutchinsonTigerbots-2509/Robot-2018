@@ -100,9 +100,9 @@ public class OI {
 			MidArmButton.whileHeld(new ArmMid());
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh());
-		GripButton = new JoystickButton(OperatorStick, 1);
-			GripButton.whileHeld(new Grip());
-		IntakeInButton = new JoystickButton(OperatorStick, 9);//will be coop button1 later, is operator for testing
+		GripButton = new JoystickButton(CoOperatorStick, 1);
+			GripButton.toggleWhenPressed(new Grip());
+		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
 		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
 			IntakeInButton.whileHeld(new IntakeIn());
 		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
@@ -137,6 +137,8 @@ public class OI {
 			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
 			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
 			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
+			SmartDashboard.putBoolean("Wrist Lower", Robot.wrist.getLowerLimit().get());
+			SmartDashboard.putBoolean("Wrist Upper", Robot.wrist.getUpperLimit().get());
 //    		SmartDashboard.putNumber("Left Motors", Robot.drivetrain.getLeft().get());
 //    		SmartDashboard.putNumber("Right Motors", Robot.drivetrain.getRight().get());
 			

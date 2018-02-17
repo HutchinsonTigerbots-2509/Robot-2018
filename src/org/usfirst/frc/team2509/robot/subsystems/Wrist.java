@@ -21,13 +21,16 @@ public class Wrist extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void Up() {
-    	while(upperLimit.get()) motor.set(.5);
-    	motor.set(0);
-    	
+    	if(upperLimit.get()) {
+	    	while(upperLimit.get()) motor.set(.3);
+	    	motor.set(0);
+    	}
     }
     public void Down() {
-    	while(lowerLimit.get()) motor.set(-.5);
-    	motor.set(0);
+    	if(lowerLimit.get()) {
+	    	while(lowerLimit.get()) motor.set(-.3);
+	    	motor.set(0);
+    	}
     }
     public void Idle() { //Probably not needed, but I'm paranoid.
     	motor.set(0);

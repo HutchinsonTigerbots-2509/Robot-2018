@@ -139,10 +139,10 @@ public class RobotMap {
 		//Wrist Variable Initialize
 		Wrist = new VictorSP(1);
 		
-		Wrist_LowerLimit = new DigitalInput(7);
+		Wrist_LowerLimit = new DigitalInput(8);
 		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
 		
-		Wrist_UpperLimit = new DigitalInput(8);
+		Wrist_UpperLimit = new DigitalInput(7);
 		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 	}
 }

@@ -19,7 +19,7 @@ public class ArmHigh extends Command {
     protected void initialize() {
 //    	arm.retractUpper();
     	arm.extendLower();
-    	arm.High();
+    	arm.High(this.isRunning());
     	arm.extendUpper();
     }
 
