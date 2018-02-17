@@ -62,7 +62,9 @@ public class RobotMap {
 	public static DigitalInput Wrist_UpperLimit;
 	public static DigitalInput Wrist_LowerLimit;
 	//Climber Variable
-	public static VictorSP Climb_Motor;
+	public static VictorSP Climb_Motor1;
+	public static VictorSP Climb_Motor2;
+	public static SpeedControllerGroup ClimbGroup;
 	
 	
 	
@@ -147,7 +149,12 @@ public class RobotMap {
 		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
 		//Climber Variable Initialize
-		Climb_Motor= new VictorSP(4);
+		Climb_Motor1= new VictorSP(4);
+		
+		Climb_Motor2= new VictorSP(5);
+		
+		ClimbGroup = new SpeedControllerGroup(
+				Climb_Motor1, Climb_Motor2);
 		
 	}
 }
