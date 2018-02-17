@@ -152,7 +152,7 @@ public class RobotMap {
 		Climb_Motor1= new VictorSP(4);
 		
 		Climb_Motor2= new VictorSP(5);
-		
+		//using a motor group so both motors work with each other
 		ClimbGroup = new SpeedControllerGroup(
 				Climb_Motor1, Climb_Motor2);
 		

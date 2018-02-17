@@ -20,7 +20,7 @@ public class Climber extends Subsystem {
     public void ClimbUp() {
     	climb.set(1);
     }
-    public void ClimbStop() {
+    public void ClimbStop() { //this should keep the robot in place via motor braking,  whereever it is
     	climb.set(0);
     }
     public SpeedControllerGroup getSpeedControllerGroup() {

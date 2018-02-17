@@ -20,7 +20,7 @@ public class ClimbUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	climb.ClimbUp();
+    	climb.ClimbUp(); //sets motors to 1, this is in subsystem not command
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,7 +34,7 @@ public class ClimbUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	climb.ClimbStop();
+    	climb.ClimbStop(); //sets motors to 0, should keep the robot in place via motor braking, this is in subsystem not command
     }
 
     // Called when another command which requires one or more of the same
