@@ -10,7 +10,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 public class WristDown extends Command {
 	private Wrist wrist = Robot.wrist;
     public WristDown() {
-    	requires(Robot.wrist);
+//    	requires(wrist);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

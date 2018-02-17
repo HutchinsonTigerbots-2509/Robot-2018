@@ -9,7 +9,11 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
+<<<<<<< HEAD
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
+=======
+import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
+>>>>>>> branch 'cole-auto' of http://github.com/HutchinsonTIgerbots-2509/Robot-2018.git
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
@@ -54,10 +58,11 @@ public class Robot extends TimedRobot{
 		arm = new Arm();
 		intake =new Intake();
 		gripper = new Gripper();
+		wrist = new Wrist();
 		oi = new OI();
 		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
-		SmartDashboard.putData("Auto mode", oi.chooser);
+//		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
 	}
@@ -91,10 +96,11 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-//		RobotMap.comp.stop();
+		RobotMap.comp.stop();
 //		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
 //				DriverStation.getInstance().getGameSpecificMessage());
-		autonomousCommand = new Auto1A();
+//		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
+		autonomousCommand = new Auto3A();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
