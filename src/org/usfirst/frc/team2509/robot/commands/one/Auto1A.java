@@ -1,10 +1,14 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2509.robot.subsystems.Gripper;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
@@ -12,6 +16,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Auto1A extends Command {
 	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
+	Gripper grip =  Robot.gripper;
+	Wrist wrist = Robot.wrist;
+	Thread armThread = new Thread(()-> {
+		arm.Middle(this.isRunning());
+	}); 
     public Auto1A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,8 +30,14 @@ public class Auto1A extends Command {
     protected void initialize() {
     	driveTrain.driveForward(75); //Drive forward 66 inches
     	driveTrain.rotate(90.0); //Turn right 90 degrees
+    	armThread.start();
     	driveTrain.driveForward(45.0); //Drive forward 70 inches
     	driveTrain.rotate(-90.0); //Turn left 78 degrees
+    	wrist.Down();
+    	grip.retract();
+    	wrist.Up();
+    	driveTrain.driveBackward(35);
+    	arm.Down();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,6 +51,7 @@ public class Auto1A extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	armThread.stop();
     }
 
     // Called when another command which requires one or more of the same

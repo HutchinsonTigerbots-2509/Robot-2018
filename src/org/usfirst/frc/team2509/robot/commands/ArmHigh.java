@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
@@ -17,7 +18,7 @@ public class ArmHigh extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	arm.retractUpper();
+    	arm.retractUpper();
     	arm.extendLower();
     	arm.High(this.isRunning());
     	arm.extendUpper();
