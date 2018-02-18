@@ -60,9 +60,9 @@ public class RobotMap {
 	public static VictorSP Intake_RightMotor;
 	//Wrist Variable
 	public static VictorSP Wrist;
-	public static DigitalInput Wrist_UpperLimit;
-	public static DigitalInput Wrist_LowerLimit;
-	
+	public static Encoder WristEncoder;
+//	public static DigitalInput Wrist_UpperLimit;
+//	public static DigitalInput Wrist_LowerLimit;
 	
 	
 	/**
@@ -140,10 +140,13 @@ public class RobotMap {
 		//Wrist Variable Initialize
 		Wrist = new VictorSP(1);
 		
-		Wrist_LowerLimit = new DigitalInput(7);
-		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
+//		Wrist_LowerLimit = new DigitalInput(8);
+//		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
+//		
+//		Wrist_UpperLimit = new DigitalInput(7);
+//		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
-		Wrist_UpperLimit = new DigitalInput(8);
-		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
+		WristEncoder = new Encoder(8,7);
+		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 	}
 }

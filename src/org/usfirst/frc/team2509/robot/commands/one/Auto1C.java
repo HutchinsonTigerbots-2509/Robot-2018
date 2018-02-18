@@ -21,6 +21,7 @@ public class Auto1C extends Command {
     protected void initialize() {
     	driveTrain.driveForward(140.0); //Drive forward 140 inches
     	driveTrain.rotate(90); //Turn right 92 degrees
+    	arm.armThreadUp.start();
     	driveTrain.driveForward(10.0); //Drive forward 20 
     }
 

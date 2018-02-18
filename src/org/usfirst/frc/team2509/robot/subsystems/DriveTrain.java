@@ -179,7 +179,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	double wheelDiameter = 6;
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
-    	while((RightEncoder.get()+LeftEncoder.get())/2<=(target*(-1))) {
+    	while((RightEncoder.get()+LeftEncoder.get())/2>=(target*(-1))) {
     		Drive.arcadeDrive(-0.5, Gyro.getAngle()*(0.1));
     	}
     	Drive.tankDrive(0, 0);

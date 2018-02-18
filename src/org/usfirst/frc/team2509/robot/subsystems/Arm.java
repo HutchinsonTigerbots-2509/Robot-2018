@@ -23,7 +23,10 @@ public class Arm extends Subsystem {
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+	public Thread armThreadUp = new Thread(()-> {
+		
+		Arm.Middle();
+	}); 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -49,7 +52,7 @@ public class Arm extends Subsystem {
     	while(UpperLimit.get())	Motor.set(0.5);
     	Motor.set(0);
     }
-    public void Middle() {
+    public static void Middle() {
     	while(MiddleLimit.get()) Motor.set(1);
     	Motor.set(0);
     }

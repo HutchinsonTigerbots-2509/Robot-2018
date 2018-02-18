@@ -1,5 +1,6 @@
 /*----------------------------------------------------------------------------*/
 
+
 /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
@@ -141,6 +142,9 @@ public class OI {
 			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
 			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
 			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
+//			SmartDashboard.putBoolean("Wrist Lower", Robot.wrist.getLowerLimit().get());
+//			SmartDashboard.putBoolean("Wrist Upper", Robot.wrist.getUpperLimit().get());
+			SmartDashboard.putNumber("WristEncoder", RobotMap.WristEncoder.get());
 //    		SmartDashboard.putNumber("Left Motors", Robot.drivetrain.getLeft().get());
 //    		SmartDashboard.putNumber("Right Motors", Robot.drivetrain.getRight().get());
 			

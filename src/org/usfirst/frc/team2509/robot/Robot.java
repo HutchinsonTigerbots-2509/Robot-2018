@@ -9,11 +9,8 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-<<<<<<< HEAD
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
-=======
-import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
->>>>>>> branch 'cole-auto' of http://github.com/HutchinsonTIgerbots-2509/Robot-2018.git
+import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
@@ -100,7 +97,7 @@ public class Robot extends TimedRobot{
 //		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
 //				DriverStation.getInstance().getGameSpecificMessage());
 //		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
-		autonomousCommand = new Auto3A();
+		autonomousCommand = new Auto1B();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
