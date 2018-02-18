@@ -29,7 +29,7 @@ public class Auto3A extends Command {
 //    	driveTrain.driveForward(140);
     	driveTrain.driveForward(70);
 //    	armMid.start();
-    	arm.Middle();
+    	arm.Middle(this.isRunning());
     	driveTrain.driveForward(70);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(30);

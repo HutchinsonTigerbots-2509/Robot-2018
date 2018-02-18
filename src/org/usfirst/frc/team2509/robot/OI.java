@@ -104,7 +104,7 @@ public class OI {
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh());
 		GripButton = new JoystickButton(CoOperatorStick, 1);
-			GripButton.whileHeld(new Grip());
+			GripButton.toggleWhenPressed(new Grip());
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
 		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
 			IntakeInButton.whileHeld(new IntakeIn());

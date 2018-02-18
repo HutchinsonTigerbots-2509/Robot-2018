@@ -19,7 +19,6 @@ public class Auto1A extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
 	Gripper grip =  Robot.gripper;
 	Wrist wrist = Robot.wrist;
-	
     public Auto1A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
