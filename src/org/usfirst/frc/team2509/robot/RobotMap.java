@@ -46,7 +46,7 @@ public class RobotMap {
 	//Arm Variable
 	public static DoubleSolenoid Arm_LowerSolenoid;
 	public static DoubleSolenoid Arm_UpperSolenoid;
-	public static VictorSP Arm_Motor;
+	public static WPI_TalonSRX Arm_Motor;
 	public static DigitalInput Arm_LowerLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
@@ -55,8 +55,8 @@ public class RobotMap {
 	public static DoubleSolenoid Gripper_Piston;
 	//Intake Variable
 	public static DoubleSolenoid Intake_Piston;
-	public static WPI_TalonSRX Intake_LeftMotor;
-	public static WPI_TalonSRX Intake_RightMotor;
+	public static VictorSP Intake_LeftMotor;
+	public static VictorSP Intake_RightMotor;
 	//Wrist Variable
 	public static VictorSP Wrist;
 	public static Encoder WristEncoder;
@@ -112,7 +112,7 @@ public class RobotMap {
 		
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
 		
-		Arm_Motor = new VictorSP(0);
+		Arm_Motor = new WPI_TalonSRX(0);
 		
 		Arm_LowerLimit = new DigitalInput(4);
 		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
@@ -132,10 +132,8 @@ public class RobotMap {
 		//Intake Variable Initialize
 		Intake_Piston = new DoubleSolenoid(1, 0, 1);
 		
-		Intake_LeftMotor = new WPI_TalonSRX(0);
-		Intake_RightMotor = new WPI_TalonSRX(3);
-		//Intake_LeftMotor = new VictorSP(2);
-		//Intake_RightMotor = new VictorSP(3);
+		Intake_LeftMotor = new VictorSP(2);
+		Intake_RightMotor = new VictorSP(3);
 		
 		
 		//Wrist Variable Initialize

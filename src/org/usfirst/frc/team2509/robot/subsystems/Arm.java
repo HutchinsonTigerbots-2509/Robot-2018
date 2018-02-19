@@ -3,6 +3,8 @@ package org.usfirst.frc.team2509.robot.subsystems;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -16,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Arm extends Subsystem {
 	private static DoubleSolenoid Upper = RobotMap.Arm_UpperSolenoid;
 	private static DoubleSolenoid Lower = RobotMap.Arm_LowerSolenoid;
-	private static VictorSP Motor = RobotMap.Arm_Motor;
+	private static WPI_TalonSRX Motor = RobotMap.Arm_Motor;
 	private static DigitalInput LowerLimit = RobotMap.Arm_LowerLimit;
 	private static DigitalInput MiddleLimit = RobotMap.Arm_MiddleLimit;
 	private static DigitalInput UpperLimit = RobotMap.Arm_UpperLimit;
@@ -76,7 +78,7 @@ public class Arm extends Subsystem {
     public DoubleSolenoid getLower() {
     	return Lower;
     }
-    public VictorSP getMotor() {
+    public WPI_TalonSRX getMotor() {
     	return Motor;
     }
     public DigitalInput getLowerLimit() {
