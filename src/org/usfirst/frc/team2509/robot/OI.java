@@ -15,6 +15,7 @@ import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
+import org.usfirst.frc.team2509.robot.commands.retract;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 //import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
@@ -56,6 +57,7 @@ public class OI {
 	private JoystickButton IntakeOutButton;
 	private JoystickButton WristUpButton;
 	private JoystickButton WristDownButton;
+	private JoystickButton RetractButton;
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -103,6 +105,8 @@ public class OI {
 			MidArmButton.whileHeld(new ArmMid());
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh());
+		RetractButton = new JoystickButton(CoOperatorStick, 3);
+			RetractButton.whenPressed(new retract());
 		GripButton = new JoystickButton(CoOperatorStick, 1);
 			GripButton.toggleWhenPressed(new Grip());
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
