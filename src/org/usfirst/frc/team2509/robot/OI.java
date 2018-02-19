@@ -16,7 +16,7 @@ import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
-import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
+//import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1C;

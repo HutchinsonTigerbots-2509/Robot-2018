@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -37,10 +38,8 @@ public class RobotMap {
 	public static AHRS DriveTrain_NavX;
 	public static WPI_TalonSRX DriveTrain_left1;
 	public static WPI_TalonSRX DriveTrain_left2;
-	public static WPI_TalonSRX DriveTrain_left3;
 	public static WPI_TalonSRX DriveTrain_right1;
 	public static WPI_TalonSRX DriveTrain_right2;
-	public static WPI_TalonSRX DriveTrain_right3;
 	public static SpeedControllerGroup DriveTrain_Left;
 	public static SpeedControllerGroup DriveTrain_Right;
 	public static DifferentialDrive RobotDrive;
@@ -56,8 +55,8 @@ public class RobotMap {
 	public static DoubleSolenoid Gripper_Piston;
 	//Intake Variable
 	public static DoubleSolenoid Intake_Piston;
-	public static VictorSP Intake_LeftMotor;
-	public static VictorSP Intake_RightMotor;
+	public static TalonSRX Intake_LeftMotor;
+	public static TalonSRX Intake_RightMotor;
 	//Wrist Variable
 	public static VictorSP Wrist;
 	public static Encoder WristEncoder;
@@ -87,23 +86,23 @@ public class RobotMap {
 		SmartDashboard.putNumber("Accel", DriveTrain_NavX.getRawAccelY());
 
 		
-		DriveTrain_left1 = new WPI_TalonSRX(0);
+//		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
-		DriveTrain_left2 = new WPI_TalonSRX(2);
+		DriveTrain_left1 = new WPI_TalonSRX(2);
 		
-		DriveTrain_left3 = new WPI_TalonSRX(1);
+		DriveTrain_left2 = new WPI_TalonSRX(1);
 		
-		DriveTrain_right1 = new WPI_TalonSRX(3);
+//		DriveTrain_right1 = new WPI_TalonSRX(3);
 		
-		DriveTrain_right2 = new WPI_TalonSRX(4);
+		DriveTrain_right1 = new WPI_TalonSRX(4);
 		
-		DriveTrain_right3 = new WPI_TalonSRX(5);
+		DriveTrain_right2 = new WPI_TalonSRX(5);
 		
 		DriveTrain_Left = new SpeedControllerGroup(
-				DriveTrain_left1,DriveTrain_left2,DriveTrain_left3);
+				DriveTrain_left1,DriveTrain_left2);
 		
 		DriveTrain_Right = new SpeedControllerGroup(
-				DriveTrain_right1,DriveTrain_right2,DriveTrain_right3);
+				DriveTrain_right1,DriveTrain_right2);
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
@@ -132,9 +131,10 @@ public class RobotMap {
 		//Intake Variable Initialize
 		Intake_Piston = new DoubleSolenoid(1, 0, 1);
 		
-		Intake_LeftMotor = new VictorSP(2);
-		
-		Intake_RightMotor = new VictorSP(3);
+		Intake_LeftMotor = new TalonSRX(0);
+		Intake_RightMotor = new TalonSRX(3);
+		//Intake_LeftMotor = new VictorSP(2);
+		//Intake_RightMotor = new VictorSP(3);
 		
 		
 		//Wrist Variable Initialize

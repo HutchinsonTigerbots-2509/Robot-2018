@@ -25,10 +25,10 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	private static AHRS Gyro = RobotMap.DriveTrain_NavX;
 	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
-	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
-	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left3;
+	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrainLeft1;
+	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left2;
 	private static WPI_TalonSRX Right_1 = RobotMap.DriveTrain_right1;
-	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_right2;
+	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_Right1;
 	private static WPI_TalonSRX Right_3 = RobotMap.DriveTrain_right3;
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;

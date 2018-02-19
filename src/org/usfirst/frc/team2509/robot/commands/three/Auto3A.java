@@ -29,14 +29,14 @@ public class Auto3A extends Command {
 //    	driveTrain.driveForward(140);
     	driveTrain.driveForward(70);
 //    	armMid.start();
-    	arm.Middle(this.isRunning());
+//    	arm.Middle();
     	driveTrain.driveForward(70);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(30);
     	Timer.delay(3);
     	driveTrain.driveBackward(30);
 //    	armMid.cancel();
-    	arm.Down();
+//    	arm.Down();
     }
 
     // Called repeatedly when this Command is scheduled to run

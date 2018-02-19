@@ -9,11 +9,8 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
-<<<<<<< HEAD
-import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
-=======
->>>>>>> branch 'cole-auto' of http://github.com/HutchinsonTIgerbots-2509/Robot-2018.git
+import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
+//import org.usfirst.frc.team2509.robot.commands.three.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
@@ -24,9 +21,9 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 
 
 /**
@@ -65,6 +62,7 @@ public class Robot extends TimedRobot{
 //		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
+		autonomousCommand = new Auto3A();
 	}
 
 	/**
