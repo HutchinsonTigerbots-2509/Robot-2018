@@ -1,15 +1,22 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class Auto1E extends Command {
+	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
+	Command armMid = new ArmMid();
+	
+	
     public Auto1E() {
     	
         // Use requires() here to declare subsystem dependencies
@@ -24,6 +31,10 @@ public class Auto1E extends Command {
     	driveTrain.driveForward(50);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(2);
+    	driveTrain.driveForward(8);//Drive forward 8 inches
+    	arm.armThreadMid.start();
+ 	    Timer.delay(3);
+ 	    driveTrain.driveBackward(15);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -37,6 +48,7 @@ public class Auto1E extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	arm.armThreadMid.stop();
     }
 
     // Called when another command which requires one or more of the same
