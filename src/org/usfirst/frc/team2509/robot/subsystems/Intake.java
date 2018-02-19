@@ -3,6 +3,7 @@ package org.usfirst.frc.team2509.robot.subsystems;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -14,8 +15,8 @@ import  edu.wpi.first.wpilibj.VictorSP;
  *
  */
 public class Intake extends Subsystem {
-	private static VictorSP leftMotor = RobotMap.Intake_LeftMotor;
-	private static VictorSP rightMotor = RobotMap.Intake_RightMotor;
+	private static WPI_TalonSRX leftMotor = RobotMap.Intake_LeftMotor;
+	private static WPI_TalonSRX rightMotor = RobotMap.Intake_RightMotor;
 	
 	private static DoubleSolenoid piston = RobotMap.Intake_Piston;
 

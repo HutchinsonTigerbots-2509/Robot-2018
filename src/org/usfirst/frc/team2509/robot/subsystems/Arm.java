@@ -23,10 +23,19 @@ public class Arm extends Subsystem {
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public Thread armThreadUp = new Thread(()-> {
+	public Thread armThreadDown = new Thread(()-> {
+		
+		Arm.Down();
+	}); 
+	public Thread armThreadMid = new Thread(()-> {
 		
 		Arm.Middle();
 	}); 
+	public Thread armThreadHigh = new Thread(()-> {
+		
+		Arm.High();
+	}); 
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -47,7 +56,7 @@ public class Arm extends Subsystem {
     	Lower.set(DoubleSolenoid.Value.kReverse);
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
-    public void High(Boolean on) {
+    public static void High() {
     	while(UpperLimit.get())	Motor.set(1);
     	Motor.set(0);
     }
@@ -55,7 +64,7 @@ public class Arm extends Subsystem {
     	while(MiddleLimit.get()) Motor.set(1);
     	Motor.set(0);
     }
-    public void Down(){   
+    public static void Down(){   
     	while(LowerLimit.get()) {
     		Motor.set(-0.8);
     	}

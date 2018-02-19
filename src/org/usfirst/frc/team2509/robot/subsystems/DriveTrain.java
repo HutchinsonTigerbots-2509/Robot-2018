@@ -24,12 +24,12 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	private static AHRS Gyro = RobotMap.DriveTrain_NavX;
+	
 	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
-	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrainLeft1;
-	private static WPI_TalonSRX Left_3 = RobotMap.DriveTrain_left2;
+	private static WPI_TalonSRX Left_2 = RobotMap.DriveTrain_left2;
+	
 	private static WPI_TalonSRX Right_1 = RobotMap.DriveTrain_right1;
-	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_Right1;
-	private static WPI_TalonSRX Right_3 = RobotMap.DriveTrain_right3;
+	private static WPI_TalonSRX Right_2 = RobotMap.DriveTrain_right2;
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
@@ -41,7 +41,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	//For a reason unknown to you
     }
     public void drive(Joystick stick) {
-    	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.8);
+    	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.7);
     }
     /**
      * Resets all sensors
@@ -170,7 +170,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	double target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	Timer.delay(0.1);
     	while((RightEncoder.get()+LeftEncoder.get())/2<=target) {
-    		Drive.arcadeDrive(0.5, Gyro.getAngle()*(0.1));
+    		Drive.arcadeDrive(0.7, Gyro.getAngle()*(0.1));
     	}
     	Drive.tankDrive(0, 0);
     }
@@ -292,14 +292,14 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * @return DriveTrain_Left_2
      */
     public WPI_TalonSRX getLeft2() {
-    	return Left_2;
+    	return Left_1;
     }
     /**
      * 
      * @return DriveTrain_Left_3
      */
     public WPI_TalonSRX getLeft3() {
-    	return Left_3;
+    	return Left_2;
     }
     /**
      * 
@@ -313,14 +313,14 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * @return DriveTrain_Right_2
      */
     public WPI_TalonSRX getRight2() {
-    	return Right_2;
+    	return Right_1;
     }
     /**
      * 
      * @return DriveTrain_Ri6ght_3
      */
     public WPI_TalonSRX getRight3() {
-    	return Right_3;
+    	return Right_2;
     }
 	@Override
 	public void pidWrite(double output) {

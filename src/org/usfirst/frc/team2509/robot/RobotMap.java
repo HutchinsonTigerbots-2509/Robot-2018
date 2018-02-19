@@ -55,8 +55,8 @@ public class RobotMap {
 	public static DoubleSolenoid Gripper_Piston;
 	//Intake Variable
 	public static DoubleSolenoid Intake_Piston;
-	public static TalonSRX Intake_LeftMotor;
-	public static TalonSRX Intake_RightMotor;
+	public static WPI_TalonSRX Intake_LeftMotor;
+	public static WPI_TalonSRX Intake_RightMotor;
 	//Wrist Variable
 	public static VictorSP Wrist;
 	public static Encoder WristEncoder;
@@ -74,6 +74,7 @@ public class RobotMap {
 		
 		DriveTrain_LeftEncoder = new Encoder(0,1);
 		DriveTrain_LeftEncoder.setDistancePerPulse(0.0179136);
+		DriveTrain_LeftEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
 		DriveTrain_RightEncoder = new Encoder(2,3);
@@ -131,8 +132,8 @@ public class RobotMap {
 		//Intake Variable Initialize
 		Intake_Piston = new DoubleSolenoid(1, 0, 1);
 		
-		Intake_LeftMotor = new TalonSRX(0);
-		Intake_RightMotor = new TalonSRX(3);
+		Intake_LeftMotor = new WPI_TalonSRX(0);
+		Intake_RightMotor = new WPI_TalonSRX(3);
 		//Intake_LeftMotor = new VictorSP(2);
 		//Intake_RightMotor = new VictorSP(3);
 		

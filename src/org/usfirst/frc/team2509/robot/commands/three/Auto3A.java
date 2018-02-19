@@ -24,19 +24,16 @@ public class Auto3A extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	arm.rectractLower();
     	driveTrain.driveForward(35);
     	driveTrain.rotate(-90);
-//    	driveTrain.driveForward(140);
-    	driveTrain.driveForward(70);
-//    	armMid.start();
-//    	arm.Middle();
-    	driveTrain.driveForward(70);
+    	driveTrain.driveForward(140);
     	driveTrain.rotate(90);
+    	arm.armThreadMid.start();
     	driveTrain.driveForward(30);
     	Timer.delay(3);
     	driveTrain.driveBackward(30);
 //    	armMid.cancel();
-//    	arm.Down();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -50,6 +47,7 @@ public class Auto3A extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	arm.armThreadMid.stop();
     }
 
     // Called when another command which requires one or more of the same
