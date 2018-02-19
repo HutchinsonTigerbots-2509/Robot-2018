@@ -1,8 +1,12 @@
 package org.usfirst.frc.team2509.robot.commands.three;
 
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.commands.ArmHigh;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 
@@ -10,7 +14,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Auto3J extends Command {
+	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
+	Command armHigh = new ArmHigh();
+	Wrist wrist = Robot.wrist;
     public Auto3J() {
     	// Use requires() here to declare subsystem dependencies
     	// eg. requires(chassis);
@@ -18,8 +25,12 @@ public class Auto3J extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(270);
+    	driveTrain.driveForward(275);
     	driveTrain.rotate(-90);
+    	driveTrain.driveBackward(15);
+    	arm.armThreadHigh.start();
+    	Timer.delay(3);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,6 +44,7 @@ public class Auto3J extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	arm.armThreadHigh.stop();
     }
 
     // Called when another command which requires one or more of the same

@@ -23,12 +23,12 @@ public class Auto3C extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(35);
+    	driveTrain.driveForward(208);
     	driveTrain.rotate(-90);
-    	driveTrain.driveForward(180);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(133);
-    	driveTrain.rotate(90);
+    	driveTrain.driveForward(200);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(50);
+    	driveTrain.rotate(-90);
     	arm.armThreadMid.start();
     	driveTrain.driveForward(30);
     	Timer.delay(3);

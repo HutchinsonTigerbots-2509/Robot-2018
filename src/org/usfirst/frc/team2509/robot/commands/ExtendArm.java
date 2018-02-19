@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class retract extends Command {
+public class ExtendArm extends Command {
 	Arm arm = Robot.arm;
 
-    public retract() {
+    public ExtendArm() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.arm);
@@ -19,7 +19,7 @@ public class retract extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	arm.rectractLower();
+    	arm.extendUpper();
     }
 
     // Called repeatedly when this Command is scheduled to run
