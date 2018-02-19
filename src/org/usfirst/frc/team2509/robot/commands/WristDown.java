@@ -18,7 +18,7 @@ public class WristDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	wrist.Down();
+    
 //    	wrist.Down();
     }
 
