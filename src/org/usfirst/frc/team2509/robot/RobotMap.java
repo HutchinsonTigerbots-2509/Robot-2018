@@ -58,11 +58,14 @@ public class RobotMap {
 	public static VictorSP Intake_LeftMotor;
 	public static VictorSP Intake_RightMotor;
 	//Wrist Variable
-	public static VictorSP Wrist;
+	public static WPI_TalonSRX Wrist;
 	public static Encoder WristEncoder;
 //	public static DigitalInput Wrist_UpperLimit;
 //	public static DigitalInput Wrist_LowerLimit;
-	
+	//Climb Variable
+	public static VictorSP Climb_Motor1;
+	public static VictorSP Climb_Motor2;
+	public static SpeedControllerGroup Climb_motors;
 	
 	/**
 	 * 
@@ -137,7 +140,7 @@ public class RobotMap {
 		
 		
 		//Wrist Variable Initialize
-		Wrist = new VictorSP(1);
+		Wrist = new WPI_TalonSRX(3);
 		
 //		Wrist_LowerLimit = new DigitalInput(8);
 //		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
@@ -147,5 +150,9 @@ public class RobotMap {
 		
 		WristEncoder = new Encoder(8,7);
 		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
+		
+		Climb_Motor1 = new VictorSP(0);
+		Climb_Motor2 = new VictorSP(1);
+		Climb_motors = new SpeedControllerGroup(Climb_Motor1,Climb_Motor2);
 	}
 }

@@ -2,6 +2,8 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -11,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Wrist extends Subsystem {
-	private static VictorSP motor = RobotMap.Wrist;
+	private static WPI_TalonSRX motor = RobotMap.Wrist;
 	private static Encoder WristEncoder = RobotMap.WristEncoder;
 //	private static DigitalInput upperLimit = RobotMap.Wrist_UpperLimit;
 //	private static DigitalInput lowerLimit = RobotMap.Wrist_LowerLimit;
@@ -45,7 +47,7 @@ public class Wrist extends Subsystem {
     	motor.set(0);
     }
     
-    public VictorSP getMotor() {
+    public WPI_TalonSRX getMotor() {
     	return motor;
     }
 //    public DigitalInput getUpperLimit() {
