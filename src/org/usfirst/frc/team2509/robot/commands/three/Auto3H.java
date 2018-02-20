@@ -23,7 +23,7 @@ public class Auto3H extends Command {
 	    driveTrain.driveForward(202);//Drive Forward for 202 inches
 	    driveTrain.rotate(-90);//Rotate to the left
 	    driveTrain.driveForward(43);//Drive Forward for 43 inches
-	    driveTrain.rotate(-90);//Rotate to the right
+	    driveTrain.rotate(90);//Rotate to the right
     }
 
     // Called repeatedly when this Command is scheduled to run

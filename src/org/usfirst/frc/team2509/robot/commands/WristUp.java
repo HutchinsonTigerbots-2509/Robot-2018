@@ -19,7 +19,8 @@ public class WristUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 //    	wrist.Up();
-    	wrist.Up(150);
+    	
+    	wrist.Up(30);
     }
 
     // Called repeatedly when this Command is scheduled to run

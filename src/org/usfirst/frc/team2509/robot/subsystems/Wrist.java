@@ -28,14 +28,20 @@ public class Wrist extends Subsystem {
 //    	
 //    }
     public void Up(double Target) {
-    	int Max = 150;
-    	while(WristEncoder.get()<=Target && WristEncoder.get()<=Max);
-    		motor.set(0.45);
+    	int Max = 35;
+    	while(WristEncoder.get() <= (Target - 3) && WristEncoder.get()<=Max){
+    		motor.set(0.25);
+    	}
+    	motor.set(0);
+    		
     }
     public void Down(double Target) {
-    	int Min = -5;
-    	while(WristEncoder.get()>=Target && WristEncoder.get()>=Min);
-    		motor.set(-0.45);
+    	int Min = 0;
+    	while(WristEncoder.get() >= (Target + 3)) {
+    		motor.set(-0.25);
+    	}
+
+    	motor.set(0);
     }
 //    public void Down() {
 //    	while(lowerLimit.get()) motor.set(-.45);

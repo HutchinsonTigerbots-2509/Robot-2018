@@ -148,6 +148,7 @@ public class RobotMap {
 //		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
 		WristEncoder = new Encoder(8,7);
+		WristEncoder.reset();
 		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 	}
 }

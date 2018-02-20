@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2509.robot.commands;
 
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team2509.robot.*;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
@@ -18,8 +19,8 @@ public class WristDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    
-   	wrist.Down(-5);
+    //wrist2.set(-0.8);
+   	wrist.Down(0);
     }
 
     // Called repeatedly when this Command is scheduled to run

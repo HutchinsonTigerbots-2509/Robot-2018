@@ -26,6 +26,7 @@ public class Arm extends Subsystem {
 	}); 
 	public Thread armThreadMid = new Thread(()-> {
 		
+		Arm.retractUpper();
 		Arm.Middle();
 	}); 
 	public Thread armThreadHigh = new Thread(()-> {
@@ -41,7 +42,7 @@ public class Arm extends Subsystem {
     	Upper.set(DoubleSolenoid.Value.kForward);
 //    	Upper.set(DoubleSolenoid.Value.kOff);
     }
-    public void retractUpper() {
+    public static void retractUpper() {
     	Upper.set(DoubleSolenoid.Value.kReverse);
 //    	Upper.set(DoubleSolenoid.Value.kOff);
     }

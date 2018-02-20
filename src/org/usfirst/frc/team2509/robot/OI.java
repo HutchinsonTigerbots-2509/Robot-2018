@@ -119,10 +119,11 @@ public class OI {
 		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
 		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
 			IntakeOutButton.whileHeld(new IntakeIn());
-		WristUpButton = new JoystickButton(OperatorStick, 7);
+		WristUpButton = new JoystickButton(OperatorStick, 12);
 			WristUpButton.whileHeld(new WristUp());
-		WristDownButton =new JoystickButton(OperatorStick, 8);
+		WristDownButton =new JoystickButton(OperatorStick, 11);
 			WristDownButton.whileHeld(new WristDown());
+		//Wristdown 
 		//ParaTestButton = new JoystickButton(OperatorStick, 6);
 			//ParaTestButton.whenPressed(new ParallelAutoTest());
 		chooser.addDefault("Default Auto", defaultAuto);
