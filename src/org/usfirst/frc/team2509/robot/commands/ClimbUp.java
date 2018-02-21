@@ -16,7 +16,7 @@ public class ClimbUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.Climb_motors.set(0.5);
+    	RobotMap.Climb_motors.set(0.75);
     }
 
     // Called repeatedly when this Command is scheduled to run

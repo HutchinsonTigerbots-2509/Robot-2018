@@ -41,7 +41,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	//For a reason unknown to you
     }
     public void drive(Joystick stick) {
-    	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.7);
+    	Drive.arcadeDrive(stick.getY(), -stick.getZ()*0.7);
     }
     /**
      * Resets all sensors

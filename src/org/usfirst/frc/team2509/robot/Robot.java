@@ -123,6 +123,7 @@ public class Robot extends TimedRobot{
 			autonomousCommand.cancel();
 		}
 		operatorDrive.start();
+		RobotMap.comp.start();
 	}
 
 	/**

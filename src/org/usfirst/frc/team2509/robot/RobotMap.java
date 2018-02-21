@@ -111,11 +111,11 @@ public class RobotMap {
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
 		
 		//Arm Variable Initialize
-		Arm_LowerSolenoid = new DoubleSolenoid(2,3);
-		
+		Arm_LowerSolenoid = new DoubleSolenoid(3,2);
+	
 		Arm_UpperSolenoid = new DoubleSolenoid(4,5);
 		
-		Arm_Motor = new WPI_TalonSRX(0);
+		Arm_Motor = new WPI_TalonSRX(3);
 		
 		Arm_LowerLimit = new DigitalInput(4);
 		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
@@ -130,17 +130,17 @@ public class RobotMap {
 		Gripper_Limit = new DigitalInput(9);
 		SmartDashboard.putBoolean("Gripper", Gripper_Limit.get());
 		
-		Gripper_Piston = new DoubleSolenoid(7,6);
+		Gripper_Piston = new DoubleSolenoid(6,7);
 		
 		//Intake Variable Initialize
-		Intake_Piston = new DoubleSolenoid(1, 0, 1);
+		Intake_Piston = new DoubleSolenoid(1, 1, 0);
 		
-		Intake_LeftMotor = new VictorSP(2);
-		Intake_RightMotor = new VictorSP(3);
+		Intake_LeftMotor = new VictorSP(0);
+		Intake_RightMotor = new VictorSP(1);
 		
 		
 		//Wrist Variable Initialize
-		Wrist = new WPI_TalonSRX(3);
+		Wrist = new WPI_TalonSRX(0);
 		
 //		Wrist_LowerLimit = new DigitalInput(8);
 //		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
@@ -149,10 +149,11 @@ public class RobotMap {
 //		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
 		WristEncoder = new Encoder(8,7);
+		WristEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 		
-		Climb_Motor1 = new VictorSP(0);
-		Climb_Motor2 = new VictorSP(1);
+		Climb_Motor1 = new VictorSP(2);
+		Climb_Motor2 = new VictorSP(3);
 		Climb_motors = new SpeedControllerGroup(Climb_Motor1,Climb_Motor2);
 	}
 }

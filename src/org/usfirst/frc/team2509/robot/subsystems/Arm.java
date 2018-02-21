@@ -59,11 +59,12 @@ public class Arm extends Subsystem {
 //    	Lower.set(DoubleSolenoid.Value.kOff);
     }
     public static void High() {
-    	while(UpperLimit.get())	Motor.set(1);
-    	Motor.set(0);
+        	while(UpperLimit.get())	Motor.set(0.5);
+        	Motor.set(0);    		
+    	
     }
     public static void Middle() {
-    	while(MiddleLimit.get()) Motor.set(1);
+    	while(MiddleLimit.get()) Motor.set(0.5);
     	Motor.set(0);
     }
     public static void Down(){   
