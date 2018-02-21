@@ -17,15 +17,15 @@ public class Auto2E extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(150);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(210);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(75);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(40);
+    	driveTrain.driveForward(60);//driving Forward 60 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(150);//drives forward 150 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(210);//drives forward 210 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(75);//drives forward 75 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(40);//drives forward 40 inches
     }
 
     // Called repeatedly when this Command is scheduled to run

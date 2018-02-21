@@ -26,15 +26,11 @@ public class Auto1E extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(210);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(50);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(2);
-    	driveTrain.driveForward(8);//Drive forward 8 inches
-    	arm.armThreadMid.start();
- 	    Timer.delay(3);
- 	    driveTrain.driveBackward(15);
+    	driveTrain.driveForward(210);//drives forward 210 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(50);//drives forward 50 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(2);//drives forward 2 inches
     }
 
     // Called repeatedly when this Command is scheduled to run

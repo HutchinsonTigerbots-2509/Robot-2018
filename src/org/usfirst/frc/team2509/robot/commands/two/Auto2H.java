@@ -17,15 +17,15 @@ public class Auto2H extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(150);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(240);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(45);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(15);
+    	driveTrain.driveForward(60);//drives forward 60 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(150);//drives forward 150 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(240);//drives forward 240 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(45);//drives forward 45 inches
+    	driveTrain.rotate(90);//turns left
+    	driveTrain.driveForward(15);//drives forward 15 inches
     }
 
     // Called repeatedly when this Command is scheduled to run

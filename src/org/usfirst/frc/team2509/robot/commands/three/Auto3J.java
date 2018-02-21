@@ -25,12 +25,9 @@ public class Auto3J extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(275);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveBackward(15);
-    	arm.armThreadHigh.start();
-    	Timer.delay(3);
-    	
+    	driveTrain.driveForward(275);//drives forward 275 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveBackward(15);//drives backward 15 inches
     }
 
     // Called repeatedly when this Command is scheduled to run

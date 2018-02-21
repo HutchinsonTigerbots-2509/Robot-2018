@@ -20,10 +20,10 @@ public class Auto3I extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(270);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(270);
-    	driveTrain.rotate(73);
+    	driveTrain.driveForward(270);//drives forward 270 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(270);//drives forward 270 inches
+    	driveTrain.rotate(73);//turns right
     }
 
     // Called repeatedly when this Command is scheduled to run

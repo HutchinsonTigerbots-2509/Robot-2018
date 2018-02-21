@@ -22,14 +22,14 @@ public class Auto3F extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(195); //Drive forward 197 inches
-    	driveTrain.rotate(-90.0); //Turn right 90 degrees
-    	driveTrain.driveForward(40); //Drive forward 80 inches
+    	driveTrain.driveForward(195); //Drive forward 195 inches
+    	driveTrain.rotate(-90.0); //Turn left 90 degrees
+    	driveTrain.driveForward(40); //Drive forward 40 inches
         arm.armThreadMid.start();
     	driveTrain.rotate(-90.0); //Turn left 90 degrees
-    	driveTrain.driveForward(5);
+    	driveTrain.driveForward(5);//drives forward 5 inches
     	Timer.delay(3);
-    	driveTrain.driveBackward(10);
+    	driveTrain.driveBackward(10);//drives backward 10 inches
     	
     	
     }

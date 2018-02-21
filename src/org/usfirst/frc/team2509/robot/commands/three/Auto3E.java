@@ -19,15 +19,15 @@ public class Auto3E extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(240);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(180);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(30);
+    	driveTrain.driveForward(60);//Drives Forward 60 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(240);//drives forward 240 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(180);//drives forward 180 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(60);//drives forward 60 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(30);//drives forward 30 inches
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -26,12 +26,9 @@ public class Auto1F extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(210);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(165);
-    	arm.armThreadMid.start();
- 	    Timer.delay(3);
- 	    driveTrain.driveBackward(15);
+    	driveTrain.driveForward(210);//drives forward 210 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(165);//drives forward 165 inches
     	
     }
 

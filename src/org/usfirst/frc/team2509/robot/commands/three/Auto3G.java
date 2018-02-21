@@ -17,11 +17,11 @@ public class Auto3G extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(240);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(222);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(90);
+    	driveTrain.driveForward(240);//drives forward 240 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(222);//drives forward 222 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(90);//drives forward 90 inches
     }
 
     // Called repeatedly when this Command is scheduled to run

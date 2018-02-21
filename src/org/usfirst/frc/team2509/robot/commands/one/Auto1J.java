@@ -18,12 +18,12 @@ public class Auto1J extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(210);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(210);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(90);
-    	driveTrain.rotate(90);
+    	driveTrain.driveForward(210);//drive forward 210 inches
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(210);//drives forward 210 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(90);//drives forward 90 inches
+    	driveTrain.rotate(90);//turns right
     }
 
     // Called repeatedly when this Command is scheduled to run
