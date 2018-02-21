@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -90,13 +91,14 @@ public class RobotMap {
 //		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
 		DriveTrain_left1 = new WPI_TalonSRX(2);
+		DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		
 		DriveTrain_left2 = new WPI_TalonSRX(1);
 		
 //		DriveTrain_right1 = new WPI_TalonSRX(3);
 		
 		DriveTrain_right1 = new WPI_TalonSRX(4);
-		
+		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		DriveTrain_right2 = new WPI_TalonSRX(5);
 		
 		DriveTrain_Left = new SpeedControllerGroup(
@@ -147,7 +149,7 @@ public class RobotMap {
 //		Wrist_UpperLimit = new DigitalInput(7);
 //		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
-		WristEncoder = new Encoder(8,7);
+		WristEncoder = new Encoder(7,8);
 		WristEncoder.reset();
 		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 	}

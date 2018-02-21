@@ -20,7 +20,7 @@ public class WristUp extends Command {
     protected void initialize() {
 //    	wrist.Up();
     	
-    	wrist.Up(30);
+    	wrist.Up(-15);
     }
 
     // Called repeatedly when this Command is scheduled to run

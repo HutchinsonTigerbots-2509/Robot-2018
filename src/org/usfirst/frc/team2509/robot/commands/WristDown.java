@@ -20,7 +20,7 @@ public class WristDown extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     //wrist2.set(-0.8);
-   	wrist.Down(0);
+   	wrist.Down(10);
     }
 
     // Called repeatedly when this Command is scheduled to run

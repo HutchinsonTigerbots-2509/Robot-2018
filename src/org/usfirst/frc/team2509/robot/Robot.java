@@ -10,6 +10,7 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.commands.three.*;
+import org.usfirst.frc.team2509.robot.commands.one.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
@@ -61,7 +62,7 @@ public class Robot extends TimedRobot{
 //		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
-		autonomousCommand = new Auto3H();
+		autonomousCommand = new Auto1A();
 	}
 
 	/**
