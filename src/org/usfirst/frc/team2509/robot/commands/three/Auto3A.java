@@ -25,15 +25,15 @@ public class Auto3A extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	arm.rectractLower();
-//    	driveTrain.driveForward(35);
-//    	driveTrain.rotate(-90);
-//    	driveTrain.driveForward(140);
-//    	driveTrain.rotate(90);
-//    	arm.armThreadMid.start();
-//    	driveTrain.driveForward(25);
-//    	Timer.delay(3);
-//    	driveTrain.driveBackward(30);
-//    	armMid.cancel();
+    	driveTrain.driveForward(35);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(140);
+    	driveTrain.rotate(90);
+    	arm.armThreadMid.start();
+    	driveTrain.driveForward(25);
+    	Timer.delay(3);
+    	driveTrain.driveBackward(30);
+    	armMid.cancel();
     }
 
     // Called repeatedly when this Command is scheduled to run

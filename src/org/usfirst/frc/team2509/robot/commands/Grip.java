@@ -2,6 +2,7 @@ package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Grip extends Command {
 	Gripper grip = Robot.gripper;
+	Arm arm = Robot.arm;
     public Grip() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -17,7 +19,8 @@ public class Grip extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	grip.extend();
+    	grip.retract();
+    	arm.retractUpper();//retracts arm as soon as command finishes
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +34,7 @@ public class Grip extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	grip.retract();
+    	grip.extend();
     }
 
     // Called when another command which requires one or more of the same
