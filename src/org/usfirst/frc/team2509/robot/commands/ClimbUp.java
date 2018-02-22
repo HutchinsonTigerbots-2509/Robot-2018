@@ -1,6 +1,9 @@
 package org.usfirst.frc.team2509.robot.commands;
 
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
+import org.usfirst.frc.team2509.robot.subsystems.Climb;
+
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,14 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ClimbUp extends Command {
-	private VictorSP Motor1 = RobotMap.ClimbMotor1;
-	private VictorSP Motor2 = RobotMap.ClimbMotor2;
+	private Climb climb = Robot.climb;
 
     public ClimbUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	Motor1.set(1.0);
-    	Motor2.set(1.0);
+    	climb.Up();
     }
 
     // Called just before this Command runs the first time
@@ -33,8 +34,7 @@ public class ClimbUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Motor1.set(0.0);
-    	Motor2.set(0.0);
+    	climb.Stop();
     }
 
     // Called when another command which requires one or more of the same

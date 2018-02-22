@@ -24,4 +24,14 @@ public class Climb extends Subsystem {
     public VictorSP getClimbMotor2() {
     	return Motor2;
     }
+    public void Up() {
+    	double speed = 0.75;
+    	Motor1.set(speed);
+    	Motor2.set(speed);
+    }
+    public void Stop() {
+    	double speed = 0.0;
+    	Motor1.set(speed);
+    	Motor2.set(speed);
+    }
 }
