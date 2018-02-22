@@ -1,25 +1,25 @@
 package org.usfirst.frc.team2509.robot.commands;
 
-import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.subsystems.Arm;
-
+import org.usfirst.frc.team2509.robot.RobotMap;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *Moves the arm
+ *
  */
-public class ArmMid extends Command {
-	private Arm arm = Robot.arm;
-    public ArmMid() {
+public class ClimbUp extends Command {
+	private VictorSP Motor1 = RobotMap.ClimbMotor1;
+	private VictorSP Motor2 = RobotMap.ClimbMotor2;
+
+    public ClimbUp() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.arm);
+        // eg. requires(chassis);
+    	Motor1.set(1.0);
+    	Motor2.set(1.0);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	arm.retractUpper();
-    	arm.rectractLower();
-    	arm.Middle();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,8 +33,8 @@ public class ArmMid extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.Down();
-    	arm.extendUpper();
+    	Motor1.set(0.0);
+    	Motor2.set(0.0);
     }
 
     // Called when another command which requires one or more of the same

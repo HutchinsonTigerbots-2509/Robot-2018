@@ -11,6 +11,7 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.ExtendArm;
 import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
@@ -60,6 +61,7 @@ public class OI {
 	private JoystickButton WristDownButton;
 	private JoystickButton RetractButton;
 	private JoystickButton ExtendButton;
+	private JoystickButton ClimbUpButton;
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -123,6 +125,8 @@ public class OI {
 			WristUpButton.whileHeld(new WristUp());
 		WristDownButton =new JoystickButton(OperatorStick, 11);
 			WristDownButton.whileHeld(new WristDown());
+		ClimbUpButton = new JoystickButton(CoOperatorStick, 5);
+			ClimbUpButton.toggleWhenPressed(new ClimbUp());
 		//Wristdown 
 		//ParaTestButton = new JoystickButton(OperatorStick, 6);
 			//ParaTestButton.whenPressed(new ParallelAutoTest());

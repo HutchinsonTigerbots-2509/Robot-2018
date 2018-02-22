@@ -25,10 +25,10 @@ public class Auto3F extends Command {
     	driveTrain.driveForward(195); //Drive forward 195 inches
     	driveTrain.rotate(-90.0); //Turn left 90 degrees
     	driveTrain.driveForward(40); //Drive forward 40 inches
-        arm.armThreadMid.start();
+        arm.armThreadMid.start();//starts lifting the arm
     	driveTrain.rotate(-90.0); //Turn left 90 degrees
     	driveTrain.driveForward(5);//drives forward 5 inches
-    	Timer.delay(3);
+    	Timer.delay(3);//waits to simulate dropping block
     	driveTrain.driveBackward(10);//drives backward 10 inches
     	
     	

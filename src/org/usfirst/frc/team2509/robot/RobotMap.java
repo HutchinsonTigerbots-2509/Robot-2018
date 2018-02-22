@@ -28,6 +28,10 @@ import com.kauailabs.navx.frc.AHRS;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
+/*
+ * Defining Motors, Sensors, Etc. 
+ */
 public class RobotMap {
 	
 	public static Compressor comp;
@@ -58,10 +62,12 @@ public class RobotMap {
 	public static WPI_TalonSRX Intake_LeftMotor;
 	public static WPI_TalonSRX Intake_RightMotor;
 	//Wrist Variable
-	public static VictorSP Wrist;
+	public static WPI_TalonSRX Wrist;
 	public static Encoder WristEncoder;
 //	public static DigitalInput Wrist_UpperLimit;
 //	public static DigitalInput Wrist_LowerLimit;
+	public static VictorSP ClimbMotor1;
+	public static VictorSP ClimbMotor2;
 	
 	
 	/**

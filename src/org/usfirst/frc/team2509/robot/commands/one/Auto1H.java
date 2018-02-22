@@ -18,25 +18,25 @@ public class Auto1H extends Command {
     public Auto1H() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	driveTrain.driveForward(220);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(270);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(50);
-    	driveTrain.rotate(-90);
-    	arm.armThreadMid.start();
-    	Timer.delay(3);
- 	    driveTrain.driveBackward(15);
+    	driveTrain.driveForward(220);//drive forward 220 inches
+    	driveTrain.rotate(90);//turn right
+    	driveTrain.driveForward(270);//drive forward 270 inches
+    	driveTrain.rotate(-90);//turn left
+    	driveTrain.driveForward(50);//drive forward 50 inches
+    	driveTrain.rotate(-90);//turn left
+    	arm.armThreadMid.start();//start lifting arm
+    	Timer.delay(3);//waits 3 seconds to simulate dropping off the box
+ 	    driveTrain.driveBackward(15);//drive backward 15 inches
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	driveTrain.driveForward(210);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(18);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(20);
+    	driveTrain.driveForward(210);//drives forward 210
+    	driveTrain.rotate(90);//turns right
+    	driveTrain.driveForward(18);//drives forward 18
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveForward(20);//drives forward 20
     }
 
     // Called repeatedly when this Command is scheduled to run
