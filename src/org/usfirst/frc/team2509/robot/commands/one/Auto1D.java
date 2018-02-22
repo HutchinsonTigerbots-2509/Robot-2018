@@ -27,13 +27,15 @@ public class Auto1D extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	grip.retract();//Picks Up the box
-    	arm.armThreadMid.start();//Starts armThreadMid
     	
     	driveTrain.driveForward(38);//drives Forward 38 inches
     	driveTrain.rotate(90);//turns right
     	driveTrain.driveForward(200);//drives Forward 200 inches
     	driveTrain.rotate(-90);//turns left
     	driveTrain.driveForward(72);//drives Forward 72 inches
+    	
+    	arm.armThreadMid.start();//Starts armThreadMid
+    	
     	driveTrain.rotate(-90);//turns left
     	driveTrain.driveForward(30);//drives forward 30 inches
     	

@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import  edu.wpi.first.wpilibj.VictorSP;
 
 /**
- *
+ *The subsystem for the Intake motors and pistons at the front of the Robot
  */
 public class Intake extends Subsystem {
 	private static WPI_TalonSRX leftMotor = RobotMap.Intake_LeftMotor;
@@ -29,6 +29,9 @@ public class Intake extends Subsystem {
     }
     /**
      * Extends the two arms for the box pickup.
+     */
+    /**
+     * Extends the intake arms outward so we can pull the box in with the spinny wheels
      */
     public void extend() {
     	
@@ -57,6 +60,9 @@ public class Intake extends Subsystem {
     	rightMotor.set(0);
     	
     }
+    /**
+     * Shoots the box back out in case of a malfunction or we don't want the box anymore
+     */
     public void reverse() {
     	leftMotor.set(0.9);
     	rightMotor.set(0.9);

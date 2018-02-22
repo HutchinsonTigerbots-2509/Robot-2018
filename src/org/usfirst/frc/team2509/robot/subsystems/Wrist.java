@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ *Wrist- moves the gripper up and down with gripper.Up, gripper.Down, and gripper.Idle
  */
 public class Wrist extends Subsystem {
 	private static VictorSP motor = RobotMap.Wrist;
@@ -27,6 +27,10 @@ public class Wrist extends Subsystem {
 //    	motor.set(0);
 //    	
 //    }
+    /**
+     * Moves the gripper up
+     * @param Target
+     */
     public void Up(double Target) {
     	int Max = 35;
     	while(WristEncoder.get() <= (Target - 3) && WristEncoder.get()<=Max){
@@ -35,6 +39,10 @@ public class Wrist extends Subsystem {
     	motor.set(0);
     		
     }
+    /**
+     * Moves the gripper down
+     * @param Target
+     */
     public void Down(double Target) {
     	int Min = 0;
     	while(WristEncoder.get() >= (Target + 3)) {
@@ -47,6 +55,9 @@ public class Wrist extends Subsystem {
 //    	while(lowerLimit.get()) motor.set(-.45);
 //    	motor.set(0);
 //    }
+    /**
+     * Keeps the gripper still
+     */
     public void Idle() { //Probably not needed, but I'm paranoid.
     	motor.set(0);
     }

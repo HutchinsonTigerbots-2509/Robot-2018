@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ *Contains Gripper.extend and Gripper.retract
  */
 public class Gripper extends Subsystem {
 	private static DigitalInput limit = RobotMap.Gripper_Limit;
@@ -25,9 +25,15 @@ public class Gripper extends Subsystem {
     public DoubleSolenoid getPiston() {
     	return piston;
     }
+    /**
+     * Extends the pistons so we let go of the box
+     */
     public void extend() {
     	piston.set(DoubleSolenoid.Value.kForward);
     }
+    /**
+     * Retracts the pistons so we can grab onto the box
+     */
     public void retract() {
     	piston.set(DoubleSolenoid.Value.kReverse);
     }

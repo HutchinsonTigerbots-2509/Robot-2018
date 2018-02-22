@@ -16,7 +16,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 /**
- *
+ *Here contains all of our methods -- drive, sensorReset, rotate, shift, driveForward, driveBackward, getShifter,
+ * getLeftEncoder, getRightEncoder, getGyro, getLeft, getRight, getDrive, getLeft1, getLeft2, getLeft3, getRight1, getRight2,
+ * getRight3, and pidWrite
  */
 public class DriveTrain extends Subsystem implements PIDOutput{
 	//Subsystem Variables
@@ -40,6 +42,9 @@ public class DriveTrain extends Subsystem implements PIDOutput{
         //setDefaultCommand(new MySpecialCommand());
     	//For a reason unknown to you
     }
+    /**
+     * Allows use to arcadeDrive with one Joystick using the Y-axis and Z-axis
+     */
     public void drive(Joystick stick) {
     	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.7);
     }
@@ -77,6 +82,10 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     		Drive.tankDrive(0, 0);
     	}
     }
+    /**
+     * DOESN'T WORK
+     * @param targetDistance
+     */
     public void AccDrive(double targetDistance) {
     	sensorReset();
     	double wheelDiameter = 6;
@@ -111,6 +120,10 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
+    /**
+     * DOESN'T WORK
+     * @param targetDistance
+     */
     public void AccDriveMark2(double targetDistance) {
     	sensorReset();
     	double wheelDiameter = 6;
@@ -174,6 +187,11 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
+    /**
+     * When called will drive backward
+     * Input inches as a target value
+     * @param targetDistance
+     */
     public void driveBackward(double targetDistance) {
     	sensorReset();
     	double wheelDiameter = 6;
@@ -184,6 +202,10 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
+    /**
+     * DOESN'T WORK
+     * @param targetDistance
+     */
     public void AccelMark3(double targetDistance) {
     	sensorReset();
     	double wheelDiameter = 6;
