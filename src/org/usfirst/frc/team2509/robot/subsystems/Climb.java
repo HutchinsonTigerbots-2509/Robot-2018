@@ -2,6 +2,7 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Climb extends Subsystem {
 	private VictorSP Motor1 = RobotMap.ClimbMotor1;
 	private VictorSP Motor2 = RobotMap.ClimbMotor2;
+	public SpeedControllerGroup ClimbMotors = RobotMap.ClimbMotors;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -26,12 +28,10 @@ public class Climb extends Subsystem {
     }
     public void Up() {
     	double speed = 0.75;
-    	Motor1.set(speed);
-    	Motor2.set(speed);
+    	ClimbMotors.set(speed);
     }
     public void Stop() {
     	double speed = 0.0;
-    	Motor1.set(speed);
-    	Motor2.set(speed);
+    	ClimbMotors.set(speed);
     }
 }
