@@ -1,5 +1,6 @@
 /*----------------------------------------------------------------------------*/
 
+
 /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
@@ -10,7 +11,14 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.ClimbUp;
+import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.WristDown;
+import org.usfirst.frc.team2509.robot.commands.WristUp;
+import org.usfirst.frc.team2509.robot.commands.retract;
+import org.usfirst.frc.team2509.robot.commands.IntakeIn;
+//import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
@@ -28,6 +36,7 @@ import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -45,7 +54,13 @@ public class OI {
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
 	private JoystickButton GripButton;
-	private JoystickButton IntakeButton;
+	private JoystickButton IntakeInButton;
+	private JoystickButton IntakeOutButton;
+	private JoystickButton WristUpButton;
+	private JoystickButton WristDownButton;
+	private JoystickButton RetractButton;
+	private JoystickButton ClimbButton;
+	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -87,15 +102,27 @@ public class OI {
 		OperatorStick = new Joystick(0);
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
-		ShiftButton.whenPressed(new ShiftDrive());
-		MidArmButton = new JoystickButton(OperatorStick, 3);
-		MidArmButton.whileHeld(new ArmMid());
-		HighArmButton = new JoystickButton(OperatorStick, 4);
-		HighArmButton.whileHeld(new ArmHigh());
-		GripButton = new JoystickButton(CoOperatorStick, 0);
-//		GripButton.toggleWhenPressed(command);
-		IntakeButton = new JoystickButton(CoOperatorStick, 1);
-//		IntakeButton.whileHeld(command);
+			ShiftButton.whenPressed(new ShiftDrive());
+		MidArmButton = new JoystickButton(CoOperatorStick, 2);
+			MidArmButton.whileHeld(new ArmMid());
+		HighArmButton = new JoystickButton(CoOperatorStick, 4);
+			HighArmButton.whileHeld(new ArmHigh());
+		RetractButton = new JoystickButton(CoOperatorStick, 3);
+			RetractButton.whenPressed(new retract());
+		GripButton = new JoystickButton(CoOperatorStick, 1);
+			GripButton.toggleWhenPressed(new Grip());
+		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
+		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
+			IntakeInButton.whileHeld(new IntakeIn());
+		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
+		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
+			IntakeOutButton.whileHeld(new IntakeIn());
+		WristUpButton = new JoystickButton(OperatorStick, 7);
+			WristUpButton.whileHeld(new WristUp());
+		WristDownButton =new JoystickButton(OperatorStick, 8);
+			WristDownButton.whileHeld(new WristDown());
+		ClimbButton = new JoystickButton(OperatorStick, 5);
+			ClimbButton.whileHeld(new ClimbUp());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);
@@ -107,10 +134,7 @@ public class OI {
 		chooser.addObject("3AB", AB3);
 		chooser.addObject("3DE", DE3);
 		chooser.addObject("3GJ", GJ3);
-		SmartDashboard.putData("Auto choices", chooser);
-			
-			
-		
+		SmartDashboard.putData("Auto", chooser);		
 	}
 	/**
 	 * When called constantly updates the SmartDashboard
@@ -119,14 +143,14 @@ public class OI {
 		while(true) {
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
-			SmartDashboard.putBoolean("Lower Limit", Robot.arm.getLowerLimit().get());
-			SmartDashboard.putBoolean("Middle Limit", Robot.arm.getMiddleLimit().get());
-			SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit().get());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
 			SmartDashboard.putNumber("Accel", Robot.drivetrain.getGyro().getRawAccelY());
 			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
 			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
 			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());
+//			SmartDashboard.putBoolean("Wrist Lower", Robot.wrist.getLowerLimit().get());
+//			SmartDashboard.putBoolean("Wrist Upper", Robot.wrist.getUpperLimit().get());
+			SmartDashboard.putNumber("WristEncoder", RobotMap.WristEncoder.get());
 //    		SmartDashboard.putNumber("Left Motors", Robot.drivetrain.getLeft().get());
 //    		SmartDashboard.putNumber("Right Motors", Robot.drivetrain.getRight().get());
 			
@@ -177,8 +201,10 @@ public class OI {
 		case "3AB":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = new Auto3A();
+				DriverStation.reportError("3A", false);
 			}else if(gameData.charAt(0)=='R') {
 				autoCommand = new Auto3B();
+				DriverStation.reportError("3B", false);
 			}
 		case "3DE":
 			if(gameData.charAt(0)=='L') {
