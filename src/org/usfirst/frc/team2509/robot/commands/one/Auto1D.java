@@ -21,6 +21,7 @@ public class Auto1D extends Command {
     	driveTrain.rotate(90);
     	driveTrain.driveForward(200);
     	driveTrain.rotate(-90);
+    	
     	driveTrain.driveForward(72);
     	driveTrain.rotate(-90);
     }
