@@ -1,15 +1,12 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
@@ -26,13 +23,6 @@ public class Auto1A extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-<<<<<<< HEAD
-    	driveTrain.driveForward(84); //Drive forward 66 inches
-    	driveTrain.rotate(90.0); //Turn right 90 degrees
-    	driveTrain.driveForward(72); //Drive forward 70 inches
-    	driveTrain.rotate(-90.0); //Turn left 78 degrees
-    	driveTrain.driveForward(10); //Drive Forward 10 inches
-=======
     	arm.retractUpper();
     	driveTrain.driveForward(75); //Drive forward 66 inches
     	driveTrain.rotate(90.0); //Turn right 90 degrees
@@ -45,7 +35,6 @@ public class Auto1A extends Command {
     	driveTrain.driveBackward(15);
     	arm.Down();
     	arm.extendUpper();
->>>>>>> master
     }
 
     // Called repeatedly when this Command is scheduled to run
