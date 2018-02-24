@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -47,6 +49,10 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      */
     public void drive(Joystick stick) {
     	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.7);
+    	SmartDashboard.putNumber("Left_Speed", Left_1.getSelectedSensorVelocity(0));
+		SmartDashboard.putNumber("Left_Postion", Left_1.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("Right_Speed",  Right_1.getSelectedSensorVelocity(0));
+		SmartDashboard.putNumber("Right_Position",  Right_1.getSelectedSensorPosition(0));
     }
     /**
      * Resets all sensors
@@ -251,6 +257,30 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
+    public void motion_magic(int targetDistance, int Cruise, int accell) {
+    	Left_1.setSelectedSensorPosition(0, 0, 0);
+    	Right_1.setSelectedSensorPosition(0, 0, 0);
+    	//Right_2.set(ControlMode.Follower, 4);
+    	//Left_2.set(ControlMode.Follower, 2);
+    	Left_1.config_kD(0, 0.001, 0);
+    	Left_1.config_kP(0, 0.4, 0);
+    	Left_1.config_kI(0, 0.0001, 0);
+    	Left_1.config_kF(0, 0.01, 0);
+    	Left_1.configMotionCruiseVelocity(Cruise, 0);
+    	Left_1.configMotionAcceleration(accell, 0);
+    	Left_1.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+    	Left_1.set(ControlMode.MotionMagic, targetDistance);
+    	//Right_1.config_kD(1, 0.001, 10);
+    	//Right_1.config_kP(1, 0.4, 10);
+    	//Right_1.config_kI(1, 0.0001, 10);
+    	//Right_1.config_kF(1, 0.01, 10);
+    	//Right_1.configMotionCruiseVelocity(Cruise, 10);
+    	//Right_1.configMotionAcceleration(accell, 10);
+    	//Right_1.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+    	//Right_1.set(ControlMode.MotionMagic, targetDistance);
+    	
+    	
+    }
     
     /**
      * 
@@ -341,9 +371,19 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * 
      * @return DriveTrain_Ri6ght_3
      */
-    public WPI_TalonSRX getRight3() {
-    	return Right_2;
+    public int getLeft_Speed() {
+    	return Left_1.getSelectedSensorVelocity(0);
     }
+    public int getLeft_position() {
+    	return Left_1.getSelectedSensorPosition(0);
+    }
+    public int getRight_speed() {
+    	return Right_1.getSelectedSensorVelocity(1);
+    }
+    public int getRight_postion() {
+    	return Right_1.getSelectedSensorPosition(1);
+    }
+    
 	@Override
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub

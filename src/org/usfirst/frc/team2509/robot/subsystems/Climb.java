@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Climb extends Subsystem {
 	private VictorSP Motor1 = RobotMap.ClimbMotor1;
 	private VictorSP Motor2 = RobotMap.ClimbMotor2;
-	public SpeedControllerGroup ClimbMotors = RobotMap.ClimbMotors;
+	public SpeedControllerGroup ClimbMotors = RobotMap.Climbmotors;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

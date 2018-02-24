@@ -64,7 +64,7 @@ public class Robot extends TimedRobot{
 //		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
-		autonomousCommand = new Auto3H();//The current selected Auto
+		autonomousCommand = new Auto3D();//The current selected Auto
 	}
 
 	/**

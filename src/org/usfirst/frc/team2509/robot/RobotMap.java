@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -79,15 +81,15 @@ public class RobotMap {
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
-		DriveTrain_LeftEncoder = new Encoder(0,1);
-		DriveTrain_LeftEncoder.setDistancePerPulse(0.0179136);
-		DriveTrain_LeftEncoder.setReverseDirection(true);
-		SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
+		//DriveTrain_LeftEncoder = new Encoder(0,1);
+		//DriveTrain_LeftEncoder.setDistancePerPulse(0.0179136);
+		//DriveTrain_LeftEncoder.setReverseDirection(true);
+		//SmartDashboard.putNumber("Left Encoder", DriveTrain_LeftEncoder.get());
 		
-		DriveTrain_RightEncoder = new Encoder(2,3);
-		DriveTrain_RightEncoder.setDistancePerPulse(0.0179136);
-		DriveTrain_RightEncoder.setReverseDirection(true);
-		SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
+		//DriveTrain_RightEncoder = new Encoder(2,3);
+		//DriveTrain_RightEncoder.setDistancePerPulse(0.0179136);
+		//DriveTrain_RightEncoder.setReverseDirection(true);
+		//SmartDashboard.putNumber("Right Encoder", DriveTrain_RightEncoder.get());
 		
 		DriveTrain_NavX = new AHRS(SPI.Port.kMXP);
 		SmartDashboard.putNumber("Gyro", DriveTrain_NavX.getAngle());
@@ -97,10 +99,7 @@ public class RobotMap {
 //		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
 		DriveTrain_left1 = new WPI_TalonSRX(2);
-		
 		DriveTrain_left2 = new WPI_TalonSRX(1);
-		
-//		DriveTrain_right1 = new WPI_TalonSRX(3);
 		
 		DriveTrain_right1 = new WPI_TalonSRX(4);
 		
@@ -140,13 +139,13 @@ public class RobotMap {
 		Intake_Piston = new DoubleSolenoid(1, 1, 0);
 		
 		Intake_LeftMotor = new VictorSP(0);
-		Intake_RightMotor = new VictorSP(3);
+		Intake_RightMotor = new VictorSP(1);
 		//Intake_LeftMotor = new VictorSP(2);
 		//Intake_RightMotor = new VictorSP(3);
 		
 		
 		//Wrist Variable Initialize
-		Wrist = new WPI_TalonSRX(1);
+		Wrist = new WPI_TalonSRX(0);
 		
 //		Wrist_LowerLimit = new DigitalInput(8);
 //		SmartDashboard.putBoolean("Wrist Lower", Wrist_LowerLimit.get());
@@ -154,12 +153,24 @@ public class RobotMap {
 //		Wrist_UpperLimit = new DigitalInput(7);
 //		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
-		WristEncoder = new Encoder(8,7);
-		WristEncoder.setReverseDirection(true);
-		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
+		//WristEncoder = new Encoder(8,7);
+		//WristEncoder.setReverseDirection(true);
+		//SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 		
 		ClimbMotor1 = new VictorSP(2);
 		ClimbMotor2 = new VictorSP(3);
 		Climbmotors = new SpeedControllerGroup(ClimbMotor1, ClimbMotor2);
+		
+		DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		//DriveTrain_right1.setStatusFramePeriod(StatusFrameEnhanced.Status_12_Feedback1, 10, 10);
+		//DriveTrain_left1.setSelectedSensorPosition(0, 0, 0);
+		//DriveTrain_right1.setSelectedSensorPosition(0, 0, 0);
+		//SmartDashboard.putNumber("Left_Speed", DriveTrain_left1.getSelectedSensorVelocity(0));
+		//SmartDashboard.putNumber("Left_Postion", DriveTrain_left1.getSelectedSensorPosition(0));
+		//SmartDashboard.putNumber("Right_Speed",  DriveTrain_right1.getSelectedSensorVelocity(1));
+		//SmartDashboard.putNumber("Right_Position",  DriveTrain_right1.getSelectedSensorPosition(1));
+		//DriveTrain_left1.configOpenloopRamp(1, 10); 
+		
 	}
 }

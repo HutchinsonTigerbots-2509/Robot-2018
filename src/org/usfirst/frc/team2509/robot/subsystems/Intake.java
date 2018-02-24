@@ -15,8 +15,8 @@ import  edu.wpi.first.wpilibj.VictorSP;
  *The subsystem for the Intake motors and pistons at the front of the Robot
  */
 public class Intake extends Subsystem {
-	private static WPI_TalonSRX leftMotor = RobotMap.Intake_LeftMotor;
-	private static WPI_TalonSRX rightMotor = RobotMap.Intake_RightMotor;
+	private static VictorSP leftMotor = RobotMap.Intake_LeftMotor;
+	private static VictorSP rightMotor = RobotMap.Intake_RightMotor;
 	
 	private static DoubleSolenoid piston = RobotMap.Intake_Piston;
 
