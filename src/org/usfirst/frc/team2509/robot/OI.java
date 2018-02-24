@@ -10,6 +10,7 @@
 package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
+import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.ExtendArm;
@@ -63,6 +64,7 @@ public class OI {
 	private JoystickButton RetractButton;
 	private JoystickButton ExtendButton;
 	private JoystickButton ClimbUpButton;
+	private JoystickButton ArmHomeButton;
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -117,17 +119,17 @@ public class OI {
 		GripButton = new JoystickButton(CoOperatorStick, 1);
 			GripButton.toggleWhenPressed(new Grip());
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
-		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
 			IntakeInButton.whileHeld(new IntakeIn());
 		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
-		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
-			IntakeOutButton.whileHeld(new IntakeIn());
+			IntakeOutButton.whileHeld(new IntakeOut());
 		WristUpButton = new JoystickButton(OperatorStick, 12);
 			WristUpButton.whileHeld(new WristUp());
 		WristDownButton =new JoystickButton(OperatorStick, 11);
 			WristDownButton.whileHeld(new WristDown());
 		ClimbUpButton = new JoystickButton(CoOperatorStick, 5);
 			ClimbUpButton.toggleWhenPressed(new ClimbUp());
+		ArmHomeButton = new JoystickButton(OperatorStick, 9);
+			ArmHomeButton.whenPressed(new ArmHome());
 		//Wristdown 
 		//ParaTestButton = new JoystickButton(OperatorStick, 6);
 			//ParaTestButton.whenPressed(new ParallelAutoTest());
