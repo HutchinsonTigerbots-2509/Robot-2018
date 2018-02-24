@@ -11,13 +11,14 @@ package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.ArmSeq;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.Grip;
+import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.retract;
-import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 //import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
@@ -60,6 +61,7 @@ public class OI {
 	private JoystickButton WristDownButton;
 	private JoystickButton RetractButton;
 	private JoystickButton ClimbButton;
+	private JoystickButton ArmSeqButton;
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -123,6 +125,9 @@ public class OI {
 			WristDownButton.whileHeld(new WristDown());
 		ClimbButton = new JoystickButton(OperatorStick, 5);
 			ClimbButton.whileHeld(new ClimbUp());
+		//ArmSeqButton = new JoystickButton(CoOperatorStick, 4);
+		ArmSeqButton = new JoystickButton(OperatorStick, 4);//random button because we havent finsihed restructure
+			ArmSeqButton.whenPressed(new ArmSeq());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);
