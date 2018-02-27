@@ -9,33 +9,52 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForward extends Command {
+public class DriveTurn extends Command {
 	private DriveTrain drive = Robot.drivetrain;
-	public double target = 0;
-    public DriveForward(double targetDistance) {
+	private double target = 0;
+	private double turnSpeed = 0.6;
+	private Boolean turnRight;
+	private Boolean turnLeft;
+    public DriveTurn(double targetAngle) {
+    	requires(drive);
+    	target = targetAngle;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(drive);
-    	double wheelDiameter = 6;
-    	target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	drive.sensorReset();
     	Timer.delay(0.1);
-    	drive.getDrive().arcadeDrive(0.7, drive.getGyro().getAngle()*(0.1));
+    	if(drive.getGyro().getAngle()<target) {
+    		turnRight = true;
+    		turnLeft = false;
+    	}else if(drive.getGyro().getAngle()>target){
+    		turnRight = false;
+    		turnLeft = true;
+    	}
+    	if(turnRight) {
+    		drive.getDrive().tankDrive(turnSpeed, -turnSpeed);
+    	}else if(turnLeft) {
+    		drive.getDrive().tankDrive(-turnSpeed, turnSpeed);
+    	}else {
+    		end();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drive.getDrive().arcadeDrive(0.7, drive.getGyro().getAngle()*(0.1));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (drive.getRightEncoder().get()+drive.getLeftEncoder().get())/2>=target;
+    	if(turnRight) {
+    		return drive.getGyro().getAngle()>target;
+    	}else if(turnLeft) {
+    		return drive.getGyro().getAngle()<target;
+    	}else {
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true

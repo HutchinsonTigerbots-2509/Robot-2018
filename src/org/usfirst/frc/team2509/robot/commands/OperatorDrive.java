@@ -24,6 +24,7 @@ public class OperatorDrive extends Command {
      * Called just before OperatorDrive runs the first time
      */
     protected void initialize() {
+    	drivetrain.drive(OpStick);
     }
 
     /**
@@ -37,7 +38,7 @@ public class OperatorDrive extends Command {
      *  Make this return true when OperatorDrive no longer needs to run execute()
      */
     protected boolean isFinished() {
-        return false;
+    	return false;
     }
 
     /**

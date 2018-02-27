@@ -12,6 +12,7 @@ import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 //import org.usfirst.frc.team2509.robot.commands.three.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
+import org.usfirst.frc.team2509.robot.subsystems.Climber;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot{
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
+	public static Climber climber;
 	public static Gripper gripper;
 	public static Intake intake;
 	public static Wrist wrist;
@@ -53,6 +55,7 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
+		climber = new Climber();
 		intake =new Intake();
 		gripper = new Gripper();
 		wrist = new Wrist();
