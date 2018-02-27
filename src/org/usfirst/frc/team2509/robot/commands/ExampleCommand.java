@@ -8,25 +8,77 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team2509.robot.OI;
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.RobotMap;
+import org.usfirst.frc.team2509.robot.subsystems.ExampleSubsystem;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class ExampleCommand extends Command {
+	private WPI_TalonSRX motor12 = RobotMap.DriveTrain_right1;
+	private WPI_TalonSRX motor1 = RobotMap.DriveTrain_left1;
+	//private WPI_TalonSRX motor2 = RobotMap.DriveTrain_right1;
+	
 	public ExampleCommand() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.kExampleSubsystem);
+		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		//motor1.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
+		//motor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 1);
+		
+		//motor1.set(0.25);
+		motor12.set(0.25);
+		motor1.config_kF(0, 0.01, 10);
+		motor1.config_kP(0, 0.4, 10);
+		motor1.config_kI(0, 0.0001, 10);
+		motor1.config_kD(0, .001, 10);
+		motor1.setSelectedSensorPosition(0, 0, 0);
+		motor1.configMotionCruiseVelocity(2000, 0);
+		motor1.configMotionAcceleration(3000, 0);
+		//motor1.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+		//motor1.set(ControlMode.MotionMagic, 100000);
+		//motor12.config_kF(1, 0.01, 0);
+		//motor12.config_kP(1, 0.4, 0);
+		//motor12.config_kI(1, 0.0001, 0);
+		//motor12.config_kD(1, .001, 0);
+		//motor12.setSelectedSensorPosition(0, 0, 0);
+		//motor12.configMotionCruiseVelocity(5000, 0);
+		//motor12.configMotionAcceleration(3000, 0);
+		motor12.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 0, 0);
+		//motor12.set(ControlMode.MotionMagic, 10000);
+		
+		
+		
+		//motor1.configMotionAcceleration(1000, 0);
+		
+		//SmartDashboard.putNumber("RPM", motor1.getSelectedSensorVelocity(0));
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		
+		//SmartDashboard.putNumber("RPM", (motor12.getSelectedSensorVelocity(0)));
+		//SmartDashboard.putNumber("postion", (motor12.getSelectedSensorPosition(0)));
+		SmartDashboard.putNumber("RPM1", (motor12.getSelectedSensorVelocity(0)));
+		SmartDashboard.putNumber("postion1", (motor12.getSelectedSensorPosition(0)));
+		
+		
+		
+	
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -38,11 +90,14 @@ public class ExampleCommand extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		motor1.set(ControlMode.Current, 0);
+		//motor1.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		end();
 	}
 }
