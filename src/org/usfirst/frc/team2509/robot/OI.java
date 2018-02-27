@@ -10,7 +10,10 @@
 package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
+import org.usfirst.frc.team2509.robot.commands.ArmHigh_2;
+import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
+import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
@@ -104,11 +107,11 @@ public class OI {
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 			ShiftButton.whenPressed(new ShiftDrive());
 		MidArmButton = new JoystickButton(CoOperatorStick, 2);
-			MidArmButton.whileHeld(new ArmMid());
+			MidArmButton.whileHeld(new ArmMid_2());
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
-			HighArmButton.whileHeld(new ArmHigh());
+			HighArmButton.whileHeld(new ArmHigh_2());
 		RetractButton = new JoystickButton(CoOperatorStick, 3);
-			RetractButton.whenPressed(new retract());
+			RetractButton.whenPressed(new ArmHome());
 		GripButton = new JoystickButton(CoOperatorStick, 1);
 			GripButton.toggleWhenPressed(new Grip());
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
@@ -122,7 +125,8 @@ public class OI {
 		WristDownButton =new JoystickButton(OperatorStick, 8);
 			WristDownButton.whileHeld(new WristDown());
 		ClimbButton = new JoystickButton(OperatorStick, 5);
-			ClimbButton.whileHeld(new ClimbUp());
+//			ClimbButton.whileHeld(new ClimbUp());
+			ClimbButton.whenPressed(new ArmHome());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);

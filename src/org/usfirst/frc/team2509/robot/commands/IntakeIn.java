@@ -18,7 +18,7 @@ public class IntakeIn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	intake.retract();
+    	intake.extend();
     	intake.on();
     }
 
@@ -33,7 +33,7 @@ public class IntakeIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	intake.extend();
+    	intake.retract();
     	intake.off();
     }
 
