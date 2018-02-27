@@ -31,7 +31,7 @@ public class ExampleSubsystem extends Subsystem {
 	}
 	public void givespeed() {
 		
-		motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
+		//motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
 		
 		
 	}

@@ -36,16 +36,24 @@ public class RobotMap {
 
 	public static void init(){
 		DriveTrain_right1 = new WPI_TalonSRX(2);
+		//DriveTrain_right1.setInverted(true);
 		
 		DriveTrain_right2 = new WPI_TalonSRX(1);
-		DriveTrain_left1 = new WPI_TalonSRX(4);
-		DriveTrain_left2 = new WPI_TalonSRX(5);
+		//DriveTrain_left1 = new WPI_TalonSRX(4);
+		//DriveTrain_left2 = new WPI_TalonSRX(5);
 		//shoot.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		//DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		
-	                                                                                                	
-	
+		DriveTrain_right1.setSensorPhase(false);
+		DriveTrain_right1.configNominalOutputForward(0, 10);
+		DriveTrain_right1.configNominalOutputReverse(0, 10);
+		DriveTrain_right1.configPeakOutputForward(1, 10);
+		DriveTrain_right1.configPeakOutputReverse(-1, 10);
+		DriveTrain_left1.configNominalOutputForward(0, 10);
+		DriveTrain_left1.configNominalOutputReverse(0, 10);
+		DriveTrain_left1.configPeakOutputForward(1, 10);
+		DriveTrain_left1.configPeakOutputReverse(-1, 10);
+	    //DriveTrain_right2.setInverted(true);       
 		
 		
 		
