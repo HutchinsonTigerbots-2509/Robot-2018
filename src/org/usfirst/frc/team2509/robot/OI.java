@@ -14,9 +14,11 @@ import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.ExtendArm;
-import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.ThisIsJustATest;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
+import org.usfirst.frc.team2509.robot.commands.WristFineTuneDown;
+import org.usfirst.frc.team2509.robot.commands.WristFineTuneUp;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.RetractArm;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
@@ -62,16 +64,15 @@ public class OI {
 	private JoystickButton LowArmButton;
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
-	private JoystickButton GripButton;
 	private JoystickButton IntakeInButton;
 	private JoystickButton IntakeOutButton;
-	private JoystickButton WristFineTuneDown;
-	private JoystickButton WristFineTuneUp;
-	private JoystickButton RetractButton;
-	private JoystickButton ExtendButton;
+	private JoystickButton WristSetPositionDowner;
+	private JoystickButton WristSetPositionUpper;
 	private JoystickButton ClimbUpButton;
-	private JoystickButton AfterDropReverse;
-	private JoystickButton ExtendGripperButton;
+	private JoystickButton WristFineTuneButtonUp;
+	private JoystickButton WristFineTuneButtonDown;
+	private JoystickButton HomeForTheArm;
+//	private JoystickButton AfterDropReverse; Will Have If Needed
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -114,6 +115,9 @@ public class OI {
 		OperatorStick = new Joystick(0);
 		CoOperatorStick = new Joystick(1);
 		
+//		AfterDropReverse = new JoystickButton(OperatorStick, 5);	Will Have if needed
+//			AfterDropReverse.toggleWhenPressed(new AfterDropReverse());	Again, Will have if needed
+		
 		ShiftButton = new JoystickButton(OperatorStick, 2);//Button no 2 on joystick
 			ShiftButton.whenPressed(new ShiftDrive());
 		
@@ -125,12 +129,9 @@ public class OI {
 			
 		LowArmButton = new JoystickButton(CoOperatorStick, 1);//Button A on the xbox
 			LowArmButton.toggleWhenPressed(new RetractArm());
-		
-		RetractButton = new JoystickButton(CoOperatorStick, 7);//RTigger on Xbox
-			RetractButton.whenPressed(new RetractArm());
-		
-		ExtendButton = new JoystickButton(CoOperatorStick, 8);//LTigger on xbox
-			ExtendButton.whenPressed(new ExtendArm());
+			
+		HomeForTheArm = new JoystickButton(CoOperatorStick, 3);//Button x on Xbox
+			HomeForTheArm.toggleWhenPressed(new ThisIsJustATest());
 		
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//Trigger on Joystick
 			IntakeInButton.whileHeld(new IntakeIn());
@@ -138,12 +139,21 @@ public class OI {
 		IntakeOutButton = new JoystickButton(OperatorStick, 8);//Button 8 on joystick
 			IntakeOutButton.whileHeld(new IntakeReverse());
 			
-//		AfterDropReverse = new JoystickButton(OperatorStick, 7);//Button no 7 on Joystick
-//			AfterDropReverse.toggleWhenPressed(new AfterDropReverse());
-			
-		ClimbUpButton = new JoystickButton(CoOperatorStick, 5);//Button no 6 on Joystick
+		ClimbUpButton = new JoystickButton(OperatorStick, 6);//Button no 6 on Joystick
 			ClimbUpButton.toggleWhenPressed(new ClimbUp());
+			
+		WristSetPositionUpper = new JoystickButton(OperatorStick, 12);
+			WristSetPositionUpper.toggleWhenPressed(new ThisIsJustATest());
 		
+		WristSetPositionDowner = new JoystickButton(OperatorStick, 11);
+			WristSetPositionDowner.toggleWhenPressed(new ThisIsJustATest());
+			
+		WristFineTuneButtonUp = new JoystickButton(CoOperatorStick, 6);
+			WristFineTuneButtonUp.whileHeld(new WristFineTuneUp());
+			
+		WristFineTuneButtonDown = new JoystickButton(CoOperatorStick, 5);
+			WristFineTuneButtonDown.whileHeld(new WristFineTuneDown());
+			
 		double TriggerNumberLeft = CoOperatorStick.getRawAxis(2);
 		double TriggerNumberRight = CoOperatorStick.getRawAxis(3);
 		if(TriggerNumberLeft > 0){
@@ -158,7 +168,7 @@ public class OI {
 		else {
 			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kOff);
 		}
-			
+		
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);
