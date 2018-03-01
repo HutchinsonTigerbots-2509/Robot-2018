@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *The command that makes the robot climbs up
  */
 public class ClimbUp extends Command {
 	private Climb climb = Robot.climb;

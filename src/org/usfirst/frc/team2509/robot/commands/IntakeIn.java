@@ -6,7 +6,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *Extends the piston down by the wheels and activates the motor attached to them. This allows to grab the box into the gripper.
  */
 public class IntakeIn extends Command {
 	private Intake intake = Robot.intake;

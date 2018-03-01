@@ -6,7 +6,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *The Piston and clamp on the arm. It is used to grab and release the box
  */
 public class Grip extends Command {
 	Gripper grip = Robot.gripper;

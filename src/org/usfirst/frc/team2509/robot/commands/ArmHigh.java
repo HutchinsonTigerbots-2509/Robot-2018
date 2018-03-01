@@ -7,7 +7,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *Moves the arm into the high position
  */
 public class ArmHigh extends Command {
 	private Arm arm = Robot.arm;

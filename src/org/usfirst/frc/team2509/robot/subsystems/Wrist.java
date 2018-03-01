@@ -36,6 +36,7 @@ public class Wrist extends Subsystem {
     public void Up(double Target) {
     	int Max = 35;
     	//while(WristEncoder.get() <= (Target - 3) && WristEncoder.get()<=Max){
+    	if((getWristEncoder()) < (getUpperLimit()));
     	motor.set(0.25);
     	
     	//motor.set(0);

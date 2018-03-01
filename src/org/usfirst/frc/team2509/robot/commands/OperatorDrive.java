@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *This command allows us to drive 0
  */
 public class OperatorDrive extends Command {
 	private DriveTrain drivetrain = Robot.drivetrain;

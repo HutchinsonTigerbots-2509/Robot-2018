@@ -6,7 +6,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *This shoots out the box in case of a problem that occurred during the Intake proccess
  */
 public class IntakeReverse extends Command {
 	private Intake intake = Robot.intake;

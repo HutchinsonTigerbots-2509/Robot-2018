@@ -61,7 +61,7 @@ public class Arm extends Subsystem {
     /**
      * It will retract the wrist and gripper
      */
-    public static void retractUpper() {
+    public void retractUpper() {
     	Upper.set(DoubleSolenoid.Value.kReverse);
 //    	Upper.set(DoubleSolenoid.Value.kOff);
     }

@@ -6,7 +6,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *Moves the arm
+ *Moves the arm to the middle position
  */
 public class ArmMid extends Command {
 	private Arm arm = Robot.arm;

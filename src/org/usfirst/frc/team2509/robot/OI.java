@@ -13,19 +13,11 @@ package org.usfirst.frc.team2509.robot;
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
-import org.usfirst.frc.team2509.robot.commands.ExtendArm;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
-import org.usfirst.frc.team2509.robot.commands.ThisIsJustATest;
-import org.usfirst.frc.team2509.robot.commands.WristDown;
-import org.usfirst.frc.team2509.robot.commands.WristFineTuneDown;
-import org.usfirst.frc.team2509.robot.commands.WristFineTuneUp;
-import org.usfirst.frc.team2509.robot.commands.WristUp;
+import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.RetractArm;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
-import org.usfirst.frc.team2509.robot.commands.IntakeOut;
 import org.usfirst.frc.team2509.robot.commands.IntakeReverse;
-import org.usfirst.frc.team2509.robot.commands.AfterDropReverse;
-//import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
@@ -42,9 +34,7 @@ import org.usfirst.frc.team2509.robot.commands.two.Auto2A;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
 import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
-import org.usfirst.frc.team2509.robot.subsystems.Arm;
-import org.usfirst.frc.team2509.robot.subsystems.Gripper;
-
+import org.usfirst.frc.team2509.robot.commands.HomeForTheArm;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -66,13 +56,9 @@ public class OI {
 	private JoystickButton HighArmButton;
 	private JoystickButton IntakeInButton;
 	private JoystickButton IntakeOutButton;
-	private JoystickButton WristSetPositionDowner;
-	private JoystickButton WristSetPositionUpper;
+	private JoystickButton Grip;
 	private JoystickButton ClimbUpButton;
-	private JoystickButton WristFineTuneButtonUp;
-	private JoystickButton WristFineTuneButtonDown;
 	private JoystickButton HomeForTheArm;
-//	private JoystickButton AfterDropReverse; Will Have If Needed
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -112,61 +98,36 @@ public class OI {
 	 * 
 	 */
 	public OI() {
-		OperatorStick = new Joystick(0);
-		CoOperatorStick = new Joystick(1);
+		OperatorStick = new Joystick(0);//LogiTech Joystick- will have driving related buttons
+		CoOperatorStick = new Joystick(1);//Xbox Controller- will have lifting/dropping related buttons
 		
-//		AfterDropReverse = new JoystickButton(OperatorStick, 5);	Will Have if needed
-//			AfterDropReverse.toggleWhenPressed(new AfterDropReverse());	Again, Will have if needed
+		ShiftButton = new JoystickButton(OperatorStick, 2);//The 2 button on the 
+			ShiftButton.whenPressed(new ShiftDrive());//Will
 		
-		ShiftButton = new JoystickButton(OperatorStick, 2);//Button no 2 on joystick
-			ShiftButton.whenPressed(new ShiftDrive());
-		
-		MidArmButton = new JoystickButton(CoOperatorStick, 2);//Button B on the xbox
+		MidArmButton = new JoystickButton(CoOperatorStick, 2);
 			MidArmButton.toggleWhenPressed(new ArmMid());
 		
-		HighArmButton = new JoystickButton(CoOperatorStick, 4);//Button Y on the xbox
+		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.toggleWhenPressed(new ArmHigh());
 			
-		LowArmButton = new JoystickButton(CoOperatorStick, 1);//Button A on the xbox
+		LowArmButton = new JoystickButton(CoOperatorStick, 1);
 			LowArmButton.toggleWhenPressed(new RetractArm());
 			
-		HomeForTheArm = new JoystickButton(CoOperatorStick, 3);//Button x on Xbox
-			HomeForTheArm.toggleWhenPressed(new ThisIsJustATest());
+		HomeForTheArm = new JoystickButton(CoOperatorStick, 3);
+			HomeForTheArm.toggleWhenPressed(new HomeForTheArm());
 		
-		IntakeInButton = new JoystickButton(OperatorStick, 1);//Trigger on Joystick
+		IntakeInButton = new JoystickButton(OperatorStick, 1);
 			IntakeInButton.whileHeld(new IntakeIn());
 		
-		IntakeOutButton = new JoystickButton(OperatorStick, 8);//Button 8 on joystick
+		IntakeOutButton = new JoystickButton(OperatorStick, 8);
 			IntakeOutButton.whileHeld(new IntakeReverse());
 			
-		ClimbUpButton = new JoystickButton(OperatorStick, 6);//Button no 6 on Joystick
+		ClimbUpButton = new JoystickButton(CoOperatorStick, 6);
 			ClimbUpButton.toggleWhenPressed(new ClimbUp());
 			
-		WristSetPositionUpper = new JoystickButton(OperatorStick, 12);
-			WristSetPositionUpper.toggleWhenPressed(new ThisIsJustATest());
-		
-		WristSetPositionDowner = new JoystickButton(OperatorStick, 11);
-			WristSetPositionDowner.toggleWhenPressed(new ThisIsJustATest());
+		Grip = new JoystickButton(CoOperatorStick, 6);
+			Grip.toggleWhenPressed(new Grip());
 			
-		WristFineTuneButtonUp = new JoystickButton(CoOperatorStick, 6);
-			WristFineTuneButtonUp.whileHeld(new WristFineTuneUp());
-			
-		WristFineTuneButtonDown = new JoystickButton(CoOperatorStick, 5);
-			WristFineTuneButtonDown.whileHeld(new WristFineTuneDown());
-			
-		double TriggerNumberLeft = CoOperatorStick.getRawAxis(2);
-		double TriggerNumberRight = CoOperatorStick.getRawAxis(3);
-		if(TriggerNumberLeft > 0){
-			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kReverse);
-		}else {
-			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kOff);
-		}
-		if(TriggerNumberRight > 0){
-			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kForward);
-		}else {
-			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kOff);
-		}
-		
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);

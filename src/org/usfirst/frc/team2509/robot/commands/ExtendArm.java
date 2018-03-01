@@ -6,7 +6,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *Extends the piston, so that the gripper and wrist move out from the robot
  */
 public class ExtendArm extends Command {
 	Arm arm = Robot.arm;
