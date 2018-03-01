@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class WristFineTuneDown extends Command {
-	private Wrist wrist = Robot.wrist;
+	private Wrist Wrist = Robot.wrist;
     public WristFineTuneDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -18,7 +18,7 @@ public class WristFineTuneDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.Wrist.set(-0.25);
+    	Wrist.Down(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +32,7 @@ public class WristFineTuneDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	wrist.Idle();
+    	Wrist.Idle();
     }
 
     // Called when another command which requires one or more of the same

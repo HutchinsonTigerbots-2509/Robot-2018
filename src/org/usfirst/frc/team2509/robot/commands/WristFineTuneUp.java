@@ -18,7 +18,7 @@ public class WristFineTuneUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.Wrist.set(0.25);
+    	wrist.Up(0);
     }
 
     // Called repeatedly when this Command is scheduled to run

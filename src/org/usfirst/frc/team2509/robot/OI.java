@@ -158,14 +158,12 @@ public class OI {
 		double TriggerNumberRight = CoOperatorStick.getRawAxis(3);
 		if(TriggerNumberLeft > 0){
 			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kReverse);
-		}
-		else {
+		}else {
 			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kOff);
 		}
 		if(TriggerNumberRight > 0){
 			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kForward);
-		}
-		else {
+		}else {
 			RobotMap.Gripper_Piston.set(DoubleSolenoid.Value.kOff);
 		}
 		
