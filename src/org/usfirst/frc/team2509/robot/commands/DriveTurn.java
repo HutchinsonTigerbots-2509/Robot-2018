@@ -3,6 +3,7 @@ package org.usfirst.frc.team2509.robot.commands;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveTurn extends Command {
 	private DriveTrain drive = Robot.drivetrain;
-	private double target = 0;
+	public double target = 0;
 	private double turnSpeed = 0.6;
 	private Boolean turnRight;
 	private Boolean turnLeft;
@@ -29,14 +30,13 @@ public class DriveTurn extends Command {
     	if(drive.getGyro().getAngle()<target) {
     		turnRight = true;
     		turnLeft = false;
+    		drive.getDrive().tankDrive(turnSpeed, turnSpeed*(-1));
     	}else if(drive.getGyro().getAngle()>target){
     		turnRight = false;
     		turnLeft = true;
-    	}
-    	if(turnRight) {
-    		drive.getDrive().tankDrive(turnSpeed, -turnSpeed);
-    	}else if(turnLeft) {
-    		drive.getDrive().tankDrive(-turnSpeed, turnSpeed);
+    		drive.getDrive().tankDrive(turnSpeed*(-1), turnSpeed);
+//    	drive.getDrive().arcadeDrive(0, 0.6);
+//    	drive.getDrive().tankDrive(-0.6, 0.6);
     	}else {
     		end();
     	}
@@ -44,12 +44,18 @@ public class DriveTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+//    	drive.getDrive().tankDrive(-0.6, 0.6);
+    	if(turnRight) {
+    		drive.getDrive().tankDrive(turnSpeed, turnSpeed*(-1));
+    	}else if(turnLeft) {
+    		drive.getDrive().tankDrive(turnSpeed*(-1), turnSpeed);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(turnRight) {
-    		return drive.getGyro().getAngle()>target;
+    		return (drive.getGyro().getAngle()>target);
     	}else if(turnLeft) {
     		return drive.getGyro().getAngle()<target;
     	}else {

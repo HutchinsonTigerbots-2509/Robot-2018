@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2509.robot;
 
 
+import org.usfirst.frc.team2509.robot.commands.AUTOTEST;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 //import org.usfirst.frc.team2509.robot.commands.three.*;
@@ -98,7 +99,8 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-		RobotMap.comp.stop();
+//		RobotMap.comp.stop();
+		autonomousCommand = new AUTOTEST();
 //		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
 //				DriverStation.getInstance().getGameSpecificMessage());
 //		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);

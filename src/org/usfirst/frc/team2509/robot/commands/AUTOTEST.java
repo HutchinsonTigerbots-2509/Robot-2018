@@ -26,7 +26,7 @@ public class AUTOTEST extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(75));
     	addSequential(new DriveTurn(90));
-    	addSequential(new DriveForward(45));
-    	addSequential(new DriveTurn(-90));
+//    	addSequential(new DriveForward(45));
+//    	addSequential(new DriveTurn(-90));
     }
 }

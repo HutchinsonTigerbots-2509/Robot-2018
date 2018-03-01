@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveForward extends Command {
 	private DriveTrain drive = Robot.drivetrain;
 	public double target = 0;
+	private double wheelDiameter = 6;
     public DriveForward(double targetDistance) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(drive);
-    	double wheelDiameter = 6;
     	target = (targetDistance/(wheelDiameter*Math.PI))*3*360;
     	
     }
