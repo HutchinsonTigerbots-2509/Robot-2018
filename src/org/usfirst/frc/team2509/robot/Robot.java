@@ -133,8 +133,32 @@ public class Robot extends TimedRobot{
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		int POVAngle = oi.CoOperatorStick.getPOV();
+			
+		Gripper Gp = Robot.gripper;
+		Arm Arm = Robot.arm;
+			
+			
+		if(POVAngle == 45) {				
+				Gp.retract();
+			}
+		else if(POVAngle == 90) {
+				Gp.extend();
+			}
+		else if(POVAngle == 180) {
+				
+				Arm.rectractLower();
+			}
+		else if(POVAngle == 270) {
+				
+				Gp.retract();
+			}
+		else{
+				double hadfakjergjmiarhgohearigdfgadfjlksafheruighndfihugrh = 1;
+			}
 	}
-
+			
 	/**
 	 * This function is called periodically during test mode.
 	 */
