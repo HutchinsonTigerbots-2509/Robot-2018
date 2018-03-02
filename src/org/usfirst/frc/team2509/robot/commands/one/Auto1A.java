@@ -30,7 +30,7 @@ public class Auto1A extends Command {
     	driveTrain.driveForward(45.0); //Drive forward 70 inches
     	driveTrain.rotate(-90.0); //Turn left 78 degrees
 //    	wrist.Down();
-    	grip.retract();
+    	grip.open();
 //    	wrist.Up();
     	driveTrain.driveBackward(15);
     	arm.Down();

@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Drop_Box extends CommandGroup {
+public class DropBox extends CommandGroup {
 
-    public Drop_Box() {
+    public DropBox() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

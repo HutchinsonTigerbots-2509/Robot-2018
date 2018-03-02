@@ -32,7 +32,7 @@ public class Auto1B extends Command {
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(32);
 //    	wrist.Down();
-    	grip.retract();
+    	grip.open();
 //    	wrist.Up();
     	driveTrain.driveBackward(15);
     	arm.Down();

@@ -9,11 +9,11 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmHigh_2;
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
+import org.usfirst.frc.team2509.robot.commands.DropBox;
 import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
@@ -29,7 +29,7 @@ import org.usfirst.frc.team2509.robot.commands.one.Auto1H;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3B;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3D_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3E;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3G;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3J;
@@ -62,6 +62,8 @@ public class OI {
 	private JoystickButton WristDownButton;
 	private JoystickButton RetractButton;
 	private JoystickButton ClimbButton;
+	private JoystickButton ArmHomeButton;
+	private JoystickButton DropBoxButton;
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -75,7 +77,6 @@ public class OI {
 	public String AB3 = "3AB";
 	public String DE3 = "3DE";
 	public String GJ3 = "3GJ";
-	private Command autoCommand;
 	
 	/**
 	 * CREATING BUTTONS - 
@@ -124,9 +125,12 @@ public class OI {
 			WristUpButton.whileHeld(new WristUp());
 		WristDownButton =new JoystickButton(OperatorStick, 8);
 			WristDownButton.whileHeld(new WristDown());
-		ClimbButton = new JoystickButton(CoOperatorStick, 3);
-//			ClimbButton.whileHeld(new ClimbUp());
-			ClimbButton.whenPressed(new ArmHome());
+		ClimbButton = new JoystickButton(CoOperatorStick, 5);
+			ClimbButton.whileHeld(new ClimbUp());
+		ArmHomeButton = new JoystickButton(CoOperatorStick, 3);
+			ArmHomeButton.whenPressed(new ArmHome());
+		DropBoxButton = new JoystickButton(CoOperatorStick,6);
+			DropBoxButton.whenPressed(new DropBox());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);
@@ -145,6 +149,7 @@ public class OI {
 	 */
 	public Thread UpdateDashboard = new Thread(()->{
 		while(true) {
+			SmartDashboard.putData("Auto", chooser);
 			SmartDashboard.putNumber("Left Encoder", Robot.drivetrain.getLeftEncoder().get());
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
@@ -160,8 +165,11 @@ public class OI {
 			
 		}
 	});
-	public Command getAutonomous(String autoChoice, String gameData){
+	public Command getAutonomous(String autoChoice){
+		Command autoCommand = null;
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		SmartDashboard.putString("Game Data", gameData);
+		SmartDashboard.putString("AutoSelect", autoChoice);
 		switch(autoChoice) {
 		case "1X":
 			autoCommand = null;
@@ -213,8 +221,10 @@ public class OI {
 		case "3DE":
 			if(gameData.charAt(0)=='L') {
 				autoCommand = new Auto3E();
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Auto3D();
+				SmartDashboard.putString("Auto", "3E");
+			}else if(gameData=="RRR"||gameData=="RLR") {
+				SmartDashboard.putString("Auto", "3D");
+				autoCommand = new Auto3D_2();
 			}
 		case "3GJ":
 			if(gameData.charAt(1)=='L') {
@@ -225,7 +235,7 @@ public class OI {
 			break;
 		case "Default":
 			default:
-				
+				autoCommand = null;
 				break;
 		}
 			return autoCommand;

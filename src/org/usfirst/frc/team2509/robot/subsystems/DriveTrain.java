@@ -44,7 +44,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	//For a reason unknown to you
     }
     public static void drive(Joystick stick) {
-    	Drive.arcadeDrive(-stick.getY(), -stick.getZ());
+    	Drive.arcadeDrive(getScaledDrive(-stick.getY()), -stick.getZ());
     }
     /**
      * Resets all sensors
@@ -58,6 +58,9 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      * Gets angle from the Gyro to tell the motors to make a specific turn
      * @param Angle
      */
+    public static double getScaledDrive(double input) {
+		return input*((Robot.oi.OperatorStick.getRawAxis(3)+3)*0.25);
+    }
     public void rotate(double targetAngle) {
     	Gyro.reset();
     	Timer.delay(0.1);
