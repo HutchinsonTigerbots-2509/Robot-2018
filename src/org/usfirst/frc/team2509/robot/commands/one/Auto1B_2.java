@@ -1,8 +1,10 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
+import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
+import org.usfirst.frc.team2509.robot.commands.driveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -35,5 +37,8 @@ public class Auto1B_2 extends CommandGroup {
     	addParallel(new ArmMid_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(32));
+    	//Drop Box
+    	addSequential(new driveBackward(20));
+    	addSequential(new ArmHome());
     }
 }

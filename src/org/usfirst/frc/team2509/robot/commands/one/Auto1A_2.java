@@ -1,9 +1,17 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
+<<<<<<< HEAD
+=======
+import org.usfirst.frc.team2509.robot.commands.ArmHome;
+import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
+>>>>>>> branch 'DJ-While' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
+<<<<<<< HEAD
 import org.usfirst.frc.team2509.robot.commands.retract;
+=======
+>>>>>>> branch 'DJ-While' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -31,10 +39,12 @@ public class Auto1A_2 extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveForward(75));
-    	addSequential(new DriveTurn(90));
-    	addSequential(new DriveForward(45));
+    	addParallel(new DriveTurn(90));
+    	addParallel(new ArmMid_2());
+    	addSequential(new DriveForward(45)); 
     	addSequential(new DriveTurn(-90));
-    	addSequential(new retract());
+    	//Drop box
     	addSequential(new driveBackward(15));
+    	addSequential(new ArmHome());
     }
 }
