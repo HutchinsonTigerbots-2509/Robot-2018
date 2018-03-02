@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
-import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
+import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auto1G_2 extends CommandGroup {
+public class Auto1J_2 extends CommandGroup {
 
-    public Auto1G_2() {
+    public Auto1J_2() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -31,13 +31,14 @@ public class Auto1G_2 extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveForward(210));
-    	addParallel(new DriveTurn(90));
-    	addParallel(new ArmMid_2());
-    	addSequential(new DriveTurn(18));
-    	addSequential(new DriveForward(20));
+    	addSequential(new DriveTurn(90));
+    	addSequential(new DriveForward(210));
+    	addSequential(new DriveTurn(-90));
+    	addParallel(new ArmMid());
+    	addParallel(new DriveForward(90));
+    	addSequential(new DriveTurn(90));
     	//Drop BOx
     	addSequential(new driveBackward(20));
     	addSequential(new ArmHome());
-    	
     }
 }
