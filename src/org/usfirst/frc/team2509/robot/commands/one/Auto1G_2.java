@@ -13,6 +13,7 @@ public class Auto1G_2 extends CommandGroup {
 
     public Auto1G_2() {
         // Add Commands here:
+    	//What's going on?
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
