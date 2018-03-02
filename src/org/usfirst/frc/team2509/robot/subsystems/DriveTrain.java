@@ -1,6 +1,11 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
+import org.usfirst.frc.team2509.robot.OI;
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -11,9 +16,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
 
 /**
  *
@@ -33,6 +35,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
+	private static OI oi = Robot.oi;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void initDefaultCommand() {
@@ -40,8 +43,8 @@ public class DriveTrain extends Subsystem implements PIDOutput{
         //setDefaultCommand(new MySpecialCommand());
     	//For a reason unknown to you
     }
-    public void drive(Joystick stick) {
-    	Drive.arcadeDrive(stick.getY(), -stick.getZ()*0.7);
+    public static void drive(Joystick stick) {
+    	Drive.arcadeDrive(-stick.getY(), -stick.getZ());
     }
     /**
      * Resets all sensors

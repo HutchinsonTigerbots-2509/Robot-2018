@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveTurn extends Command {
 	private DriveTrain drive = Robot.drivetrain;
 	public double target = 0;
-	private double turnSpeed = 0.6;
+	private double turnSpeed = 0.7;
 	private Boolean turnRight;
 	private Boolean turnLeft;
     public DriveTurn(double targetAngle) {
@@ -27,14 +27,14 @@ public class DriveTurn extends Command {
     protected void initialize() {
     	drive.sensorReset();
     	Timer.delay(0.1);
-    	if(drive.getGyro().getAngle()<target) {
+    	if(drive.getGyro().getAngle()>target) {
     		turnRight = true;
     		turnLeft = false;
-    		drive.getDrive().tankDrive(turnSpeed, turnSpeed*(-1));
-    	}else if(drive.getGyro().getAngle()>target){
+    		drive.getDrive().tankDrive(-0.6,0.6);
+    	}else if(drive.getGyro().getAngle()<target){
     		turnRight = false;
     		turnLeft = true;
-    		drive.getDrive().tankDrive(turnSpeed*(-1), turnSpeed);
+    		drive.getDrive().tankDrive(0.6, -0.6);
 //    	drive.getDrive().arcadeDrive(0, 0.6);
 //    	drive.getDrive().tankDrive(-0.6, 0.6);
     	}else {
@@ -46,18 +46,18 @@ public class DriveTurn extends Command {
     protected void execute() {
 //    	drive.getDrive().tankDrive(-0.6, 0.6);
     	if(turnRight) {
-    		drive.getDrive().tankDrive(turnSpeed, turnSpeed*(-1));
+    		drive.getDrive().tankDrive(0.6,-0.6);
     	}else if(turnLeft) {
-    		drive.getDrive().tankDrive(turnSpeed*(-1), turnSpeed);
+    		drive.getDrive().tankDrive(-0.6, 0.6);
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(turnRight) {
-    		return (drive.getGyro().getAngle()>target);
+    		return (drive.getGyro().getAngle()<target);
     	}else if(turnLeft) {
-    		return drive.getGyro().getAngle()<target;
+    		return drive.getGyro().getAngle()>target;
     	}else {
     		return false;
     	}

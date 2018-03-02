@@ -12,7 +12,7 @@ public class ArmMid_2 extends Command {
 	private Arm arm = Robot.arm;
     public ArmMid_2() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.arm);
+    	requires(arm);
     }
 
     // Called just before this Command runs the first time
