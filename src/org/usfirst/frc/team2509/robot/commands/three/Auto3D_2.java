@@ -30,8 +30,8 @@ public class Auto3D_2 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new DriveForward(140));
     	addParallel(new ArmMid_2());
+    	addSequential(new DriveForward(140));
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(5));
     	//Drop Box

@@ -30,8 +30,8 @@ public class Auto1I_2 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new DriveForward(285));
     	addParallel(new ArmMid());
+    	addSequential(new DriveForward(285));
     	addSequential(new DriveTurn(90));
     	//Drop Box
     	addSequential(new driveBackward(20));

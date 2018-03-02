@@ -32,9 +32,9 @@ public class Auto1F_2 extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
-    	addSequential(new DriveForward(165));
     	addParallel(new ArmMid_2());
-    	addParallel(new DriveTurn(90));
+    	addSequential(new DriveForward(165));
+    	addSequential(new DriveTurn(90));
     	addSequential(new DriveForward(12));
     	//Drop Box
     	addSequential(new driveBackward(20));

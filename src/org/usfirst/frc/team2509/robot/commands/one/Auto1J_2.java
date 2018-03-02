@@ -32,10 +32,10 @@ public class Auto1J_2 extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
+    	addParallel(new ArmMid());
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(-90));
-    	addParallel(new ArmMid());
-    	addParallel(new DriveForward(90));
+    	addSequential(new DriveForward(90));
     	addSequential(new DriveTurn(90));
     	//Drop BOx
     	addSequential(new driveBackward(20));
