@@ -8,7 +8,6 @@
 package org.usfirst.frc.team2509.robot;
 
 
-import org.usfirst.frc.team2509.robot.commands.AUTOTEST;
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3D_2;

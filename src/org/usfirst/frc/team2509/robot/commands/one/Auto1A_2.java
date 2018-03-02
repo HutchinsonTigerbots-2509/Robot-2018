@@ -1,17 +1,11 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
-<<<<<<< HEAD
-=======
+
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
->>>>>>> branch 'DJ-While' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
-<<<<<<< HEAD
-import org.usfirst.frc.team2509.robot.commands.retract;
-=======
->>>>>>> branch 'DJ-While' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
