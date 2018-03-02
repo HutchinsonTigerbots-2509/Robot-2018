@@ -10,12 +10,8 @@
 package org.usfirst.frc.team2509.robot;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
-<<<<<<< HEAD
-=======
 import org.usfirst.frc.team2509.robot.commands.ArmHigh_2;
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
-import org.usfirst.frc.team2509.robot.commands.ArmMid;
->>>>>>> branch 'DJ-While' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.Grip;
@@ -114,8 +110,8 @@ public class OI {
 			MidArmButton.whileHeld(new ArmMid_2());
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh_2());
-		RetractButton = new JoystickButton(CoOperatorStick, 3);
-			RetractButton.whenPressed(new ArmHome());
+		RetractButton = new JoystickButton(CoOperatorStick, 7);
+			RetractButton.toggleWhenPressed(new retract());
 		GripButton = new JoystickButton(CoOperatorStick, 1);
 			GripButton.toggleWhenPressed(new Grip());
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
@@ -128,7 +124,7 @@ public class OI {
 			WristUpButton.whileHeld(new WristUp());
 		WristDownButton =new JoystickButton(OperatorStick, 8);
 			WristDownButton.whileHeld(new WristDown());
-		ClimbButton = new JoystickButton(OperatorStick, 5);
+		ClimbButton = new JoystickButton(CoOperatorStick, 3);
 //			ClimbButton.whileHeld(new ClimbUp());
 			ClimbButton.whenPressed(new ArmHome());
 		chooser.addDefault("Default Auto", defaultAuto);
