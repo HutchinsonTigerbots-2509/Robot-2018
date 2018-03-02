@@ -70,10 +70,10 @@ public class Arm extends Subsystem {
     	Motor.set(0);
     }
     public static void Up() {
-    	Motor.set(0.5);
+    	Motor.set(1);
     }
     public static void Down() {
-    	Motor.set(-0.5);
+    	Motor.set(-1);
     }
     public static void Stop() {
     	Motor.set(0);

@@ -1,11 +1,8 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
-import org.usfirst.frc.team2509.robot.commands.Down;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
-import org.usfirst.frc.team2509.robot.commands.extendUpper;
-import org.usfirst.frc.team2509.robot.commands.retract;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -34,12 +31,9 @@ public class Auto1B_2 extends CommandGroup {
     
     	addSequential(new DriveForward(35));
     	addSequential(new DriveTurn(90));
-    	addSequential(new DriveForward(152));
+    	addParallel(new DriveForward(152));
     	addParallel(new ArmMid_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(32));
-    	addSequential(new retract());
-    	addSequential(new Down());
-    	addSequential(new extendUpper());
     }
 }

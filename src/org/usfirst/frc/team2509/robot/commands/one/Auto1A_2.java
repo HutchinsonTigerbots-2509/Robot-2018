@@ -1,13 +1,9 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
-import org.usfirst.frc.team2509.robot.commands.Down;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
-import org.usfirst.frc.team2509.robot.commands.armThreadMid;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
-import org.usfirst.frc.team2509.robot.commands.extendUpper;
 import org.usfirst.frc.team2509.robot.commands.retract;
-import org.usfirst.frc.team2509.robot.commands.retractUpper;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -34,15 +30,11 @@ public class Auto1A_2 extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new retractUpper());
     	addSequential(new DriveForward(75));
     	addSequential(new DriveTurn(90));
-    	addSequential(new armThreadMid());
     	addSequential(new DriveForward(45));
     	addSequential(new DriveTurn(-90));
     	addSequential(new retract());
     	addSequential(new driveBackward(15));
-    	addSequential(new Down());
-    	addSequential(new extendUpper());
     }
 }
