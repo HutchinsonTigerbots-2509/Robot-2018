@@ -59,7 +59,8 @@ public class OI {
 	private JoystickButton Grip;
 	private JoystickButton ClimbUpButton;
 	private JoystickButton HomeForTheArm;
-	//private JoystickButton ParaTestButton;
+//	private JoystickButton WristForMid;
+//	private JoystickButton WristForHigh;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
 	public String X1 = "1X";
@@ -128,6 +129,12 @@ public class OI {
 		Grip = new JoystickButton(CoOperatorStick, 5);
 			Grip.toggleWhenPressed(new Grip());
 		
+//		WristForMid = new JoystickButton(CoOperatorStick, 7);
+//			WristForMid.toggleWhenPressed(new ___());
+		
+//		WristForHigh = new JoystickButton(CoOperatorStick, 8);
+//			WristForHigh.toggleWhenPressed(new ___());
+			
 		
 //		DropBox = new JoystickButton(CoOperatorStick, 9); 
 //			DropBox.toggleWhenPressed(new ______());

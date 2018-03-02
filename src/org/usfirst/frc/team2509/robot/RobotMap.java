@@ -56,6 +56,7 @@ public class RobotMap {
 	public static DigitalInput Arm_LowerLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
+	public static DigitalInput Arm_SuperUpperLimit;
 	//Gripper Variable
 	public static DigitalInput Gripper_Limit;
 	public static DoubleSolenoid Gripper_Piston;
@@ -153,7 +154,7 @@ public class RobotMap {
 //		Wrist_UpperLimit = new DigitalInput(7);
 //		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
-		//WristEncoder = new Encoder(8,7);
+		WristEncoder = new Encoder(8,7);
 		//WristEncoder.setReverseDirection(true);
 		//SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 		

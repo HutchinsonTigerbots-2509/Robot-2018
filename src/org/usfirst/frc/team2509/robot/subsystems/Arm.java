@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ *Is the metal "arm" that has the gripper and the wrist on it. This is the subsystem that contains all of the
+ *programs for moving and dropping the box at certain levels, as well as the pistons and motors pertaining to it.
  */
 public class Arm extends Subsystem {
 	private static DoubleSolenoid Upper = RobotMap.Arm_UpperSolenoid;
@@ -19,6 +20,7 @@ public class Arm extends Subsystem {
 	private static DigitalInput LowerLimit = RobotMap.Arm_LowerLimit;
 	private static DigitalInput MiddleLimit = RobotMap.Arm_MiddleLimit;
 	private static DigitalInput UpperLimit = RobotMap.Arm_UpperLimit;
+	private static DigitalInput SuperUpperLimit = RobotMap.Arm_SuperUpperLimit;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -103,6 +105,15 @@ public class Arm extends Subsystem {
     	Motor.set(0);
     }
     /**
+     * 
+     */
+    public static void SuperUpper() {
+    	while(SuperUpperLimit.get()) {
+    		Motor.set(-0.8);
+    	}
+    	Motor.set(0);
+    }
+    /**
      * Returns Arm_UpperSolenoid as Upper
      */
     public DoubleSolenoid getUpper() {
@@ -137,6 +148,13 @@ public class Arm extends Subsystem {
      */
     public DigitalInput getUpperLimit() {
     	return UpperLimit;
+    }
+    /**
+     * Gives you the limit for Our highest position
+     * @returns SuperUpperLimit
+     */
+    public DigitalInput getSuperUpperLimit() {
+    	return SuperUpperLimit;
     }
 }
 

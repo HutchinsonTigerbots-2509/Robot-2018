@@ -27,6 +27,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
+	private static Encoder WristEncoder = RobotMap.WristEncoder;
 	private static AHRS Gyro = RobotMap.DriveTrain_NavX;
 	
 	private static WPI_TalonSRX Left_1 = RobotMap.DriveTrain_left1;
@@ -178,6 +179,13 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      */
     public Encoder getRightEncoder() {
     	return RightEncoder;
+    }
+    /**
+     * 
+     * @return
+     */
+    public static Encoder getWristEncoder() {
+    	return WristEncoder;
     }
     /**
      * 

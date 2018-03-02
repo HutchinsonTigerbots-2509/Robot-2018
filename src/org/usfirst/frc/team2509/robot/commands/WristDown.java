@@ -1,9 +1,9 @@
 package org.usfirst.frc.team2509.robot.commands;
 
-import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2509.robot.*;
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
@@ -19,8 +19,8 @@ public class WristDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    //wrist2.set(-0.8);
-   	wrist.Down(0);
+    	wrist.getMotor().set(-0.5);
+//    	wrist.Down();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,12 +29,12 @@ public class WristDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return wrist.getEncoder().get()<(-45);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	wrist.Idle();
+    	wrist.getMotor().set(0);
     }
 
     // Called when another command which requires one or more of the same
