@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
+import org.usfirst.frc.team2509.robot.OI;
+import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -37,6 +39,7 @@ public class DriveTrain extends Subsystem implements PIDOutput{
 	private static SpeedControllerGroup Left = RobotMap.DriveTrain_Left;
 	private static SpeedControllerGroup Right = RobotMap.DriveTrain_Right;
 	private static DifferentialDrive Drive = RobotMap.RobotDrive;
+	private static OI oi = Robot.oi;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void initDefaultCommand() {
@@ -49,10 +52,27 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      */
     public void drive(Joystick stick) {
     	Drive.arcadeDrive(-stick.getY(), -stick.getZ()*0.7);
-    	SmartDashboard.putNumber("Left_Speed", Left_1.getSelectedSensorVelocity(0));
-		SmartDashboard.putNumber("Left_Postion", Left_1.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("Right_Speed",  Right_1.getSelectedSensorVelocity(0));
-		SmartDashboard.putNumber("Right_Position",  Right_1.getSelectedSensorPosition(0));
+    	//SmartDashboard.putNumber("Left_Speed", Left_1.getSelectedSensorVelocity(0));
+		//SmartDashboard.putNumber("Left_Postion", Left_1.getSelectedSensorPosition(0));
+		//SmartDashboard.putNumber("Right_Speed",  Right_1.getSelectedSensorVelocity(0));
+		//SmartDashboard.putNumber("Right_Position",  Right_1.getSelectedSensorPosition(0));
+//		int POVAngle = oi.CoOperatorStick.getPOV();
+		
+//		Gripper Gp = Robot.gripper;
+//		Arm Arm = Robot.arm;
+			
+			
+//		//if(POVAngle == 45) {				
+//		//	Gp.retract();
+//		//}else if(POVAngle == 90) {
+//			Gp.extend();
+//		}else if(POVAngle == 180) {
+//			Arm.rectractLower();
+//		}else if(POVAngle == 270) {
+//			Gp.retract();
+//		}else{
+//			double hadfakjergjmiarhgohearigdfgadfjlksafheruighndfihugrh = 1;
+//		}
     }
     /**
      * Resets all sensors

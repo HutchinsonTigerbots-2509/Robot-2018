@@ -161,8 +161,8 @@ public class RobotMap {
 		ClimbMotor2 = new VictorSP(3);
 		Climbmotors = new SpeedControllerGroup(ClimbMotor1, ClimbMotor2);
 		
-		DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		//DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		//DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		//DriveTrain_right1.setStatusFramePeriod(StatusFrameEnhanced.Status_12_Feedback1, 10, 10);
 		//DriveTrain_left1.setSelectedSensorPosition(0, 0, 0);
 		//DriveTrain_right1.setSelectedSensorPosition(0, 0, 0);
