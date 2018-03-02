@@ -1,23 +1,25 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.subsystems.Gripper;
+import org.usfirst.frc.team2509.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *The Piston and clamp on the arm. It is used to grab and release the box
+ *This shoots out the box in case of a problem that occurred during the Intake proccess
  */
-public class Grip extends Command {
-	Gripper grip = Robot.gripper;
-    public Grip() {
+public class IntakeReverse extends Command {
+	private Intake intake = Robot.intake;
+    public IntakeReverse() {
+    	requires(Robot.intake);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	grip.extend();
+    	intake.extend();
+    	intake.reverse();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +33,8 @@ public class Grip extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	grip.retract();
+    	intake.retract();
+    	intake.off();
     }
 
     // Called when another command which requires one or more of the same

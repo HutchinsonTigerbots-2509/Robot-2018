@@ -1,25 +1,31 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.RobotMap;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *Shifts the motors between high and low gear
  */
-public class AccelTest extends Command {
-	DriveTrain dt = Robot.drivetrain;
-    public AccelTest() {
+public class ShiftDrive extends Command {
+	private boolean isExtended;
+	private DriveTrain drivetrain = Robot.drivetrain;
+	private DoubleSolenoid shifter = Robot.drivetrain.getShifter();
+    public ShiftDrive() {
+    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	dt.AccDriveMark2(250);
-//    	dt.driveForward(250);
-    	dt.AccelMark3(125);
+    	if(shifter.get() == DoubleSolenoid.Value.kForward)isExtended = true;
+    	else if(shifter.get() == DoubleSolenoid.Value.kReverse)isExtended = false;
+    	
+    	drivetrain.shift(!isExtended);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +34,7 @@ public class AccelTest extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -38,5 +44,6 @@ public class AccelTest extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

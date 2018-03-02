@@ -12,14 +12,12 @@ package org.usfirst.frc.team2509.robot;
 import org.usfirst.frc.team2509.robot.commands.ArmHigh;
 import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
-import org.usfirst.frc.team2509.robot.commands.ExtendArm;
 import org.usfirst.frc.team2509.robot.commands.Grip;
+import org.usfirst.frc.team2509.robot.commands.HomeForTheArm;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
-import org.usfirst.frc.team2509.robot.commands.WristDown;
-import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.RetractArm;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
-import org.usfirst.frc.team2509.robot.commands.IntakeOut;
+import org.usfirst.frc.team2509.robot.commands.IntakeReverse;
 //import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
@@ -53,16 +51,14 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
+	private JoystickButton LowArmButton;
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
-	private JoystickButton GripButton;
 	private JoystickButton IntakeInButton;
 	private JoystickButton IntakeOutButton;
-	private JoystickButton WristUpButton;
-	private JoystickButton WristDownButton;
-	private JoystickButton RetractButton;
-	private JoystickButton ExtendButton;
+	private JoystickButton Grip;
 	private JoystickButton ClimbUpButton;
+	private JoystickButton HomeForTheArm;
 	//private JoystickButton ParaTestButton;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	public String defaultAuto = "Default";
@@ -102,35 +98,39 @@ public class OI {
 	 * 
 	 */
 	public OI() {
-		OperatorStick = new Joystick(0);
-		CoOperatorStick = new Joystick(1);
-		ShiftButton = new JoystickButton(OperatorStick, 2);
-			ShiftButton.whenPressed(new ShiftDrive());
+		OperatorStick = new Joystick(0);//LogiTech Joystick- will have driving related buttons
+		CoOperatorStick = new Joystick(1);//Xbox Controller- will have lifting/dropping related buttons
+		
+		ShiftButton = new JoystickButton(OperatorStick, 2);//The 2 button on the 
+			ShiftButton.whenPressed(new ShiftDrive());//Will
+		
 		MidArmButton = new JoystickButton(CoOperatorStick, 2);
-			MidArmButton.whileHeld(new ArmMid());
+			MidArmButton.toggleWhenPressed(new ArmMid());
+		
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
-			HighArmButton.whileHeld(new ArmHigh());
-		RetractButton = new JoystickButton(CoOperatorStick, 7);
-			RetractButton.whenPressed(new RetractArm());
-		ExtendButton = new JoystickButton(CoOperatorStick, 8);
-			ExtendButton.whenPressed(new ExtendArm());
-		GripButton = new JoystickButton(CoOperatorStick, 1);
-			GripButton.toggleWhenPressed(new Grip());
-		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
-		//IntakeInButton = new JoystickButton(CoOperatorStick, 1);
+			HighArmButton.toggleWhenPressed(new ArmHigh());
+			
+		LowArmButton = new JoystickButton(CoOperatorStick, 1);
+			LowArmButton.toggleWhenPressed(new RetractArm());
+			
+		HomeForTheArm = new JoystickButton(CoOperatorStick, 3);
+			HomeForTheArm.toggleWhenPressed(new HomeForTheArm());
+		
+		IntakeInButton = new JoystickButton(OperatorStick, 1);
 			IntakeInButton.whileHeld(new IntakeIn());
-		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
-		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
-			IntakeOutButton.whileHeld(new IntakeIn());
-		WristUpButton = new JoystickButton(OperatorStick, 12);
-			WristUpButton.whileHeld(new WristUp());
-		WristDownButton =new JoystickButton(OperatorStick, 11);
-			WristDownButton.whileHeld(new WristDown());
-		ClimbUpButton = new JoystickButton(CoOperatorStick, 5);
+		
+		IntakeOutButton = new JoystickButton(OperatorStick, 8);
+			IntakeOutButton.whileHeld(new IntakeReverse());
+			
+		ClimbUpButton = new JoystickButton(CoOperatorStick, 6);
 			ClimbUpButton.toggleWhenPressed(new ClimbUp());
-		//Wristdown 
-		//ParaTestButton = new JoystickButton(OperatorStick, 6);
-			//ParaTestButton.whenPressed(new ParallelAutoTest());
+			
+		Grip = new JoystickButton(CoOperatorStick, 5);
+			Grip.toggleWhenPressed(new Grip());
+		
+		
+//		DropBox = new JoystickButton(CoOperatorStick, 9); 
+//			DropBox.toggleWhenPressed(new ______());
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("1X", X1);
 		chooser.addObject("1AB", AB1);
