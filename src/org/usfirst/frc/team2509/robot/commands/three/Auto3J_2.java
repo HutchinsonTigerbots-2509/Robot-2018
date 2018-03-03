@@ -4,13 +4,9 @@ import org.usfirst.frc.team2509.robot.commands.ArmHigh_2;
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
-<<<<<<< HEAD
 import org.usfirst.frc.team2509.robot.commands.OpenGripper;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
-=======
-import org.usfirst.frc.team2509.robot.commands.DropBox;
->>>>>>> branch 'DJ-While' of https://github.com/HutchinsonTigerbots-2509/Robot-2018.git
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

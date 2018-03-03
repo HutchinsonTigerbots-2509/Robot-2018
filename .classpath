@@ -15,8 +15,6 @@
 	<classpathentry exported="true" kind="var" path="wpiutil.sources"/>
 	<classpathentry exported="true" kind="var" path="ctre"/>
 	<classpathentry exported="true" kind="var" path="ctre.sources"/>
-	<classpathentry kind="lib" path="C:/Users/Cole/wpilib/user/java/lib/CTRE_Phoenix.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Cole/wpilib/user/java/lib/CTRE_Phoenix-sources.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix-sources.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/navx_frc.jar"/>
