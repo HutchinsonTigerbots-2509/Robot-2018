@@ -77,6 +77,7 @@ public class OI {
 	public String AB3 = "3AB";
 	public String DE3 = "3DE";
 	public String GJ3 = "3GJ";
+	private Command autoCommand;
 	
 	/**
 	 * CREATING BUTTONS - 
@@ -166,7 +167,7 @@ public class OI {
 		}
 	});
 	public Command getAutonomous(String autoChoice){
-		Command autoCommand = null;
+		
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		SmartDashboard.putString("Game Data", gameData);
 		SmartDashboard.putString("AutoSelect", autoChoice);
@@ -175,62 +176,82 @@ public class OI {
 			autoCommand = null;
 			break;
 		case "1AB":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = new Auto1A();
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Auto1B();
+			if(gameData.length()>0) {
+				if(gameData.charAt(0)=='L') {
+					autoCommand = new Auto1A();
+				}else if(gameData.charAt(0)=='R') {
+					autoCommand = new Auto1B();
+				}
 			}
 			break;
 		case "1CF":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = new Auto1C();
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Auto1F();
+			if(gameData.length()>0) {
+				if(gameData.charAt(0)=='L') {
+					autoCommand = new Auto1C();
+				}else if(gameData.charAt(0)=='R') {
+					autoCommand = new Auto1F();
+				}
 			}
 			break;
 		case "1IH":
-			if(gameData.charAt(1)=='L') {
-				autoCommand = new Auto1I();
-			}else if(gameData.charAt(1)=='R') {
-				autoCommand = new Auto1H();
+			if(gameData.length()>0) {
+				if(gameData.charAt(1)=='L') {
+					autoCommand = new Auto1I();
+				}else if(gameData.charAt(1)=='R') {
+					autoCommand = new Auto1H();
+				}
 			}
 			break;
 		case "2X":
 			autoCommand = null;
 			break;
 		case "2AB":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = new Auto2A();
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Auto2B();
+			if(gameData.length()>0) {
+				if(gameData.charAt(0)=='L') {
+					autoCommand = new Auto2A();
+				}else if(gameData.charAt(0)=='R') {
+					autoCommand = new Auto2B();
+				}
 			}
+			break;
 		case "2CD":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = new Auto2C();
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Auto2D();
+			if(gameData.length()>0) {
+				if(gameData.charAt(0)=='L') {
+					autoCommand = new Auto2C();
+				}else if(gameData.charAt(0)=='R') {
+					autoCommand = new Auto2D();
+				}
 			}
+			break;
 		case "3AB":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = new Auto3A();
-				DriverStation.reportError("3A", false);
-			}else if(gameData.charAt(0)=='R') {
-				autoCommand = new Auto3B();
-				DriverStation.reportError("3B", false);
+			if(gameData.length()>0) {
+				if(gameData.charAt(0)=='L') {
+					autoCommand = new Auto3A();
+					DriverStation.reportError("3A", false);
+				}else if(gameData.charAt(0)=='R') {
+					autoCommand = new Auto3B();
+					DriverStation.reportError("3B", false);
+				}
 			}
+			break;
 		case "3DE":
-			if(gameData.charAt(0)=='L') {
-				autoCommand = new Auto3E();
-				SmartDashboard.putString("Auto", "3E");
-			}else if(gameData=="RRR"||gameData=="RLR") {
-				SmartDashboard.putString("Auto", "3D");
-				autoCommand = new Auto3D_2();
+			if(gameData.length()>0) {
+				if(gameData.charAt(0)=='L') {
+					autoCommand = new Auto3E();
+					SmartDashboard.putString("Auto", "3E");
+				}else if(gameData=="RRR"||gameData=="RLR") {
+					SmartDashboard.putString("Auto", "3D");
+					autoCommand = new Auto3D_2();
+				}
 			}
+			break;
 		case "3GJ":
-			if(gameData.charAt(1)=='L') {
-				autoCommand = new Auto3G();
-			}else if(gameData.charAt(1)=='R') {
-				autoCommand = new Auto3J();
+			if(gameData.length()>0) {
+				if(gameData.charAt(1)=='L') {
+					autoCommand = new Auto3G();
+				}else if(gameData.charAt(1)=='R') {
+					autoCommand = new Auto3J();
+				}
 			}
 			break;
 		case "Default":
@@ -238,7 +259,7 @@ public class OI {
 				autoCommand = null;
 				break;
 		}
-			return autoCommand;
+		return autoCommand;
 			
 	}
 }
