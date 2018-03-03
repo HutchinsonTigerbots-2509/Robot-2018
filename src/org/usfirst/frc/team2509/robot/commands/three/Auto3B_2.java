@@ -4,7 +4,9 @@ import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
-import org.usfirst.frc.team2509.robot.commands.DropBox;
+import org.usfirst.frc.team2509.robot.commands.OpenGripper;
+import org.usfirst.frc.team2509.robot.commands.WristHalfDown;
+import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -34,9 +36,13 @@ public class Auto3B_2 extends CommandGroup {
     	addSequential(new DriveForward(66));
     	addParallel(new ArmMid_2());
     	addSequential(new DriveTurn(-90));
-    	addSequential(new DriveForward(70)); 
-    	addSequential(new DriveTurn(78));
-    	addSequential(new DropBox());
+    	addSequential(new DriveForward(40)); 
+    	addSequential(new DriveTurn(90));
+    	//Drop Box 
+    	addSequential(new WristHalfDown());
+    	addSequential(new OpenGripper());
+    	addSequential(new WristUp());
+    	//
     	addSequential(new driveBackward(15));
     	addSequential(new ArmHome());
     }

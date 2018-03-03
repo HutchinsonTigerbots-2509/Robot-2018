@@ -99,7 +99,7 @@ public class Robot extends TimedRobot{
 	public void autonomousInit() {
 		RobotMap.comp.stop();
 		gripper.getPiston().set(DoubleSolenoid.Value.kForward);
-//		autonomousCommand = new Auto3D_2();
+//		autonomousCommand = new Auto3I_2();
 		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected());
 		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
 		DriverStation.reportError(oi.chooser.getSelected(), false);
