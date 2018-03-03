@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class retract extends Command {
+public class ToggleUpper extends Command {
 	Arm arm = Robot.arm;
 	Gripper grip = Robot.gripper;
-    public retract() {
+    public ToggleUpper() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.arm);
