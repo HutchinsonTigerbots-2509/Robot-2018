@@ -2,9 +2,12 @@ package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
+import org.usfirst.frc.team2509.robot.commands.CloseGripper;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
 import org.usfirst.frc.team2509.robot.commands.DropBox;
+import org.usfirst.frc.team2509.robot.commands.IntakeIn;
+import org.usfirst.frc.team2509.robot.commands.OpenGripper;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -12,9 +15,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auto1H_2 extends CommandGroup {
+public class Auto1E_2_DosBOX extends CommandGroup {
 
-    public Auto1H_2() {
+    public Auto1E_2_DosBOX() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -34,12 +37,23 @@ public class Auto1H_2 extends CommandGroup {
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
     	addParallel(new ArmMid_2());
-    	addSequential(new DriveForward(224));
-    	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(50));
-    	addSequential(new DriveTurn(-90));
+    	addSequential(new DriveTurn(90));
+    	addSequential(new DriveForward(2));
     	addSequential(new DropBox());
     	addSequential(new driveBackward(20));
     	addSequential(new ArmHome());
+    	addSequential(new OpenGripper());
+    	addSequential(new DriveTurn(30));
+    	addParallel(new IntakeIn());
+    	addSequential(new DriveForward(5));
+    	addSequential(new CloseGripper());
+    	addParallel(new ArmMid_2());
+    	addSequential(new driveBackward(5));
+    	addSequential(new DriveTurn(-30));
+    	addSequential(new DriveForward(5));
+    	addSequential(new DropBox());
+    	addSequential(new driveBackward());
+    	addSequential(new ArmMid_2());
     }
 }
