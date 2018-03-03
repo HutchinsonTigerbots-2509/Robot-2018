@@ -18,6 +18,7 @@ import org.usfirst.frc.team2509.robot.commands.DefualtAuto;
 import org.usfirst.frc.team2509.robot.commands.DropBox;
 import org.usfirst.frc.team2509.robot.commands.Grip;
 import org.usfirst.frc.team2509.robot.commands.IntakeIn;
+import org.usfirst.frc.team2509.robot.commands.IntakeOut;
 import org.usfirst.frc.team2509.robot.commands.ManWristUp;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
@@ -125,7 +126,7 @@ public class OI {
 			IntakeInButton.whileHeld(new IntakeIn());
 		IntakeOutButton = new JoystickButton(OperatorStick, 10);//will be coop button2 later, is operator for testing
 		//IntakeInButton = new JoystickButton(CoOperatorStick, 2);
-			IntakeOutButton.whileHeld(new IntakeIn());
+			IntakeOutButton.whileHeld(new IntakeOut());
 //		WristUpButton = new JoystickButton(OperatorStick, 7);
 //			WristUpButton.whileHeld(new WristUp());
 		WristDownButton =new JoystickButton(OperatorStick, 8);
@@ -151,7 +152,22 @@ public class OI {
 		chooser.addObject("3AB", AB3);
 		chooser.addObject("3DE", DE3);
 		chooser.addObject("3GJ", GJ3);
-		SmartDashboard.putData("Auto Chooser", chooser);		
+		SmartDashboard.putData("Auto Chooser", chooser);
+		
+
+		SmartDashboard.putData(new ShiftDrive());
+		SmartDashboard.putData(new ArmHigh_2());
+		SmartDashboard.putData(new ArmHigh_2());
+		SmartDashboard.putData(new retract());
+		SmartDashboard.putData(new Grip());
+		SmartDashboard.putData(new IntakeIn());
+		SmartDashboard.putData(new IntakeOut());
+		SmartDashboard.putData(new WristDown());
+		SmartDashboard.putData(new ClimbUp());
+		SmartDashboard.putData(new ClimbDown());
+		SmartDashboard.putData(new ArmHome());
+		SmartDashboard.putData(new DropBox());
+		SmartDashboard.putData(new ManWristUp());
 	}
 	/**
 	 * When called constantly updates the SmartDashboard
