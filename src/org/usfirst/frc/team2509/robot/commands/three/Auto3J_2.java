@@ -4,6 +4,7 @@ import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
+import org.usfirst.frc.team2509.robot.commands.DropBox;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -33,7 +34,7 @@ public class Auto3J_2 extends CommandGroup {
     	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(75));
     	addSequential(new DriveTurn(-90));
-    	//Drop box
+    	addSequential(new DropBox());
     	addSequential(new driveBackward(15));
     	addSequential(new ArmHome());
     }
