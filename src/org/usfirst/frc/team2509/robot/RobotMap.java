@@ -53,7 +53,8 @@ public class RobotMap {
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
 	//Gripper Variable
-	public static DigitalInput Gripper_Limit;
+	public static DigitalInput Gripper_Limit1;
+	public static DigitalInput Gripper_Limit2;
 	public static DoubleSolenoid Gripper_Piston;
 	//Intake Variable
 	public static DoubleSolenoid Intake_Piston;
@@ -68,7 +69,6 @@ public class RobotMap {
 	public static VictorSP Climb_Motor1;
 	public static VictorSP Climb_Motor2;
 	public static SpeedControllerGroup Climb_motors;
-	
 	/**
 	 * 
 	 */
@@ -130,8 +130,10 @@ public class RobotMap {
 		SmartDashboard.putBoolean("Arm Upper", Arm_UpperLimit.get());
 		
 		//Gripper Variable Initialize
-		Gripper_Limit = new DigitalInput(9);
-		SmartDashboard.putBoolean("Gripper", Gripper_Limit.get());
+		Gripper_Limit1 = new DigitalInput(9);
+		SmartDashboard.putBoolean("Gripper1", Gripper_Limit1.get());
+		Gripper_Limit2 = new DigitalInput(10);
+		SmartDashboard.putBoolean("Gripper2", Gripper_Limit2.get());
 		
 		Gripper_Piston = new DoubleSolenoid(6,7);
 		
@@ -140,7 +142,6 @@ public class RobotMap {
 		
 		Intake_LeftMotor = new VictorSP(0);
 		Intake_RightMotor = new VictorSP(1);
-		
 		
 		//Wrist Variable Initialize
 		Wrist = new WPI_TalonSRX(0);

@@ -34,10 +34,10 @@ public class Auto1J_2 extends CommandGroup {
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
     	addParallel(new ArmMid());
-    	addSequential(new DriveForward(210));
+    	addSequential(new DriveForward(224));
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(90));
-    	addSequential(new DriveTurn(90));
+    	addSequential(new DriveTurn(-90));
     	addSequential(new DropBox());
     	addSequential(new driveBackward(20));
     	addSequential(new ArmHome());
