@@ -75,6 +75,7 @@ public class RobotMap {
 	public static void init(){
 		comp = new Compressor();
 		cam = CameraServer.getInstance().startAutomaticCapture();
+		cam.setBrightness(50);
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
@@ -112,7 +113,6 @@ public class RobotMap {
 				DriveTrain_right1,DriveTrain_right2);
 		
 		RobotDrive = new DifferentialDrive(DriveTrain_Left,DriveTrain_Right);
-		
 		//Arm Variable Initialize
 		Arm_LowerSolenoid = new DoubleSolenoid(3,2);
 	

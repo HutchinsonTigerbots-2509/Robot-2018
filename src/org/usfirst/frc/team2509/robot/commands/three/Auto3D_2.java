@@ -36,7 +36,7 @@ public class Auto3D_2 extends CommandGroup {
     	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(140));
     	addSequential(new DriveTurn(-90));
-    	addSequential(new DriveForward(5));
+    	addSequential(new DriveForward(15));
     	//Drop Box 
     	addSequential(new WristHalfDown());
     	addSequential(new OpenGripper());

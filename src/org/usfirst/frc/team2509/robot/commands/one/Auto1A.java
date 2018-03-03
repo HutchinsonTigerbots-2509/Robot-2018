@@ -26,7 +26,7 @@ public class Auto1A extends Command {
     	arm.retractUpper();
     	driveTrain.driveForward(75); //Drive forward 66 inches
     	driveTrain.rotate(90.0); //Turn right 90 degrees
-    	arm.armThreadMid.start();
+//    	arm.armThreadMid.start();
     	driveTrain.driveForward(45.0); //Drive forward 70 inches
     	driveTrain.rotate(-90.0); //Turn left 78 degrees
 //    	wrist.Down();
@@ -48,7 +48,7 @@ public class Auto1A extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.armThreadMid.stop();
+//    	arm.armThreadMid.stop();
     }
 
     // Called when another command which requires one or more of the same

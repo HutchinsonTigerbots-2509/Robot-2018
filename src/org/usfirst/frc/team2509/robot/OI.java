@@ -34,10 +34,10 @@ import org.usfirst.frc.team2509.robot.commands.three.Auto3D_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3E_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3G_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3J_2;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2A;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2B;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2C;
-import org.usfirst.frc.team2509.robot.commands.two.Auto2D;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2A_2;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2B_2;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2C_2;
+import org.usfirst.frc.team2509.robot.commands.two.Auto2D_2;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -110,6 +110,7 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 			ShiftButton.whenPressed(new ShiftDrive());
+		SmartDashboard.putData(new ShiftDrive());
 		MidArmButton = new JoystickButton(CoOperatorStick, 2);
 //			MidArmButton.whileHeld(new ArmMid());
 			MidArmButton.whileHeld(new ArmMid_2());
@@ -215,18 +216,18 @@ public class OI {
 		case "2AB":
 			if(gameData.length()>0) {
 				if(gameData.charAt(0)=='L') {
-					autoCommand = new Auto2A();
+					autoCommand = new Auto2A_2();
 				}else if(gameData.charAt(0)=='R') {
-					autoCommand = new Auto2B();
+					autoCommand = new Auto2B_2();
 				}
 			}
 			break;
 		case "2CD":
 			if(gameData.length()>0) {
 				if(gameData.charAt(0)=='L') {
-					autoCommand = new Auto2C();
+					autoCommand = new Auto2C_2();
 				}else if(gameData.charAt(0)=='R') {
-					autoCommand = new Auto2D();
+					autoCommand = new Auto2D_2();
 				}
 			}
 			break;

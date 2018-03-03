@@ -16,7 +16,7 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public void Up() {
-		motors.set(0.35);
+		motors.set(1);
 	}
 	public void Down() {
 		motors.set(-0.35);
