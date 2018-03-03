@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Defualt_Auto extends Command {
+public class DefualtAuto extends Command {
 	DriveTrain driveTrain = Robot.drivetrain;
 
-    public Defualt_Auto() {
+    public DefualtAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

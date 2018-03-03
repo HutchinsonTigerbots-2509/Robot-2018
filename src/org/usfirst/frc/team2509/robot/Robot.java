@@ -17,6 +17,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -62,7 +63,7 @@ public class Robot extends TimedRobot{
 		oi = new OI();
 		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
-		SmartDashboard.putData("Auto", oi.chooser);
+		SmartDashboard.putData("Auto Chooser", oi.chooser);	
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
 	}
@@ -96,7 +97,8 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-//		RobotMap.comp.stop();
+		RobotMap.comp.stop();
+		gripper.getPiston().set(DoubleSolenoid.Value.kForward);
 //		autonomousCommand = new Auto3D_2();
 		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected());
 		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
@@ -126,7 +128,7 @@ public class Robot extends TimedRobot{
 			autonomousCommand.cancel();
 		}
 		operatorDrive.start();
-//		RobotMap.comp.start();
+		RobotMap.comp.start();
 	}
 
 	/**

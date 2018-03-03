@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.RobotMap;
 import org.usfirst.frc.team2509.robot.subsystems.Climber;
 
 import edu.wpi.first.wpilibj.command.Command;

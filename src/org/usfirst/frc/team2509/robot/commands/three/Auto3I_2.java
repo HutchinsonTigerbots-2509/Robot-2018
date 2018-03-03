@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2509.robot.commands.three;
 
+import org.usfirst.frc.team2509.robot.commands.ArmHigh_2;
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
-import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
 import org.usfirst.frc.team2509.robot.commands.DropBox;
@@ -31,7 +31,7 @@ public class Auto3I_2 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new ArmMid_2());
+    	addParallel(new ArmHigh_2());
     	addSequential(new DriveForward(270));
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(270)); 
