@@ -29,7 +29,7 @@ public class WristDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return wrist.getEncoder().get()<(-45);
+        return wrist.getEncoder().get()<(-37);
     }
 
     // Called once after isFinished returns true

@@ -21,8 +21,8 @@ import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 import org.usfirst.frc.team2509.robot.commands.IntakeOut;
 import org.usfirst.frc.team2509.robot.commands.ManWristUp;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
+import org.usfirst.frc.team2509.robot.commands.ToggleUpper;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
-import org.usfirst.frc.team2509.robot.commands.retract;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A_2;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B_2;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1C_2;
@@ -117,7 +117,7 @@ public class OI {
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh_2());
 		RetractButton = new JoystickButton(CoOperatorStick, 7);
-			RetractButton.toggleWhenPressed(new retract());
+			RetractButton.toggleWhenPressed(new ToggleUpper());
 		GripButton = new JoystickButton(CoOperatorStick, 1);
 			GripButton.toggleWhenPressed(new Grip());
 		IntakeInButton = new JoystickButton(OperatorStick, 1);//will be coop button1 later, is operator for testing
@@ -138,7 +138,7 @@ public class OI {
 			ArmHomeButton.whenPressed(new ArmHome());
 //			ArmHomeButton.whileHeld(new ArmHome());
 		DropBoxButton = new JoystickButton(CoOperatorStick,6);
-			DropBoxButton.whenPressed(new DropBox());
+			DropBoxButton.whileHeld(new DropBox());
 		ManualWristUp = new JoystickButton(OperatorStick, 7);
 			ManualWristUp.whileHeld(new ManWristUp());
 		chooser.addDefault("Default Auto", defaultAuto);
@@ -156,9 +156,9 @@ public class OI {
 		
 
 		SmartDashboard.putData(new ShiftDrive());
+		SmartDashboard.putData(new ArmMid_2());
 		SmartDashboard.putData(new ArmHigh_2());
-		SmartDashboard.putData(new ArmHigh_2());
-		SmartDashboard.putData(new retract());
+		SmartDashboard.putData(new ToggleUpper());
 		SmartDashboard.putData(new Grip());
 		SmartDashboard.putData(new IntakeIn());
 		SmartDashboard.putData(new IntakeOut());
