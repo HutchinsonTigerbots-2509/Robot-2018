@@ -23,12 +23,12 @@ import org.usfirst.frc.team2509.robot.commands.ManWristUp;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.retract;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1C;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1F;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1H;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1I;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1A_2;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1B_2;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1C_2;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1F_2;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1H_2;
+import org.usfirst.frc.team2509.robot.commands.one.Auto1I_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3A_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3B_2;
 import org.usfirst.frc.team2509.robot.commands.three.Auto3D_2;
@@ -111,7 +111,6 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 			ShiftButton.whenPressed(new ShiftDrive());
-		SmartDashboard.putData(new ShiftDrive());
 		MidArmButton = new JoystickButton(CoOperatorStick, 2);
 //			MidArmButton.whileHeld(new ArmMid());
 			MidArmButton.whileHeld(new ArmMid_2());
@@ -137,6 +136,7 @@ public class OI {
 			ClimbDownButton.whileHeld(new ClimbDown());
 		ArmHomeButton = new JoystickButton(CoOperatorStick, 3);
 			ArmHomeButton.whenPressed(new ArmHome());
+//			ArmHomeButton.whileHeld(new ArmHome());
 		DropBoxButton = new JoystickButton(CoOperatorStick,6);
 			DropBoxButton.whenPressed(new DropBox());
 		ManualWristUp = new JoystickButton(OperatorStick, 7);
@@ -202,27 +202,27 @@ public class OI {
 		case "1AB":
 			if(gameData.length()>0) {
 				if(gameData.charAt(0)=='L') {
-					autoCommand = new Auto1A();
+					autoCommand = new Auto1A_2();
 				}else if(gameData.charAt(0)=='R') {
-					autoCommand = new Auto1B();
+					autoCommand = new Auto1B_2();
 				}
 			}
 			break;
 		case "1CF":
 			if(gameData.length()>0) {
 				if(gameData.charAt(0)=='L') {
-					autoCommand = new Auto1C();
+					autoCommand = new Auto1C_2();
 				}else if(gameData.charAt(0)=='R') {
-					autoCommand = new Auto1F();
+					autoCommand = new Auto1F_2();
 				}
 			}
 			break;
 		case "1IH":
 			if(gameData.length()>0) {
 				if(gameData.charAt(1)=='L') {
-					autoCommand = new Auto1I();
+					autoCommand = new Auto1I_2();
 				}else if(gameData.charAt(1)=='R') {
-					autoCommand = new Auto1H();
+					autoCommand = new Auto1H_2();
 				}
 			}
 			break;

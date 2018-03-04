@@ -29,11 +29,11 @@ public class DriveTurn extends Command {
     	if(drive.getGyro().getAngle()>target) {
     		turnRight = true;
     		turnLeft = false;
-    		drive.getDrive().tankDrive(-0.6,0.6);
+    		drive.getDrive().tankDrive(-0.7,0.7);
     	}else if(drive.getGyro().getAngle()<target){
     		turnRight = false;
     		turnLeft = true;
-    		drive.getDrive().tankDrive(0.6, -0.6);
+    		drive.getDrive().tankDrive(0.7, -0.7);
 //    	drive.getDrive().arcadeDrive(0, 0.6);
 //    	drive.getDrive().tankDrive(-0.6, 0.6);
     	}else {
@@ -45,9 +45,9 @@ public class DriveTurn extends Command {
     protected void execute() {
 //    	drive.getDrive().tankDrive(-0.6, 0.6);
     	if(turnRight) {
-    		drive.getDrive().tankDrive(0.6,-0.6);
+    		drive.getDrive().tankDrive(0.7,-0.75);
     	}else if(turnLeft) {
-    		drive.getDrive().tankDrive(-0.6, 0.6);
+    		drive.getDrive().tankDrive(-0.75, 0.7);
     	}
     }
 

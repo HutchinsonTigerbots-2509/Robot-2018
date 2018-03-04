@@ -2,12 +2,11 @@ package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
-import org.usfirst.frc.team2509.robot.commands.CloseGripper;
 import org.usfirst.frc.team2509.robot.commands.DriveForward;
 import org.usfirst.frc.team2509.robot.commands.DriveTurn;
-import org.usfirst.frc.team2509.robot.commands.DropBox;
-import org.usfirst.frc.team2509.robot.commands.IntakeIn;
 import org.usfirst.frc.team2509.robot.commands.OpenGripper;
+import org.usfirst.frc.team2509.robot.commands.WristHalfDown;
+import org.usfirst.frc.team2509.robot.commands.WristUp;
 import org.usfirst.frc.team2509.robot.commands.driveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -40,7 +39,11 @@ public class Auto1E_2 extends CommandGroup {
     	addSequential(new DriveForward(50));
     	addSequential(new DriveTurn(90));
     	addSequential(new DriveForward(2));
-    	addSequential(new DropBox());
+    	//Drop Box 
+    	addSequential(new WristHalfDown());
+    	addSequential(new OpenGripper());
+    	addSequential(new WristUp());
+    	//
     	addSequential(new driveBackward(20));
     	addSequential(new ArmHome());
     	    }
