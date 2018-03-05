@@ -46,7 +46,6 @@ public class Robot extends TimedRobot{
 	public Command autonomousCommand;
 	public Command operatorDrive;
 
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
