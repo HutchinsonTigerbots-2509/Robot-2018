@@ -3,18 +3,14 @@ package org.usfirst.frc.team2509.robot.commands;
 import org.usfirst.frc.team2509.robot.RobotMap;
 import org.usfirst.frc.team2509.robot.pathplanner.FalconPathPlanner;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
-
-import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
-
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import com.kauailabs.navx.frc.AHRS;
 /**
  *
  */
@@ -22,7 +18,7 @@ public class AutonomousCommand extends Command {
 	DifferentialDrive DT=RobotMap.RobotDrive;
 	SpeedControllerGroup Left=RobotMap.DriveTrain_Left;
 	SpeedControllerGroup Right=RobotMap.DriveTrain_Right;
-	ADXRS450_Gyro gyro = RobotMap.DriveTrain_Gyro;
+	AHRS gyro = RobotMap.DriveTrain_NavX;
 	Encoder encL = RobotMap.DriveTrain_LeftEncoder;
 	Encoder encR = RobotMap.DriveTrain_RightEncoder;
 	public AutonomousCommand() {
