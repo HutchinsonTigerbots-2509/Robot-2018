@@ -18,9 +18,6 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -72,7 +69,6 @@ public class RobotMap {
 	public static VictorSP ClimbMotor2;
 	public static SpeedControllerGroup Climbmotors;
 	
-	
 	/**
 	 * 
 	 */
@@ -121,6 +117,7 @@ public class RobotMap {
 		Arm_Motor = new WPI_TalonSRX(3);
 		
 		Arm_LowerLimit = new DigitalInput(4);
+
 		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
 		
 		Arm_MiddleLimit = new DigitalInput(6);
@@ -161,8 +158,8 @@ public class RobotMap {
 		ClimbMotor2 = new VictorSP(3);
 		Climbmotors = new SpeedControllerGroup(ClimbMotor1, ClimbMotor2);
 		
-		DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+//		DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+//		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		//DriveTrain_right1.setStatusFramePeriod(StatusFrameEnhanced.Status_12_Feedback1, 10, 10);
 		//DriveTrain_left1.setSelectedSensorPosition(0, 0, 0);
 		//DriveTrain_right1.setSelectedSensorPosition(0, 0, 0);
@@ -171,6 +168,5 @@ public class RobotMap {
 		//SmartDashboard.putNumber("Right_Speed",  DriveTrain_right1.getSelectedSensorVelocity(1));
 		//SmartDashboard.putNumber("Right_Position",  DriveTrain_right1.getSelectedSensorPosition(1));
 		//DriveTrain_left1.configOpenloopRamp(1, 10); 
-		
 	}
 }

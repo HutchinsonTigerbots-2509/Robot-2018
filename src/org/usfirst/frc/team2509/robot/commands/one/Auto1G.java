@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
@@ -16,11 +15,13 @@ public class Auto1G extends Command {
 	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
 	Gripper grip =  Robot.gripper;
-	
-	
     public Auto1G() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	driveTrain.driveForward(319);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(45);
+    	driveTrain.rotate(-90);
     }
 
     // Called just before this Command runs the first time

@@ -14,12 +14,11 @@ import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.commands.ClimbUp;
 import org.usfirst.frc.team2509.robot.commands.ExtendArm;
 import org.usfirst.frc.team2509.robot.commands.Grip;
+import org.usfirst.frc.team2509.robot.commands.IntakeIn;
+import org.usfirst.frc.team2509.robot.commands.RetractArm;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.WristUp;
-import org.usfirst.frc.team2509.robot.commands.RetractArm;
-import org.usfirst.frc.team2509.robot.commands.IntakeIn;
-import org.usfirst.frc.team2509.robot.commands.IntakeOut;
 //import org.usfirst.frc.team2509.robot.commands.ParallelAutoTest;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B;
@@ -77,6 +76,7 @@ public class OI {
 	public String DE3 = "3DE";
 	public String GJ3 = "3GJ";
 	private Command autoCommand;
+	
 	
 	/**
 	 * CREATING BUTTONS - 
@@ -142,7 +142,7 @@ public class OI {
 		chooser.addObject("3AB", AB3);
 		chooser.addObject("3DE", DE3);
 		chooser.addObject("3GJ", GJ3);
-		SmartDashboard.putData("Auto", chooser);		
+		SmartDashboard.putData("Auto", chooser);	
 	}
 	/**
 	 * When called constantly updates the SmartDashboard

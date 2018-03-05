@@ -2,12 +2,10 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  *Wrist- moves the gripper up and down with gripper.Up, gripper.Down, and gripper.Idle
@@ -24,11 +22,6 @@ public class Wrist extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-//    public void Up() {
-//    	while(upperLimit.get()) motor.set(.45);
-//    	motor.set(0);
-//    	
-//    }
     /**
      * Moves the gripper up
      * @param Target

@@ -1,42 +1,31 @@
 package org.usfirst.frc.team2509.robot.commands.two;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.commands.ArmMid;
-import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *drives forward 45 inches, turns left, drives forward 50 inches, turns right, drives forward 25 inches, and 
- *drops the box into the switch
+ *
  */
 public class Auto2A extends Command {
-	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
-	Command armMid = new ArmMid();
-	Gripper grip = Robot.gripper;
 	public Auto2A() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	driveTrain.driveForward(180);
+    	driveTrain.rotate(-90);
+    	driveTrain.driveForward(100);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(120);
+    	driveTrain.rotate(90);
+    	driveTrain.driveForward(32);
+    	driveTrain.rotate(-90);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	grip.retract();//Picks Up the box
-    	arm.armThreadMid.start();//Starts armThreadMid
     	
-    	driveTrain.driveForward(45);//drives Forward 45 inches
-    	driveTrain.rotate(-90);//turns left
-    	driveTrain.driveForward(50);//drives forward 50 inches
-    	driveTrain.rotate(90);//turns right
-    	driveTrain.driveForward(25);//drives forward 25 inches
-       
-    	grip.extend();//Lets go of the box so we can drop it
-	    Timer.delay(3);//Sets a delay on armThreadMid
-	    driveTrain.driveBackward(10);//Drives in reverse 10 Inches
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -50,7 +39,6 @@ public class Auto2A extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.armThreadMid.stop();//Stops armThreadMid
     }
 
     // Called when another command which requires one or more of the same

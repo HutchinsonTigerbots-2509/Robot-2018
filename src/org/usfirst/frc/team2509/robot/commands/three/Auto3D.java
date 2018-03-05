@@ -25,17 +25,16 @@ public class Auto3D extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//grip.retract();//Picks Up the box
-    	//arm.armThreadMid.start();//Starts armThreadMid
-    	driveTrain.motion_magic(1000000, 7000, 4000);
-    	//driveTrain.driveForward(135.0); //Drive forward 135 inches
-	    //driveTrain.rotate(-90); //Turn left 90 degrees
-	    //driveTrain.driveForward(5.0); //Drive forward 5 inches
-	    
-	   // grip.extend();//Lets go of the box so we can drop it
-	    //Timer.delay(3);//Sets a delay on armThreadMid
-	    //driveTrain.driveBackward(10);//Drives in reverse 10 Inches
-	    
+
+    	grip.retract();//Picks Up the box
+    	arm.armThreadMid.start();//Starts armThreadMid
+    	driveTrain.driveForward(135.0); //Drive forward 135 inches
+	    driveTrain.rotate(-90); //Turn left 90 degrees
+	    driveTrain.driveForward(5.0); //Drive forward 5 inches
+	    grip.extend();//Lets go of the box so we can drop it
+	    Timer.delay(3);//Sets a delay on armThreadMid
+	    driveTrain.driveBackward(10);//Drives in reverse 10 Inches
+
     }
 
     // Called repeatedly when this Command is scheduled to run

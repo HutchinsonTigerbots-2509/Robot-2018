@@ -9,7 +9,7 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.three.*;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.Climb;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2509.robot.commands.one;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
@@ -20,8 +19,6 @@ public class Auto1I extends Command {
     public Auto1I() {
     	// Use requires() here to declare subsystem dependencies
     	// eg. requires(chassis);
-    	
-  
     }
     
     // Called just before this Command runs the first time

@@ -16,7 +16,6 @@ public class Auto3H extends Command {
 	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
 	Gripper grip =  Robot.gripper;
-	
     public Auto3H() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -26,11 +25,11 @@ public class Auto3H extends Command {
     protected void initialize() {
     	grip.retract();//Picks Up the box
     	arm.armThreadMid.start();//Starts armThreadMid
-    	
 	    driveTrain.driveForward(202);//Drive Forward for 202 inches
 	    driveTrain.rotate(-90);//Rotate to the left
 	    driveTrain.driveForward(43);//Drive Forward for 43 inches
 	    driveTrain.rotate(90);//Rotate to the right
+
     }
 
     // Called repeatedly when this Command is scheduled to run

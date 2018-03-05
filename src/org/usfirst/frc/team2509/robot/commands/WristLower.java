@@ -1,28 +1,23 @@
-package org.usfirst.frc.team2509.robot.commands.three;
+package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Auto3A extends Command {
-	DriveTrain driveTrain = Robot.drivetrain;
-    public Auto3A() {
+public class WristLower extends Command {
+	private Wrist wrist = Robot.wrist;
+    public WristLower() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	driveTrain.driveForward(60);
-    	driveTrain.rotate(-90);
-    	driveTrain.driveForward(120);
-    	driveTrain.rotate(90);
-    	driveTrain.driveForward(45);
-    	
+        requires(Robot.wrist);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	wrist.Down(-20);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,10 +31,12 @@ public class Auto3A extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	wrist.Idle();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
