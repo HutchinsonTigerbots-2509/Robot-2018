@@ -4,9 +4,7 @@ import org.usfirst.frc.team2509.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Wrist extends Subsystem {
 	private static WPI_TalonSRX motor = RobotMap.Wrist;
-	private static Encoder WristEncoder = RobotMap.WristEncoder;
+	private static Encoder Encoder = RobotMap.WristEncoder;
 //	private static DigitalInput upperLimit = RobotMap.Wrist_UpperLimit;
 //	private static DigitalInput lowerLimit = RobotMap.Wrist_LowerLimit;
     // Put methods for controlling this subsystem
@@ -31,12 +29,12 @@ public class Wrist extends Subsystem {
 //    }
     public void Up(double Target) {
     	int Max = 150;
-    	while(WristEncoder.get()<=Target && WristEncoder.get()<=Max);
+    	while(Encoder.get()<=Target && Encoder.get()<=Max);
     		motor.set(0.45);
     }
     public void Down(double Target) {
     	int Min = -5;
-    	while(WristEncoder.get()>=Target && WristEncoder.get()>=Min);
+    	while(Encoder.get()>=Target && Encoder.get()>=Min);
     		motor.set(-0.45);
     }
 //    public void Down() {
@@ -49,6 +47,9 @@ public class Wrist extends Subsystem {
     
     public WPI_TalonSRX getMotor() {
     	return motor;
+    }
+    public Encoder getEncoder() {
+    	return Encoder;
     }
 //    public DigitalInput getUpperLimit() {
 //    	return upperLimit;

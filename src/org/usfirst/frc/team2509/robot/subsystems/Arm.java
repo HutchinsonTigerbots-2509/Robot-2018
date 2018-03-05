@@ -1,16 +1,12 @@
 package org.usfirst.frc.team2509.robot.subsystems;
 
-import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -25,19 +21,7 @@ public class Arm extends Subsystem {
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public Thread armThreadDown = new Thread(()-> {
-		
-		Arm.Down();
-	}); 
-	public Thread armThreadMid = new Thread(()-> {
-		
-		Arm.Middle();
-	}); 
-	public Thread armThreadHigh = new Thread(()-> {
-		
-		Arm.High();
-	}); 
-	
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -67,10 +51,19 @@ public class Arm extends Subsystem {
     	while(MiddleLimit.get()) Motor.set(0.5);
     	Motor.set(0);
     }
-    public static void Down(){   
+    public static void Lower(){   
     	while(LowerLimit.get()) {
     		Motor.set(-0.8);
     	}
+    	Motor.set(0);
+    }
+    public void Up() {
+    	Motor.set(1);
+    }
+    public void Down() {
+    	Motor.set(-1);
+    }
+    public void Stop() {
     	Motor.set(0);
     }
     public DoubleSolenoid getUpper() {

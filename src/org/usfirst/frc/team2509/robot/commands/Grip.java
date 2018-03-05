@@ -17,7 +17,7 @@ public class Grip extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	grip.extend();
+    	grip.close();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +31,7 @@ public class Grip extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	grip.retract();
+    	grip.open();
     }
 
     // Called when another command which requires one or more of the same

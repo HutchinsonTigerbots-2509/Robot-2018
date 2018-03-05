@@ -9,19 +9,21 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.three.Auto3A;
 //import org.usfirst.frc.team2509.robot.commands.three.*;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
+import org.usfirst.frc.team2509.robot.subsystems.Climber;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //import com.kauailabs.navx.frc.AHRS;
 
@@ -38,6 +40,7 @@ public class Robot extends TimedRobot{
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
+	public static Climber climber;
 	public static Gripper gripper;
 	public static Intake intake;
 	public static Wrist wrist;
@@ -53,16 +56,16 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
+		climber = new Climber();
 		intake =new Intake();
 		gripper = new Gripper();
 		wrist = new Wrist();
 		oi = new OI();
 		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
-//		SmartDashboard.putData("Auto mode", oi.chooser);
+		SmartDashboard.putData("Auto Chooser", oi.chooser);	
 		oi.UpdateDashboard.start();
 		DriverStation.reportError("Robot Ready", false);
-		autonomousCommand = new Auto3A();
 	}
 
 	/**
@@ -72,13 +75,12 @@ public class Robot extends TimedRobot{
 	 */
 	@Override
 	public void disabledInit() {
-
+		Scheduler.getInstance().removeAll();
 	}
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		Scheduler.getInstance().removeAll();
 	}
 
 	/**
@@ -96,9 +98,11 @@ public class Robot extends TimedRobot{
 	@Override
 	public void autonomousInit() {
 		RobotMap.comp.stop();
-//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
-//				DriverStation.getInstance().getGameSpecificMessage());
-//		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
+		gripper.getPiston().set(DoubleSolenoid.Value.kForward);
+//		autonomousCommand = new Auto3I_2();
+		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected());
+		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
+		DriverStation.reportError(oi.chooser.getSelected(), false);
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
@@ -115,6 +119,7 @@ public class Robot extends TimedRobot{
 
 	@Override
 	public void teleopInit() {
+//		DriverStation.reportError(oi.chooser.getSelected(), false);
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove

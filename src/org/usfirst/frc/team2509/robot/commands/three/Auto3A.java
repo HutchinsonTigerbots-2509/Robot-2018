@@ -5,7 +5,6 @@ import org.usfirst.frc.team2509.robot.commands.ArmMid;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -47,7 +46,7 @@ public class Auto3A extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.armThreadMid.stop();
+
     }
 
     // Called when another command which requires one or more of the same

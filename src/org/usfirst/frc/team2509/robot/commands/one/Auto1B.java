@@ -28,11 +28,11 @@ public class Auto1B extends Command {
     	driveTrain.driveForward(35);
     	driveTrain.rotate(90);
     	driveTrain.driveForward(152);
-    	arm.armThreadMid.start();
+//    	arm.armThreadMid.start();
     	driveTrain.rotate(-90);
     	driveTrain.driveForward(32);
 //    	wrist.Down();
-    	grip.retract();
+    	grip.open();
 //    	wrist.Up();
     	driveTrain.driveBackward(15);
     	arm.Down();
@@ -50,7 +50,7 @@ public class Auto1B extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.armThreadMid.stop();
+
     }
 
     // Called when another command which requires one or more of the same
