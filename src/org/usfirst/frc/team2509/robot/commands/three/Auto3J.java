@@ -1,25 +1,33 @@
 package org.usfirst.frc.team2509.robot.commands.three;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team2509.robot.Robot;
+import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2509.robot.subsystems.Gripper;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 
 /**
  *
  */
 public class Auto3J extends Command {
+	Arm arm = Robot.arm;
 	DriveTrain driveTrain = Robot.drivetrain;
+	Gripper grip =  Robot.gripper;
     public Auto3J() {
     	// Use requires() here to declare subsystem dependencies
     	// eg. requires(chassis);
-    	driveTrain.driveForward(480);
-    	driveTrain.rotate(-90);
-  
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	grip.retract();//Picks Up the box
+    	arm.armThreadMid.start();//Starts armThreadMid
+    	driveTrain.driveForward(275);//drives forward 275 inches
+    	driveTrain.rotate(-90);//turns left
+    	driveTrain.driveBackward(15);//drives backward 15 inches
+
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,6 +41,7 @@ public class Auto3J extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	arm.armThreadHigh.stop();
     }
 
     // Called when another command which requires one or more of the same

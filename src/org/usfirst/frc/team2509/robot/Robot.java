@@ -9,22 +9,25 @@ package org.usfirst.frc.team2509.robot;
 
 
 import org.usfirst.frc.team2509.robot.commands.OperatorDrive;
-import org.usfirst.frc.team2509.robot.commands.one.Auto1A;
+import org.usfirst.frc.team2509.robot.commands.three.Auto3D;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
+import org.usfirst.frc.team2509.robot.subsystems.Climb;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Gripper;
+import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
-import com.kauailabs.navx.frc.AHRS;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+//import com.kauailabs.navx.frc.AHRS;
 
 
 /**
- * The VM is configured to automatically run this class, and to call the
+ * The VM is configured to automatically ruSn this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.properties file in the
@@ -35,16 +38,12 @@ public class Robot extends TimedRobot{
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Arm arm;
-	public static Wrist wrist;
+	public static Climb climb;
 	public static Gripper gripper;
-	public static AHRS ahrs;
+	public static Intake intake;
+	public static Wrist wrist;
 	public Command autonomousCommand;
 	public Command operatorDrive;
-
-
-
-//github.com/HutchinsonTigerbots-2509/Robot-2018.git
-//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -55,13 +54,17 @@ public class Robot extends TimedRobot{
 		RobotMap.init();
 		drivetrain = new DriveTrain();
 		arm = new Arm();
+		intake =new Intake();
+		climb = new Climb();
 		gripper = new Gripper();
-		
+		wrist = new Wrist();
 		oi = new OI();
+		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
-		SmartDashboard.putData("Auto mode", oi.chooser);
+//		SmartDashboard.putData("Auto mode", oi.chooser);
 		oi.UpdateDashboard.start();
-
+		DriverStation.reportError("Robot Ready", false);
+		autonomousCommand = new Auto3D();//The current selected Auto
 	}
 
 	/**
@@ -77,6 +80,7 @@ public class Robot extends TimedRobot{
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		Scheduler.getInstance().removeAll();
 	}
 
 	/**
@@ -93,9 +97,10 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(),DriverStation.getInstance().getGameSpecificMessage());
-		autonomousCommand = new Auto1A();
-
+		RobotMap.comp.stop();
+//		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected(), 
+//				DriverStation.getInstance().getGameSpecificMessage());
+//		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();

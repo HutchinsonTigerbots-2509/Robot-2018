@@ -6,7 +6,7 @@ import org.usfirst.frc.team2509.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *Moves the arm
  */
 public class ArmMid extends Command {
 	private Arm arm = Robot.arm;
@@ -17,8 +17,9 @@ public class ArmMid extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	arm.retractUpper();
+    	arm.rectractLower();
     	arm.Middle();
-    	arm.extendUpper();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,8 +33,8 @@ public class ArmMid extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	arm.retractUpper();
     	arm.Down();
+    	arm.extendUpper();
     }
 
     // Called when another command which requires one or more of the same

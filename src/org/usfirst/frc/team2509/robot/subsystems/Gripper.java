@@ -2,17 +2,16 @@ package org.usfirst.frc.team2509.robot.subsystems;
 
 import org.usfirst.frc.team2509.robot.RobotMap;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ *Contains Gripper.extend and Gripper.retract
  */
 public class Gripper extends Subsystem {
-	private static DoubleSolenoid Gripper = RobotMap.Gripper;
-
+	private static DigitalInput limit = RobotMap.Gripper_Limit;
+	private static DoubleSolenoid piston = RobotMap.Gripper_Piston;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -20,19 +19,23 @@ public class Gripper extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    /**
-     * Extends the gripper for the box pickup method.
-     */
-    public void extend() {
-    	Gripper.set(DoubleSolenoid.Value.kForward);
-//    	Gripper.set(DoubleSolenoid.Value.kOff);
+    public DigitalInput getLimit() {
+    	return limit;
+    }
+    public DoubleSolenoid getPiston() {
+    	return piston;
     }
     /**
-     * Retracts the gripper for the box pickup method.
+     * Extends the pistons so we let go of the box
+     */
+    public void extend() {
+    	piston.set(DoubleSolenoid.Value.kForward);
+    }
+    /**
+     * Retracts the pistons so we can grab onto the box
      */
     public void retract() {
-    	Gripper.set(DoubleSolenoid.Value.kReverse);
-//    	Gripper.set(DoubleSolenoid.Value.kOff);
+    	piston.set(DoubleSolenoid.Value.kReverse);
     }
 }
 
