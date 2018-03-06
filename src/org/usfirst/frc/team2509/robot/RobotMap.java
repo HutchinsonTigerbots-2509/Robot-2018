@@ -50,6 +50,7 @@ public class RobotMap {
 	public static DoubleSolenoid Arm_UpperSolenoid;
 	public static WPI_TalonSRX Arm_Motor;
 	public static DigitalInput Arm_LowerLimit;
+	public static DigitalInput Arm_LowerBackupLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
 	//Gripper Variable
@@ -122,6 +123,9 @@ public class RobotMap {
 		
 		Arm_LowerLimit = new DigitalInput(4);
 		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
+
+		Arm_LowerBackupLimit = new DigitalInput(9);
+		SmartDashboard.putBoolean("Arm Backup", Arm_LowerBackupLimit.get());
 		
 		Arm_MiddleLimit = new DigitalInput(6);
 		SmartDashboard.putBoolean("Arm Middle", Arm_MiddleLimit.get());
@@ -130,10 +134,10 @@ public class RobotMap {
 		SmartDashboard.putBoolean("Arm Upper", Arm_UpperLimit.get());
 		
 		//Gripper Variable Initialize
-		Gripper_Limit1 = new DigitalInput(9);
-		SmartDashboard.putBoolean("Gripper1", Gripper_Limit1.get());
-		Gripper_Limit2 = new DigitalInput(10);
-		SmartDashboard.putBoolean("Gripper2", Gripper_Limit2.get());
+//		Gripper_Limit1 = new DigitalInput(9);
+//		SmartDashboard.putBoolean("Gripper1", Gripper_Limit1.get());
+//		Gripper_Limit2 = new DigitalInput(10);
+//		SmartDashboard.putBoolean("Gripper2", Gripper_Limit2.get());
 		
 		Gripper_Piston = new DoubleSolenoid(6,7);
 		

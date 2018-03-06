@@ -16,6 +16,7 @@ public class Arm extends Subsystem {
 	private static DoubleSolenoid Lower = RobotMap.Arm_LowerSolenoid;
 	private static WPI_TalonSRX Motor = RobotMap.Arm_Motor;
 	private static DigitalInput LowerLimit = RobotMap.Arm_LowerLimit;
+	private static DigitalInput LowerBackupLimit = RobotMap.Arm_LowerBackupLimit;
 	private static DigitalInput MiddleLimit = RobotMap.Arm_MiddleLimit;
 	private static DigitalInput UpperLimit = RobotMap.Arm_UpperLimit;
 	
@@ -77,6 +78,9 @@ public class Arm extends Subsystem {
     }
     public DigitalInput getLowerLimit() {
     	return LowerLimit;
+    }
+    public DigitalInput getBackupLimit() {
+    	return LowerBackupLimit;
     }
     public DigitalInput getMiddleLimit() {
     	return MiddleLimit;
