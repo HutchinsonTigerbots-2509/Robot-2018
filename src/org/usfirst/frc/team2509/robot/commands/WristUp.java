@@ -20,8 +20,7 @@ public class WristUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	wrist.Up();
-    	wrist.getMotor().set(0.5);
+    	wrist.Up();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,14 +29,13 @@ public class WristUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (wrist.getEncoder().get()>0);
+        return (wrist.getEncoder().get()>10);
+//    	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-
-    	wrist.getMotor().set(0);
-//    	wrist.Idle();
+    	wrist.Idle();
     }
 
     // Called when another command which requires one or more of the same

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.RobotMap;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -13,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class IntakeForTime extends Command {
 	private Intake intake = Robot.intake;
 	DigitalInput IntakeSwitch1 = Robot.gripper.getLimit1();
-	DigitalInput IntakeSwitch2 = Robot.gripper.getLimit2();
     public IntakeForTime() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -31,7 +29,7 @@ public class IntakeForTime extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (IntakeSwitch1.get() && IntakeSwitch2.get() == false);
+        return (IntakeSwitch1.get()== false);
     }
 
     // Called once after isFinished returns true
