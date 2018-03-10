@@ -47,9 +47,9 @@ public class DriveTurn extends Command {
     protected void execute() {
 //    	drive.getDrive().tankDrive(-0.6, 0.6);
     	if(turnRight) {
-    		drive.getDrive().tankDrive(0.7,-0.75);
+    		drive.getDrive().tankDrive(0.75,-0.75);
     	}else if(turnLeft) {
-    		drive.getDrive().tankDrive(-0.75, 0.7);
+    		drive.getDrive().tankDrive(-0.75, 0.75);
     	}
     }
 
@@ -66,6 +66,8 @@ public class DriveTurn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	drive.getDrive().tankDrive(0, 0);
+    	Timer.delay(0.25);
     	drive.getDrive().tankDrive(0, 0);
     }
 

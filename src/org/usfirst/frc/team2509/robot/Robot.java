@@ -98,7 +98,6 @@ public class Robot extends TimedRobot{
 	public void autonomousInit() {
 		RobotMap.comp.stop();
 		gripper.close();
-		
 //		autonomousCommand = new TestAuto();
 		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected());
 		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
