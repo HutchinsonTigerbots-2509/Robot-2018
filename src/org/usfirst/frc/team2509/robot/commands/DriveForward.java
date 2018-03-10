@@ -3,6 +3,7 @@ package org.usfirst.frc.team2509.robot.commands;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,6 +24,8 @@ public class DriveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+
+    	System.out.println(DriverStation.getInstance().getMatchTime()+"Driving Forwards");
     	drive.sensorReset();
     	Timer.delay(0.1);
     	drive.getDrive().arcadeDrive(0.7, drive.getGyro().getAngle()*(0.1));
@@ -35,7 +38,8 @@ public class DriveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (drive.getRightEncoder().get()+drive.getLeftEncoder().get())/2>=target;
+//        return (drive.getRightEncoder().get()+drive.getLeftEncoder().get())/2>=target;
+    	return (drive.getRightEncoder().get()>=target||drive.getLeftEncoder().get()>=target);
     }
 
     // Called once after isFinished returns true

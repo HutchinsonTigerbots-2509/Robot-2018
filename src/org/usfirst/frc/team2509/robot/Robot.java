@@ -17,7 +17,6 @@ import org.usfirst.frc.team2509.robot.subsystems.Gripper;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -61,7 +60,6 @@ public class Robot extends TimedRobot{
 		gripper = new Gripper();
 		wrist = new Wrist();
 		oi = new OI();
-		wrist = new Wrist();
 		operatorDrive = new OperatorDrive();
 		SmartDashboard.putData("Auto Chooser", oi.chooser);	
 		oi.UpdateDashboard.start();
@@ -76,6 +74,7 @@ public class Robot extends TimedRobot{
 	@Override
 	public void disabledInit() {
 		Scheduler.getInstance().removeAll();
+    	System.out.println("Disabled");
 	}
 
 	@Override
@@ -98,8 +97,9 @@ public class Robot extends TimedRobot{
 	@Override
 	public void autonomousInit() {
 		RobotMap.comp.stop();
-		gripper.getPiston().set(DoubleSolenoid.Value.kForward);
-//		autonomousCommand = new Auto3I_2();
+		gripper.close();
+		
+//		autonomousCommand = new TestAuto();
 		autonomousCommand = oi.getAutonomous(oi.chooser.getSelected());
 		DriverStation.reportError(DriverStation.getInstance().getGameSpecificMessage(), false);
 		DriverStation.reportError(oi.chooser.getSelected(), false);
@@ -107,6 +107,8 @@ public class Robot extends TimedRobot{
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
+    	System.out.println("Autonomous Starting");
+		drivetrain.wheely();
 	}
 
 	/**
@@ -127,6 +129,8 @@ public class Robot extends TimedRobot{
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+    	System.out.println("Teleop Starting");
+		drivetrain.wheely();
 		operatorDrive.start();
 		RobotMap.comp.start();
 	}

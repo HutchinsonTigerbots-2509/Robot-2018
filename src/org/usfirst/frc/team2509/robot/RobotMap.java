@@ -35,6 +35,7 @@ public class RobotMap {
 	public static UsbCamera cam;
 	//Drivetran Variable
 	public static DoubleSolenoid DriveTrain_Shifter;
+	public static DoubleSolenoid DriveTrain_Wheely;
 	public static Encoder DriveTrain_LeftEncoder;
 	public static Encoder DriveTrain_RightEncoder;
 	public static AHRS DriveTrain_NavX;
@@ -49,12 +50,12 @@ public class RobotMap {
 	public static DoubleSolenoid Arm_LowerSolenoid;
 	public static DoubleSolenoid Arm_UpperSolenoid;
 	public static WPI_TalonSRX Arm_Motor;
+	public static DigitalInput Arm_LowerBackup;
 	public static DigitalInput Arm_LowerLimit;
 	public static DigitalInput Arm_MiddleLimit;
 	public static DigitalInput Arm_UpperLimit;
 	//Gripper Variable
-	public static DigitalInput Gripper_Limit1;
-	public static DigitalInput Gripper_Limit2;
+	public static DigitalInput Gripper_Limit;
 	public static DoubleSolenoid Gripper_Piston;
 	//Intake Variable
 	public static DoubleSolenoid Intake_Piston;
@@ -79,6 +80,9 @@ public class RobotMap {
 		//Drivetrain Variable Initialize
 		DriveTrain_Shifter = new DoubleSolenoid(0,1);
 		
+		DriveTrain_Wheely = new DoubleSolenoid(1,2,3);
+		
+		
 		DriveTrain_LeftEncoder = new Encoder(0,1);
 		DriveTrain_LeftEncoder.setDistancePerPulse(0.0179136);
 //		DriveTrain_LeftEncoder.setReverseDirection(true);
@@ -96,15 +100,15 @@ public class RobotMap {
 		
 //		DriveTrain_left1 = new WPI_TalonSRX(0);
 		
-		DriveTrain_left1 = new WPI_TalonSRX(2);
+		DriveTrain_left1 = new WPI_TalonSRX(4);//2
 		
-		DriveTrain_left2 = new WPI_TalonSRX(1);
+		DriveTrain_left2 = new WPI_TalonSRX(5);//1
 		
 //		DriveTrain_right1 = new WPI_TalonSRX(3);
 		
-		DriveTrain_right1 = new WPI_TalonSRX(4);
+		DriveTrain_right1 = new WPI_TalonSRX(2);//4
 		
-		DriveTrain_right2 = new WPI_TalonSRX(5);
+		DriveTrain_right2 = new WPI_TalonSRX(1);//5
 		
 		DriveTrain_Left = new SpeedControllerGroup(
 				DriveTrain_left1,DriveTrain_left2);
@@ -120,6 +124,9 @@ public class RobotMap {
 		
 		Arm_Motor = new WPI_TalonSRX(3);
 		
+		Arm_LowerBackup = new DigitalInput(9);
+		SmartDashboard.putBoolean("Arm Backup", Arm_LowerBackup.get());
+		
 		Arm_LowerLimit = new DigitalInput(4);
 		SmartDashboard.putBoolean("Arm Lower", Arm_LowerLimit.get());
 		
@@ -130,15 +137,13 @@ public class RobotMap {
 		SmartDashboard.putBoolean("Arm Upper", Arm_UpperLimit.get());
 		
 		//Gripper Variable Initialize
-		Gripper_Limit1 = new DigitalInput(9);
-		SmartDashboard.putBoolean("Gripper1", Gripper_Limit1.get());
-		Gripper_Limit2 = new DigitalInput(10);
-		SmartDashboard.putBoolean("Gripper2", Gripper_Limit2.get());
+		Gripper_Limit = new DigitalInput(10);
+		SmartDashboard.putBoolean("Gripper1", Gripper_Limit.get());
 		
 		Gripper_Piston = new DoubleSolenoid(6,7);
 		
 		//Intake Variable Initialize
-		Intake_Piston = new DoubleSolenoid(1, 1, 0);
+		Intake_Piston = new DoubleSolenoid(1, 0, 1);
 		
 		Intake_LeftMotor = new VictorSP(0);
 		Intake_RightMotor = new VictorSP(1);
@@ -153,7 +158,7 @@ public class RobotMap {
 //		SmartDashboard.putBoolean("Wrist Upper", Wrist_UpperLimit.get());
 		
 		WristEncoder = new Encoder(8,7);
-		WristEncoder.setReverseDirection(false);
+		WristEncoder.setReverseDirection(true);
 		SmartDashboard.putNumber("WristEncoder", WristEncoder.get());
 		
 		Climb_Motor1 = new VictorSP(2);

@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class DropBox extends CommandGroup {
+public class TestAuto extends CommandGroup {
 
-    public DropBox() {
+    public TestAuto() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,10 +24,7 @@ public class DropBox extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	addSequential(new WristHalfDown());
-    	addSequential(new OpenGripper());
-    	addSequential(new WristUp());
+    	addSequential(new DriveForward((6*Math.PI)));
     	
     }
 }

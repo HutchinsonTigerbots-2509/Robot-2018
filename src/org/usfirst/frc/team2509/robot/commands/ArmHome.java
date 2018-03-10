@@ -29,7 +29,7 @@ public class ArmHome extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !arm.getLowerLimit().get();
+        return(/*!arm.getLowerLimit().get()||*/arm.getBackupLimit().get());
 //    	return false;
     }
 

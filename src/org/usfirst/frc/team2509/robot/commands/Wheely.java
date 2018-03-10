@@ -1,26 +1,23 @@
 package org.usfirst.frc.team2509.robot.commands;
 
 import org.usfirst.frc.team2509.robot.Robot;
-import org.usfirst.frc.team2509.robot.subsystems.Wrist;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-
 
 /**
  *
  */
-public class ManWristUp extends Command {
-	private Wrist wrist = Robot.wrist;
-    public ManWristUp() {
-//    	requires(wrist);
+public class Wheely extends Command {
+
+    public Wheely() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(wrist);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	wrist.Up();
+    	Robot.drivetrain.getWheely().set(DoubleSolenoid.Value.kForward);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,15 +26,13 @@ public class ManWristUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	
-//    	wrist.getMotor().set(0);
-    	wrist.Idle();
-    	wrist.getEncoder().reset();
+
+    	Robot.drivetrain.getWheely().set(DoubleSolenoid.Value.kReverse);
     }
 
     // Called when another command which requires one or more of the same

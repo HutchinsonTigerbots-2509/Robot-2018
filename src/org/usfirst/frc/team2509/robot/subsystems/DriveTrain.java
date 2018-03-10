@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem implements PIDOutput{
 	//Subsystem Variables
 	private static DoubleSolenoid Shifter = RobotMap.DriveTrain_Shifter;
+	private static DoubleSolenoid Wheely = RobotMap.DriveTrain_Wheely;
 	private static Encoder LeftEncoder = RobotMap.DriveTrain_LeftEncoder;
 	private static Encoder RightEncoder = RobotMap.DriveTrain_RightEncoder;
 	private static AHRS Gyro = RobotMap.DriveTrain_NavX;
@@ -44,7 +45,13 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	//For a reason unknown to you
     }
     public static void drive(Joystick stick) {
-    	Drive.arcadeDrive(getScaledDrive(getScaledDrive(-stick.getY())), getScaledDrive(-stick.getZ()));
+    	Drive.arcadeDrive(slowReverse(getScaledDrive(-stick.getY())), getScaledDrive(-stick.getZ()));
+    }
+    public static double slowReverse(double input) {
+    	if(input<0) {
+    		input = input*0.8;
+    	}
+    	return input;
     }
     /**
      * Resets all sensors
@@ -235,6 +242,9 @@ public class DriveTrain extends Subsystem implements PIDOutput{
     	}
     	Drive.tankDrive(0, 0);
     }
+    public void wheely() {
+    	Wheely.set(DoubleSolenoid.Value.kForward);
+    }
     
     /**
      * 
@@ -242,6 +252,9 @@ public class DriveTrain extends Subsystem implements PIDOutput{
      */
     public DoubleSolenoid getShifter() {
     	return Shifter;
+    }
+    public DoubleSolenoid getWheely() {
+    	return Wheely;
     }
     /**
      * 

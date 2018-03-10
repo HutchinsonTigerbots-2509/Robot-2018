@@ -3,6 +3,7 @@ package org.usfirst.frc.team2509.robot.commands;
 import org.usfirst.frc.team2509.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -19,6 +20,7 @@ public class CloseGripper extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println(DriverStation.getInstance().getMatchTime()+"Gripper Close");
     	piston.set(DoubleSolenoid.Value.kReverse);
     }
 

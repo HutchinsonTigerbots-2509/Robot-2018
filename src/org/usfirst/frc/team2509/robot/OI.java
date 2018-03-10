@@ -9,6 +9,7 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import org.usfirst.frc.team2509.robot.commands.ArmDown;
 import org.usfirst.frc.team2509.robot.commands.ArmHigh_2;
 import org.usfirst.frc.team2509.robot.commands.ArmHome;
 import org.usfirst.frc.team2509.robot.commands.ArmMid_2;
@@ -22,6 +23,7 @@ import org.usfirst.frc.team2509.robot.commands.IntakeOut;
 import org.usfirst.frc.team2509.robot.commands.ManWristUp;
 import org.usfirst.frc.team2509.robot.commands.ShiftDrive;
 import org.usfirst.frc.team2509.robot.commands.ToggleUpper;
+import org.usfirst.frc.team2509.robot.commands.Wheely;
 import org.usfirst.frc.team2509.robot.commands.WristDown;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1A_2;
 import org.usfirst.frc.team2509.robot.commands.one.Auto1B_2;
@@ -55,8 +57,10 @@ public class OI {
 	public Joystick OperatorStick;
 	public Joystick CoOperatorStick;
 	private JoystickButton ShiftButton;
+	private JoystickButton wheelyButton;
 	private JoystickButton MidArmButton;
 	private JoystickButton HighArmButton;
+	private JoystickButton ArmDownButton;
 	private JoystickButton GripButton;
 	private JoystickButton IntakeInButton;
 	private JoystickButton IntakeOutButton;
@@ -111,11 +115,15 @@ public class OI {
 		CoOperatorStick = new Joystick(1);
 		ShiftButton = new JoystickButton(OperatorStick, 2);
 			ShiftButton.whenPressed(new ShiftDrive());
+		wheelyButton = new JoystickButton(OperatorStick,3);
+			wheelyButton.toggleWhenActive(new Wheely());
 		MidArmButton = new JoystickButton(CoOperatorStick, 2);
 //			MidArmButton.whileHeld(new ArmMid());
 			MidArmButton.whileHeld(new ArmMid_2());
 		HighArmButton = new JoystickButton(CoOperatorStick, 4);
 			HighArmButton.whileHeld(new ArmHigh_2());
+		ArmDownButton = new JoystickButton(CoOperatorStick, 8);
+			ArmDownButton.whileHeld(new ArmDown());
 		RetractButton = new JoystickButton(CoOperatorStick, 7);
 			RetractButton.toggleWhenPressed(new ToggleUpper());
 		GripButton = new JoystickButton(CoOperatorStick, 1);
@@ -168,6 +176,7 @@ public class OI {
 		SmartDashboard.putData(new ArmHome());
 		SmartDashboard.putData(new DropBox());
 		SmartDashboard.putData(new ManWristUp());
+		SmartDashboard.putData(new Wheely());
 	}
 	/**
 	 * When called constantly updates the SmartDashboard
@@ -179,6 +188,7 @@ public class OI {
 			SmartDashboard.putNumber("Right Encoder", Robot.drivetrain.getRightEncoder().get());
 			SmartDashboard.putNumber("Gyro", Robot.drivetrain.getGyro().getAngle());
 			SmartDashboard.putNumber("Accel", Robot.drivetrain.getGyro().getRawAccelY());
+			SmartDashboard.putBoolean("Arm Backup",  Robot.arm.getBackupLimit().get());
 			SmartDashboard.putBoolean("Arm Lower", Robot.arm.getLowerLimit().get());
 			SmartDashboard.putBoolean("Arm Middle", Robot.arm.getMiddleLimit().get());
 			SmartDashboard.putBoolean("Arm Upper", Robot.arm.getUpperLimit().get());

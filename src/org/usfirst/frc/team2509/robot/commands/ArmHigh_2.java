@@ -4,6 +4,7 @@ package org.usfirst.frc.team2509.robot.commands;
 import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.subsystems.Arm;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -18,6 +19,7 @@ public class ArmHigh_2 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println(DriverStation.getInstance().getMatchTime()+"Arm High");
     	arm.retractUpper();
     	arm.extendLower();
     	arm.Up();

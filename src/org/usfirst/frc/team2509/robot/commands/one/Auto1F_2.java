@@ -33,7 +33,7 @@ public class Auto1F_2 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForward(202));
+    	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
     	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(140));

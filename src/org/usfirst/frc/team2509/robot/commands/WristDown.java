@@ -19,8 +19,7 @@ public class WristDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	wrist.getMotor().set(-0.5);
-//    	wrist.Down();
+    	wrist.Down();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,12 +28,13 @@ public class WristDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return wrist.getEncoder().get()<(-37);
+        return wrist.getEncoder().get()<(-90);
+//    	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	wrist.getMotor().set(0);
+    	wrist.Idle();
     }
 
     // Called when another command which requires one or more of the same
