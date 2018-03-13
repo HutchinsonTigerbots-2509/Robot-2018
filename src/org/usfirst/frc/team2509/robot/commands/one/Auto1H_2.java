@@ -35,9 +35,9 @@ public class Auto1H_2 extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
-    	addParallel(new ArmHigh_2());
     	addSequential(new DriveForward(162));
     	addSequential(new DriveTurn(-90));
+    	addSequential(new ArmHigh_2());
     	addSequential(new DriveForward(30));
     	//Drop Box 
     	addSequential(new WristHalfDown());

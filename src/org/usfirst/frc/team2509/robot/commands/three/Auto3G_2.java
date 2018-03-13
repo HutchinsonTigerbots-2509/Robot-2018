@@ -34,10 +34,10 @@ public class Auto3G_2 extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveForward(210));
-    	addParallel(new ArmHigh_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(175)); 
     	addSequential(new DriveTurn(90));
+    	addSequential(new ArmHigh_2());
     	addSequential(new DriveForward(24));
     	//Drop Box 
     	addSequential(new WristDown());

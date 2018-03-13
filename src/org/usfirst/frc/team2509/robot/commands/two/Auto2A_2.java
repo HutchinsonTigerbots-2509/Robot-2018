@@ -35,9 +35,10 @@ public class Auto2A_2 extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(35));
     	addSequential(new DriveTurn(-90));
-    	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(42)); 
     	addSequential(new DriveTurn(90));
+
+    	addSequential(new ArmMid_2());
     	addSequential(new DriveForward(25));
     	//Drop Box 
     	addSequential(new WristHalfDown());

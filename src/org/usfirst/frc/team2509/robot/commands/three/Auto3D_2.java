@@ -35,6 +35,7 @@ public class Auto3D_2 extends CommandGroup {
         // arm.
     	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(140));
+    	addSequential(new ArmMid_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(15));
     	//Drop Box 

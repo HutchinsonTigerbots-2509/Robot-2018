@@ -35,8 +35,8 @@ public class Auto1E_2 extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(210));
     	addSequential(new DriveTurn(90));
-    	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(50));
+    	addSequential(new ArmMid_2());
     	addSequential(new DriveTurn(90));
     	addSequential(new DriveForward(2));
     	//Drop Box 

@@ -33,8 +33,8 @@ public class Auto3J_2 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new ArmHigh_2());
     	addSequential(new DriveForward(270));
+    	addSequential(new ArmHigh_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(12));
     	//DropBox

@@ -50,6 +50,7 @@ public class Auto3E_2 extends CommandGroup {
     	addSequential(new DriveTurn(-90));
     	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(163)); 
+    	addSequential(new ArmMid_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(15));
     	//Drop Box 

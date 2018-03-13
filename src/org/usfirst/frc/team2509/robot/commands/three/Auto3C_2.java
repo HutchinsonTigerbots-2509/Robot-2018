@@ -35,11 +35,11 @@ public class Auto3C_2 extends CommandGroup {
         // arm.
     	addSequential(new DriveForward(60));
     	addSequential(new DriveTurn(-90));
-    	addParallel(new ArmMid_2());
     	addSequential(new DriveForward(240)); 
     	addSequential(new DriveTurn(90));
     	addSequential(new DriveForward(90));
     	addSequential(new DriveTurn(90));
+    	addSequential(new ArmMid_2());
     	addSequential(new DriveForward(30));
     	//Drop Box 
     	addSequential(new WristHalfDown());

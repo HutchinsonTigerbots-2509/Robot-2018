@@ -34,11 +34,11 @@ public class Auto2D_2 extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveForward(40));
-    	addParallel(new ArmMid_2());
     	addSequential(new DriveTurn(90));
     	addSequential(new DriveForward(71)); 
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(80));
+    	addSequential(new ArmMid_2());
     	addSequential(new DriveTurn(-90));
     	addSequential(new DriveForward(15));
     	//Drop Box 
