@@ -7,18 +7,14 @@
 
 package org.usfirst.frc.team2509.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team2509.robot.OI;
-import org.usfirst.frc.team2509.robot.Robot;
 import org.usfirst.frc.team2509.robot.RobotMap;
-import org.usfirst.frc.team2509.robot.subsystems.ExampleSubsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * An example command.  You can replace me with your own command.
@@ -41,25 +37,25 @@ public class ExampleCommand extends Command {
 		
 		//motor1.set(0.25);
 		//motor12.set(0.25);
-		//motor1.config_kF(0, 0.01, 10);
-		//motor1.config_kP(0, 0.4, 10);
-//		motor1.config_kI(0, 0.0001, 10);
-//		motor1.config_kD(0, .001, 10);
-//		motor1.setSelectedSensorPosition(0, 0, 0);
-//		motor1.configMotionCruiseVelocity(1000, 0);
-//		motor1.configMotionAcceleration(1000, 0);
-//		motor1.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
-//		motor1.set(ControlMode.MotionMagic, 100000);
-		motor12.config_kF(0, 0.01, 10);
-		motor12.config_kP(0, 0.4, 10);
-		motor12.config_kI(0, 0.0001, 10);
-		motor12.config_kD(0, .001, 10);
+		motor1.config_kF(0, 0.01, 10);
+		motor1.config_kP(0, 0.4, 10);
+		motor1.config_kI(0, 0.0001, 10);
+		motor1.config_kD(0, .001, 10);
+		motor1.setSelectedSensorPosition(0, 0, 0);
+		motor1.configMotionCruiseVelocity(1000, 0);
+		motor1.configMotionAcceleration(1000, 0);
+		motor1.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+		motor1.set(ControlMode.MotionMagic, 100000);
+		motor12.config_kF(0, 0.031, 10);
+		motor12.config_kP(0, 0.03, 10);
+		motor12.config_kI(0, 0.00001, 10);
+		motor12.config_kD(0, 0.3, 10);
 		motor12.setSelectedSensorPosition(0, 0, 0);
 		motor12.configMotionCruiseVelocity(1000, 0);
 		motor12.configMotionAcceleration(1000, 0);
 		motor12.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
 		motor12.set(ControlMode.MotionMagic, 100000);
-		
+		SmartDashboard.getNumber("Angle", 0);
 		
 		
 		//motor1.configMotionAcceleration(1000, 0);
@@ -75,6 +71,10 @@ public class ExampleCommand extends Command {
 		//SmartDashboard.putNumber("postion", (motor12.getSelectedSensorPosition(0)));
 		SmartDashboard.putNumber("RPM1", (motor12.getSelectedSensorVelocity(0)));
 		SmartDashboard.putNumber("postion1", (motor12.getSelectedSensorPosition(0)));
+		//SmartDashboard.putNumber("postion1", (motor12.getSelectedSensorPosition(0)));
+		SmartDashboard.putNumber("current", (motor12.getOutputCurrent()));
+		SmartDashboard.putNumber("voltage", (motor12.getMotorOutputVoltage()));
+		SmartDashboard.putNumber("percent", (motor12.getMotorOutputPercent()));
 		//SmartDashboard.putNumber("RPM", (motor1.getSelectedSensorVelocity(0)));
 		//SmartDashboard.putNumber("postion", (motor1.getSelectedSensorPosition(0)));
 		

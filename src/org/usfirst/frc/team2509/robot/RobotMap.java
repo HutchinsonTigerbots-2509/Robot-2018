@@ -6,21 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team2509.robot;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -35,32 +23,29 @@ public class RobotMap {
 	public static WPI_TalonSRX DriveTrain_right2;
 
 	public static void init(){
-		DriveTrain_right1 = new WPI_TalonSRX(2);
+		DriveTrain_right1 = new WPI_TalonSRX(6);
 		//DriveTrain_right1.setInverted(true);
 		
-		DriveTrain_right2 = new WPI_TalonSRX(1);
+		DriveTrain_right2 = new WPI_TalonSRX(0);
 		//DriveTrain_left1 = new WPI_TalonSRX(4);
 		//DriveTrain_left2 = new WPI_TalonSRX(5);
 		//shoot.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		//DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		DriveTrain_right1.setSensorPhase(false);
-		DriveTrain_right1.configNominalOutputForward(0, 10);
-		DriveTrain_right1.configNominalOutputReverse(0, 10);
-		DriveTrain_right1.configPeakOutputForward(1, 10);
-		DriveTrain_right1.configPeakOutputReverse(-1, 10);
-		DriveTrain_left1.configNominalOutputForward(0, 10);
-		DriveTrain_left1.configNominalOutputReverse(0, 10);
-		DriveTrain_left1.configPeakOutputForward(1, 10);
-		DriveTrain_left1.configPeakOutputReverse(-1, 10);
+		DriveTrain_left1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		//DriveTrain_left1.configNominalOutputForward(0, 10);
+		//DriveTrain_left1.configNominalOutputReverse(0, 10);
+		//DriveTrain_left1.configPeakOutputForward(1, 10);
+		//DriveTrain_left1.configPeakOutputReverse(-1, 10);
 	    //DriveTrain_right2.setInverted(true);       
-		
-		
-		
-		DriveTrain_right2.set(ControlMode.Follower, 2);
+		//DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
+	
+		DriveTrain_right2.set(ControlMode.Follower, 6);
+		DriveTrain_left2.set(ControlMode.Follower, 6);
+		//DriveTrain_right2.configOpenloopRamp(3, 10);
 		//DriveTrain_left2.set(ControlMode.Follower, 2);
 		//
-		DriveTrain_left2.set(ControlMode.Follower, 4);
+		//DriveTrain_left2.set(ControlMode.Follower, 4);
 		
 		//slave2.set(ControlMode.Follower, 6);
 		
