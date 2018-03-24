@@ -39,7 +39,7 @@ public class RobotMap {
 		//DriveTrain_left1.configPeakOutputReverse(-1, 10);
 	    //DriveTrain_right2.setInverted(true);       
 		//DriveTrain_right1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
-	
+		DriveTrain_left1.setSensorPhase(true);
 		DriveTrain_right2.set(ControlMode.Follower, 1);
 		DriveTrain_left2.set(ControlMode.Follower, 0);
 		//DriveTrain_right2.configOpenloopRamp(3, 10);
